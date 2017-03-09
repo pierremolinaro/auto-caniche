@@ -1,0 +1,135 @@
+
+
+#-------------------------------------------------------------------*
+
+abstract class @decoratedInstruction {}
+
+#-------------------------------------------------------------------*
+
+list @decoratedInstructionList {
+  @decoratedInstruction mDecoratedInstruction
+}
+
+#-------------------------------------------------------------------*
+
+abstract class @decoratedExpression {
+}
+
+#-------------------------------------------------------------------*
+
+list @decoratedExpressionList {
+  @lstring mLabel
+  @decoratedExpression mDecoratedExpression
+}
+
+#-------------------------------------------------------------------*
+
+map @enumConstantMap {
+  @uint mIndex
+  insert insertKey error message "the '%K' constant is already declared"
+  search searchKey error message "there is no '%K' constant"
+}
+
+#-------------------------------------------------------------------*
+
+enum @scalarTypeKind {
+  case enumeration
+}
+
+#-------------------------------------------------------------------*
+
+shared map @unifiedScalarTypeMap {
+  @scalarTypeKind mKind
+  @enumConstantMap mConstantMap
+  @lstringlist mEnumConstantList
+  insert insertKey error message "the '%K' scalar type is already declared"
+  search searchKey error message "there is no '%K' scalar type"
+}
+
+#-------------------------------------------------------------------*
+
+list @decoratedArgumentList {
+  @unifiedScalarTypeMap-proxy mArgumentTypeProxy
+  @lstring mArgumentName
+}
+
+#-------------------------------------------------------------------*
+
+map @eventMap {
+  @decoratedArgumentList mDecoratedArgumentList
+  @decoratedInstructionList mDecoratedEventInstructionList
+  @decoratedExpressionList mEnsureDecoratedExpressionList
+  @location mEndOfEnsureExpressionList
+  insert insertKey error message "the '%K' event is already declared"
+  search searchKey error message "there is no '%K' event"
+}
+
+#-------------------------------------------------------------------*
+
+map @machineVarMap {
+  @unifiedScalarTypeMap-proxy mTypeProxy
+  @uint mMaxValue
+  insert insertKey error message "the '%K' var is already declared"
+  search searchKey error message "there is no '%K' var"
+}
+
+#-------------------------------------------------------------------*
+
+list @machineVarList {
+  @unifiedScalarTypeMap-proxy mTypeProxy
+  @lstring mVarName
+  @lstringlist mValueList
+  @lstring mInitialValueConstantName
+  @uint mInitialValueConstantIndex
+}
+
+#-------------------------------------------------------------------*
+
+list @decoratedScenarioList {
+  @lstring mScenarioName
+  @scenarioEventSequence mEventSequence
+}
+
+#-------------------------------------------------------------------*
+
+map @machineMap {
+  @machineVarMap mAttributeMap
+  @machineVarList mAttributeList
+  @decoratedExpressionList mInvariantDecoratedExpressionList
+  @eventMap mEventMap
+  @decoratedScenarioList mDecoratedScenarioList
+  insert insertKey error message "the '%K' class is already declared"
+  search searchKey error message "there is no '%K' class"
+}
+
+#-------------------------------------------------------------------*
+
+sortedlist @decoratedFunctionValueList {
+  @lstring mOperandName
+  @uint mOperandValue
+  @lstring mResultName
+  @uint mResultValue
+}{
+  mOperandValue <
+}
+
+#-------------------------------------------------------------------*
+
+map @functionMap {
+  @unifiedScalarTypeMap-proxy mOperandTypeProxy
+  @unifiedScalarTypeMap-proxy mResultTypeProxy
+  @decoratedFunctionValueList mDecoratedFunctionValueList
+  insert insertKey error message "the '%K' class is already declared"
+  search searchKey error message "there is no '%K' class"
+}
+
+#-------------------------------------------------------------------*
+
+struct @analyzeContext {
+  @unifiedScalarTypeMap mUnifiedScalarTypeMap
+  @machineVarMap mMachineVarMap
+  @functionMap mFunctionMap
+}
+
+#-------------------------------------------------------------------*
+

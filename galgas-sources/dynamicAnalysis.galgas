@@ -1,0 +1,1050 @@
+
+
+#-------------------------------------------------------------------*
+
+list @machineVarListForDisplay {
+  @string mAttributeName
+  @uint mBDDStartIndex
+  @uint mBDDBitCount
+  @lstringlist mValueList
+  @uint mColumnLength
+}
+
+#-------------------------------------------------------------------*
+
+getter @varList displayVarInfo 
+  ->@machineVarListForDisplay outResult {
+  outResult = @machineVarListForDisplay.default
+  for m in self do
+    @uint columnLength = [m.mVarName length] + 1
+    for c in m.mValueList do
+      let @uint cstNameLength = [c.mValue.string length]
+      if columnLength < cstNameLength then
+        columnLength = cstNameLength
+      end
+    end
+    outResult +=
+      !"$" + m.mVarName
+      !m.mBDDStartBitIndex
+      !m.mBDDBitCount
+      !m.mValueList
+      !columnLength
+  end
+}
+
+#-------------------------------------------------------------------*
+
+getter @varList displayVarVarInfo 
+  ->@machineVarListForDisplay outResult {
+  outResult = @machineVarListForDisplay.default
+  for m in self do
+    @uint columnLength = [m.mVarName length] + 5
+    for c in m.mValueList do
+      let @uint cstNameLength = [c.mValue.string length]
+      if columnLength < cstNameLength then
+        columnLength = cstNameLength
+      end
+    end
+    outResult +=
+      !"old $" + m.mVarName
+      !m.mBDDStartBitIndex
+      !m.mBDDBitCount
+      !m.mValueList
+      !columnLength
+  end
+  for m in self do
+    @uint columnLength = [m.mVarName length] + 1
+    for c in m.mValueList do
+      let @uint cstNameLength = [c.mValue.string length]
+      if columnLength < cstNameLength then
+        columnLength = cstNameLength
+      end
+    end
+    outResult +=
+      !"$" + m.mVarName
+      !m.mBDDStartBitIndex
+      !m.mBDDBitCount
+      !m.mValueList
+      !columnLength
+  end
+}
+
+#-------------------------------------------------------------------*
+
+getter @varList displayArgVarVarInfo
+  ?let @varList inArgumentList
+  ->@machineVarListForDisplay outResult {
+  outResult = @machineVarListForDisplay.default
+  for m in self do
+    @uint columnLength = [m.mVarName length] + 5
+    for c in m.mValueList do
+      let @uint cstNameLength = [c.mValue.string length]
+      if columnLength < cstNameLength then
+        columnLength = cstNameLength
+      end
+    end
+    outResult +=
+      !"old $" + m.mVarName
+      !m.mBDDStartBitIndex
+      !m.mBDDBitCount
+      !m.mValueList
+      !columnLength
+  end
+  for m in self do
+    @uint columnLength = [m.mVarName length] + 1
+    for c in m.mValueList do
+      let @uint cstNameLength = [c.mValue.string length]
+      if columnLength < cstNameLength then
+        columnLength = cstNameLength
+      end
+    end
+    outResult +=
+      !"$" + m.mVarName
+      !m.mBDDStartBitIndex
+      !m.mBDDBitCount
+      !m.mValueList
+      !columnLength
+  end
+  for m in inArgumentList do
+    @uint columnLength = [m.mVarName length] + 1
+    for c in m.mValueList do
+      let @uint cstNameLength = [c.mValue.string length]
+      if columnLength < cstNameLength then
+        columnLength = cstNameLength
+      end
+    end
+    outResult +=
+      !"$" + m.mVarName
+      !m.mBDDStartBitIndex
+      !m.mBDDBitCount
+      !m.mValueList
+      !columnLength
+  end
+}
+
+#-------------------------------------------------------------------*
+
+proc displayVarValueSet
+  ?let @string inTitle
+  ?let @binaryset inValueSet
+  ?let @varList inVarList {
+  performDisplay (
+    !inTitle
+    !inValueSet
+    ![inVarList displayVarInfo]
+  )
+}
+
+#-------------------------------------------------------------------*
+
+proc displayArgVarVarValueSet
+  ?let @string inTitle
+  ?let @binaryset inValueSet
+  ?let @varList inArgumentList
+  ?let @varList inVarList {
+  performDisplay (
+    !inTitle
+    !inValueSet
+    ![inVarList displayArgVarVarInfo !inArgumentList]
+  )
+}
+
+#-------------------------------------------------------------------*
+
+proc displayVarVarValueSet
+  ?let @string inTitle
+  ?let @binaryset inValueSet
+  ?let @varList inVarList {
+  performDisplay (
+    !inTitle
+    !inValueSet
+    ![inVarList displayVarVarInfo]
+  )
+}
+
+#-------------------------------------------------------------------*
+
+func nameForValue
+  ?let @uint64 inValue
+  ?let @varList inVarList
+  ->@string outResult {
+  outResult = ""
+  @uint64 v = inValue
+  for a in inVarList
+  do
+    let @uint64 mask = (1L << a.mBDDBitCount) - 1L
+    let @lstring cstName = [a.mValueList mValueAtIndex ![v & mask uint]]
+    outResult += cstName.string
+    v = v >> a.mBDDBitCount
+  between
+    outResult += "."
+  end
+}
+
+#-------------------------------------------------------------------*
+
+proc displayVarNames
+  ?let @machineVarListForDisplay inAttributeList
+  ?!@string ioString {
+  ioString += "|"
+  for a in inAttributeList do
+    ioString += " " + [a.mAttributeName stringByRightPadding !a.mColumnLength !' '] + " |"
+  end
+  ioString += "\n"
+}
+
+#-------------------------------------------------------------------*
+
+proc displaySeparator
+  ?let @machineVarListForDisplay inAttributeList
+  ?!@string ioString {
+  ioString += "|"
+  for a in inAttributeList do
+    ioString += @string. stringWithSequenceOfCharacters { !'-' !a.mColumnLength + 2} + "|"
+  end
+  ioString += "\n"
+}
+
+#-------------------------------------------------------------------*
+
+proc displayValue
+  ?let @machineVarListForDisplay inAttributeList
+  ?let @uint64 inValue
+  ?!@string ioString {
+  ioString += "|"
+  @uint64 aValue = inValue
+  for a in inAttributeList do
+    let @uint64 mask = (1L << a.mBDDBitCount) - 1L
+    let @lstring cstName = [a.mValueList mValueAtIndex ![aValue & mask uint]]
+    ioString += " " + [cstName stringByRightPadding !a.mColumnLength !' '] + " |"
+    aValue = aValue >> a.mBDDBitCount
+  end
+  ioString += "\n"
+}
+
+#-------------------------------------------------------------------*
+
+proc performDisplay
+  ?let @string inTitle
+  ?let @binaryset inValueSet
+  ?let @machineVarListForDisplay inAttributeList {
+  message ["*** " + inTitle + " " stringByRightPadding !50 !'*'] + "\n"
+#--- Compute bit count, padding sizes
+  @uint bitCount = 0
+  for a in inAttributeList do
+    bitCount = bitCount + a.mBDDBitCount
+  end
+#--- Display header
+  @string s = " "
+  displayVarNames ( !inAttributeList !?s )
+  s += " "
+  displaySeparator ( !inAttributeList !?s )
+  let @uint64list values = [inValueSet uint64ValueList !bitCount]
+  for v in values do
+    s += " "
+    displayValue ( !inAttributeList !v.mValue !?s )
+  end
+  s += "\n"
+  message s
+} 
+
+#-------------------------------------------------------------------*
+
+map @transitionEventMap {
+  @eventArgumentList mArgumentList
+  @binaryset mTransitionBinarySet
+  insert insertKey error message "the '%K' event is already declared in %L"
+  search searchKey error message "there is no '%K' event"
+}
+
+#-------------------------------------------------------------------*
+
+list @varList {
+  @lstring mVarName
+  @lstringlist mValueList
+  @uint mBDDStartBitIndex
+  @uint mBDDBitCount
+  @uint mInitialValueIndex
+}
+
+#-------------------------------------------------------------------*
+
+list @binarysetList {
+  @lstring mLabel
+  @binaryset mSet
+}
+
+#-------------------------------------------------------------------*
+
+map @varMap {
+  @lstringlist mConstantList
+  @enumConstantMap mConstantMap
+  @uint mBDDStartBit
+  @uint mBDDBitCount
+  insert insertKey error message "the '%K' var is already declared in %L"
+  search searchKey error message "there is var '%K' key"
+}
+
+#-------------------------------------------------------------------*
+
+method @machineList-element performMachineDynamicAnalysis
+  ?let @string inSourceFileName
+  ?let @unifiedScalarTypeMap inUnifiedScalarTypeMap
+  ?let @scenarioList inScenarioList
+  ?let @functionMap inFunctionMap {
+  let @bool veryVerbose = [option omnibus_options.veryVerbose value]
+  let @bool verbose = veryVerbose | @application.verboseOutput
+  @string dotFileContents = "digraph G {\n"
+  dotFileContents += "  node [fontname=courier]\n"
+  dotFileContents += "  edge [fontname=courier]\n"
+#----------------------------------------------------- Build analysis context
+  @uint bddStartBitIndex = 0
+  var varMap =@varMap.default
+  var varList =@varList.default
+  var varContraintSet =@binaryset.fullBinarySet{}
+  for variable in self.mEnumVarDeclarationList do
+    [inUnifiedScalarTypeMap searchKey !variable.mEnumTypeName ?* ?let @enumConstantMap constantMap ?let @lstringlist constantList]
+    [constantMap searchKey !variable.mConstantName ?let @uint initialValueIndex]
+    let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
+    [!?varMap insertKey
+      !variable.mEnumVarName
+      !constantList
+      !constantMap
+      !bddStartBitIndex
+      !bddBitCount
+    ]
+    varList +=
+      !variable.mEnumVarName
+      !constantList
+      !bddStartBitIndex
+      !bddBitCount
+      !initialValueIndex
+    varContraintSet = varContraintSet & @binaryset. binarySetWithLowerOrEqualToConstant {
+      !bddStartBitIndex
+      !bddBitCount
+      ![[constantList length] - 1 uint64]}
+    bddStartBitIndex = bddStartBitIndex + bddBitCount
+  end
+  let @uint varTotalBitCount = bddStartBitIndex
+  drop bddStartBitIndex
+#----------------------------------------------------- Apply init instructions
+  @binaryset initValueSet = varContraintSet
+  for variable in varList do
+    let s = @binaryset.binarySetWithEqualToConstant {
+      !variable.mBDDStartBitIndex
+      !variable.mBDDBitCount
+      ![variable.mInitialValueIndex uint64]
+    }
+    initValueSet = initValueSet & s
+  end
+  let @uint64list initValueList = [initValueSet uint64ValueList !varTotalBitCount]
+  for v in initValueList do
+    dotFileContents += "  \"\" [shape=plaintext]\n"
+    dotFileContents += "  \"\" -> \"" + nameForValue (!v.mValue !varList) + "\" ;\n"
+  end
+  if verbose then
+    displayVarValueSet (
+      !"@" + self.mMachineName + " init configuration"
+      !initValueSet
+      !varList
+    )
+  end
+#----------------------------------------------------- Invariant
+  var invariantList =@binarysetList.default
+  @binaryset invariantValueSet = varContraintSet
+  for exp in self.mInvariantExpressionList do
+    [exp.mExpression computeExpressionBDD !varMap !varTotalBitCount ?let @binaryset expressionBDD]
+    let @binaryset inv = expressionBDD & varContraintSet
+    invariantList += !exp.mLabel !inv
+    if [inv isEmpty] then
+      error exp.mLabel: "this invariant is empty"
+    end
+    invariantValueSet = invariantValueSet & inv
+  end
+  let @uint64list valueList = [invariantValueSet uint64ValueList !varTotalBitCount]
+  if verbose then
+    displayVarValueSet (
+      !" Invariant of @" + self.mMachineName + " (" + [valueList length] + " value" + if [valueList length] > 1 then "s" else "" end + ")"
+      !invariantValueSet
+      !varList
+    )
+  else
+    message " invariant of @" + self.mMachineName + ": " + [valueList length] + " value" + if [valueList length] > 1 then "s" else "" end + "\n"
+  end
+  for v in valueList do
+    dotFileContents += "  \"" + nameForValue (!v.mValue !varList) + "\" [shape=rectangle]\n"
+  end
+#----------------------------------------------------- Events
+#--- Compute old var --- var equality set
+  @binaryset oldVar_Var_EqualitySet = varContraintSet
+  for variable in varList do
+    let constraint = @binaryset.binarySetWithEqualComparison {
+      !variable.mBDDStartBitIndex
+      !variable.mBDDBitCount
+      !variable.mBDDStartBitIndex + varTotalBitCount
+    }
+    oldVar_Var_EqualitySet = oldVar_Var_EqualitySet & constraint
+  end
+  var varMapForEventInstructionComputing =@varMap.emptyMap{}
+  for variable in varMap do
+    [!?varMapForEventInstructionComputing insertKey
+      !variable.lkey
+      !variable.mConstantList
+      !variable.mConstantMap
+      !variable.mBDDStartBit + varTotalBitCount
+      !variable.mBDDBitCount
+   ]
+  end
+  var allTransitions =@binaryset.emptyBinarySet{}
+  var transitionEventMap =@transitionEventMap.emptyMap{}
+  for event in mEventList do
+  #--- Handle arguments
+    var argumentList =@varList.default
+    @varMap argVarMap = varMapForEventInstructionComputing
+    @uint bddArgOldVarVarTotalBitCount = varTotalBitCount + varTotalBitCount
+    @binaryset eventTransformationSet = invariantValueSet & oldVar_Var_EqualitySet
+    for arg in event.mEventArgumentList do
+      [inUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let @enumConstantMap constantMap ?let @lstringlist constantList]
+      let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
+      [!?argVarMap insertKey
+        !arg.mArgumentVarName
+        !constantList
+        !constantMap
+        !bddArgOldVarVarTotalBitCount
+        !bddBitCount
+      ]
+      argumentList +=
+        !arg.mArgumentVarName
+        !constantList
+        !bddArgOldVarVarTotalBitCount
+        !bddBitCount
+        !0
+      eventTransformationSet = eventTransformationSet & @binaryset. binarySetWithLowerOrEqualToConstant {
+        !bddArgOldVarVarTotalBitCount
+        !bddBitCount
+        ![[constantList length] - 1 uint64]}
+      bddArgOldVarVarTotalBitCount = bddArgOldVarVarTotalBitCount + bddBitCount
+    end
+  #--- Compute instructions
+    [event.mEventInstructionList computeInstructionListBDD
+      !varTotalBitCount
+      !argVarMap
+      !inFunctionMap
+      !bddArgOldVarVarTotalBitCount
+      !?eventTransformationSet
+    ]
+  #--- Display
+    if verbose then
+      displayArgVarVarValueSet (
+        !" Execution of @" + self.mMachineName + " " +  event.mEventName
+        !eventTransformationSet
+        !argumentList
+        !varList
+      )
+    end
+    let @binaryset transitions = [eventTransformationSet existOnBitIndexAndBeyond !varTotalBitCount + varTotalBitCount]
+    [!?transitionEventMap insertKey
+      !event.mEventName
+      !event.mEventArgumentList
+      !eventTransformationSet
+    ]
+#      displayVarVarValueSet
+#        !" Execution of @" . selfcopy->mMachineName . " " .  event->mEventName
+#        !transitions
+#        !varList
+#      ;
+    allTransitions = allTransitions | transitions
+  #--- Build graphviz file
+    addTransitionsToGraphvizString (
+      !event
+      !bddArgOldVarVarTotalBitCount
+      !eventTransformationSet
+      !varList
+      !varTotalBitCount
+      !argumentList
+      !?dotFileContents
+    )
+  #--- Compute ensure expression
+    @binaryset ensureValueSet = varContraintSet & (varContraintSet << varTotalBitCount)
+    for post in event.mEnsureExpressionList do
+      [post.mExpression computeExpressionBDD !varMapForEventInstructionComputing !varTotalBitCount ?let @binaryset s]
+      ensureValueSet = ensureValueSet & s
+    end
+    let @uint64 valueCount = [ensureValueSet valueCount !varTotalBitCount + varTotalBitCount]
+    if veryVerbose then
+      displayVarVarValueSet (
+        !"Post-condition of @" + self.mMachineName + " " + event.mEventName
+           + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")"
+        !ensureValueSet
+        !varList
+      )
+    else
+      message " Post-condition of @" + self.mMachineName + " " + event.mEventName + ": " 
+      + valueCount + " value" + if valueCount > 1L then "s" else "" end + "\n\n"
+    end
+  #--- Check ensure condition is compatible with instructions
+    if [ensureValueSet isEmpty] then
+      error event.mEndOfEnsureExpressionList : "ensure condition is empty"
+    else
+      let @binaryset ensureAndInvariant = ensureValueSet & invariantValueSet
+      if veryVerbose then
+        displayVarVarValueSet (
+          !"Post-condition @" + self.mMachineName + " " +  event.mEventName + "' and invariant"
+          !ensureAndInvariant
+          !varList
+        )
+      end
+      if [ensureAndInvariant isEmpty] then
+        error event.mEndOfEnsureExpressionList :
+          "post condition condition is not compatible with invariant"
+      else
+        let @binaryset ensureAndContext = transitions & ensureValueSet
+        if veryVerbose then
+          displayVarVarValueSet (
+            !"Post-condition and execution of @" + self.mMachineName + " " +  event.mEventName
+            !ensureAndContext
+            !varList
+          )
+        end
+        if ensureAndContext != transitions then
+          error event.mEndOfEnsureExpressionList :
+            "event instructions is not compatible with post condition"
+        else
+          let @binaryset result = transitions >> varTotalBitCount
+          for inv in invariantList do
+            if result != (result & inv.mSet) then
+              error event.mEndOfEnsureExpressionList :
+                "event instructions is not compatible with invariant '" + inv.mLabel + "'"
+            end
+          end
+        end
+      end
+    end
+  end
+#----------------------------------------------------- Write dot file
+  dotFileContents += "}\n"
+  [dotFileContents writeToFileWhenDifferentContents !inSourceFileName+ ".dot" ?*]
+#----------------------------------------------------- Computing accessible state from initial state
+  let @binaryset accessibleStates = [allTransitions accessibleStates !initValueSet !varTotalBitCount]
+  if accessibleStates != invariantValueSet then
+    let @binaryset inaccessibleStateSet = invariantValueSet & ~ accessibleStates
+    let @uint64 inaccessibleStateCount = [inaccessibleStateSet valueCount !varTotalBitCount]
+    error self.mMachineName : [inaccessibleStateCount string] + " inaccessible invariant value"
+    + if inaccessibleStateCount > 1L then "s" else "" end
+    displayVarValueSet (
+      !"Inaccessible @" + self.mMachineName + " invariant values"
+      !inaccessibleStateSet
+      !varList
+    )
+  end
+#----------------------------------------------------- Run scenarios
+  for scenario in inScenarioList do
+    if scenario.mMachineName.string == self.mMachineName.string then
+      @binaryset valueSet = initValueSet
+      @string s = "*** scenario \"" + scenario.mScenarioName + "\" for @" + self.mMachineName + " machine:\n"
+      let @machineVarListForDisplay displayStateInfo = [varList displayVarInfo]
+    #--- Compute event name max length
+      @uint firstColumnLength = ["Event" length]
+      for event in scenario.mEventSequence do
+        @string eventString = event.mEventName.string
+        for actual in event.mArgumentNameList
+        do eventString += "?" + actual.mValue.string
+        end
+        let @uint lg = [eventString length]
+        if firstColumnLength < lg then
+          firstColumnLength = lg
+        end
+      end
+    #--- Run
+      s += ["Event" stringByRightPadding !firstColumnLength+1 !' ']
+      displayVarNames ( !displayStateInfo !?s )
+      s += @string. stringWithSequenceOfCharacters { !'-' !firstColumnLength+1}
+      displaySeparator ( !displayStateInfo !?s )
+      message s
+      for event in scenario.mEventSequence do
+        s = ""
+        [transitionEventMap searchKey
+          !event.mEventName
+          ?let @eventArgumentList argumentList
+          ?var @binaryset transitionSet
+        ]
+      #--- Argument values
+        @uint bddBitIndex = varTotalBitCount + varTotalBitCount
+        @string eventString = event.mEventName.string
+        for formal in argumentList, actual in event.mArgumentNameList do
+          eventString += "?" + actual.mValue.string
+          [inUnifiedScalarTypeMap searchKey !formal.mArgumentTypeName ?* ?let @enumConstantMap constantMap ?*]
+          [constantMap searchKey !actual.mValue ?let @uint constantIndex]
+          let @uint bitCount = [[constantMap count] - 1 significantBitCount]
+          transitionSet = transitionSet & @binaryset. binarySetWithEqualToConstant {
+            !bddBitIndex
+            !bitCount
+            ![constantIndex uint64]}
+          bddBitIndex = bddBitIndex + bitCount
+        end
+        valueSet = [(valueSet & transitionSet) >> varTotalBitCount existOnBitIndexAndBeyond !varTotalBitCount]
+        s += [eventString stringByRightPadding !firstColumnLength !' ']
+        let @uint64list valueList = [valueSet uint64ValueList !varTotalBitCount]
+        if [valueList length] == 0 then
+          error event.mEventName: "no value instead of 1"
+          s += "\n"
+        elsif [valueList length] > 1 then
+          error event.mEventName: [[valueList length] string] + " values instead of 1"
+          s += "\n"
+        else
+          s += " "
+          displayValue ( !displayStateInfo ![valueList mValueAtIndex !0] !?s )
+        end
+        message s
+      end
+      message "\n"
+    end
+  end
+}
+
+#-------------------------------------------------------------------*
+
+proc addTransitionsToGraphvizString
+  ?let @eventDeclarationList-element inEvent
+  ?let @uint inArgVarVarTotalBitCount
+  ?let @binaryset inEventTransformationSet
+  ?let @varList inVarList
+  ?let @uint inVarTotalBitCount
+  ?let @varList inArgumentList
+  ?!@string ioDotFileContents {
+  let @uint64list valueList = [inEventTransformationSet uint64ValueList !inArgVarVarTotalBitCount]
+  for value in valueList do
+    @string eventName = inEvent.mEventName.string
+    @uint64 v = value.mValue
+    let @uint64 source = v & ((1L << inVarTotalBitCount) - 1L)
+    v = v >> inVarTotalBitCount
+    let @uint64 target = v & ((1L << inVarTotalBitCount) - 1L)
+    v = v >> inVarTotalBitCount
+    for arg in inArgumentList do
+      let @uint64 argValue = v & ((1L << arg.mBDDBitCount) - 1L)
+      v = v >> arg.mBDDBitCount
+      eventName += "?" + [arg.mValueList mValueAtIndex ![argValue uint]]
+    end
+    ioDotFileContents += "  \"" + nameForValue (!source !inVarList)
+    + "\" -> \"" + nameForValue (!target !inVarList)
+    + "\" [label=\"" + eventName + "\"] ;\n"
+  end
+}
+
+#-------------------------------------------------------------------*
+
+proc performDynamicAnalysis
+  ?let @string inSourceFileName
+  ?let @ast inAST
+  ?let @unifiedScalarTypeMap inUnifiedScalarTypeMap
+  ?let @functionMap inFunctionMap
+  ?let @machineMap unused inMachineMap {
+  message "*** File " + [inSourceFileName lastPathComponent] + " ***\n"
+  for m in inAST.mMachineList do
+    [m performMachineDynamicAnalysis
+      !inSourceFileName
+      !inUnifiedScalarTypeMap
+      !inAST.mScenarioList
+      !inFunctionMap
+    ]
+  end
+}
+
+#-------------------------------------------------------------------*
+
+abstract method @expression computeExpressionBDD
+  ?let @varMap inVarMap
+  ?let @uint inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD
+
+#-------------------------------------------------------------------*
+
+override method @implicationExpression computeExpressionBDD
+  ?let @varMap inVarMap
+  ?let @uint inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD {
+  [mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
+  [mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
+  outExpressionBDD = [left implies !right]
+}
+
+#-------------------------------------------------------------------*
+
+override method @logicalOrExpression computeExpressionBDD
+  ?let @varMap inVarMap
+  ?let @uint inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD {
+  [mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
+  [mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
+  outExpressionBDD = left | right
+}
+
+#-------------------------------------------------------------------*
+
+override method @logicalAndExpression computeExpressionBDD
+  ?let @varMap inVarMap
+  ?let @uint inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD {
+  [mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
+  [mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
+  outExpressionBDD = left & right
+}
+
+#--------------------------------------------------------------------*
+
+override method @comparisonInExpression computeExpressionBDD
+  ?let @varMap inVarMap
+  ?let @uint inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD {
+  [inVarMap searchKey
+    !mAttributeName 
+    ?*
+    ?let @enumConstantMap constantMap
+    ?let @uint leftVarBDDStartBit
+    ?let @uint leftVarBDDBitCount
+  ]
+  [mRightOperand computeRightOperandBDD
+    !inVarMap
+    !constantMap
+    !leftVarBDDStartBit
+    !leftVarBDDBitCount
+    !mOperator
+    !inVarTotalBDDBitCount
+    ?outExpressionBDD
+  ]
+}
+
+#-------------------------------------------------------------------*
+
+abstract method @comparisonRightOperand computeRightOperandBDD
+  ?let @varMap inVarMap
+  ?let @enumConstantMap inConstantMap
+  ?let @uint leftVarBDDStartBit
+  ?let @uint leftVarBDDBitCount
+  ?let @enumComparisonOperator inOperator
+  ?let @uint inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD
+
+#-------------------------------------------------------------------*
+
+override method @attributeAsComparisonRightOperand computeRightOperandBDD
+  ?let @varMap inVarMap
+  ?let @enumConstantMap unused inConstantMap
+  ?let @uint leftVarBDDStartBit
+  ?let @uint leftVarBDDBitCount
+  ?let @enumComparisonOperator inOperator
+  ?let @uint inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD {
+  [inVarMap searchKey
+    !mAttributeName 
+    ?2*
+    ?var @uint rightVarBDDStartBit
+    ?*
+  ]
+  if mHasOldQualifier then
+    rightVarBDDStartBit = rightVarBDDStartBit - inVarTotalBDDBitCount
+  end
+  switch inOperator
+  case equal :
+    outExpressionBDD = @binaryset. binarySetWithEqualComparison {
+      !leftVarBDDStartBit
+      !leftVarBDDBitCount
+      !rightVarBDDStartBit}
+  case notEqual :
+    outExpressionBDD = @binaryset. binarySetWithNotEqualComparison {
+      !leftVarBDDStartBit
+      !leftVarBDDBitCount
+      !rightVarBDDStartBit}
+  end
+}
+
+#-------------------------------------------------------------------*
+
+override method @constantAsComparisonRightOperand computeRightOperandBDD
+  ?let @varMap unused inVarMap
+  ?let @enumConstantMap inConstantMap
+  ?let @uint leftVarBDDStartBit
+  ?let @uint leftVarBDDBitCount
+  ?let @enumComparisonOperator inOperator
+  ?let @uint unused inVarTotalBDDBitCount
+  !@binaryset outExpressionBDD {
+  [inConstantMap searchKey !mConstantName ?let @uint constantValue]
+  switch inOperator
+  case equal :
+    outExpressionBDD = @binaryset. binarySetWithEqualToConstant {
+      !leftVarBDDStartBit
+      !leftVarBDDBitCount
+      ![constantValue uint64]}
+  case notEqual :
+    outExpressionBDD = @binaryset. binarySetWithNotEqualToConstant {
+      !leftVarBDDStartBit
+      !leftVarBDDBitCount
+      ![constantValue uint64]}
+  end
+}
+
+#-------------------------------------------------------------------*
+#! @ifInstruction
+#-------------------------------------------------------------------*
+
+abstract method @instruction computeInstructionBDD
+  ?let @uint inVarTotalBDDBitCount
+  ?let @varMap inVarMap
+  ?let @functionMap inFunctionMap
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet
+
+#-------------------------------------------------------------------*
+
+method @instructionList computeInstructionListBDD
+  ?let @uint inVarTotalBDDBitCount
+  ?let @varMap inVarMap
+  ?let @functionMap inFunctionMap
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet {
+  for i in self do
+    [i.mInstruction computeInstructionBDD
+      !inVarTotalBDDBitCount
+      !inVarMap
+      !inFunctionMap
+      !inArgOldVarVarBDDBitCount
+      !?ioArgOldVarVarValueSet
+    ]
+  end
+}
+
+#-------------------------------------------------------------------*
+
+override method @assignmentInstruction computeInstructionBDD
+  ?let @uint unused inVarTotalBDDBitCount
+  ?let @varMap inVarMap
+  ?let @functionMap inFunctionMap
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet {
+  [inVarMap searchKey
+    !mTargetVarName 
+    ?*
+    ?let @enumConstantMap constantMap
+    ?let @uint leftVarBDDStartBit
+    ?let @uint leftVarBDDBitCount
+  ]
+  let @binaryset oldAttributeValueSet = ioArgOldVarVarValueSet
+  [mSourceExpression computeAssignmentInstructionBDD
+    !inVarMap
+    !inFunctionMap
+    !constantMap
+    !leftVarBDDStartBit
+    !leftVarBDDBitCount
+    !inArgOldVarVarBDDBitCount
+    !?ioArgOldVarVarValueSet
+  ]  
+  if oldAttributeValueSet == ioArgOldVarVarValueSet then
+    error mTargetVarName : "this assignment has no effect and is useless"
+  end
+}
+
+#-------------------------------------------------------------------*
+
+override method @assertInstruction computeInstructionBDD
+  ?let @uint inVarTotalBDDBitCount
+  ?let @varMap inVarMap
+  ?let @functionMap unused inFunctionMap
+  ?let @uint unused inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet {
+  [mAssertExpression computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset expressionValueSet]
+  if [expressionValueSet isEmpty] then
+    error mAssertInstructionLocation : "assert expression is always false"
+  elsif [expressionValueSet isFull] then
+    error mAssertInstructionLocation : "assert expression is always true"
+  else
+    let @binaryset v = ioArgOldVarVarValueSet & expressionValueSet
+    if v != ioArgOldVarVarValueSet then
+      error mAssertInstructionLocation : "assert expression violation"
+    end
+  end
+}
+
+#-------------------------------------------------------------------*
+
+override method @ifInstruction computeInstructionBDD
+  ?let @uint inVarTotalBDDBitCount
+  ?let @varMap inVarMap
+  ?let @functionMap inFunctionMap
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet {
+  let @binaryset oldAttributeValueSet = ioArgOldVarVarValueSet
+#--- Test expression
+  [mTestExpression computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset expressionValueSet]
+  let @binaryset resultingThenCondition = ioArgOldVarVarValueSet & expressionValueSet
+  let @binaryset resultingElseCondition = ioArgOldVarVarValueSet & ~ expressionValueSet
+  if [expressionValueSet isEmpty] then
+    error mEndOfTestExpression : "expression is always false"
+  elsif [expressionValueSet isFull] then
+    error mEndOfTestExpression : "expression is always true"
+  elsif [resultingThenCondition isEmpty] then
+    error mEndOfTestExpression : "expression is always false within current context"
+  elsif resultingThenCondition == ioArgOldVarVarValueSet then
+    error mEndOfTestExpression : "expression is always true within current context"
+  elsif [resultingElseCondition isEmpty] then
+    error mEndOfTestExpression : "expression is always true"
+  elsif resultingElseCondition == ioArgOldVarVarValueSet then
+    error mEndOfTestExpression : "expression is always false within current context"
+  end
+  ioArgOldVarVarValueSet = @binaryset. emptyBinarySet
+#--- Then branch
+  if [resultingThenCondition isEmpty] then
+    error mEndOfTestExpression : "then branch is never executed"
+  else
+    @binaryset thenBranchAttributeValueSet = resultingThenCondition
+    [mThenInstructionList computeInstructionListBDD !inVarTotalBDDBitCount !inVarMap !inFunctionMap !inArgOldVarVarBDDBitCount !?thenBranchAttributeValueSet]
+    ioArgOldVarVarValueSet = thenBranchAttributeValueSet
+  end
+#--- Else branch
+  if [resultingElseCondition isEmpty] then
+    error mEndOfTestExpression : "else branch is never executed"
+  else
+    @binaryset elseBranchAttributeValueSet = resultingElseCondition
+    [mElseInstructionList computeInstructionListBDD !inVarTotalBDDBitCount !inVarMap !inFunctionMap !inArgOldVarVarBDDBitCount !?elseBranchAttributeValueSet]
+    ioArgOldVarVarValueSet = ioArgOldVarVarValueSet | elseBranchAttributeValueSet
+  end
+#--- Has effect ?
+  if oldAttributeValueSet == ioArgOldVarVarValueSet then
+    error mIFinstructionLocation : "this 'if' instruction has no effect and is useless"
+  end
+}
+
+#-------------------------------------------------------------------*
+
+abstract method @assignmentSourceExpression computeAssignmentInstructionBDD
+  ?let @varMap inVarMap
+  ?let @functionMap inFunctionMap
+  ?let @enumConstantMap constantMap
+  ?let @uint leftVarBDDStartBit
+  ?let @uint leftVarBDDBitCount
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet
+
+#-------------------------------------------------------------------*
+
+override method @varAsAssignmentSourceExpression computeAssignmentInstructionBDD
+  ?let @varMap inVarMap
+  ?let @functionMap unused inFunctionMap
+  ?let @enumConstantMap unused inConstantMap
+  ?let @uint inTargetVarBDDStartBit
+  ?let @uint inTargetVarBDDBitCount
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet {
+  [inVarMap searchKey
+    !mSourceVarName 
+    ?2*
+    ?let @uint sourceVarBDDStartBit
+    ?let @uint sourceVarBDDBitCount
+  ]
+  if inTargetVarBDDBitCount != sourceVarBDDBitCount then
+    error mSourceVarName : "*** INTERNAL ERROR " + inTargetVarBDDBitCount + ", " + sourceVarBDDBitCount + " ***"
+  end
+#  log "ioArgOldVarVarValueSet" : [ioArgOldVarVarValueSet valueCount !inArgOldVarVarBDDBitCount] ;
+#  log mSourceVarName, inTargetVarBDDStartBit, inTargetVarBDDBitCount, sourceVarBDDStartBit, inArgOldVarVarBDDBitCount ;
+  if inTargetVarBDDStartBit != sourceVarBDDStartBit then
+    let equality = @binaryset.binarySetWithEqualComparison {
+      !inTargetVarBDDStartBit
+      !inTargetVarBDDBitCount
+      !inArgOldVarVarBDDBitCount
+    }
+  
+    @binaryset expressionValueSet = ioArgOldVarVarValueSet & equality
+    let @binaryset v = [expressionValueSet existsOnBitRange
+      !inTargetVarBDDStartBit
+      !inTargetVarBDDBitCount
+    ]
+#  log "v" : [ioArgOldVarVarValueSet valueCount !inArgOldVarVarBDDBitCount + inTargetVarBDDBitCount] ;
+  
+    let constraint = @binaryset.binarySetWithEqualComparison {
+      !inTargetVarBDDStartBit
+      !inTargetVarBDDBitCount
+      !sourceVarBDDStartBit
+    }
+
+    ioArgOldVarVarValueSet = [v & constraint existOnBitIndexAndBeyond !inArgOldVarVarBDDBitCount]
+#  log "ioArgOldVarVarValueSet" : [ioArgOldVarVarValueSet valueCount !inArgOldVarVarBDDBitCount] ;
+  end
+}
+
+#-------------------------------------------------------------------*
+
+override method @constantAsAssignmentSourceExpression computeAssignmentInstructionBDD
+  ?let @varMap unused inVarMap
+  ?let @functionMap unused inFunctionMap
+  ?let @enumConstantMap constantMap
+  ?let @uint inTargetVarBDDStartBit
+  ?let @uint inTargetVarBDDBitCount
+  ?let @uint unused inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet {
+  [constantMap searchKey !mConstantName ?let @uint constantValue]
+  let expressionValueSet = @binaryset.binarySetWithEqualToConstant {
+    !inTargetVarBDDStartBit
+    !inTargetVarBDDBitCount
+    ![constantValue uint64]
+  }
+  let @binaryset v = [ioArgOldVarVarValueSet existsOnBitRange
+    !inTargetVarBDDStartBit
+    !inTargetVarBDDBitCount
+  ]
+  ioArgOldVarVarValueSet = v & expressionValueSet
+}
+
+#-------------------------------------------------------------------*
+
+override method @functionAsAssignmentSourceExpression computeAssignmentInstructionBDD
+  ?let @varMap inVarMap
+  ?let @functionMap inFunctionMap
+  ?let @enumConstantMap unused constantMap
+  ?let @uint leftVarBDDStartBit
+  ?let @uint leftVarBDDBitCount
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet {
+#--- attribute slots : mAttributeBDDBitCount from mAttributeBDDStartIndex
+#--- result slots : inBitCount from inStartBitIndex
+
+#---- On construit la table de vérité de la fonction :
+#        - opérande : à partir de mAttributeBDDStartIndex
+#        - résultat : à partir de inFirstFreeBDDIndex
+  [inVarMap searchKey
+    !mOperandName 
+    ?2*
+    ?let @uint operandVarBDDStartBit
+    ?let @uint operandVarBDDBitCount
+  ]
+
+  var functionTable =@binaryset.emptyBinarySet{}
+  [inFunctionMap searchKey !mFunctionName ?2* ?let @decoratedFunctionValueList decoratedFunctionValueList]
+  for v in decoratedFunctionValueList do
+    let op = @binaryset.binarySetWithEqualToConstant {
+      !operandVarBDDStartBit
+      !operandVarBDDBitCount
+      ![v.mOperandValue uint64]
+    }
+    let result = @binaryset.binarySetWithEqualToConstant {
+      !inArgOldVarVarBDDBitCount
+      !leftVarBDDBitCount
+      ![v.mResultValue uint64]
+    }
+    functionTable = functionTable | (op & result)
+  end
+
+  @binaryset expressionValueSet = ioArgOldVarVarValueSet & functionTable
+  let constraint = @binaryset.binarySetWithEqualComparison {
+    !leftVarBDDStartBit
+    !leftVarBDDBitCount
+    !inArgOldVarVarBDDBitCount
+  }
+  let @binaryset v = [expressionValueSet existsOnBitRange
+    !leftVarBDDStartBit
+    !leftVarBDDBitCount
+  ]
+
+  ioArgOldVarVarValueSet = [v & constraint existOnBitIndexAndBeyond !inArgOldVarVarBDDBitCount]
+}
+
+#-------------------------------------------------------------------*
+

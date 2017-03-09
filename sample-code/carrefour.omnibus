@@ -1,0 +1,70 @@
+
+enum %couleur {vert, orange, rouge}
+
+#--------------------------------------------------------*
+
+function succ %couleur -> %couleur
+  vert : orange
+  orange : rouge
+  rouge : vert
+end
+
+#--------------------------------------------------------*
+
+enum %etat {hs, es}
+
+#--------------------------------------------------------*
+
+machine @carrefour
+
+  var %etat $etat := hs
+  var %couleur $feuA := orange
+  var %couleur $feuB := orange
+
+  invariant "1" : {$etat = hs} => ({$feuA = orange} & {$feuB = orange})
+  invariant "2" : {$etat = es} => (({$feuA = rouge} | {$feuB = rouge}) & {$feuA != $feuB})
+
+  event miseEnService :
+    if {$etat = hs} then
+      $etat := es
+      $feuA := vert
+      $feuB := rouge
+    end
+  ensures
+    "A" : {$etat = es}
+  end
+
+  event miseHorsService :
+    if {$etat = es} then
+      $etat := hs
+      $feuA := orange
+      $feuB := orange
+    end
+  ensures
+    "A" : {$etat = hs}
+  end
+
+  event tick :
+    if {$etat = es} then
+      if {$feuA = vert} then
+        $feuA := orange
+      elsif {$feuA = orange} then
+        $feuA := rouge
+        $feuB := vert
+      elsif {$feuB = vert} then
+        $feuB := orange
+      #elsif {$feuB = orange} then
+      else
+        $feuA := vert
+        $feuB := rouge
+      end
+    end
+  ensures
+ #  "A" :  {$etat = es} => {$feuA = succ (old $feuA)} | {$feuB = succ (old $feuB)}
+   "B" :  {$etat = hs} => ({$feuA = old $feuA} & {$feuB = old $feuB})
+   "C" :  {$etat = old $etat}
+  end
+
+end
+
+#--------------------------------------------------------*

@@ -1,0 +1,225 @@
+
+
+#-------------------------------------------------------------------*
+
+class @assignmentDecoratedInstruction : @decoratedInstruction {
+  @unifiedScalarTypeMap-proxy mTargetTypeProxy
+  @lstring mTargetVarName
+  @decoratedAssignmentSourceExpression mSourceExpression
+}
+
+#-------------------------------------------------------------------*
+
+class @ifDecoratedInstruction : @decoratedInstruction {
+  @location mIFinstructionLocation
+  @decoratedExpression mTestExpression
+  @location mEndOfTestExpression
+  @decoratedInstructionList mThenInstructionList
+  @decoratedInstructionList mElseInstructionList
+}
+
+#-------------------------------------------------------------------*
+
+class @assertDecoratedInstruction : @decoratedInstruction {
+  @location mInstructionLocation
+  @decoratedExpression mExpression
+}
+
+#-------------------------------------------------------------------*
+
+method @instructionList analyzeInstructionList
+  ?let @analyzeContext inAnalyzeContext
+  !@decoratedInstructionList outDecoratedInstructionList {
+  outDecoratedInstructionList = @decoratedInstructionList.default
+  for i in self do
+    [i.mInstruction analyzeInstruction
+      !inAnalyzeContext
+      ?let @decoratedInstruction decoratedInstruction
+    ]
+    outDecoratedInstructionList += !decoratedInstruction
+  end
+}
+
+#-------------------------------------------------------------------*
+
+abstract class @decoratedAssignmentSourceExpression {
+}
+
+#-------------------------------------------------------------------*
+
+class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+  @lstring mVarName
+#  @uint mBDDStartIndex ;
+#  @uint mBDDBitCount ;
+}
+
+#-------------------------------------------------------------------*
+
+class @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+  @lstring mEnumCstName
+  @uint mValue
+  @uint mBDDBitCount
+}
+
+#-------------------------------------------------------------------*
+
+class @functionInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+  @lstring mFunctionName
+  @lstring mOperandName
+  @decoratedFunctionValueList mDecoratedFunctionValueList
+}
+
+#-------------------------------------------------------------------*
+
+abstract method @instruction analyzeInstruction
+  ?let @analyzeContext inAnalyzeContext
+  !@decoratedInstruction outDecoratedInstruction
+
+#-------------------------------------------------------------------*
+
+abstract method @assignmentSourceExpression analyzeAssignmentSourceExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  !@decoratedAssignmentSourceExpression outDecoratedExpression
+
+#-------------------------------------------------------------------*
+
+override method @varAsAssignmentSourceExpression analyzeAssignmentSourceExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  !@decoratedAssignmentSourceExpression outDecoratedExpression {
+  [inAnalyzeContext.mMachineVarMap searchKey
+    !mSourceVarName
+    ?let @unifiedScalarTypeMap-proxy sourceTypeProxy
+    ?*
+  ]
+#--- Check type
+  if [inTargetTypeProxy key] != [sourceTypeProxy key] then
+    error mSourceVarName:
+      "var type is '" + [inTargetTypeProxy key] +
+      "', and is different from right expression type '" +
+      [sourceTypeProxy key] + "'"
+  end
+  outDecoratedExpression = @attributeInDecoratedAssignmentSourceExpression. new {
+    !mSourceVarName}
+}
+
+#-------------------------------------------------------------------*
+
+override method @constantAsAssignmentSourceExpression analyzeAssignmentSourceExpression
+  ?let @analyzeContext unused inAnalyzeContext
+  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  !@decoratedAssignmentSourceExpression outDecoratedExpression {
+  [[inTargetTypeProxy mConstantMap] searchKey !mConstantName ?let @uint cstValue]
+  outDecoratedExpression = @cstInDecoratedAssignmentSourceExpression. new {
+    !mConstantName
+    !cstValue
+    ![[[inTargetTypeProxy mConstantMap] count] - 1 significantBitCount]}
+}
+
+#-------------------------------------------------------------------*
+
+override method @functionAsAssignmentSourceExpression analyzeAssignmentSourceExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  !@decoratedAssignmentSourceExpression outDecoratedExpression {
+#--- Search function name in function map
+  [inAnalyzeContext.mFunctionMap searchKey
+    !mFunctionName
+    ?let @unifiedScalarTypeMap-proxy operandTypeProxy
+    ?let @unifiedScalarTypeMap-proxy resultTypeProxy
+    ?let @decoratedFunctionValueList decoratedFunctionValueList
+  ]
+#--- Search attribute in attribute map
+  [inAnalyzeContext.mMachineVarMap searchKey
+    !mOperandName
+    ?let @unifiedScalarTypeMap-proxy attributeTypeProxy
+#    ??@uint attributeBDDStartIndex
+#    ??@uint attributeBDDBitCount
+    ?* # ??@uint operandMaxValue
+  ]
+#--- Check attribute type versus function operand type
+  if [operandTypeProxy key] != [attributeTypeProxy key] then
+    error mOperandName : "the '" + mOperandName
+      + "' belongs to the '%" + [attributeTypeProxy key]
+      + "', but '" + mFunctionName + "' function requires an '%"
+      + [operandTypeProxy key] + "' type"
+  end
+#--- Check type
+  if [inTargetTypeProxy key] != [resultTypeProxy key] then
+    error mOperandName:
+      "var type is '" + [inTargetTypeProxy key] +
+      "', and is different from function result type '" +
+      [resultTypeProxy key] + "'"
+  end
+#---
+  outDecoratedExpression = @functionInDecoratedAssignmentSourceExpression. new {
+    !mFunctionName
+    !mOperandName
+    !decoratedFunctionValueList}
+}
+
+#-------------------------------------------------------------------*
+
+override method @assignmentInstruction analyzeInstruction
+  ?let @analyzeContext inAnalyzeContext
+  !@decoratedInstruction outDecoratedInstruction {
+  [inAnalyzeContext.mMachineVarMap searchKey
+    !mTargetVarName
+    ?let @unifiedScalarTypeMap-proxy targetTypeProxy
+    ?*
+   ]
+  [mSourceExpression analyzeAssignmentSourceExpression
+    !inAnalyzeContext
+    !targetTypeProxy
+    ?let @decoratedAssignmentSourceExpression decoratedExpression
+  ]
+  outDecoratedInstruction = @assignmentDecoratedInstruction. new {
+    !targetTypeProxy
+    !mTargetVarName
+    !decoratedExpression}
+}
+
+#-------------------------------------------------------------------*
+
+override method @ifInstruction analyzeInstruction
+  ?let @analyzeContext inAnalyzeContext
+  !@decoratedInstruction outDecoratedInstruction {
+  [mTestExpression analyzeExpression
+    !inAnalyzeContext
+    !false
+    ?let @decoratedExpression decoratedExpression
+  ]
+  [mThenInstructionList analyzeInstructionList
+    !inAnalyzeContext
+    ?let @decoratedInstructionList decoratedThenInstructionList
+  ]
+  [mElseInstructionList analyzeInstructionList
+    !inAnalyzeContext
+    ?let @decoratedInstructionList decoratedElseInstructionList
+  ]
+  outDecoratedInstruction = @ifDecoratedInstruction. new {
+    !mIFinstructionLocation
+    !decoratedExpression
+    !mEndOfTestExpression
+    !decoratedThenInstructionList
+    !decoratedElseInstructionList}
+}
+
+#-------------------------------------------------------------------*
+
+override method @assertInstruction analyzeInstruction
+  ?let @analyzeContext inAnalyzeContext
+  !@decoratedInstruction outDecoratedInstruction {
+  [mAssertExpression analyzeExpression
+    !inAnalyzeContext
+    !false
+    ?let @decoratedExpression decoratedExpression
+  ]
+  outDecoratedInstruction = @assertDecoratedInstruction. new {
+    !mAssertInstructionLocation
+    !decoratedExpression}
+}
+
+#-------------------------------------------------------------------*
+

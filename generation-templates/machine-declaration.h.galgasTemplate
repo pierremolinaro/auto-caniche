@@ -1,0 +1,61 @@
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef %!MACHINE_NAME%_MACHINE_DEFINED
+#define %!MACHINE_NAME%_MACHINE_DEFINED
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+%for () in ENUM_DECLARATION_MAP do
+  %#include "%!FILE_NAME%-enum-%!lkey.string%.h"\n%
+end
+%
+//---------------------------------------------------------------------------------------------------------------------*
+
+class machine_%!MACHINE_NAME% {
+//--- Default constructor
+  public : machine_%!MACHINE_NAME% (void) ;
+
+//--- No copy
+  private : machine_%!MACHINE_NAME% (const machine_%!MACHINE_NAME% &) ;
+  private : machine_%!MACHINE_NAME% & operator = (const machine_%!MACHINE_NAME% &) ;
+
+//--- Attributes
+%
+for () in ATTRIBUTE_LIST do
+  %  private : enum_%![[mTypeProxy key] identifierRepresentation]% %![mVarName.string identifierRepresentation]% ;\n%
+  %  private : enum_%![[mTypeProxy key] identifierRepresentation]% old_%![mVarName.string identifierRepresentation]% ;\n%
+end%
+//--- Accessors
+%
+for () in ATTRIBUTE_LIST do
+  %  public : inline enum_%![[mTypeProxy key] identifierRepresentation]% get_%![mVarName.string identifierRepresentation]% (void) const {\n%
+  %    return %![mVarName.string identifierRepresentation]% ;\n%
+  %  }\n%
+  %  public : inline bool %![mVarName.string identifierRepresentation]%_didChange (void) const {\n%
+  %    return old_%![mVarName.string identifierRepresentation]% != %![mVarName.string identifierRepresentation]% ;\n%
+  %  }\n%
+end%
+//---
+  public : void update (void) ;
+ 
+//--- Events
+%
+for () in EVENT_MAP do
+  %  public : void event_%![lkey identifierRepresentation]% (%
+  if [mDecoratedArgumentList length] == 0 then
+    %void%
+  else
+    for () in mDecoratedArgumentList
+    do %const enum_%![[mArgumentTypeProxy key] identifierRepresentation]% %![mArgumentName identifierRepresentation]
+    between %, %
+    end
+  end
+  %) ;\n%
+end
+%
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#endif
+

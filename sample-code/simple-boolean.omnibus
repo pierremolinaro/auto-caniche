@@ -1,0 +1,27 @@
+
+enum %bool {no, yes}
+
+#--------------------------------------------------------*
+
+machine @boolean
+  var %bool $b := no
+
+  event set
+   ?%bool $inValue
+  :
+    $b := $inValue
+  end
+end
+
+#--------------------------------------------------------*
+
+scenario @boolean "seq" :
+  set!yes,
+  set!yes,
+  set!yes,
+  set!no,
+  set!no,
+  set!no
+;
+
+#--------------------------------------------------------*

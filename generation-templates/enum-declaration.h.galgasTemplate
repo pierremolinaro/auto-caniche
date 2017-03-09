@@ -1,0 +1,18 @@
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef %!ENUMERATION_NAME%_ENUMERATION_DEFINED
+#define %!ENUMERATION_NAME%_ENUMERATION_DEFINED
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef enum {
+%
+for () in CONSTANT_LIST
+do %  %![ENUMERATION_NAME identifierRepresentation]%_%![mValue.string identifierRepresentation]
+between %,\n%
+end%
+}  enum_%![ENUMERATION_NAME identifierRepresentation]% ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#endif

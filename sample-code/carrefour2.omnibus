@@ -1,0 +1,100 @@
+
+enum %couleur {vert, orange, rouge}
+
+#--------------------------------------------------------*
+
+function succ %couleur -> %couleur
+  vert : orange
+  orange : rouge
+  rouge : vert
+end
+
+#--------------------------------------------------------*
+
+enum %souhait {
+  hs, # Hors service
+  es  # En service
+}
+
+#--------------------------------------------------------*
+
+enum %etat {
+  hs, # Hors service
+  es, # En service
+  versES, # Demande en service enregistrée
+  versHS # Demande hors service enregistrée
+}
+
+#--------------------------------------------------------*
+
+machine @carrefour
+
+  var %souhait $souhait := hs
+  var %etat $etat := hs
+  var %couleur $feuA := orange
+  var %couleur $feuB := orange
+
+ invariant "1" : {$etat = hs} => ({$feuA = orange} & {$feuB = orange})
+ invariant "2" : {$etat = versES} => ({$feuA = rouge} & {$feuB = rouge})
+ invariant "3" : {$etat = es} => (({$feuA = rouge} | {$feuB = rouge}) & {$feuA != $feuB})
+ invariant "4" : {$etat = versHS} => ({$feuA = rouge} & {$feuB = rouge})
+
+  event miseEnService :
+    $souhait := es
+  ensures
+    "A" : {$feuA = old $feuA}
+    "B" : {$feuB = old $feuB}
+    "C" : {$etat = old $etat}
+    "D" : {$souhait = es}
+  end
+
+  event miseHorsService :
+    $souhait := hs
+  ensures
+    "A" : {$feuA = old $feuA}
+    "B" : {$feuB = old $feuB}
+    "C" : {$etat = old $etat}
+    "D" : {$souhait = hs}
+  end
+
+  event tick :
+    if {$etat = es} & {$souhait = hs} then
+      $etat := versHS
+      $feuA := rouge
+      $feuB := rouge
+    elsif {$etat = versHS} & {$souhait = hs} then
+      $etat := hs
+      $feuA := orange
+      $feuB := orange
+    elsif {$etat = versES} & {$souhait = hs} then
+      $etat := hs
+      $feuA := orange
+      $feuB := orange
+    elsif {$etat = versES} & {$souhait = es} then
+      $etat := es
+      $feuA := vert
+    elsif {$etat = versHS} & {$souhait = es} then
+      $etat := es
+      $feuA := vert
+    elsif {$etat = hs} & {$souhait = es} then
+      $etat := versES
+      $feuA := rouge
+      $feuB := rouge
+    elsif {$etat = es} & {$souhait = es} then
+      if {$feuA = vert} then
+        $feuA := orange
+      elsif {$feuA = orange} then
+        $feuA := rouge
+        $feuB := vert
+      elsif {$feuB = vert} then
+        $feuB := orange
+      else
+        $feuA := vert
+        $feuB := rouge
+      end
+    end
+  end
+
+end
+
+#--------------------------------------------------------*

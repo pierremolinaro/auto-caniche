@@ -1,0 +1,27 @@
+project (0:0:1) -> "omnibus"{
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-x86linux32-on-macosx
+  %makefile-x86linux64-on-macosx
+  %makefile-win32-on-macosx
+  %SierraElCapitan
+  %applicationBundleBase : "fr.free.molinaro"
+
+#--- Source files (relative path from 'galgas_sources' directory)
+  "galgas-sources/lexicalAnalyzer.galgas"
+  "galgas-sources/omnibus_options.galgas"
+  "galgas-sources/typesForAbstractSyntaxTree.galgas"
+  "galgas-sources/staticAnalysisContext.galgas"
+  "galgas-sources/expressionStaticAnalysis.galgas"
+  "galgas-sources/instructionStaticAnalysis.galgas"
+  "galgas-sources/staticAnalysis.galgas"
+  "galgas-sources/omnibus_syntax.galgas"
+  "galgas-sources/omnibus_grammar.galgas"
+  "galgas-sources/omnibus_cocoa.galgas"
+  "galgas-sources/dynamicAnalysis.galgas"
+  "galgas-sources/cCodeGeneration.galgas"
+  "galgas-sources/main.galgas"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

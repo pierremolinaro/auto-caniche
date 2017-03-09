@@ -1,0 +1,27 @@
+
+enum %couleur {vert, orange, rouge}
+
+#--------------------------------------------------------*
+
+function succ %couleur -> %couleur
+  rouge : vert
+  vert : orange
+  orange : rouge
+end
+
+#--------------------------------------------------------*
+
+machine @sequentiel
+  var %couleur $feu := vert
+  event tick :
+    $feu := succ ($feu)
+  end
+end
+
+#--------------------------------------------------------*
+
+scenario @sequentiel "essai" :
+  tick, tick, tick, tick, tick
+;
+
+#--------------------------------------------------------*

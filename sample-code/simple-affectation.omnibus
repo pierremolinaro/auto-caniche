@@ -1,0 +1,36 @@
+
+enum %couleur {vert, orange, rouge}
+
+#--------------------------------------------------------*
+
+machine @sequentiel
+
+  var %couleur $feu := vert
+
+  event assignment
+    ?%couleur $inFeu
+  :
+    $feu := $inFeu
+  end
+
+  event nop :
+  ensures
+    "1" : {$feu = old $feu}
+  end
+
+end
+
+#--------------------------------------------------------*
+
+scenario @sequentiel "nop sequence" :
+  nop, nop
+;
+
+#--------------------------------------------------------*
+
+scenario @sequentiel "assignment sequence" :
+  assignment!orange,
+  assignment!rouge
+;
+
+#--------------------------------------------------------*

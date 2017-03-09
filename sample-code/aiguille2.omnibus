@@ -1,0 +1,123 @@
+
+enum %position {droite, gauche, milieu, inconnue}
+
+enum %commande {droite, gauche, milieu, stop}
+
+#------------------------------------------------------------------------------*
+
+machine @controleAiguille
+var %position $positionCapteur := inconnue
+var %position $positionLogique := inconnue
+var %commande $souhait := stop
+var %commande $commande := stop
+
+invariant "1" : {$souhait = stop} => {$commande = stop}
+invariant "2" : {$souhait = stop} => {$positionCapteur = $positionLogique}
+
+invariant "3" : {$positionLogique = inconnue} | {$positionLogique = $positionCapteur}
+
+invariant "4" : ({$souhait = droite} & {$positionCapteur != droite}) => {$commande = droite}
+invariant "5" : ({$souhait = milieu} & {$positionCapteur != milieu}) => {$commande = milieu}
+invariant "6" : ({$souhait = gauche} & {$positionCapteur != gauche}) => {$commande = gauche}
+
+invariant "7" : ({$commande = droite} & {$positionCapteur = droite}) => {$positionLogique = droite}
+invariant "8" : ({$commande = gauche} & {$positionCapteur = gauche}) => {$positionLogique = gauche}
+invariant "9" : ({$commande = milieu} & {$positionCapteur = milieu}) => {$positionLogique = milieu}
+
+invariant "10" : ({$commande = droite} & {$positionCapteur != droite}) => {$positionLogique != droite}
+invariant "11" : ({$commande = gauche} & {$positionCapteur != gauche}) => {$positionLogique != gauche}
+invariant "12" : ({$commande = milieu} & {$positionCapteur != milieu}) => {$positionLogique != milieu}
+
+invariant "13" : {$commande = stop} => {$positionCapteur = $positionLogique}
+
+event nouvellePosition
+   ?%position $inPosition
+  :
+    $positionCapteur := $inPosition
+    if {$souhait = stop} then
+      $positionLogique := $inPosition
+    elsif {$positionCapteur = droite} then
+      $positionLogique := droite
+      if {$souhait = milieu} then
+        $commande := milieu
+      elsif {$souhait = gauche} then
+        $commande := gauche
+      else
+        assert {$souhait = droite}
+      end 
+      assert {$souhait = $commande} => ({$positionLogique = inconnue} | {$positionLogique = $positionCapteur})
+    elsif {$positionCapteur = gauche} then
+      $positionLogique := gauche
+      if {$souhait = milieu} then
+        $commande := milieu
+      elsif {$souhait = droite} then
+        $commande := droite
+      else
+        assert {$souhait = gauche}
+      end
+      assert {$souhait = $commande} => ({$positionLogique = inconnue} | {$positionLogique = $positionCapteur})
+    elsif {$positionCapteur = milieu} then
+      if {$souhait = gauche} then
+        $commande := gauche
+      elsif {$souhait = droite} then
+        $commande := droite
+      end 
+      $positionLogique := milieu
+      assert {$souhait = $commande} => ({$positionLogique = inconnue} | {$positionLogique = $positionCapteur})
+    else
+      assert {$positionCapteur = inconnue}
+      $positionLogique := inconnue
+      $commande := $souhait
+      assert {$souhait = $commande} => ({$positionLogique = inconnue} | {$positionLogique = $positionCapteur})
+    end
+  ensures
+    "A" : {$souhait = old $souhait}
+  end
+
+event souhaitCommande
+    ?%commande $inSouhait
+  :
+    $souhait := $inSouhait
+    if {$souhait = stop} then
+      $commande := stop
+      $positionLogique := $positionCapteur
+    elsif {$souhait = droite} & {$positionCapteur != droite} then
+      $commande := droite
+      $positionLogique := inconnue
+    elsif {$souhait = gauche} & {$positionCapteur != gauche} then
+      $commande := gauche
+      $positionLogique := inconnue
+    elsif {$souhait = milieu} & {$positionCapteur != milieu} then
+      $commande := milieu
+      $positionLogique := inconnue
+    end
+  ensures
+    "A" : {$positionCapteur = old $positionCapteur}
+  end
+end
+
+#--------------------------------------------------------*
+
+scenario @controleAiguille "sequence" :
+ nouvellePosition!droite,
+ nouvellePosition!droite,
+ souhaitCommande!droite,
+ souhaitCommande!droite,
+ souhaitCommande!gauche,
+ nouvellePosition!droite,
+ nouvellePosition!milieu,
+ nouvellePosition!gauche
+;
+
+#--------------------------------------------------------*
+
+scenario @controleAiguille "md avec retour" :
+ nouvellePosition!droite,
+ souhaitCommande!droite,
+ souhaitCommande!gauche,
+ souhaitCommande!droite,
+ nouvellePosition!milieu,
+ nouvellePosition!droite
+;
+
+#--------------------------------------------------------*

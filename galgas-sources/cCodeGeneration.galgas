@@ -1,0 +1,242 @@
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper CCodeGenerationTemplates in "../generation-templates" {
+}{
+}{
+  template enumerationDeclaration "enum-declaration.h.galgasTemplate"
+    ?@string ENUMERATION_NAME
+    ?@lstringlist CONSTANT_LIST
+  template machineDeclaration "machine-declaration.h.galgasTemplate"
+    ?@string FILE_NAME
+    ?@unifiedScalarTypeMap ENUM_DECLARATION_MAP
+    ?@string MACHINE_NAME
+    ?@machineVarList ATTRIBUTE_LIST
+    ?@eventMap EVENT_MAP
+  template machineImplementation "machine-implementation.cpp.galgasTemplate"
+    ?@string FILE_NAME
+    ?@unifiedScalarTypeMap ENUM_DECLARATION_MAP
+    ?@string MACHINE_NAME
+    ?@machineVarList ATTRIBUTE_LIST
+    ?@eventMap EVENT_MAP
+    ?@functionMap FUNCTION_MAP
+  template functionDeclaration "function-declaration.h.galgasTemplate"
+    ?@string FILE_NAME
+    ?@string FUNCTION_NAME
+    ?@string RESULT_TYPE_NAME
+    ?@uint OPERAND_VALUE_COUNT
+  template functionImplementation "function-implementation.cpp.galgasTemplate"
+    ?@string FILE_NAME
+    ?@string FUNCTION_NAME
+    ?@string RESULT_TYPE_NAME
+    ?@decoratedFunctionValueList VALUE_LIST
+}
+
+#-------------------------------------------------------------------*
+
+proc performCCodeGeneration
+  ?let @string inSourceFileName
+  ?let @unifiedScalarTypeMap inUnifiedScalarTypeMap
+  ?let @functionMap inFunctionMap
+  ?let @machineMap inClassTypeMap {
+#--- Generate enum declarations
+  for () in  inUnifiedScalarTypeMap do
+   let @string s = [filewrapper CCodeGenerationTemplates.enumerationDeclaration
+     !lkey.string
+     !mEnumConstantList
+   ]
+   let @string fileName = [inSourceFileName stringByDeletingPathExtension] + "-enum-" + lkey + ".h"
+   [s writeToFileWhenDifferentContents !fileName ?*]
+  end
+#--- Generate function declarations
+  for () in  inFunctionMap do
+   @string s = [filewrapper CCodeGenerationTemplates.functionDeclaration
+     ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
+     !lkey.string
+     ![mResultTypeProxy key]
+     ![mDecoratedFunctionValueList length]
+   ]
+   @string fileName = [inSourceFileName stringByDeletingPathExtension] + "-function-" + lkey + ".h"
+   [s writeToFileWhenDifferentContents !fileName ?*]
+   s = [filewrapper CCodeGenerationTemplates.functionImplementation
+     ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
+     !lkey.string
+     ![mResultTypeProxy key]
+     !mDecoratedFunctionValueList
+   ]
+   fileName = [inSourceFileName stringByDeletingPathExtension] + "-function-" + lkey + ".cpp"
+   [s writeToFileWhenDifferentContents !fileName ?*]
+  end
+#--- Generate machine declaration and implementation
+  for c in inClassTypeMap do
+   let @string h = [filewrapper CCodeGenerationTemplates.machineDeclaration
+     ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
+     !inUnifiedScalarTypeMap
+     ![c.lkey.string identifierRepresentation]
+     !c.mAttributeList
+     !c.mEventMap
+   ]
+   @string fileName = [inSourceFileName stringByDeletingPathExtension] + "-machine-" + c.lkey + ".h"
+   [h writeToFileWhenDifferentContents !fileName ?*]
+   let @string cpp = [filewrapper CCodeGenerationTemplates.machineImplementation
+     ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
+     !inUnifiedScalarTypeMap
+     ![c.lkey.string identifierRepresentation]
+     !c.mAttributeList
+     !c.mEventMap
+     !inFunctionMap
+   ]
+   fileName = [inSourceFileName stringByDeletingPathExtension] + "-machine-" + c.lkey + ".cpp"
+   [cpp writeToFileWhenDifferentContents !fileName ?*]
+  end
+}
+
+#-------------------------------------------------------------------*
+
+getter @decoratedInstructionList generateCCode
+  ?let @string inIndentationString
+  ->@string outResult {
+  outResult = ""
+  for i in self do
+    outResult = outResult + [i.mDecoratedInstruction generateCCode !inIndentationString]
+  end
+}
+
+#-------------------------------------------------------------------*
+
+abstract getter @decoratedInstruction generateCCode
+  ?let @string inIndentationString
+  ->@string
+
+#-------------------------------------------------------------------*
+
+override getter @assignmentDecoratedInstruction generateCCode
+  ?let @string inIndentationString
+  ->@string outResult {
+  outResult = inIndentationString + mTargetVarName + " = "
+  outResult += [mSourceExpression generateSourceExpressionCCode !mTargetTypeProxy]
+  outResult += " ;\n"
+}
+
+#-------------------------------------------------------------------*
+
+override getter @assertDecoratedInstruction generateCCode
+  ?let @string unused inIndentationString
+  ->@string outResult {
+  outResult = ""
+}
+
+#-------------------------------------------------------------------*
+
+override getter @ifDecoratedInstruction generateCCode
+  ?let @string inIndentationString
+  ->@string outResult {
+  outResult = inIndentationString + "if " + [mTestExpression generateExpressionCCode] + " {\n"
+  outResult += [mThenInstructionList generateCCode !inIndentationString + "  "]
+  if [mElseInstructionList length] > 0 then
+    outResult += inIndentationString + "}else{\n"
+    outResult += [mElseInstructionList generateCCode !inIndentationString + "  "]
+  end
+  outResult += inIndentationString + "}\n"
+}
+
+#-------------------------------------------------------------------*
+#! @decoratedExpression generateExpressionCCode
+#-------------------------------------------------------------------*
+
+abstract getter @decoratedAssignmentSourceExpression generateSourceExpressionCCode
+  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ->@string
+
+#-------------------------------------------------------------------*
+
+override getter @attributeInDecoratedAssignmentSourceExpression generateSourceExpressionCCode
+  ?let @unifiedScalarTypeMap-proxy unused inTargetTypeProxy
+  ->@string outResult {
+  outResult = mVarName.string
+}
+
+#-------------------------------------------------------------------*
+
+override getter @cstInDecoratedAssignmentSourceExpression generateSourceExpressionCCode
+  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ->@string outResult {
+  outResult = [[inTargetTypeProxy key] identifierRepresentation] + "_" + [mEnumCstName identifierRepresentation]
+}
+
+#-------------------------------------------------------------------*
+
+override getter @functionInDecoratedAssignmentSourceExpression generateSourceExpressionCCode
+  ?let @unifiedScalarTypeMap-proxy unused inTargetTypeProxy
+  ->@string outResult {
+  outResult = "function_" + [mFunctionName identifierRepresentation] + " [" + [mOperandName identifierRepresentation] + "]"
+}
+
+#-------------------------------------------------------------------*
+#! @decoratedExpression generateExpressionCCode
+#-------------------------------------------------------------------*
+
+abstract getter @decoratedExpression generateExpressionCCode
+  ->@string
+
+#-------------------------------------------------------------------*
+
+override getter @logicalAndDecoratedExpression generateExpressionCCode
+  ->@string outResult {
+  outResult = "(" + [mLeft generateExpressionCCode] + " && " + [mRight generateExpressionCCode] + ")"
+}
+
+#-------------------------------------------------------------------*
+
+override getter @logicalOrDecoratedExpression generateExpressionCCode
+  ->@string outResult {
+  outResult = "(" + [mLeft generateExpressionCCode] + " && " + [mRight generateExpressionCCode] + ")"
+}
+
+#-------------------------------------------------------------------*
+
+override getter @implicationDecoratedExpression generateExpressionCCode
+  ->@string outResult {
+  outResult = "( !(" + [mLeft generateExpressionCCode] + ") || " + [mRight generateExpressionCCode] + ")"
+}
+
+#-------------------------------------------------------------------*
+
+override getter @decoratedComparisonInExpression generateExpressionCCode
+  ->@string outResult {
+  outResult = "(" + mAttributeName
+  switch mOperator
+  case equal    : outResult += " == "
+  case notEqual : outResult += " != "
+  end
+  outResult += [mRightOperand generateExpressionCCode] + ")"
+}
+
+#-------------------------------------------------------------------*
+#! @decoratedComparisonRightOperand generateExpressionCCode
+#-------------------------------------------------------------------*
+
+abstract getter @decoratedComparisonRightOperand generateExpressionCCode
+  ->@string
+
+#-------------------------------------------------------------------*
+
+override getter @decoratedAttributeAsComparisonRightOperand generateExpressionCCode
+  ->@string outResult {
+  outResult = mAttributeName.string
+}
+
+#-------------------------------------------------------------------*
+
+override getter @decoratedConstantAsComparisonRightOperand generateExpressionCCode
+  ->@string outResult {
+  outResult = [[mConstantTypeProxy key] identifierRepresentation] + "_" + [mConstantName identifierRepresentation]
+}
+
+#-------------------------------------------------------------------*
+

@@ -1,0 +1,11 @@
+gui cocoa {
+
+with option omnibus_options
+
+with lexique lexicalAnalyzer {
+  fileExtension: "omnibus"
+  title: "Source"
+  blockComment : "#"
+}
+
+}

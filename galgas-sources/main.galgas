@@ -1,0 +1,33 @@
+
+
+#--- Prologue routine
+before {
+}
+
+#--- 'when' clauses
+case . "omnibus"
+message "a source text file with the .plm extension"
+grammar omnibus_grammar
+?sourceFilePath:@lstring inSourceFile {
+#--- Syntax analysis
+  grammar omnibus_grammar in inSourceFile ?let @ast ast
+#--- Build decorated types
+  performStaticAnalysis (
+    !ast
+    ?let @unifiedScalarTypeMap unifiedScalarTypeMap
+    ?let @functionMap functionMap
+    ?let @machineMap machineMap
+  )
+#---
+  if @uint. errorCount == 0 then
+    performDynamicAnalysis ( !inSourceFile.string !ast !unifiedScalarTypeMap !functionMap !machineMap )
+  end
+#---
+  if (@uint. errorCount == 0) & [option omnibus_options.generateCCode value] then
+    performCCodeGeneration ( !inSourceFile.string !unifiedScalarTypeMap !functionMap !machineMap )
+  end
+}
+
+#--- Epilogue routine
+after {
+}

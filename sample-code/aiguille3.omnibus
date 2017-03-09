@@ -1,0 +1,107 @@
+
+enum %position {gauche, milieu, inconnue}
+
+enum %positionLogique {gauche, attGauche, milieu, attMilieu, inconnue}
+
+enum %commande {gauche, milieu, stop}
+
+#function next %position -> %position
+#  gauche : milieu
+#  milieu : inconnue
+#  inconnue : gauche
+#end
+
+#--------------------------------------------------------*
+
+machine @controleAiguille
+  var %position $positionCapteur := inconnue
+  var %position $positionLogique := inconnue
+  var %commande $souhait := stop
+  var %commande $commande := stop
+
+#invariant
+#  "1" : {$souhait = stop} => {$commande = stop}
+#  "2" : {$souhait = $commande} => {$positionLogique = $positionCapteur}
+#
+##  "3" : ({$souhait = droite} & {$positionCapteur != droite}) => {$commande = droite}
+#  "4" : ({$souhait = milieu} & {$positionCapteur != inconnue}) => {$commande = milieu}
+#  "5" : ({$souhait = gauche} & {$positionCapteur != inconnue}) => {$commande = gauche}
+#
+##  "6" : ({$commande = droite} & {$positionCapteur = droite}) => {$positionLogique = droite}
+#  "7" : ({$commande = gauche} & {$positionCapteur = gauche}) => {$positionLogique = gauche}
+#  "8" : ({$commande = milieu} & {$positionCapteur = milieu}) => {$positionLogique = milieu}
+
+  event nouvellePosition
+    ?%position $inPositionCapteur
+  :
+#    $positionCapteur := next ($positionCapteur)
+    if {$inPositionCapteur = inconnue} then
+      $positionCapteur := inconnue
+      $positionLogique := inconnue
+    elsif {$inPositionCapteur = gauche} then
+      $positionCapteur := gauche
+      if {$souhait = stop} then
+        $positionLogique := gauche
+      end
+    else # if {$inPosition = milieu} then
+      $positionCapteur := milieu
+      if {$souhait = gauche} then
+        $commande := gauche
+        $positionLogique := milieu
+      elsif {$souhait = milieu} then
+        $positionLogique := milieu
+        $commande := milieu
+      end
+    end
+  end
+
+  event souhaitCommande
+    ?%commande $inSouhait
+  :
+    if {$inSouhait = stop} then
+      $souhait := stop
+      $commande := stop
+    elsif {$inSouhait = gauche} then
+      $souhait := gauche
+      if {$positionCapteur != gauche} then
+        $commande := gauche
+        $positionLogique := attGauche
+      end
+    
+    else # if {$souhait = milieu} then
+      $souhait := milieu
+      if {$positionCapteur != milieu} then
+        $commande := milieu
+        $positionLogique := attMilieu
+      end
+    
+    
+    end
+  end
+end
+
+#--------------------------------------------------------*
+
+scenario @controleAiguille "sequence" :
+ nouvellePosition!gauche,
+ nouvellePosition!gauche,
+ souhaitCommande!gauche,
+ souhaitCommande!milieu,
+ souhaitCommande!milieu,
+ souhaitCommande!gauche,
+ nouvellePosition!milieu,
+ nouvellePosition!gauche
+;
+
+#--------------------------------------------------------*
+
+scenario @controleAiguille "md avec retour" :
+ nouvellePosition!gauche,
+ souhaitCommande!gauche,
+ souhaitCommande!milieu,
+ souhaitCommande!gauche,
+ nouvellePosition!milieu,
+ nouvellePosition!gauche
+;
+
+#--------------------------------------------------------*

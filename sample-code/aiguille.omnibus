@@ -1,0 +1,79 @@
+
+enum %positionAiguille {droite, gauche, milieu, inconnue}
+
+enum %commandeAiguille {droite, gauche, milieu, inconnue}
+
+enum %souhaitCommande {droite, gauche, milieu, inconnue}
+
+#--------------------------------------------------------*
+
+machine @controleAiguille
+  var %positionAiguille $position := inconnue
+  var %commandeAiguille $commande := inconnue
+  var %souhaitCommande $souhait := inconnue
+
+  invariant "1" : {$souhait = inconnue} => {$commande = inconnue}
+  invariant "2" : ({$souhait = droite} & {$position != droite}) => {$commande = droite}
+  invariant "3" : ({$souhait = milieu} & {$position != milieu}) => {$commande = milieu}
+  invariant "4" : ({$souhait = gauche} & {$position != gauche}) => {$commande = gauche}
+
+  event nouvellePosition
+   ?%positionAiguille $inPosition
+  :
+    $position := $inPosition
+    if {$position = droite} then
+      if {$souhait = milieu} then
+        $commande := milieu
+      elsif {$souhait = gauche} then
+        $commande := gauche
+      end 
+    elsif {$position = gauche} then
+      if {$souhait = milieu} then
+        $commande := milieu
+      elsif {$souhait = droite} then
+        $commande := droite
+      end
+    elsif {$position = milieu} then
+      if {$souhait = gauche} then
+        $commande := gauche
+      elsif {$souhait = droite} then
+        $commande := droite
+      end 
+    else
+      if {$souhait = gauche} then
+        $commande := gauche
+      elsif {$souhait = droite} then
+        $commande := droite
+      elsif {$souhait = milieu} then
+        $commande := milieu
+      end 
+    end
+  end
+
+  event souhaitCommande
+    ?%souhaitCommande $inSouhait
+  :
+    $souhait := $inSouhait
+    if {$souhait = droite} & {$position != droite} then
+      $commande := droite
+    elsif {$souhait = gauche} & {$position != gauche} then
+      $commande := gauche
+    elsif {$souhait = milieu} & {$position != milieu} then
+      $commande := milieu
+    elsif {$souhait = inconnue} then
+      $commande := inconnue
+    end
+  end
+
+end
+
+#--------------------------------------------------------*
+
+scenario @controleAiguille "sequence" :
+ nouvellePosition!droite,
+ souhaitCommande!gauche,
+ nouvellePosition!milieu,
+ nouvellePosition!gauche
+;
+
+#--------------------------------------------------------*

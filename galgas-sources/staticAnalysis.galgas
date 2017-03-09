@@ -1,0 +1,174 @@
+
+
+#-------------------------------------------------------------------*
+
+proc performStaticAnalysis
+  ?let @ast inAST
+  !@unifiedScalarTypeMap outUnifiedScalarTypeMap
+  !@functionMap outFunctionMap
+  !@machineMap outClassTypeMap {
+#-------------------------------------------- Enter enumeration types
+  outUnifiedScalarTypeMap = @unifiedScalarTypeMap.default
+  for e in inAST.mEnumTypeList do
+    if [e.mEnumConstantList length] < 2 then
+      error e.mEnumListName :"an enumeration should define 2 constants or more"
+    end
+    var enumConstantMap =@enumConstantMap.default
+    for c in e.mEnumConstantList do( idx)
+      [!?enumConstantMap insertKey !c.mValue !idx]
+    end
+    [!?outUnifiedScalarTypeMap insertKey
+      !e.mEnumListName
+      !@scalarTypeKind. enumeration
+      !enumConstantMap
+      !e.mEnumConstantList
+    ]
+  end
+#-------------------------------------------- Analyze functions
+  outFunctionMap = @functionMap.default
+  for f in inAST.mFunctionDefinitionList do
+  #--- Operand type
+    [outUnifiedScalarTypeMap searchKey !f.mOperandEnumTypeName ?* ?let @enumConstantMap operandEnumMap ?*]
+  #--- Result type
+    [outUnifiedScalarTypeMap searchKey !f.mResultEnumTypeName ?* ?let @enumConstantMap resultEnumMap ?*]
+  #--- Check function values
+    var handledOperandSet =@stringset.default
+    var decoratedFunctionValueList =@decoratedFunctionValueList.default
+    for v in f.mValueList do
+      [operandEnumMap searchKey !v.mOperandName ?let @uint operandValue]
+      [resultEnumMap searchKey !v.mResultName ?let @uint resultValue]
+      if [handledOperandSet hasKey !v.mOperandName.string] then
+        error v.mOperandName : "the '" + v.mOperandName + "' value is already used"
+      end
+      handledOperandSet += !v.mOperandName.string
+      decoratedFunctionValueList +=
+        !v.mOperandName
+        !operandValue
+        !v.mResultName
+        !resultValue
+    end
+  #--- Check all operands are named
+    for e in operandEnumMap do
+      if not [handledOperandSet hasKey !e.lkey.string] then
+        error f.mFunctionName : "this function is not define for '" + e.lkey + "' value"
+      end
+    end
+  #---
+    [!?outFunctionMap insertKey
+      !f.mFunctionName
+      !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !f.mOperandEnumTypeName}
+      !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !f.mResultEnumTypeName}
+      !decoratedFunctionValueList
+    ]
+  end
+#-------------------------------------------- Build machine map
+  outClassTypeMap = @machineMap.default
+  for c in inAST.mMachineList do
+    var machineVarMap =@machineVarMap.default
+    var machineVarList =@machineVarList.default
+  #--- Var declaration
+    for e in c.mEnumVarDeclarationList do
+      [outUnifiedScalarTypeMap searchKey
+        !e.mEnumTypeName
+        ?*
+        ?let @enumConstantMap enumCstMap
+        ?var @lstringlist constantList
+      ]
+      [enumCstMap searchKey !e.mConstantName ?let @uint constantIndex]
+      let t = @unifiedScalarTypeMap-proxy.searchKey { !outUnifiedScalarTypeMap !e.mEnumTypeName}
+      [!?machineVarMap insertKey
+        !e.mEnumVarName
+        !t
+        ![enumCstMap count] - 1
+      ]
+      machineVarList +=
+        !t
+        !e.mEnumVarName
+        !constantList
+        !e.mConstantName
+        !constantIndex
+    end
+  #--- analyze context
+    var analyzeContext =@analyzeContext.new{
+      !outUnifiedScalarTypeMap
+      !machineVarMap
+      !outFunctionMap
+    }
+  #--- Invariant
+    [c.mInvariantExpressionList analyzeExpressionList
+      !analyzeContext
+      !false
+      ?let @decoratedExpressionList invariantDecoratedExpressionList
+    ]
+  #-------------------------------------------- Event map
+    var eventMap =@eventMap.default
+    for event in c.mEventList do
+    #--- Arguments
+      @analyzeContext analyzeContextForEvent = analyzeContext
+      var decoratedArgumentList =@decoratedArgumentList.default
+      for arg in event.mEventArgumentList do
+        [outUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?2* ?let   @lstringlist enumConstantList]
+        [!?analyzeContextForEvent.mMachineVarMap insertKey
+          !arg.mArgumentVarName
+          !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}
+          ![enumConstantList length] - 1
+        ]
+        decoratedArgumentList +=
+          !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}
+          !arg.mArgumentVarName
+      end
+    #--- Instructions
+      [event.mEventInstructionList analyzeInstructionList
+        !analyzeContextForEvent
+        ?let @decoratedInstructionList decoratedEventInstructionList
+      ]
+    #--- Post condition
+      [event.mEnsureExpressionList analyzeExpressionList
+        !analyzeContext
+        !true
+        ?let @decoratedExpressionList ensureDecoratedExpressionList
+      ]
+    #--- Enter in event map
+      [!?eventMap insertKey
+        !event.mEventName
+        !decoratedArgumentList
+        !decoratedEventInstructionList
+        !ensureDecoratedExpressionList
+        !event.mEndOfEnsureExpressionList
+      ]
+    end
+  #-------------------------------------------- Analyze scenarios
+    var decoratedScenarioList =@decoratedScenarioList.emptyList{}
+    for scenario in inAST.mScenarioList do
+      if scenario.mMachineName.string == c.mMachineName.string then
+        for event in scenario.mEventSequence do
+          [eventMap searchKey !event.mEventName ?let @decoratedArgumentList decoratedArgumentList ?3*]
+          if [event.mArgumentNameList length] != [decoratedArgumentList length] then
+            error event.mEventName : "this event requires " + [event.mArgumentNameList length] 
+            + " parameter" + if [event.mArgumentNameList length] > 1 then "s" else "" end
+          end
+          for arg in event.mArgumentNameList, par in decoratedArgumentList do
+            [[par.mArgumentTypeProxy mConstantMap] searchKey !arg.mValue ?*]
+          end
+        end
+        decoratedScenarioList += !scenario.mScenarioName !scenario.mEventSequence
+      end
+    end
+  #---
+    [!?outClassTypeMap insertKey
+      !c.mMachineName
+      !machineVarMap
+      !machineVarList
+      !invariantDecoratedExpressionList
+      !eventMap
+      !decoratedScenarioList
+    ]
+  end
+#-------------------------------------------- check no event with undefined machine
+  for scenario in inAST.mScenarioList do
+    [outClassTypeMap searchKey !scenario.mMachineName ?5*]
+  end
+}
+
+#-------------------------------------------------------------------*
+

@@ -1,0 +1,7 @@
+grammar omnibus_grammar "SLR" %translate {
+syntax omnibus_syntax
+
+ <start_symbol>
+  !@ast outAST
+
+}

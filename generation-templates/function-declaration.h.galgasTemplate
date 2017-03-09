@@ -1,0 +1,16 @@
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef %!FUNCTION_NAME%_FUNCTION_DEFINED
+#define %!FUNCTION_NAME%_FUNCTION_DEFINED
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#include "%!FILE_NAME%-enum-%![RESULT_TYPE_NAME identifierRepresentation]%.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const enum_%![RESULT_TYPE_NAME identifierRepresentation]% function_%![FUNCTION_NAME identifierRepresentation]% [%![OPERAND_VALUE_COUNT string]%] ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#endif

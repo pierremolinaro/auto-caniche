@@ -1,0 +1,201 @@
+
+
+#-------------------------------------------------------------------*
+
+class @implicationDecoratedExpression,
+      @logicalOrDecoratedExpression,
+      @logicalAndDecoratedExpression : @decoratedExpression {
+  @decoratedExpression mLeft
+  @decoratedExpression mRight
+}
+
+#-------------------------------------------------------------------*
+
+class @decoratedComparisonInExpression : @decoratedExpression {
+  @lstring mAttributeName
+#  @uint mAttributeBDDStartIndex ;
+#  @uint mAttributeBDDBitCount ;
+  @enumComparisonOperator mOperator
+  @decoratedComparisonRightOperand mRightOperand
+}
+
+#-------------------------------------------------------------------*
+#! @expression analyzeExpression
+#-------------------------------------------------------------------*
+
+abstract method @expression analyzeExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedExpression outDecoratedExpression
+
+#-------------------------------------------------------------------*
+
+method @expressionList analyzeExpressionList
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedExpressionList outDecoratedExpressionList {
+  outDecoratedExpressionList = @decoratedExpressionList.default
+  for exp in self do
+    [exp.mExpression analyzeExpression
+      !inAnalyzeContext
+      !inEnsureClause
+      ?let @decoratedExpression decoratedExpression
+    ]
+    outDecoratedExpressionList += !exp.mLabel !decoratedExpression
+  end
+}
+
+#-------------------------------------------------------------------*
+
+override method @implicationExpression analyzeExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedExpression outDecoratedExpression {
+  [mLeft analyzeExpression
+    !inAnalyzeContext
+    !inEnsureClause
+    ?let @decoratedExpression leftDecoratedExpr
+  ]
+  [mRight analyzeExpression
+    !inAnalyzeContext
+    !inEnsureClause
+    ?let @decoratedExpression rightDecoratedExpr
+  ]
+  outDecoratedExpression = @implicationDecoratedExpression. new {
+    !leftDecoratedExpr
+    !rightDecoratedExpr}
+}
+
+#-------------------------------------------------------------------*
+
+override method @logicalOrExpression analyzeExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedExpression outDecoratedExpression {
+  [mLeft analyzeExpression
+    !inAnalyzeContext
+    !inEnsureClause
+    ?let @decoratedExpression leftDecoratedExpr
+  ]
+  [mRight analyzeExpression
+    !inAnalyzeContext
+    !inEnsureClause
+    ?let @decoratedExpression rightDecoratedExpr
+  ]
+  outDecoratedExpression = @logicalOrDecoratedExpression. new {
+    !leftDecoratedExpr
+    !rightDecoratedExpr}
+}
+
+#-------------------------------------------------------------------*
+
+override method @logicalAndExpression analyzeExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedExpression outDecoratedExpression {
+  [mLeft analyzeExpression
+    !inAnalyzeContext
+    !inEnsureClause
+    ?let @decoratedExpression leftDecoratedExpr
+  ]
+  [mRight analyzeExpression
+    !inAnalyzeContext
+    !inEnsureClause
+    ?let @decoratedExpression rightDecoratedExpr
+  ]
+  outDecoratedExpression = @logicalAndDecoratedExpression. new {
+    !leftDecoratedExpr
+    !rightDecoratedExpr}
+}
+
+#-------------------------------------------------------------------*
+
+override method @comparisonInExpression analyzeExpression
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedExpression outDecoratedExpression {
+#--- Attribute
+  [inAnalyzeContext.mMachineVarMap searchKey
+    !mAttributeName
+    ?let @unifiedScalarTypeMap-proxy attributeTypeProxy
+    ?*
+  ]
+#--- Constant
+  [mRightOperand analyzeComparisonRightOperand
+    !inAnalyzeContext
+    !inEnsureClause
+    ?let @decoratedComparisonRightOperand decoratedOperandExpression
+    !attributeTypeProxy
+  ]
+  outDecoratedExpression = @decoratedComparisonInExpression. new {
+    !mAttributeName
+    !mOperator
+    !decoratedOperandExpression}
+}
+
+#-------------------------------------------------------------------*
+
+abstract class @decoratedComparisonRightOperand {
+}
+
+#-------------------------------------------------------------------*
+
+class @decoratedConstantAsComparisonRightOperand : @decoratedComparisonRightOperand {
+  @unifiedScalarTypeMap-proxy mConstantTypeProxy
+  @lstring mConstantName
+  @uint mConstantValue
+}
+
+#-------------------------------------------------------------------*
+
+class @decoratedAttributeAsComparisonRightOperand : @decoratedComparisonRightOperand {
+  @lstring mAttributeName
+#  @uint mAttributeBDDStartBitIndex ;
+}
+
+#-------------------------------------------------------------------*
+
+abstract method @comparisonRightOperand analyzeComparisonRightOperand
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedComparisonRightOperand outDecoratedExpression
+  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy
+
+#-------------------------------------------------------------------*
+
+override method @constantAsComparisonRightOperand analyzeComparisonRightOperand
+  ?let @analyzeContext unused inAnalyzeContext
+  ?let @bool unused inEnsureClause
+  !@decoratedComparisonRightOperand outDecoratedExpression
+  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy {
+  [[inVarTypeProxy mConstantMap] searchKey !mConstantName ?let @uint constantValue]
+  outDecoratedExpression = @decoratedConstantAsComparisonRightOperand. new { !inVarTypeProxy !mConstantName !constantValue}
+}
+
+#-------------------------------------------------------------------*
+
+override method @attributeAsComparisonRightOperand analyzeComparisonRightOperand
+  ?let @analyzeContext inAnalyzeContext
+  ?let @bool inEnsureClause
+  !@decoratedComparisonRightOperand outDecoratedExpression
+  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy {
+  if mHasOldQualifier & not inEnsureClause then
+    error mAttributeName : "'old' qualifier is allowed only in post condition"
+  end
+  [inAnalyzeContext.mMachineVarMap searchKey
+    !mAttributeName
+    ?let @unifiedScalarTypeMap-proxy operandTypeProxy
+    ?*
+  ]
+#--- Check type
+  if [inVarTypeProxy key] != [operandTypeProxy key] then
+    error mAttributeName:
+      "var type is '%" + [inVarTypeProxy key] +
+      "', and is different from right expression type '%" +
+      [operandTypeProxy key] + "'"
+  end
+  outDecoratedExpression = @decoratedAttributeAsComparisonRightOperand. new { !mAttributeName}
+}
+
+#-------------------------------------------------------------------*
+

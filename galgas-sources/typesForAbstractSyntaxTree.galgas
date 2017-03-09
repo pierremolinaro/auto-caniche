@@ -1,0 +1,195 @@
+
+
+#--------------------------------------------------------------------*
+
+list @enumTypeList {
+  @lstring mEnumListName
+  @lstringlist mEnumConstantList
+}
+
+#--------------------------------------------------------------------*
+
+list @enumVarDeclarationList {
+  @lstring mEnumTypeName
+  @lstring mEnumVarName
+  @lstring mConstantName
+}
+
+#--------------------------------------------------------------------*
+
+list @eventDeclarationList {
+  @lstring mEventName
+  @eventArgumentList mEventArgumentList
+  @instructionList mEventInstructionList
+  @expressionList mEnsureExpressionList
+  @location mEndOfEnsureExpressionList
+}
+
+#--------------------------------------------------------------------*
+
+list @eventArgumentList {
+  @lstring mArgumentTypeName
+  @lstring mArgumentVarName
+}
+
+#--------------------------------------------------------------------*
+
+list @machineList {
+  @lstring mMachineName
+  @enumVarDeclarationList mEnumVarDeclarationList
+  @expressionList mInvariantExpressionList
+  @eventDeclarationList mEventList
+}
+
+#--------------------------------------------------------------------*
+
+abstract class @expression {}
+
+#--------------------------------------------------------------------*
+
+list @expressionList {
+  @lstring mLabel
+  @expression mExpression
+}
+
+#--------------------------------------------------------------------*
+
+class @implicationExpression,
+      @logicalOrExpression,
+      @logicalAndExpression : @expression {
+  @expression mLeft
+  @expression mRight
+}
+
+#----------------------------------------------------------------*
+
+abstract class @comparisonRightOperand {
+}
+
+#--------------------------------------------------------------------*
+
+class @constantAsComparisonRightOperand : @comparisonRightOperand {
+  @lstring mConstantName
+}
+
+#--------------------------------------------------------------------*
+
+class @attributeAsComparisonRightOperand : @comparisonRightOperand {
+  @lstring mAttributeName
+  @bool mHasOldQualifier
+}
+
+#--------------------------------------------------------------------*
+
+enum @enumComparisonOperator {
+  case equal  case notEqual
+}
+
+#--------------------------------------------------------------------*
+
+class @comparisonInExpression : @expression {
+  @lstring mAttributeName
+  @enumComparisonOperator mOperator
+  @comparisonRightOperand mRightOperand
+}
+
+#----------------------------------------------------------------*
+
+abstract class @instruction {}
+
+#--------------------------------------------------------------------*
+
+list @instructionList {
+  @instruction mInstruction
+}
+
+#----------------------------------------------------------------*
+
+abstract class @assignmentSourceExpression {
+}
+
+#--------------------------------------------------------------------*
+
+class @varAsAssignmentSourceExpression : @assignmentSourceExpression {
+  @lstring mSourceVarName
+}
+
+#--------------------------------------------------------------------*
+
+class @constantAsAssignmentSourceExpression : @assignmentSourceExpression {
+  @lstring mConstantName
+}
+
+#--------------------------------------------------------------------*
+
+class @functionAsAssignmentSourceExpression : @assignmentSourceExpression {
+  @lstring mFunctionName
+  @lstring mOperandName
+}
+
+#--------------------------------------------------------------------*
+
+class @assertInstruction : @instruction {
+  @location mAssertInstructionLocation
+  @expression mAssertExpression
+}
+
+#--------------------------------------------------------------------*
+
+class @assignmentInstruction : @instruction {
+  @lstring mTargetVarName
+  @assignmentSourceExpression mSourceExpression
+}
+
+#----------------------------------------------------------------*
+
+class @ifInstruction : @instruction {
+  @location mIFinstructionLocation
+  @expression mTestExpression
+  @location mEndOfTestExpression
+  @instructionList mThenInstructionList
+  @instructionList mElseInstructionList
+}
+
+#----------------------------------------------------------------*
+
+list @functionValueList {
+  @lstring mOperandName
+  @lstring mResultName
+}
+
+#----------------------------------------------------------------*
+
+list @functionDefinitionList {
+  @lstring mFunctionName
+  @lstring mOperandEnumTypeName
+  @lstring mResultEnumTypeName
+  @functionValueList mValueList
+}
+
+#--------------------------------------------------------------------*
+
+list @scenarioEventSequence {
+  @lstring mEventName
+  @lstringlist mArgumentNameList
+}
+
+#--------------------------------------------------------------------*
+
+list @scenarioList {
+  @lstring mMachineName
+  @lstring mScenarioName
+  @scenarioEventSequence mEventSequence
+}
+
+#----------------------------------------------------------------*
+
+struct @ast {
+  @enumTypeList mEnumTypeList
+  @machineList mMachineList
+  @functionDefinitionList mFunctionDefinitionList
+  @scenarioList mScenarioList
+}
+
+#----------------------------------------------------------------*
+
