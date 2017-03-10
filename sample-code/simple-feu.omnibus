@@ -1,22 +1,22 @@
 
-enum %couleur {vert, orange, rouge}
+enum $couleur {vert, orange, rouge}
 
 #--------------------------------------------------------*
 
-function succ %couleur -> %couleur
+function succ $couleur -> $couleur
   rouge : vert
   vert : orange
   orange : rouge
-end
+}
 
 #--------------------------------------------------------*
 
 machine @sequentiel
-  var %couleur $feu := vert
-  event tick :
-    $feu := succ ($feu)
-  end
-end
+  var feu $couleur = .vert
+  event tick () {
+    feu = succ (feu)
+  }
+}
 
 #--------------------------------------------------------*
 

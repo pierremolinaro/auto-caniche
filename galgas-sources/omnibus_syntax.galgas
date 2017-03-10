@@ -1,4 +1,4 @@
-syntax omnibus_syntax (lexicalAnalyzer) %translate {
+syntax omnibus_syntax (lexicalAnalyzer) {
 
 #--------------------------------------------------------------------*
 
@@ -11,7 +11,7 @@ rule <start_symbol>
   while 
     <enum_function> !?outAST
   while 
-    <class> !?outAST
+    <machine> !?outAST
   while 
     <scenario> !?outAST
   end
@@ -70,7 +70,7 @@ rule <enum_function>
   $enum-type-name$ ?var @lstring operandEnumName
   $->$
   $enum-type-name$ ?var @lstring resultEnumName
-  var functionValueList =@functionValueList.default
+  var functionValueList = @functionValueList.default
   repeat
     $identifier$ ?var  @lstring operandConstantName
     $:$
@@ -78,14 +78,13 @@ rule <enum_function>
     functionValueList += !operandConstantName !resultConstantName
   while
   end
-  $end$
+  $}$
   ioAST.mFunctionDefinitionList += !functionName !operandEnumName !resultEnumName !functionValueList
 }
 
 #--------------------------------------------------------------------*
 
-rule <class>
-  ?!@ast ioAST {
+rule <machine> ?!@ast ioAST {
   $machine$
   $machine-type-name$ ?var @lstring machineTypeName
 #---
@@ -95,9 +94,10 @@ rule <class>
   repeat
   while
     $var$
+    $identifier$ ?var  @lstring variableName
     $enum-type-name$ ?var @lstring enumTypeName
-    $var-name$ ?var  @lstring variableName
-    $:=$
+    $=$
+    $.$
     $identifier$ ?var  @lstring constantName
     enumVarDeclarationList += !enumTypeName !variableName !constantName
    while
@@ -109,16 +109,18 @@ rule <class>
   while
     $event$
     $identifier$ ?var  @lstring eventName
+    $($
     var eventArgumentList =@eventArgumentList.default
     repeat
     while
       $?$
+      $identifier$ ?var  @lstring argumentName
       $enum-type-name$ ?var @lstring enumTypeName
-      $var-name$ ?var  @lstring argumentName
       eventArgumentList += !enumTypeName !argumentName
-    end    
-    $:$
-    var eventInstructionList =@instructionList.default
+    end
+    $)$   
+    ${$
+    @instructionList eventInstructionList = {}
     <instruction_list> !?eventInstructionList
     var ensureExpressionList =@expressionList.default
     select
@@ -133,7 +135,7 @@ rule <class>
       end
     end
     @location endOfEnsureExpressionList = @location.here
-    $end$
+    $}$
     eventList +=
       !eventName
       !eventArgumentList
@@ -142,7 +144,7 @@ rule <class>
       !endOfEnsureExpressionList
   end
 #---
-  $end$
+  $}$
   ioAST.mMachineList +=
     !machineTypeName
     !enumVarDeclarationList
@@ -156,7 +158,7 @@ rule <expression> !@expression outExpression {
   <expression1> ?outExpression
   select
   or
-    $=>$
+    $->$
     <expression1> ?let @expression expr
     outExpression = @implicationExpression. new { !outExpression !expr}
   end
@@ -197,18 +199,16 @@ rule <expression4> !@expression outExpression {
 #--------------------------------------------------------------------*
 
 rule <expression4> !@expression outExpression {
-  ${$
-  $var-name$ ?var  @lstring attributeName
+  $identifier$ ?var  @lstring attributeName
   @enumComparisonOperator comparisonOperator
   select
-    $=$
-    comparisonOperator = @enumComparisonOperator. equal
+    $==$
+    comparisonOperator = @enumComparisonOperator.equal
   or
     $!=$
-    comparisonOperator = @enumComparisonOperator. notEqual
+    comparisonOperator = @enumComparisonOperator.notEqual
   end
   <comparison_right_operand> ?let @comparisonRightOperand comparisonRightOperand
-  $}$
   outExpression = @comparisonInExpression. new {
     !attributeName
     !comparisonOperator
@@ -218,6 +218,7 @@ rule <expression4> !@expression outExpression {
 #--------------------------------------------------------------------*
 
 rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOperand {
+  $.$
   $identifier$ ?var  @lstring constantName
   outComparisonRightOperand = @constantAsComparisonRightOperand. new {
     !constantName}
@@ -233,7 +234,7 @@ rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOpera
     $old$
     hasOldQualifier = true
   end
-  $var-name$ ?var  @lstring attributeName
+  $identifier$ ?var  @lstring attributeName
   outComparisonRightOperand = @attributeAsComparisonRightOperand. new {
     !attributeName
     !hasOldQualifier}
@@ -261,8 +262,8 @@ rule <instruction> !@instruction outInstruction {
 #--------------------------------------------------------------------*
 
 rule <instruction> !@instruction outInstruction {
-  $var-name$ ?var  @lstring variableName
-  $:=$
+  $identifier$ ?var  @lstring variableName
+  $=$
   <assignment_source_expression> ?let @assignmentSourceExpression expression
   outInstruction = @assignmentInstruction. new { !variableName !expression}
 }
@@ -270,13 +271,14 @@ rule <instruction> !@instruction outInstruction {
 #--------------------------------------------------------------------*
 
 rule <assignment_source_expression> !@assignmentSourceExpression outExp {
-  $var-name$ ?var  @lstring attributeName
+  $identifier$ ?var  @lstring attributeName
   outExp = @varAsAssignmentSourceExpression. new { !attributeName}
 }
 
 #--------------------------------------------------------------------*
 
 rule <assignment_source_expression> !@assignmentSourceExpression outExp {
+  $.$
   $identifier$ ?var  @lstring constantName
   outExp = @constantAsAssignmentSourceExpression. new { !constantName}
 }
@@ -286,7 +288,7 @@ rule <assignment_source_expression> !@assignmentSourceExpression outExp {
 rule <assignment_source_expression> !@assignmentSourceExpression outExp {
   $identifier$ ?var  @lstring functionName
   $($
-  $var-name$ ?var  @lstring attributeName
+  $identifier$ ?var  @lstring attributeName
   $)$
   outExp = @functionAsAssignmentSourceExpression. new { !functionName !attributeName}
 }
@@ -298,11 +300,11 @@ rule <instruction> !@instruction outInstruction {
   let @location IFinstructionLocation = @location.here
   <expression> ?let @expression testExpression
   let @location endOfTestExpression = @location.here
-  $then$
-  var thenInstructionList =@instructionList.default
+  ${$
+  @instructionList thenInstructionList = {}
   <instruction_list> !?thenInstructionList
+  $}$
   <else_part> ?let @instructionList elseInstructionList
-  $end$
   outInstruction = @ifInstruction. new {
     !IFinstructionLocation
     !testExpression
@@ -314,29 +316,33 @@ rule <instruction> !@instruction outInstruction {
 #--------------------------------------------------------------------*
 
 rule <else_part> !@instructionList outInstructionList {
-  outInstructionList = @instructionList.default
+  outInstructionList = {}
 }
 
 #--------------------------------------------------------------------*
 
 rule <else_part> !@instructionList outInstructionList {
   $else$
-  outInstructionList = @instructionList.default
+  ${$
+  outInstructionList = {}
   <instruction_list> !?outInstructionList
+  $}$
 }
 
 #--------------------------------------------------------------------*
 
 rule <else_part> !@instructionList outInstructionList {
-  $elsif$
+  $else$
+  $if$
   let @location IFinstructionLocation = @location.here
   <expression> ?let @expression testExpression
   let @location endOfTestExpression = @location.here
-  $then$
-  var thenInstructionList =@instructionList.default
+  ${$
+  @instructionList thenInstructionList = {}
   <instruction_list> !?thenInstructionList
+  $}$
   <else_part> ?let @instructionList elseInstructionList
-  outInstructionList = @instructionList.default
+  outInstructionList = {}
   outInstructionList += !@ifInstruction. new { 
     !IFinstructionLocation
     !testExpression

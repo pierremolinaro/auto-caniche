@@ -1,70 +1,69 @@
 
-enum %couleur {vert, orange, rouge}
+enum $couleur {vert, orange, rouge}
 
 #--------------------------------------------------------*
 
-function succ %couleur -> %couleur
+function succ $couleur -> $couleur
   vert : orange
   orange : rouge
   rouge : vert
-end
+}
 
 #--------------------------------------------------------*
 
-enum %etat {hs, es}
+enum $etat {hs, es}
 
 #--------------------------------------------------------*
 
 machine @carrefour
 
-  var %etat $etat := hs
-  var %couleur $feuA := orange
-  var %couleur $feuB := orange
+  var etat $etat = .hs
+  var feuA $couleur = .orange
+  var feuB $couleur = .orange
 
-  invariant "1" : {$etat = hs} => ({$feuA = orange} & {$feuB = orange})
-  invariant "2" : {$etat = es} => (({$feuA = rouge} | {$feuB = rouge}) & {$feuA != $feuB})
+  invariant "1" : (etat == .hs) -> ((feuA == .orange) & (feuB == .orange))
+  invariant "2" : (etat == .es) -> (((feuA == .rouge) | (feuB == .rouge)) & (feuA != feuB))
 
-  event miseEnService :
-    if {$etat = hs} then
-      $etat := es
-      $feuA := vert
-      $feuB := rouge
-    end
+  event miseEnService () {
+    if etat == .hs {
+      etat = .es
+      feuA = .vert
+      feuB = .rouge
+    }
   ensures
-    "A" : {$etat = es}
-  end
+    "A" : (etat == .es)
+  }
 
-  event miseHorsService :
-    if {$etat = es} then
-      $etat := hs
-      $feuA := orange
-      $feuB := orange
-    end
+  event miseHorsService () {
+    if etat == .es {
+      etat = .hs
+      feuA = .orange
+      feuB = .orange
+    }
   ensures
-    "A" : {$etat = hs}
-  end
+    "A" : (etat == .hs)
+  }
 
-  event tick :
-    if {$etat = es} then
-      if {$feuA = vert} then
-        $feuA := orange
-      elsif {$feuA = orange} then
-        $feuA := rouge
-        $feuB := vert
-      elsif {$feuB = vert} then
-        $feuB := orange
-      #elsif {$feuB = orange} then
-      else
-        $feuA := vert
-        $feuB := rouge
-      end
-    end
+  event tick () {
+    if (etat == .es) {
+      if (feuA == .vert) {
+        feuA = .orange
+      }else if (feuA == .orange) {
+        feuA = .rouge
+        feuB = .vert
+      }else if (feuB == .vert) {
+        feuB = .orange
+      }else{
+        feuA = .vert
+        feuB = .rouge
+      }
+    }
   ensures
- #  "A" :  {$etat = es} => {$feuA = succ (old $feuA)} | {$feuB = succ (old $feuB)}
-   "B" :  {$etat = hs} => ({$feuA = old $feuA} & {$feuB = old $feuB})
-   "C" :  {$etat = old $etat}
-  end
+ #  "A" :  (etat == es) -> (feuA == succ (old feuA)) | (feuB == succ (old feuB))
+   "B" :  (etat == .hs) -> ((feuA == old feuA) & (feuB == old feuB))
+   "C" :  (etat == old etat)
+  }
 
-end
+}
 
 #--------------------------------------------------------*

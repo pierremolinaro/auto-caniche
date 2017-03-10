@@ -1,24 +1,22 @@
 
-enum %couleur {vert, orange, rouge}
+enum $couleur {vert, orange, rouge}
 
 #--------------------------------------------------------*
 
 machine @sequentiel
 
-  var %couleur $feu := vert
+  var feu $couleur = .vert
 
-  event assignment
-    ?%couleur $inFeu
-  :
-    $feu := $inFeu
-  end
+  event assignment (?inFeu $couleur) {
+    feu = inFeu
+  }
 
-  event nop :
+  event nop () {
   ensures
-    "1" : {$feu = old $feu}
-  end
+    "1" : (feu == old feu)
+  }
 
-end
+}
 
 #--------------------------------------------------------*
 

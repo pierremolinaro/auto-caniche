@@ -1,17 +1,15 @@
 
-enum %bool {no, yes}
+enum $bool {no, yes}
 
 #--------------------------------------------------------*
 
 machine @boolean
-  var %bool $b := no
+  var b $bool = .no
 
-  event set
-   ?%bool $inValue
-  :
-    $b := $inValue
-  end
-end
+  event set (?inValue $bool) {
+    b = inValue
+  }
+}
 
 #--------------------------------------------------------*
 

@@ -1,102 +1,102 @@
 
-enum %positionAiguille {droite, gauche, milieu, inconnue}
+enum $positionAiguille {droite, gauche, milieu, inconnue}
 
-enum %commandeAiguille {droite, gauche, milieu, inconnue}
+enum $commandeAiguille {droite, gauche, milieu, inconnue}
 
-enum %souhaitCommande {droite, gauche, milieu, inconnu}
+enum $souhaitCommande {droite, gauche, milieu, inconnu}
 
-enum %occupation {non, oui}
+enum $occupation {non, oui}
 
 #--------------------------------------------------------*
 
 machine @controleAiguille
-  var %positionAiguille $position := inconnue
-  var %commandeAiguille $commande := inconnue
-  var %souhaitCommande $souhait := inconnu
-  var %occupation $occupation := non
+  var position $positionAiguille = .inconnue
+  var commande $commandeAiguille = .inconnue
+  var souhait $souhaitCommande = .inconnu
+  var occupation $occupation = .non
 
-  invariant "1" : {$souhait = inconnu} => {$commande = inconnue}
-  invariant "2" : ({$occupation = non} & {$souhait = droite} & {$position != droite}) => {$commande = droite}
-  invariant "3" : ({$occupation = non} & {$souhait = milieu} & {$position != milieu}) => {$commande = milieu}
-  invariant "4" : ({$occupation = non} & {$souhait = gauche} & {$position != gauche}) => {$commande = gauche}
-  invariant "5" : {$occupation = oui} => {$commande = inconnue}
+  invariant "1" : (souhait == .inconnu) -> (commande == .inconnue)
+  invariant "2" : ((occupation == .non) & (souhait == .droite) & (position != .droite)) -> (commande == .droite)
+  invariant "3" : ((occupation == .non) & (souhait == .milieu) & (position != .milieu)) -> (commande == .milieu)
+  invariant "4" : ((occupation == .non) & (souhait == .gauche) & (position != .gauche)) -> (commande == .gauche)
+  invariant "5" : (occupation == .oui) -> (commande == .inconnue)
 
-  event liberation :
-    $occupation := non
-    if {$souhait = droite} & {$position != droite} then
-      $commande := droite
-    elsif {$souhait = milieu} & {$position != milieu} then
-      $commande := milieu
-    elsif {$souhait = gauche} & {$position != gauche} then
-      $commande := gauche
-    end
-  end
+  event liberation () {
+    occupation = .non
+    if (souhait == .droite) & (position != .droite) {
+      commande = .droite
+    }else if (souhait == .milieu) & (position != .milieu) {
+      commande = .milieu
+    }else if (souhait == .gauche) & (position != .gauche) {
+      commande = .gauche
+    }
+  }
 
-  event occupation :
-    $occupation := oui
-    $commande := inconnue
-  end
+  event occupation () {
+    occupation = .oui
+    commande = .inconnue
+  }
 
-  event nouvellePositionDroite :
-    $position := droite
-    if {$occupation = non} then
-      if {$souhait = milieu} then
-        $commande := milieu
-      elsif {$souhait = gauche} then
-       $commande := gauche
-      end 
-    end 
-  end
+  event nouvellePositionDroite () {
+    position = .droite
+    if (occupation == .non) {
+      if (souhait == .milieu) {
+        commande = .milieu
+      }else if (souhait == .gauche) {
+       commande = .gauche
+      } 
+    } 
+  }
 
-  event nouvellePositionGauche :
-    $position := gauche
-    if {$occupation = non} then
-      if {$souhait = milieu} then
-        $commande := milieu
-      elsif {$souhait = droite} then
-        $commande := droite
-      end
-    end
-  end
+  event nouvellePositionGauche () {
+    position = .gauche
+    if (occupation == .non) {
+      if (souhait == .milieu) {
+        commande = .milieu
+      }else if (souhait == .droite) {
+        commande = .droite
+      }
+    }
+  }
 
-  event nouvellePositionMilieu :
-    $position := milieu
-    if {$occupation = non} then
-      if {$souhait = gauche} then
-        $commande := gauche
-      elsif {$souhait = droite} then
-        $commande := droite
-      end
-    end
-  end
+  event nouvellePositionMilieu () {
+    position = .milieu
+    if (occupation == .non) {
+      if (souhait == .gauche) {
+        commande = .gauche
+      }else if (souhait == .droite) {
+        commande = .droite
+      }
+    }
+  }
 
-  event souhaitCommandeDroite :
-    if {$souhait != droite} then
-      $souhait := droite
-      if {$position != droite} & {$occupation = non} then
-        $commande := droite
-      end
-    end
-  end
+  event souhaitCommandeDroite () {
+    if (souhait != .droite) {
+      souhait = .droite
+      if (position != .droite) & (occupation == .non) {
+        commande = .droite
+      }
+    }
+  }
 
-  event souhaitCommandeGauche :
-    if {$souhait != gauche} then
-      $souhait := gauche
-      if {$position != gauche} & {$occupation = non} then
-        $commande := gauche
-      end
-    end
-  end
+  event souhaitCommandeGauche () {
+    if (souhait != .gauche) {
+      souhait = .gauche
+      if (position != .gauche) & (occupation == .non) {
+        commande = .gauche
+      }
+    }
+  }
 
-  event souhaitCommandeMilieu :
-    if {$souhait != milieu} then
-      $souhait := milieu
-      if {$position != milieu} & {$occupation = non} then
-        $commande := milieu
-      end
-    end
-  end
+  event souhaitCommandeMilieu () {
+    if (souhait != .milieu) {
+      souhait = .milieu
+      if (position != .milieu) & (occupation == .non) {
+        commande = .milieu
+      }
+    }
+  }
 
-end
+}
 
 #--------------------------------------------------------*

@@ -14,13 +14,12 @@ $identifier$ ! tokenString error message "an identifier"
 list keyWordList style keywordsStyle error message "the '%K' keyword"{
   "assert",
   "do",
-  "else", "elsif", "enum", "ensures", "end", "event",
+  "else", "enum", "ensures", "event",
   "function",
   "if", "invariant",
   "machine",
   "old",
   "scenario", "system",
-  "then",
   "var"
 }
 
@@ -38,8 +37,9 @@ rule 'a'->'z' |  'A'->'Z' {
 
 style delimitersStyle -> "Delimiters"
 list delimitorsList style delimitersStyle error message "the '%K' delimitor"{
-  ":", ",", ";",   "!",  "{",  "}", "->", ":=", "[", "]",
-  "=", "=>", "&", "|", "!=", "(", ")", "?" }
+  ":", ",", ";",   "!",  "{",  "}", "->", "=", "[", "]",
+  "==", "&", "|", "!=", "(", ")", "?", "."
+}
 
 rule list delimitorsList
 
@@ -92,12 +92,12 @@ rule '"' {
 #   enum type name                                                           *
 #----------------------------------------------------------------------------*
 
-style enumTypeNameStyle -> "Enum type Names (%...)"
-$enum-type-name$ ! tokenString  style enumTypeNameStyle error message "an enum type name (%...)"
+style enumTypeNameStyle -> "Enum type Names ($...)"
+$enum-type-name$ ! tokenString  style enumTypeNameStyle error message "an enum type name ($...)"
 
-message incorrectEnumTypeNameError : "in an enum type name, a letter, a digit or the underscore character should follow the '%' character"
+message incorrectEnumTypeNameError : "in an enum type name, a letter, a digit or the underscore character should follow the '$' character"
 
-rule '%' {
+rule '$' {
   select
   case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     repeat
@@ -108,28 +108,6 @@ rule '%' {
     error incorrectEnumTypeNameError
   end
   send $enum-type-name$ 
-}
-
-#----------------------------------------------------------------------------*
-#   var name                                                                 *
-#----------------------------------------------------------------------------*
-
-style variableNameStyle -> "Variable Names ($...)"
-$var-name$ ! tokenString  style variableNameStyle error message "a variable name ($...)"
-
-message incorrectVariableNameError : "in a variable name, a letter, a digit or the underscore character should follow the '$' character"
-
-rule '$' {
-  select
-  case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    repeat
-      enterCharacterIntoString ( !?tokenString !* )
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    end
-  default
-    error incorrectVariableNameError
-  end
-  send $var-name$ 
 }
 
 #----------------------------------------------------------------------------*

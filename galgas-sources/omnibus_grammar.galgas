@@ -1,4 +1,4 @@
-grammar omnibus_grammar "SLR" %translate {
+grammar omnibus_grammar "SLR" {
 syntax omnibus_syntax
 
  <start_symbol>

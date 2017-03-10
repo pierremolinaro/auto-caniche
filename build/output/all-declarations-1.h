@@ -2155,153 +2155,123 @@ class cPtr_functionInDecoratedAssignmentSourceExpression : public cPtr_decorated
 class cGrammar_omnibus_5F_grammar : public cParser_omnibus_5F_syntax {
 //------------------------------------- 'assignment_source_expression' non terminal
 //--- 'parse' label
-  public : virtual void nt_assignment_5F_source_5F_expression_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                     C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_assignment_5F_source_5F_expression_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_assignment_5F_source_5F_expression_ (GALGAS_assignmentSourceExpression & outArgument0,
-                                                                C_String & ioSyntaxDirectedTranslationResult,
                                                                 C_Lexique_lexicalAnalyzer * inCompiler) ;
-
-//------------------------------------- 'class' non terminal
-//--- 'parse' label
-  public : virtual void nt_class_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                        C_Lexique_lexicalAnalyzer * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_class_ (GALGAS_ast & ioArgument0,
-                                   C_String & ioSyntaxDirectedTranslationResult,
-                                   C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'comparison_right_operand' non terminal
 //--- 'parse' label
-  public : virtual void nt_comparison_5F_right_5F_operand_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_comparison_5F_right_5F_operand_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_comparison_5F_right_5F_operand_ (GALGAS_comparisonRightOperand & outArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
                                                             C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'else_part' non terminal
 //--- 'parse' label
-  public : virtual void nt_else_5F_part_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                               C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_else_5F_part_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_else_5F_part_ (GALGAS_instructionList & outArgument0,
-                                          C_String & ioSyntaxDirectedTranslationResult,
                                           C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'enum_declaration' non terminal
 //--- 'parse' label
-  public : virtual void nt_enum_5F_declaration_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                      C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_enum_5F_declaration_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_enum_5F_declaration_ (GALGAS_ast & ioArgument0,
-                                                 C_String & ioSyntaxDirectedTranslationResult,
                                                  C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'enum_function' non terminal
 //--- 'parse' label
-  public : virtual void nt_enum_5F_function_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                   C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_enum_5F_function_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_enum_5F_function_ (GALGAS_ast & ioArgument0,
-                                              C_String & ioSyntaxDirectedTranslationResult,
                                               C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'expression' non terminal
 //--- 'parse' label
-  public : virtual void nt_expression_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                             C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_expression_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_expression_ (GALGAS_expression & outArgument0,
-                                        C_String & ioSyntaxDirectedTranslationResult,
                                         C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'expression1' non terminal
 //--- 'parse' label
-  public : virtual void nt_expression_31__parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                 C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_expression_31__parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_expression_31__ (GALGAS_expression & outArgument0,
-                                            C_String & ioSyntaxDirectedTranslationResult,
                                             C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'expression2' non terminal
 //--- 'parse' label
-  public : virtual void nt_expression_32__parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                 C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_expression_32__parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_expression_32__ (GALGAS_expression & outArgument0,
-                                            C_String & ioSyntaxDirectedTranslationResult,
                                             C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'expression4' non terminal
 //--- 'parse' label
-  public : virtual void nt_expression_34__parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                 C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_expression_34__parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_expression_34__ (GALGAS_expression & outArgument0,
-                                            C_String & ioSyntaxDirectedTranslationResult,
                                             C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'instruction' non terminal
 //--- 'parse' label
-  public : virtual void nt_instruction_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                              C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_instruction_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_instruction_ (GALGAS_instruction & outArgument0,
-                                         C_String & ioSyntaxDirectedTranslationResult,
                                          C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'instruction_list' non terminal
 //--- 'parse' label
-  public : virtual void nt_instruction_5F_list_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                      C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_instruction_5F_list_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_instruction_5F_list_ (GALGAS_instructionList & ioArgument0,
-                                                 C_String & ioSyntaxDirectedTranslationResult,
                                                  C_Lexique_lexicalAnalyzer * inCompiler) ;
+
+//------------------------------------- 'machine' non terminal
+//--- 'parse' label
+  public : virtual void nt_machine_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_machine_ (GALGAS_ast & ioArgument0,
+                                     C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'scenario' non terminal
 //--- 'parse' label
-  public : virtual void nt_scenario_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                           C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_scenario_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_scenario_ (GALGAS_ast & ioArgument0,
-                                      C_String & ioSyntaxDirectedTranslationResult,
                                       C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //------------------------------------- 'start_symbol' non terminal
 //--- 'parse' label
-  public : virtual void nt_start_5F_symbol_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                  C_Lexique_lexicalAnalyzer * inCompiler) ;
+  public : virtual void nt_start_5F_symbol_parse (C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //----------- '' label
   public : virtual void nt_start_5F_symbol_ (GALGAS_ast & outArgument0,
-                                             C_String & ioSyntaxDirectedTranslationResult,
                                              C_Lexique_lexicalAnalyzer * inCompiler) ;
 
 //--- Start symbol
   public : static void _performSourceFileParsing_ (C_Compiler * inCompiler,
-                                                   C_String & ioSyntaxDirectedTranslationResult,
                                                    GALGAS_lstring inFileName,
                                                    GALGAS_ast & outArgument0
                                                    COMMA_LOCATION_ARGS) ;
 
   public : static void _performSourceStringParsing_ (C_Compiler * inCompiler,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
                                                      GALGAS_string inSourceString,
                                                      GALGAS_string inNameString,
                                                      GALGAS_ast & outArgument0
@@ -2542,5 +2512,88 @@ void routine_performDynamicAnalysis (const class GALGAS_string constinArgument0,
                                      const class GALGAS_machineMap constinArgument4,
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       Filewrapper 'CCodeGenerationTemplates'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_CCodeGenerationTemplates ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'CCodeGenerationTemplates enumerationDeclaration'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_enumerationDeclaration (class C_Compiler * inCompiler,
+                                                                                   const class GALGAS_string & in_ENUMERATION_5F_NAME,
+                                                                                   const class GALGAS_lstringlist & in_CONSTANT_5F_LIST
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'CCodeGenerationTemplates machineDeclaration'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineDeclaration (class C_Compiler * inCompiler,
+                                                                               const class GALGAS_string & in_FILE_5F_NAME,
+                                                                               const class GALGAS_unifiedScalarTypeMap & in_ENUM_5F_DECLARATION_5F_MAP,
+                                                                               const class GALGAS_string & in_MACHINE_5F_NAME,
+                                                                               const class GALGAS_machineVarList & in_ATTRIBUTE_5F_LIST,
+                                                                               const class GALGAS_eventMap & in_EVENT_5F_MAP
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'CCodeGenerationTemplates machineImplementation'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineImplementation (class C_Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_FILE_5F_NAME,
+                                                                                  const class GALGAS_unifiedScalarTypeMap & in_ENUM_5F_DECLARATION_5F_MAP,
+                                                                                  const class GALGAS_string & in_MACHINE_5F_NAME,
+                                                                                  const class GALGAS_machineVarList & in_ATTRIBUTE_5F_LIST,
+                                                                                  const class GALGAS_eventMap & in_EVENT_5F_MAP,
+                                                                                  const class GALGAS_functionMap & in_FUNCTION_5F_MAP
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'CCodeGenerationTemplates functionDeclaration'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionDeclaration (class C_Compiler * inCompiler,
+                                                                                const class GALGAS_string & in_FILE_5F_NAME,
+                                                                                const class GALGAS_string & in_FUNCTION_5F_NAME,
+                                                                                const class GALGAS_string & in_RESULT_5F_TYPE_5F_NAME,
+                                                                                const class GALGAS_uint & in_OPERAND_5F_VALUE_5F_COUNT
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'CCodeGenerationTemplates functionImplementation'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionImplementation (class C_Compiler * inCompiler,
+                                                                                   const class GALGAS_string & in_FILE_5F_NAME,
+                                                                                   const class GALGAS_string & in_FUNCTION_5F_NAME,
+                                                                                   const class GALGAS_string & in_RESULT_5F_TYPE_5F_NAME,
+                                                                                   const class GALGAS_decoratedFunctionValueList & in_VALUE_5F_LIST
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 #endif

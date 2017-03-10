@@ -68,16 +68,13 @@ class C_Lexique_lexicalAnalyzer : public C_Lexique {
    kToken_integer,
    kToken_literal_5F_string,
    kToken_enum_2D_type_2D_name,
-   kToken_var_2D_name,
    kToken_machine_2D_type_2D_name,
    kToken_comment,
    kToken_assert,
    kToken_do,
    kToken_else,
-   kToken_elsif,
    kToken_enum,
    kToken_ensures,
-   kToken_end,
    kToken_event,
    kToken_function,
    kToken_if,
@@ -86,7 +83,6 @@ class C_Lexique_lexicalAnalyzer : public C_Lexique {
    kToken_old,
    kToken_scenario,
    kToken_system,
-   kToken_then,
    kToken_var,
    kToken__3A_,
    kToken__2C_,
@@ -95,17 +91,17 @@ class C_Lexique_lexicalAnalyzer : public C_Lexique {
    kToken__7B_,
    kToken__7D_,
    kToken__2D__3E_,
-   kToken__3A__3D_,
+   kToken__3D_,
    kToken__5B_,
    kToken__5D_,
-   kToken__3D_,
-   kToken__3D__3E_,
+   kToken__3D__3D_,
    kToken__26_,
    kToken__7C_,
    kToken__21__3D_,
    kToken__28_,
    kToken__29_,
-   kToken__3F_} ;
+   kToken__3F_,
+   kToken__2E_} ;
 
 //--- Key words table 'keyWordList'
   public : static int16_t search_into_keyWordList (const C_String & inSearchedString) ;
@@ -138,7 +134,7 @@ class C_Lexique_lexicalAnalyzer : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 42 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 38 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -7189,258 +7185,186 @@ class cParser_omnibus_5F_syntax {
 
 //--- Non terminal declarations
   protected : virtual void nt_assignment_5F_source_5F_expression_ (class GALGAS_assignmentSourceExpression & outArgument0,
-                                                                   class C_String & ioSyntaxDirectedTranslationResult,
                                                                    class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_assignment_5F_source_5F_expression_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                        class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
-
-  protected : virtual void nt_class_ (class GALGAS_ast & ioArgument0,
-                                      class C_String & ioSyntaxDirectedTranslationResult,
-                                      class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
-
-  protected : virtual void nt_class_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                           class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_assignment_5F_source_5F_expression_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_comparison_5F_right_5F_operand_ (class GALGAS_comparisonRightOperand & outArgument0,
-                                                               class C_String & ioSyntaxDirectedTranslationResult,
                                                                class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_comparison_5F_right_5F_operand_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                                    class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_comparison_5F_right_5F_operand_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_else_5F_part_ (class GALGAS_instructionList & outArgument0,
-                                             class C_String & ioSyntaxDirectedTranslationResult,
                                              class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_else_5F_part_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                  class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_else_5F_part_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_enum_5F_declaration_ (class GALGAS_ast & ioArgument0,
-                                                    class C_String & ioSyntaxDirectedTranslationResult,
                                                     class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_enum_5F_declaration_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                         class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_enum_5F_declaration_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_enum_5F_function_ (class GALGAS_ast & ioArgument0,
-                                                 class C_String & ioSyntaxDirectedTranslationResult,
                                                  class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_enum_5F_function_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                      class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_enum_5F_function_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_expression_ (class GALGAS_expression & outArgument0,
-                                           class C_String & ioSyntaxDirectedTranslationResult,
                                            class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_expression_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_expression_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_expression_31__ (class GALGAS_expression & outArgument0,
-                                               class C_String & ioSyntaxDirectedTranslationResult,
                                                class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_expression_31__parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                    class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_expression_31__parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_expression_32__ (class GALGAS_expression & outArgument0,
-                                               class C_String & ioSyntaxDirectedTranslationResult,
                                                class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_expression_32__parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                    class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_expression_32__parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_expression_34__ (class GALGAS_expression & outArgument0,
-                                               class C_String & ioSyntaxDirectedTranslationResult,
                                                class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_expression_34__parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                    class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_expression_34__parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_instruction_ (class GALGAS_instruction & outArgument0,
-                                            class C_String & ioSyntaxDirectedTranslationResult,
                                             class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_instruction_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                 class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_instruction_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_instruction_5F_list_ (class GALGAS_instructionList & ioArgument0,
-                                                    class C_String & ioSyntaxDirectedTranslationResult,
                                                     class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_instruction_5F_list_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                         class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_instruction_5F_list_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_machine_ (class GALGAS_ast & ioArgument0,
+                                        class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_machine_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_scenario_ (class GALGAS_ast & ioArgument0,
-                                         class C_String & ioSyntaxDirectedTranslationResult,
                                          class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_scenario_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                              class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_scenario_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
   protected : virtual void nt_start_5F_symbol_ (class GALGAS_ast & outArgument0,
-                                                class C_String & ioSyntaxDirectedTranslationResult,
                                                 class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
-  protected : virtual void nt_start_5F_symbol_parse (class C_String & ioSyntaxDirectedTranslationResult,
-                                                     class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+  protected : virtual void nt_start_5F_symbol_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
 
 
 //--- Rule declarations
   protected : void rule_omnibus_5F_syntax_start_5F_symbol_i0_ (GALGAS_ast & outArgument0,
-                                                               C_String & ioSyntaxDirectedTranslationResult,
                                                                C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_start_5F_symbol_i0_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_start_5F_symbol_i0_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_scenario_i1_ (GALGAS_ast & ioArgument0,
-                                                        C_String & ioSyntaxDirectedTranslationResult,
                                                         C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_scenario_i1_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                             C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_scenario_i1_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_enum_5F_declaration_i2_ (GALGAS_ast & ioArgument0,
-                                                                   C_String & ioSyntaxDirectedTranslationResult,
                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_enum_5F_declaration_i2_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                        C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_enum_5F_declaration_i2_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_enum_5F_function_i3_ (GALGAS_ast & ioArgument0,
-                                                                C_String & ioSyntaxDirectedTranslationResult,
                                                                 C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_enum_5F_function_i3_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                     C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_enum_5F_function_i3_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_class_i4_ (GALGAS_ast & ioArgument0,
-                                                     C_String & ioSyntaxDirectedTranslationResult,
-                                                     C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_machine_i4_ (GALGAS_ast & ioArgument0,
+                                                       C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_class_i4_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                          C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_machine_i4_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_expression_i5_ (GALGAS_expression & outArgument0,
-                                                          C_String & ioSyntaxDirectedTranslationResult,
                                                           C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_expression_i5_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_expression_i5_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_expression_31__i6_ (GALGAS_expression & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_expression_31__i6_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_expression_31__i6_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_expression_32__i7_ (GALGAS_expression & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_expression_32__i7_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_expression_32__i7_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_expression_34__i8_ (GALGAS_expression & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_expression_34__i8_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_expression_34__i8_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_expression_34__i9_ (GALGAS_expression & outArgument0,
-                                                              C_String & ioSyntaxDirectedTranslationResult,
                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_expression_34__i9_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_expression_34__i9_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i10_ (GALGAS_comparisonRightOperand & outArgument0,
-                                                                               C_String & ioSyntaxDirectedTranslationResult,
                                                                                C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i10_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i10_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i11_ (GALGAS_comparisonRightOperand & outArgument0,
-                                                                               C_String & ioSyntaxDirectedTranslationResult,
                                                                                C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i11_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i11_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_instruction_5F_list_i12_ (GALGAS_instructionList & ioArgument0,
-                                                                    C_String & ioSyntaxDirectedTranslationResult,
                                                                     C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_instruction_5F_list_i12_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                         C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_instruction_5F_list_i12_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_instruction_i13_ (GALGAS_instruction & outArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
                                                             C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_instruction_i13_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_instruction_i13_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_instruction_i14_ (GALGAS_instruction & outArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
                                                             C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_instruction_i14_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_instruction_i14_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i15_ (GALGAS_assignmentSourceExpression & outArgument0,
-                                                                                   C_String & ioSyntaxDirectedTranslationResult,
                                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i15_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                        C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i15_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i16_ (GALGAS_assignmentSourceExpression & outArgument0,
-                                                                                   C_String & ioSyntaxDirectedTranslationResult,
                                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i16_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                        C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i16_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i17_ (GALGAS_assignmentSourceExpression & outArgument0,
-                                                                                   C_String & ioSyntaxDirectedTranslationResult,
                                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i17_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                                        C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i17_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_instruction_i18_ (GALGAS_instruction & outArgument0,
-                                                            C_String & ioSyntaxDirectedTranslationResult,
                                                             C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_instruction_i18_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                 C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_instruction_i18_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_else_5F_part_i19_ (GALGAS_instructionList & outArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
                                                              C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_else_5F_part_i19_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i19_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_else_5F_part_i20_ (GALGAS_instructionList & outArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
                                                              C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_else_5F_part_i20_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i20_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
   protected : void rule_omnibus_5F_syntax_else_5F_part_i21_ (GALGAS_instructionList & outArgument0,
-                                                             C_String & ioSyntaxDirectedTranslationResult,
                                                              C_Lexique_lexicalAnalyzer * inLexique) ;
 
-  protected : void rule_omnibus_5F_syntax_else_5F_part_i21_parse (C_String & ioSyntaxDirectedTranslationResult,
-                                                                  C_Lexique_lexicalAnalyzer * inLexique) ;
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i21_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
 
 
 
