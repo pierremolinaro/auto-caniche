@@ -20,8 +20,8 @@ machine @sequentiel
 
 #--------------------------------------------------------*
 
-scenario @sequentiel "essai" :
-  tick, tick, tick, tick, tick
-;
+scenario @sequentiel "essai" {
+  tick () tick () tick () tick () tick ()
+}
 
 #--------------------------------------------------------*

@@ -20,15 +20,15 @@ machine @sequentiel
 
 #--------------------------------------------------------*
 
-scenario @sequentiel "nop sequence" :
-  nop, nop
-;
+scenario @sequentiel "nop sequence" {
+  nop () nop ()
+}
 
 #--------------------------------------------------------*
 
-scenario @sequentiel "assignment sequence" :
-  assignment!orange,
-  assignment!rouge
-;
+scenario @sequentiel "assignment sequence" {
+  assignment(!orange)
+  assignment(!rouge)
+}
 
 #--------------------------------------------------------*

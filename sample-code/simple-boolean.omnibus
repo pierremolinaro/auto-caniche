@@ -13,13 +13,13 @@ machine @boolean
 
 #--------------------------------------------------------*
 
-scenario @boolean "seq" :
-  set!yes,
-  set!yes,
-  set!yes,
-  set!no,
-  set!no,
-  set!no
-;
+scenario @boolean "seq" {
+  set(!yes)
+  set(!yes)
+  set(!yes)
+  set(!no)
+  set(!no)
+  set(!no)
+}
 
 #--------------------------------------------------------*

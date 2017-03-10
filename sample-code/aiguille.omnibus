@@ -65,11 +65,11 @@ machine @controleAiguille
 
 #--------------------------------------------------------*
 
-scenario @controleAiguille "sequence" :
- nouvellePosition!droite,
- souhaitCommande!gauche,
- nouvellePosition!milieu,
- nouvellePosition!gauche
-;
+scenario @controleAiguille "sequence" {
+ nouvellePosition (!droite)
+ souhaitCommande (!gauche)
+ nouvellePosition (!milieu)
+ nouvellePosition (!gauche)
+}
 
 #--------------------------------------------------------*

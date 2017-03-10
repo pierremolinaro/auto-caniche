@@ -155,8 +155,6 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
       mTokenCode = lexicalAnalyzer_1__3F_ ;
     }else if (scanningOk && [self testForInputString:@"=" advance:YES]) {
       mTokenCode = lexicalAnalyzer_1__3D_ ;
-    }else if (scanningOk && [self testForInputString:@";" advance:YES]) {
-      mTokenCode = lexicalAnalyzer_1__3B_ ;
     }else if (scanningOk && [self testForInputString:@":" advance:YES]) {
       mTokenCode = lexicalAnalyzer_1__3A_ ;
     }else if (scanningOk && [self testForInputString:@"." advance:YES]) {
@@ -256,7 +254,7 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) terminalVocabularyCount {
-  return 38 ;
+  return 37 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -286,7 +284,7 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [39] = {0,
+  static const NSUInteger kTerminalSymbolStyles [38] = {0,
     0 /* lexicalAnalyzer_1_identifier */,
     3 /* lexicalAnalyzer_1_integer */,
     4 /* lexicalAnalyzer_1_literal_5F_string */,
@@ -309,7 +307,6 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
     1 /* lexicalAnalyzer_1_var */,
     2 /* lexicalAnalyzer_1__3A_ */,
     2 /* lexicalAnalyzer_1__2C_ */,
-    2 /* lexicalAnalyzer_1__3B_ */,
     2 /* lexicalAnalyzer_1__21_ */,
     2 /* lexicalAnalyzer_1__7B_ */,
     2 /* lexicalAnalyzer_1__7D_ */,
@@ -336,7 +333,7 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [39] = {NO,
+  static const BOOL kTerminalAtomicSelection [38] = {NO,
     YES /* lexicalAnalyzer_1_identifier */,
     YES /* lexicalAnalyzer_1_integer */,
     NO /* lexicalAnalyzer_1_literal_5F_string */,
@@ -359,7 +356,6 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
     YES /* lexicalAnalyzer_1_var */,
     YES /* lexicalAnalyzer_1__3A_ */,
     YES /* lexicalAnalyzer_1__2C_ */,
-    YES /* lexicalAnalyzer_1__3B_ */,
     YES /* lexicalAnalyzer_1__21_ */,
     YES /* lexicalAnalyzer_1__7B_ */,
     YES /* lexicalAnalyzer_1__7D_ */,

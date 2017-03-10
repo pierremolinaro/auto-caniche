@@ -16,7 +16,7 @@ getter @varList displayVarInfo
   ->@machineVarListForDisplay outResult {
   outResult = @machineVarListForDisplay.default
   for m in self do
-    @uint columnLength = [m.mVarName length] + 1
+    @uint columnLength = [m.mVarName length]
     for c in m.mValueList do
       let @uint cstNameLength = [c.mValue.string length]
       if columnLength < cstNameLength then
@@ -24,7 +24,7 @@ getter @varList displayVarInfo
       end
     end
     outResult +=
-      !"$" + m.mVarName
+      !m.mVarName
       !m.mBDDStartBitIndex
       !m.mBDDBitCount
       !m.mValueList
@@ -38,7 +38,8 @@ getter @varList displayVarVarInfo
   ->@machineVarListForDisplay outResult {
   outResult = @machineVarListForDisplay.default
   for m in self do
-    @uint columnLength = [m.mVarName length] + 5
+    let columnName = "old " + m.mVarName
+    @uint columnLength = [columnName length]
     for c in m.mValueList do
       let @uint cstNameLength = [c.mValue.string length]
       if columnLength < cstNameLength then
@@ -46,14 +47,14 @@ getter @varList displayVarVarInfo
       end
     end
     outResult +=
-      !"old $" + m.mVarName
+      !columnName
       !m.mBDDStartBitIndex
       !m.mBDDBitCount
       !m.mValueList
       !columnLength
   end
   for m in self do
-    @uint columnLength = [m.mVarName length] + 1
+    @uint columnLength = [m.mVarName length]
     for c in m.mValueList do
       let @uint cstNameLength = [c.mValue.string length]
       if columnLength < cstNameLength then
@@ -61,7 +62,7 @@ getter @varList displayVarVarInfo
       end
     end
     outResult +=
-      !"$" + m.mVarName
+      !m.mVarName
       !m.mBDDStartBitIndex
       !m.mBDDBitCount
       !m.mValueList
@@ -76,7 +77,8 @@ getter @varList displayArgVarVarInfo
   ->@machineVarListForDisplay outResult {
   outResult = @machineVarListForDisplay.default
   for m in self do
-    @uint columnLength = [m.mVarName length] + 5
+    let columnName = "old " + m.mVarName
+    @uint columnLength = [columnName length]
     for c in m.mValueList do
       let @uint cstNameLength = [c.mValue.string length]
       if columnLength < cstNameLength then
@@ -84,14 +86,14 @@ getter @varList displayArgVarVarInfo
       end
     end
     outResult +=
-      !"old $" + m.mVarName
+      !columnName
       !m.mBDDStartBitIndex
       !m.mBDDBitCount
       !m.mValueList
       !columnLength
   end
   for m in self do
-    @uint columnLength = [m.mVarName length] + 1
+    @uint columnLength = [m.mVarName length]
     for c in m.mValueList do
       let @uint cstNameLength = [c.mValue.string length]
       if columnLength < cstNameLength then
@@ -99,14 +101,14 @@ getter @varList displayArgVarVarInfo
       end
     end
     outResult +=
-      !"$" + m.mVarName
+      !m.mVarName
       !m.mBDDStartBitIndex
       !m.mBDDBitCount
       !m.mValueList
       !columnLength
   end
   for m in inArgumentList do
-    @uint columnLength = [m.mVarName length] + 1
+    @uint columnLength = [m.mVarName length]
     for c in m.mValueList do
       let @uint cstNameLength = [c.mValue.string length]
       if columnLength < cstNameLength then
@@ -114,7 +116,7 @@ getter @varList displayArgVarVarInfo
       end
     end
     outResult +=
-      !"$" + m.mVarName
+      !m.mVarName
       !m.mBDDStartBitIndex
       !m.mBDDBitCount
       !m.mValueList
@@ -227,7 +229,8 @@ proc displayValue
 proc performDisplay
   ?let @string inTitle
   ?let @binaryset inValueSet
-  ?let @machineVarListForDisplay inAttributeList {
+  ?let @machineVarListForDisplay inAttributeList
+{
   message ["*** " + inTitle + " " stringByRightPadding !50 !'*'] + "\n"
 #--- Compute bit count, padding sizes
   @uint bitCount = 0
@@ -236,13 +239,13 @@ proc performDisplay
   end
 #--- Display header
   @string s = " "
-  displayVarNames ( !inAttributeList !?s )
+  displayVarNames (!inAttributeList !?s)
   s += " "
-  displaySeparator ( !inAttributeList !?s )
+  displaySeparator (!inAttributeList !?s)
   let @uint64list values = [inValueSet uint64ValueList !bitCount]
   for v in values do
     s += " "
-    displayValue ( !inAttributeList !v.mValue !?s )
+    displayValue (!inAttributeList !v.mValue !?s)
   end
   s += "\n"
   message s
@@ -299,11 +302,11 @@ method @machineList-element performMachineDynamicAnalysis
   dotFileContents += "  edge [fontname=courier]\n"
 #----------------------------------------------------- Build analysis context
   @uint bddStartBitIndex = 0
-  var varMap =@varMap.default
-  var varList =@varList.default
-  var varContraintSet =@binaryset.fullBinarySet{}
+  @varMap varMap = {}
+  @varList varList = {}
+  @binaryset varContraintSet = .fullBinarySet{}
   for variable in self.mEnumVarDeclarationList do
-    [inUnifiedScalarTypeMap searchKey !variable.mEnumTypeName ?* ?let @enumConstantMap constantMap ?let @lstringlist constantList]
+    [inUnifiedScalarTypeMap searchKey !variable.mEnumTypeName ?* ?let constantMap ?let constantList]
     [constantMap searchKey !variable.mConstantName ?let @uint initialValueIndex]
     let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
     [!?varMap insertKey
@@ -319,10 +322,11 @@ method @machineList-element performMachineDynamicAnalysis
       !bddStartBitIndex
       !bddBitCount
       !initialValueIndex
-    varContraintSet = varContraintSet & @binaryset. binarySetWithLowerOrEqualToConstant {
+    varContraintSet = varContraintSet & @binaryset.binarySetWithLowerOrEqualToConstant {
       !bddStartBitIndex
       !bddBitCount
-      ![[constantList length] - 1 uint64]}
+      ![[constantList length] - 1 uint64]
+    }
     bddStartBitIndex = bddStartBitIndex + bddBitCount
   end
   let @uint varTotalBitCount = bddStartBitIndex
@@ -350,7 +354,7 @@ method @machineList-element performMachineDynamicAnalysis
     )
   end
 #----------------------------------------------------- Invariant
-  var invariantList =@binarysetList.default
+  @binarysetList invariantList = {}
   @binaryset invariantValueSet = varContraintSet
   for exp in self.mInvariantExpressionList do
     [exp.mExpression computeExpressionBDD !varMap !varTotalBitCount ?let @binaryset expressionBDD]
@@ -385,7 +389,7 @@ method @machineList-element performMachineDynamicAnalysis
     }
     oldVar_Var_EqualitySet = oldVar_Var_EqualitySet & constraint
   end
-  var varMapForEventInstructionComputing =@varMap.emptyMap{}
+  @varMap varMapForEventInstructionComputing = {}
   for variable in varMap do
     [!?varMapForEventInstructionComputing insertKey
       !variable.lkey
@@ -395,16 +399,16 @@ method @machineList-element performMachineDynamicAnalysis
       !variable.mBDDBitCount
    ]
   end
-  var allTransitions =@binaryset.emptyBinarySet{}
-  var transitionEventMap =@transitionEventMap.emptyMap{}
+  @binaryset allTransitions = .emptyBinarySet
+  @transitionEventMap transitionEventMap = {}
   for event in mEventList do
   #--- Handle arguments
-    var argumentList =@varList.default
+    @varList argumentList = {}
     @varMap argVarMap = varMapForEventInstructionComputing
     @uint bddArgOldVarVarTotalBitCount = varTotalBitCount + varTotalBitCount
     @binaryset eventTransformationSet = invariantValueSet & oldVar_Var_EqualitySet
     for arg in event.mEventArgumentList do
-      [inUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let @enumConstantMap constantMap ?let @lstringlist constantList]
+      [inUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let constantMap ?let constantList]
       let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
       [!?argVarMap insertKey
         !arg.mArgumentVarName
@@ -419,7 +423,7 @@ method @machineList-element performMachineDynamicAnalysis
         !bddArgOldVarVarTotalBitCount
         !bddBitCount
         !0
-      eventTransformationSet = eventTransformationSet & @binaryset. binarySetWithLowerOrEqualToConstant {
+      eventTransformationSet = eventTransformationSet & @binaryset.binarySetWithLowerOrEqualToConstant {
         !bddArgOldVarVarTotalBitCount
         !bddBitCount
         ![[constantList length] - 1 uint64]}
@@ -436,7 +440,7 @@ method @machineList-element performMachineDynamicAnalysis
   #--- Display
     if verbose then
       displayArgVarVarValueSet (
-        !" Execution of @" + self.mMachineName + " " +  event.mEventName
+        !" Execution of @" + self.mMachineName + "." +  event.mEventName
         !eventTransformationSet
         !argumentList
         !varList
@@ -448,11 +452,6 @@ method @machineList-element performMachineDynamicAnalysis
       !event.mEventArgumentList
       !eventTransformationSet
     ]
-#      displayVarVarValueSet
-#        !" Execution of @" . selfcopy->mMachineName . " " .  event->mEventName
-#        !transitions
-#        !varList
-#      ;
     allTransitions = allTransitions | transitions
   #--- Build graphviz file
     addTransitionsToGraphvizString (
@@ -546,10 +545,12 @@ method @machineList-element performMachineDynamicAnalysis
     #--- Compute event name max length
       @uint firstColumnLength = ["Event" length]
       for event in scenario.mEventSequence do
-        @string eventString = event.mEventName.string
+        @string eventString = event.mEventName.string + " ("
         for actual in event.mArgumentNameList
         do eventString += "?" + actual.mValue.string
+        between eventString += " "
         end
+        eventString += ")"
         let @uint lg = [eventString length]
         if firstColumnLength < lg then
           firstColumnLength = lg
@@ -558,7 +559,7 @@ method @machineList-element performMachineDynamicAnalysis
     #--- Run
       s += ["Event" stringByRightPadding !firstColumnLength+1 !' ']
       displayVarNames ( !displayStateInfo !?s )
-      s += @string. stringWithSequenceOfCharacters { !'-' !firstColumnLength+1}
+      s += @string.stringWithSequenceOfCharacters { !'-' !firstColumnLength+1}
       displaySeparator ( !displayStateInfo !?s )
       message s
       for event in scenario.mEventSequence do
@@ -570,8 +571,9 @@ method @machineList-element performMachineDynamicAnalysis
         ]
       #--- Argument values
         @uint bddBitIndex = varTotalBitCount + varTotalBitCount
-        @string eventString = event.mEventName.string
-        for formal in argumentList, actual in event.mArgumentNameList do
+        @string eventString = event.mEventName.string + " ("
+        for formal in argumentList, actual in event.mArgumentNameList
+        do
           eventString += "?" + actual.mValue.string
           [inUnifiedScalarTypeMap searchKey !formal.mArgumentTypeName ?* ?let @enumConstantMap constantMap ?*]
           [constantMap searchKey !actual.mValue ?let @uint constantIndex]
@@ -581,7 +583,10 @@ method @machineList-element performMachineDynamicAnalysis
             !bitCount
             ![constantIndex uint64]}
           bddBitIndex = bddBitIndex + bitCount
+        between
+          eventString += " "
         end
+        eventString += ")"
         valueSet = [(valueSet & transitionSet) >> varTotalBitCount existOnBitIndexAndBeyond !varTotalBitCount]
         s += [eventString stringByRightPadding !firstColumnLength !' ']
         let @uint64list valueList = [valueSet uint64ValueList !varTotalBitCount]

@@ -86,7 +86,6 @@ class C_Lexique_lexicalAnalyzer : public C_Lexique {
    kToken_var,
    kToken__3A_,
    kToken__2C_,
-   kToken__3B_,
    kToken__21_,
    kToken__7B_,
    kToken__7D_,
@@ -134,7 +133,7 @@ class C_Lexique_lexicalAnalyzer : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 38 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 37 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

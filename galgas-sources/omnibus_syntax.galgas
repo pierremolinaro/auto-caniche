@@ -24,22 +24,23 @@ rule <scenario>
   $scenario$
   $machine-type-name$ ?var @lstring machineTypeName
   $literal_string$ ?var @lstring scenarioName
-  $:$
+  ${$
   var eventSequence =@scenarioEventSequence.default
   repeat
     $identifier$ ?var  @lstring eventName
     var argList =@lstringlist.emptyList{}
+    $($
     repeat
     while
       $!$
       $identifier$ ?var  @lstring argName
       argList += !argName
     end
+    $)$
     eventSequence += !eventName !argList
   while
-    $,$
   end
-  $;$
+  $}$
   ioAST.mScenarioList += !machineTypeName !scenarioName !eventSequence
 }
 
