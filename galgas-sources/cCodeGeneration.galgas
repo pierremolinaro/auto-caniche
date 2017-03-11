@@ -46,12 +46,14 @@ proc performCCodeGeneration
   ?let @machineMap inClassTypeMap {
 #--- Generate enum declarations
   for () in  inUnifiedScalarTypeMap do
-   let @string s = [filewrapper CCodeGenerationTemplates.enumerationDeclaration
-     !lkey.string
-     !mEnumConstantList
-   ]
-   let @string fileName = [inSourceFileName stringByDeletingPathExtension] + "-enum-" + lkey + ".h"
-   [s writeToFileWhenDifferentContents !fileName ?*]
+    if mGenerate then
+      let @string s = [filewrapper CCodeGenerationTemplates.enumerationDeclaration
+       !lkey.string
+       !mEnumConstantList
+      ]
+      let @string fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + lkey + ".h"
+      [s writeToFileWhenDifferentContents !fileName ?*]
+    end
   end
 #--- Generate function declarations
   for () in  inFunctionMap do
@@ -61,7 +63,7 @@ proc performCCodeGeneration
      ![mResultTypeProxy key]
      ![mDecoratedFunctionValueList length]
    ]
-   @string fileName = [inSourceFileName stringByDeletingPathExtension] + "-function-" + lkey + ".h"
+   @string fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + lkey + ".h"
    [s writeToFileWhenDifferentContents !fileName ?*]
    s = [filewrapper CCodeGenerationTemplates.functionImplementation
      ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
@@ -69,19 +71,19 @@ proc performCCodeGeneration
      ![mResultTypeProxy key]
      !mDecoratedFunctionValueList
    ]
-   fileName = [inSourceFileName stringByDeletingPathExtension] + "-function-" + lkey + ".cpp"
+   fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + lkey + ".cpp"
    [s writeToFileWhenDifferentContents !fileName ?*]
   end
 #--- Generate machine declaration and implementation
   for c in inClassTypeMap do
    let @string h = [filewrapper CCodeGenerationTemplates.machineDeclaration
-     ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
+     ![[inSourceFileName lastPathComponent] stringByDeletingLastPathComponent]
      !inUnifiedScalarTypeMap
      ![c.lkey.string identifierRepresentation]
      !c.mAttributeList
      !c.mEventMap
    ]
-   @string fileName = [inSourceFileName stringByDeletingPathExtension] + "-machine-" + c.lkey + ".h"
+   @string fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + c.lkey + ".h"
    [h writeToFileWhenDifferentContents !fileName ?*]
    let @string cpp = [filewrapper CCodeGenerationTemplates.machineImplementation
      ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
@@ -91,7 +93,7 @@ proc performCCodeGeneration
      !c.mEventMap
      !inFunctionMap
    ]
-   fileName = [inSourceFileName stringByDeletingPathExtension] + "-machine-" + c.lkey + ".cpp"
+   fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + c.lkey + ".cpp"
    [cpp writeToFileWhenDifferentContents !fileName ?*]
   end
 }
@@ -216,8 +218,7 @@ override getter @logicalOrDecoratedExpression generateExpressionCCode
 
 #-------------------------------------------------------------------*
 
-override getter @implicationDecoratedExpression generateExpressionCCode
-  ->@string outResult {
+override getter @implicationDecoratedExpression generateExpressionCCode ->@string outResult {
   outResult = "( !(" + [mLeft generateExpressionCCode] + ") || " + [mRight generateExpressionCCode] + ")"
 }
 

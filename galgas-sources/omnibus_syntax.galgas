@@ -2,9 +2,11 @@ syntax omnibus_syntax (lexicalAnalyzer) {
 
 #--------------------------------------------------------------------*
 
-rule <start_symbol>
-  !@ast outAST {
-  outAST = @ast.default
+rule <start_symbol> !@ast outAST {
+  outAST = .default
+#--- Add $bool type
+  outAST.mEnumTypeList += !["bool" here] !{!["false" here], !["true" here]} !false
+#---
   repeat
   while 
     <enum_declaration> !?outAST
@@ -22,18 +24,18 @@ rule <start_symbol>
 rule <scenario>
   ?!@ast ioAST {
   $scenario$
-  $machine-type-name$ ?var @lstring machineTypeName
-  $literal_string$ ?var @lstring scenarioName
+  $identifier$ ?let @lstring machineTypeName
+  $literal_string$ ?let @lstring scenarioName
   ${$
   var eventSequence =@scenarioEventSequence.default
   repeat
-    $identifier$ ?var  @lstring eventName
+    $identifier$ ?let @lstring eventName
     var argList =@lstringlist.emptyList{}
     $($
     repeat
     while
       $!$
-      $identifier$ ?var  @lstring argName
+      $identifier$ ?let @lstring argName
       argList += !argName
     end
     $)$
@@ -46,20 +48,19 @@ rule <scenario>
 
 #--------------------------------------------------------------------*
 
-rule <enum_declaration>
-  ?!@ast ioAST {
+rule <enum_declaration> ?!@ast ioAST {
   $enum$
   $enum-type-name$ ?var @lstring enumName
   ${$
-  var cstList =@lstringlist.emptyList{}
+  @lstringlist cstList = {}
   repeat
-    $identifier$ ?var  @lstring constantName
+    $identifier$ ?let @lstring constantName
     cstList += !constantName
   while
     $,$
   end
   $}$
-  ioAST.mEnumTypeList += !enumName !cstList
+  ioAST.mEnumTypeList += !enumName !cstList !true
 }
 
 #--------------------------------------------------------------------*
@@ -67,15 +68,15 @@ rule <enum_declaration>
 rule <enum_function>
   ?!@ast ioAST {
   $function$
-  $identifier$ ?var  @lstring functionName
+  $identifier$ ?let @lstring functionName
   $enum-type-name$ ?var @lstring operandEnumName
   $->$
   $enum-type-name$ ?var @lstring resultEnumName
   var functionValueList = @functionValueList.default
   repeat
-    $identifier$ ?var  @lstring operandConstantName
+    $identifier$ ?let @lstring operandConstantName
     $:$
-    $identifier$ ?var  @lstring resultConstantName
+    $identifier$ ?let @lstring resultConstantName
     functionValueList += !operandConstantName !resultConstantName
   while
   end
@@ -87,7 +88,7 @@ rule <enum_function>
 
 rule <machine> ?!@ast ioAST {
   $machine$
-  $machine-type-name$ ?var @lstring machineTypeName
+  $identifier$ ?let @lstring machineTypeName
 #---
   var invariantExpressionList =@expressionList.emptyList{}
   var enumVarDeclarationList =@enumVarDeclarationList.default
@@ -95,11 +96,11 @@ rule <machine> ?!@ast ioAST {
   repeat
   while
     $var$
-    $identifier$ ?var  @lstring variableName
+    $identifier$ ?let @lstring variableName
     $enum-type-name$ ?var @lstring enumTypeName
     $=$
     $.$
-    $identifier$ ?var  @lstring constantName
+    $identifier$ ?let @lstring constantName
     enumVarDeclarationList += !enumTypeName !variableName !constantName
    while
     $invariant$
@@ -109,13 +110,13 @@ rule <machine> ?!@ast ioAST {
     invariantExpressionList += !lbl !expression
   while
     $event$
-    $identifier$ ?var  @lstring eventName
+    $identifier$ ?let @lstring eventName
     $($
     var eventArgumentList =@eventArgumentList.default
     repeat
     while
       $?$
-      $identifier$ ?var  @lstring argumentName
+      $identifier$ ?let @lstring argumentName
       $enum-type-name$ ?var @lstring enumTypeName
       eventArgumentList += !enumTypeName !argumentName
     end
@@ -200,7 +201,7 @@ rule <expression4> !@expression outExpression {
 #--------------------------------------------------------------------*
 
 rule <expression4> !@expression outExpression {
-  $identifier$ ?var  @lstring propertyName
+  $identifier$ ?let @lstring propertyName
   @enumComparisonOperator comparisonOperator
   select
     $==$
@@ -221,7 +222,7 @@ rule <expression4> !@expression outExpression {
 
 rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOperand {
   $.$
-  $identifier$ ?var  @lstring constantName
+  $identifier$ ?let @lstring constantName
   outComparisonRightOperand = @constantAsComparisonRightOperand. new {
     !constantName}
 }
@@ -236,7 +237,7 @@ rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOpera
     $old$
     hasOldQualifier = true
   end
-  $identifier$ ?var  @lstring propertyName
+  $identifier$ ?let @lstring propertyName
   outComparisonRightOperand = @attributeAsComparisonRightOperand. new {
     !propertyName
     !hasOldQualifier}
@@ -264,7 +265,7 @@ rule <instruction> !@instruction outInstruction {
 #--------------------------------------------------------------------*
 
 rule <instruction> !@instruction outInstruction {
-  $identifier$ ?var  @lstring variableName
+  $identifier$ ?let @lstring variableName
   $=$
   <assignment_source_expression> ?let @assignmentSourceExpression expression
   outInstruction = @assignmentInstruction. new { !variableName !expression}
@@ -281,52 +282,52 @@ rule <assignment_source_expression> !@assignmentSourceExpression outExp {
 
 rule <assignment_source_expression> !@assignmentSourceExpression outExp {
   $.$
-  $identifier$ ?var  @lstring constantName
+  $identifier$ ?let @lstring constantName
   outExp = @constantAsAssignmentSourceExpression. new { !constantName}
 }
 
 #--------------------------------------------------------------------*
 
 rule <assignment_source_expression> !@assignmentSourceExpression outExp {
-  $identifier$ ?var  @lstring functionName
+  $identifier$ ?let @lstring functionName
   $($
-  $identifier$ ?var  @lstring propertyName
+  $identifier$ ?let @lstring propertyName
   $)$
   outExp = @functionAsAssignmentSourceExpression. new { !functionName !propertyName}
 }
 
 #--------------------------------------------------------------------*
 
-rule <instruction> !@instruction outInstruction {
-  $switch$
-  $identifier$ ?let @lstring variableName
-  ${$
-  @switchCaseList switchCaseList = {} 
-  repeat
-    $case$
-    @lstringlist constantNameList = {}
-    repeat
-      $.$
-      $identifier$ ?let @lstring constantName
-      constantNameList += !constantName
-    while
-      $,$
-    end
-    let endOfConstantList = @location.here
-    $:$
-    @instructionList caseInstructionList = {}
-    <instruction_list> !?caseInstructionList
-    switchCaseList += !constantNameList !endOfConstantList !caseInstructionList
-  while
-  end
-  outInstruction = @switchInstruction.new {
-    !variableName.location
-    !variableName
-    !switchCaseList
-    !.here
-  }
-  $}$
-}
+#rule <instruction> !@instruction outInstruction {
+#  $switch$
+#  $identifier$ ?let @lstring variableName
+#  ${$
+#  @switchCaseList switchCaseList = {} 
+#  repeat
+#    $case$
+#    @lstringlist constantNameList = {}
+#    repeat
+#      $.$
+#      $identifier$ ?let @lstring constantName
+#      constantNameList += !constantName
+#    while
+#      $,$
+#    end
+#    let endOfConstantList = @location.here
+#    $:$
+#    @instructionList caseInstructionList = {}
+#    <instruction_list> !?caseInstructionList
+#    switchCaseList += !constantNameList !endOfConstantList !caseInstructionList
+#  while
+#  end
+#  outInstruction = @switchInstruction.new {
+#    !variableName.location
+#    !variableName
+#    !switchCaseList
+#    !.here
+#  }
+#  $}$
+#}
 
 #--------------------------------------------------------------------*
 

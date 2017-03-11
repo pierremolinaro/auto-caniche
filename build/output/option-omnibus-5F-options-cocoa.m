@@ -23,15 +23,6 @@ void enterOptionsFor_omnibus_5F_options (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"omnibus_options"
-    identifier:@"veryVerbose"
-    commandChar:86
-    commandString:@"very-verbose"
-    comment:@"More verbose output"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

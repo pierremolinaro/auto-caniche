@@ -1,9 +1,4 @@
 
-
-#--- Prologue routine
-before {
-}
-
 #--- 'when' clauses
 case . "omnibus"
 message "a source text file with the .plm extension"
@@ -19,15 +14,13 @@ grammar omnibus_grammar
     ?let @machineMap machineMap
   )
 #---
-  if @uint. errorCount == 0 then
-    performDynamicAnalysis ( !inSourceFile.string !ast !unifiedScalarTypeMap !functionMap !machineMap )
+  if @uint.errorCount == 0 then
+    performDynamicAnalysis (!inSourceFile.string !ast !unifiedScalarTypeMap !functionMap !machineMap ?let generationString)
+    [generationString writeToFileWhenDifferentContents !inSourceFile.string + ".txt" ?*]
   end
 #---
-  if (@uint. errorCount == 0) & [option omnibus_options.generateCCode value] then
-    performCCodeGeneration ( !inSourceFile.string !unifiedScalarTypeMap !functionMap !machineMap )
+  if (@uint.errorCount == 0) & [option omnibus_options.generateCCode value] then
+    performCCodeGeneration (!inSourceFile.string !unifiedScalarTypeMap !functionMap !machineMap)
   end
 }
 
-#--- Epilogue routine
-after {
-}

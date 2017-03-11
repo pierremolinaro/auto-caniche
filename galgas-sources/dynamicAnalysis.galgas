@@ -129,11 +129,14 @@ getter @varList displayArgVarVarInfo
 proc displayVarValueSet
   ?let @string inTitle
   ?let @binaryset inValueSet
-  ?let @varList inVarList {
+  ?let @varList inVarList
+  ?!@string ioGenerationString
+{
   performDisplay (
     !inTitle
     !inValueSet
     ![inVarList displayVarInfo]
+    !?ioGenerationString
   )
 }
 
@@ -143,11 +146,14 @@ proc displayArgVarVarValueSet
   ?let @string inTitle
   ?let @binaryset inValueSet
   ?let @varList inArgumentList
-  ?let @varList inVarList {
+  ?let @varList inVarList
+  ?!@string ioGenerationString
+{
   performDisplay (
     !inTitle
     !inValueSet
     ![inVarList displayArgVarVarInfo !inArgumentList]
+    !?ioGenerationString
   )
 }
 
@@ -156,11 +162,14 @@ proc displayArgVarVarValueSet
 proc displayVarVarValueSet
   ?let @string inTitle
   ?let @binaryset inValueSet
-  ?let @varList inVarList {
+  ?let @varList inVarList
+  ?!@string ioGenerationString
+{
   performDisplay (
     !inTitle
     !inValueSet
     ![inVarList displayVarVarInfo]
+    !?ioGenerationString
   )
 }
 
@@ -169,7 +178,8 @@ proc displayVarVarValueSet
 func nameForValue
   ?let @uint64 inValue
   ?let @varList inVarList
-  ->@string outResult {
+  ->@string outResult
+{
   outResult = ""
   @uint64 v = inValue
   for a in inVarList
@@ -199,10 +209,11 @@ proc displayVarNames
 
 proc displaySeparator
   ?let @machineVarListForDisplay inAttributeList
-  ?!@string ioString {
+  ?!@string ioString
+{
   ioString += "|"
   for a in inAttributeList do
-    ioString += @string. stringWithSequenceOfCharacters { !'-' !a.mColumnLength + 2} + "|"
+    ioString += @string. stringWithSequenceOfCharacters {!'-' !a.mColumnLength + 2} + "|"
   end
   ioString += "\n"
 }
@@ -212,7 +223,8 @@ proc displaySeparator
 proc displayValue
   ?let @machineVarListForDisplay inAttributeList
   ?let @uint64 inValue
-  ?!@string ioString {
+  ?!@string ioString
+{
   ioString += "|"
   @uint64 aValue = inValue
   for a in inAttributeList do
@@ -230,25 +242,22 @@ proc performDisplay
   ?let @string inTitle
   ?let @binaryset inValueSet
   ?let @machineVarListForDisplay inAttributeList
+  ?!@string ioGenerationString
 {
-  message ["*** " + inTitle + " " stringByRightPadding !50 !'*'] + "\n"
+  ioGenerationString += ["*** " + inTitle + " " stringByRightPadding !50 !'*'] + "\n"
 #--- Compute bit count, padding sizes
   @uint bitCount = 0
   for a in inAttributeList do
     bitCount = bitCount + a.mBDDBitCount
   end
 #--- Display header
-  @string s = " "
-  displayVarNames (!inAttributeList !?s)
-  s += " "
-  displaySeparator (!inAttributeList !?s)
+  displayVarNames (!inAttributeList !?ioGenerationString)
+  displaySeparator (!inAttributeList !?ioGenerationString)
   let @uint64list values = [inValueSet uint64ValueList !bitCount]
   for v in values do
-    s += " "
-    displayValue (!inAttributeList !v.mValue !?s)
+    displayValue (!inAttributeList !v.mValue !?ioGenerationString)
   end
-  s += "\n"
-  message s
+  ioGenerationString += "\n"
 } 
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -294,9 +303,9 @@ method @machineList-element performMachineDynamicAnalysis
   ?let @string inSourceFileName
   ?let @unifiedScalarTypeMap inUnifiedScalarTypeMap
   ?let @scenarioList inScenarioList
-  ?let @functionMap inFunctionMap {
-  let @bool veryVerbose = [option omnibus_options.veryVerbose value]
-  let @bool verbose = veryVerbose | @application.verboseOutput
+  ?let @functionMap inFunctionMap
+  ?!@string ioGenerationString
+{
   @string dotFileContents = "digraph G {\n"
   dotFileContents += "  node [fontname=courier]\n"
   dotFileContents += "  edge [fontname=courier]\n"
@@ -306,7 +315,7 @@ method @machineList-element performMachineDynamicAnalysis
   @varList varList = {}
   @binaryset varContraintSet = .fullBinarySet{}
   for variable in self.mEnumVarDeclarationList do
-    [inUnifiedScalarTypeMap searchKey !variable.mEnumTypeName ?* ?let constantMap ?let constantList]
+    [inUnifiedScalarTypeMap searchKey !variable.mEnumTypeName ?* ?let constantMap ?let constantList ?*]
     [constantMap searchKey !variable.mConstantName ?let @uint initialValueIndex]
     let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
     [!?varMap insertKey
@@ -346,13 +355,12 @@ method @machineList-element performMachineDynamicAnalysis
     dotFileContents += "  \"\" [shape=plaintext]\n"
     dotFileContents += "  \"\" -> \"" + nameForValue (!v.mValue !varList) + "\" ;\n"
   end
-  if verbose then
-    displayVarValueSet (
-      !"@" + self.mMachineName + " init configuration"
-      !initValueSet
-      !varList
-    )
-  end
+  displayVarValueSet (
+    !self.mMachineName.string + " init configuration"
+    !initValueSet
+    !varList
+    !?ioGenerationString
+  )
 #----------------------------------------------------- Invariant
   @binarysetList invariantList = {}
   @binaryset invariantValueSet = varContraintSet
@@ -366,15 +374,14 @@ method @machineList-element performMachineDynamicAnalysis
     invariantValueSet = invariantValueSet & inv
   end
   let @uint64list valueList = [invariantValueSet uint64ValueList !varTotalBitCount]
-  if verbose then
-    displayVarValueSet (
-      !" Invariant of @" + self.mMachineName + " (" + [valueList length] + " value" + if [valueList length] > 1 then "s" else "" end + ")"
-      !invariantValueSet
-      !varList
-    )
-  else
-    message " invariant of @" + self.mMachineName + ": " + [valueList length] + " value" + if [valueList length] > 1 then "s" else "" end + "\n"
-  end
+  let m = self.mMachineName.string + " (" + [valueList length] + " configuration" + if [valueList length] > 1 then "s" else "" end + ")"
+  displayVarValueSet (
+    !" Invariant of " + m
+    !invariantValueSet
+    !varList
+    !?ioGenerationString
+  )
+  message " Invariant of " + m + "\n"
   for v in valueList do
     dotFileContents += "  \"" + nameForValue (!v.mValue !varList) + "\" [shape=rectangle]\n"
   end
@@ -408,7 +415,7 @@ method @machineList-element performMachineDynamicAnalysis
     @uint bddArgOldVarVarTotalBitCount = varTotalBitCount + varTotalBitCount
     @binaryset eventTransformationSet = invariantValueSet & oldVar_Var_EqualitySet
     for arg in event.mEventArgumentList do
-      [inUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let constantMap ?let constantList]
+      [inUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let constantMap ?let constantList ?*]
       let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
       [!?argVarMap insertKey
         !arg.mArgumentVarName
@@ -438,14 +445,13 @@ method @machineList-element performMachineDynamicAnalysis
       !?eventTransformationSet
     ]
   #--- Display
-    if verbose then
-      displayArgVarVarValueSet (
-        !" Execution of @" + self.mMachineName + "." +  event.mEventName
-        !eventTransformationSet
-        !argumentList
-        !varList
-      )
-    end
+    displayArgVarVarValueSet (
+      !" Running " + self.mMachineName + "." +  event.mEventName + " event"
+      !eventTransformationSet
+      !argumentList
+      !varList
+      !?ioGenerationString
+    )
     let @binaryset transitions = [eventTransformationSet existOnBitIndexAndBeyond !varTotalBitCount + varTotalBitCount]
     [!?transitionEventMap insertKey
       !event.mEventName
@@ -470,41 +476,41 @@ method @machineList-element performMachineDynamicAnalysis
       ensureValueSet = ensureValueSet & s
     end
     let @uint64 valueCount = [ensureValueSet valueCount !varTotalBitCount + varTotalBitCount]
-    if veryVerbose then
-      displayVarVarValueSet (
-        !"Post-condition of @" + self.mMachineName + " " + event.mEventName
-           + " (" + valueCount + " value" + if valueCount > 1L then "s" else "" end + ")"
-        !ensureValueSet
-        !varList
-      )
-    else
-      message " Post-condition of @" + self.mMachineName + " " + event.mEventName + ": " 
-      + valueCount + " value" + if valueCount > 1L then "s" else "" end + "\n\n"
-    end
+    displayVarVarValueSet (
+      !" Post-condition of " + self.mMachineName + "." + event.mEventName + " event: "
+         + valueCount + " configuration" + if valueCount > 1L then "s" else "" end
+      !ensureValueSet
+      !varList
+      !?ioGenerationString
+    )
+    message " Post-condition of " + self.mMachineName + "." + event.mEventName + " event: "
+      + valueCount + " configuration" + if valueCount > 1L then "s" else "" end + "\n"
   #--- Check ensure condition is compatible with instructions
     if [ensureValueSet isEmpty] then
       error event.mEndOfEnsureExpressionList : "ensure condition is empty"
     else
       let @binaryset ensureAndInvariant = ensureValueSet & invariantValueSet
-      if veryVerbose then
-        displayVarVarValueSet (
-          !"Post-condition @" + self.mMachineName + " " +  event.mEventName + "' and invariant"
-          !ensureAndInvariant
-          !varList
-        )
-      end
+      let @uint64 valueCount = [ensureAndInvariant valueCount !varTotalBitCount + varTotalBitCount]
+      let m = " Post-condition and invariant of " + self.mMachineName + "." +  event.mEventName + " event: "
+         + valueCount + " configuration" + if valueCount > 1L then "s" else "" end
+      displayVarVarValueSet (
+        !m
+        !ensureAndInvariant
+        !varList
+        !?ioGenerationString
+      )
+      message m + "\n"
       if [ensureAndInvariant isEmpty] then
         error event.mEndOfEnsureExpressionList :
           "post condition condition is not compatible with invariant"
       else
         let @binaryset ensureAndContext = transitions & ensureValueSet
-        if veryVerbose then
-          displayVarVarValueSet (
-            !"Post-condition and execution of @" + self.mMachineName + " " +  event.mEventName
-            !ensureAndContext
-            !varList
-          )
-        end
+        displayVarVarValueSet (
+          !"Post-condition and execution of " + self.mMachineName + "." +  event.mEventName
+          !ensureAndContext
+          !varList
+          !?ioGenerationString
+        )
         if ensureAndContext != transitions then
           error event.mEndOfEnsureExpressionList :
             "event instructions is not compatible with post condition"
@@ -528,19 +534,21 @@ method @machineList-element performMachineDynamicAnalysis
   if accessibleStates != invariantValueSet then
     let @binaryset inaccessibleStateSet = invariantValueSet & ~ accessibleStates
     let @uint64 inaccessibleStateCount = [inaccessibleStateSet valueCount !varTotalBitCount]
-    error self.mMachineName : [inaccessibleStateCount string] + " inaccessible invariant value"
+    error self.mMachineName : [inaccessibleStateCount string] + " inaccessible invariant configuration"
     + if inaccessibleStateCount > 1L then "s" else "" end
     displayVarValueSet (
-      !"Inaccessible @" + self.mMachineName + " invariant values"
+      !"Inaccessible " + self.mMachineName + " invariant configurations"
       !inaccessibleStateSet
       !varList
+      !?ioGenerationString
     )
   end
 #----------------------------------------------------- Run scenarios
   for scenario in inScenarioList do
     if scenario.mMachineName.string == self.mMachineName.string then
+      message " Scenario \"" + scenario.mScenarioName + "\" for " + self.mMachineName + " machine\n"
+      ioGenerationString += "*** Scenario \"" + scenario.mScenarioName + "\" for " + self.mMachineName + " machine:\n"
       @binaryset valueSet = initValueSet
-      @string s = "*** scenario \"" + scenario.mScenarioName + "\" for @" + self.mMachineName + " machine:\n"
       let @machineVarListForDisplay displayStateInfo = [varList displayVarInfo]
     #--- Compute event name max length
       @uint firstColumnLength = ["Event" length]
@@ -557,13 +565,11 @@ method @machineList-element performMachineDynamicAnalysis
         end
       end
     #--- Run
-      s += ["Event" stringByRightPadding !firstColumnLength+1 !' ']
-      displayVarNames ( !displayStateInfo !?s )
-      s += @string.stringWithSequenceOfCharacters { !'-' !firstColumnLength+1}
-      displaySeparator ( !displayStateInfo !?s )
-      message s
+      ioGenerationString += ["Event" stringByRightPadding !firstColumnLength+1 !' ']
+      displayVarNames (!displayStateInfo !?ioGenerationString)
+      ioGenerationString += @string.stringWithSequenceOfCharacters { !'-' !firstColumnLength+1}
+      displaySeparator (!displayStateInfo !?ioGenerationString)
       for event in scenario.mEventSequence do
-        s = ""
         [transitionEventMap searchKey
           !event.mEventName
           ?let @eventArgumentList argumentList
@@ -575,7 +581,7 @@ method @machineList-element performMachineDynamicAnalysis
         for formal in argumentList, actual in event.mArgumentNameList
         do
           eventString += "?" + actual.mValue.string
-          [inUnifiedScalarTypeMap searchKey !formal.mArgumentTypeName ?* ?let @enumConstantMap constantMap ?*]
+          [inUnifiedScalarTypeMap searchKey !formal.mArgumentTypeName ?* ?let @enumConstantMap constantMap ?2*]
           [constantMap searchKey !actual.mValue ?let @uint constantIndex]
           let @uint bitCount = [[constantMap count] - 1 significantBitCount]
           transitionSet = transitionSet & @binaryset. binarySetWithEqualToConstant {
@@ -588,21 +594,20 @@ method @machineList-element performMachineDynamicAnalysis
         end
         eventString += ")"
         valueSet = [(valueSet & transitionSet) >> varTotalBitCount existOnBitIndexAndBeyond !varTotalBitCount]
-        s += [eventString stringByRightPadding !firstColumnLength !' ']
+        ioGenerationString += [eventString stringByRightPadding !firstColumnLength !' ']
         let @uint64list valueList = [valueSet uint64ValueList !varTotalBitCount]
         if [valueList length] == 0 then
-          error event.mEventName: "no value instead of 1"
-          s += "\n"
+          error event.mEventName: "no configuration instead of 1"
+          ioGenerationString += "\n"
         elsif [valueList length] > 1 then
-          error event.mEventName: [[valueList length] string] + " values instead of 1"
-          s += "\n"
+          error event.mEventName: [[valueList length] string] + " configurations instead of 1"
+          ioGenerationString += "\n"
         else
-          s += " "
-          displayValue ( !displayStateInfo ![valueList mValueAtIndex !0] !?s )
+          ioGenerationString += " "
+          displayValue ( !displayStateInfo ![valueList mValueAtIndex !0] !?ioGenerationString)
         end
-        message s
       end
-      message "\n"
+      ioGenerationString += "\n"
     end
   end
 }
@@ -643,14 +648,18 @@ proc performDynamicAnalysis
   ?let @ast inAST
   ?let @unifiedScalarTypeMap inUnifiedScalarTypeMap
   ?let @functionMap inFunctionMap
-  ?let @machineMap unused inMachineMap {
+  ?let @machineMap unused inMachineMap
+  !@string outGenerationString
+{
   message "*** File " + [inSourceFileName lastPathComponent] + " ***\n"
+  outGenerationString = "*** File " + [inSourceFileName lastPathComponent] + " ***\n"
   for m in inAST.mMachineList do
     [m performMachineDynamicAnalysis
       !inSourceFileName
       !inUnifiedScalarTypeMap
       !inAST.mScenarioList
       !inFunctionMap
+      !?outGenerationString
     ]
   end
 }

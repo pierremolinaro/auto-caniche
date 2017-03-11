@@ -5,6 +5,7 @@
 list @enumTypeList {
   @lstring mEnumListName
   @lstringlist mEnumConstantList
+  @bool mGenerateCode
 }
 
 #--------------------------------------------------------------------*

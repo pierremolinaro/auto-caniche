@@ -1508,6 +1508,108 @@ class GALGAS_string callExtensionGetter_generateExpressionCCode (const class cPt
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                              @switchInstruction class                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_switchInstruction : public GALGAS_instruction {
+//--- Constructor
+  public : GALGAS_switchInstruction (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_switchInstruction constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_switchInstruction * ptr (void) const { return (const cPtr_switchInstruction *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_switchInstruction (const cPtr_switchInstruction * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_switchInstruction extractObject (const GALGAS_object & inObject,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_switchInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_switchCaseList & inOperand2,
+                                                                  const class GALGAS_location & inOperand3
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_switchInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfSwitchExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mSWITCHinstructionLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_switchCaseList getter_mSwitchCaseList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVariableName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_switchInstruction class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstruction ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Pointer class for @switchInstruction class                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_switchInstruction : public cPtr_instruction {
+//--- Attributes
+  public : GALGAS_location mProperty_mSWITCHinstructionLocation ;
+  public : GALGAS_lstring mProperty_mVariableName ;
+  public : GALGAS_switchCaseList mProperty_mSwitchCaseList ;
+  public : GALGAS_location mProperty_mEndOfSwitchExpression ;
+
+//--- Constructor
+  public : cPtr_switchInstruction (const GALGAS_location & in_mSWITCHinstructionLocation,
+                                   const GALGAS_lstring & in_mVariableName,
+                                   const GALGAS_switchCaseList & in_mSwitchCaseList,
+                                   const GALGAS_location & in_mEndOfSwitchExpression
+                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mSWITCHinstructionLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mVariableName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_switchCaseList getter_mSwitchCaseList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfSwitchExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                       @decoratedComparisonInExpression class                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2408,10 +2510,6 @@ class cGrammar_omnibus_5F_grammar : public cParser_omnibus_5F_syntax {
   public : virtual int32_t select_omnibus_5F_syntax_13 (C_Lexique_lexicalAnalyzer *) ;
 
   public : virtual int32_t select_omnibus_5F_syntax_14 (C_Lexique_lexicalAnalyzer *) ;
-
-  public : virtual int32_t select_omnibus_5F_syntax_15 (C_Lexique_lexicalAnalyzer *) ;
-
-  public : virtual int32_t select_omnibus_5F_syntax_16 (C_Lexique_lexicalAnalyzer *) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2436,6 +2534,7 @@ void extensionMethod_performMachineDynamicAnalysis (const class GALGAS_machineLi
                                                     const class GALGAS_unifiedScalarTypeMap constin_inUnifiedScalarTypeMap,
                                                     const class GALGAS_scenarioList constin_inScenarioList,
                                                     const class GALGAS_functionMap constin_inFunctionMap,
+                                                    class GALGAS_string & io_ioGenerationString,
                                                     class C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -2449,37 +2548,6 @@ class GALGAS_string function_nameForValue (const class GALGAS_uint_36__34_ & con
                                            const class GALGAS_varList & constinArgument1,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Bool options                                                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern C_BoolCommandLineOption gOption_omnibus_5F_options_generateCCode ;
-
-extern C_BoolCommandLineOption gOption_omnibus_5F_options_veryVerbose ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               UInt options                                                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              String options                                                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              String List options                                                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//---------------------------------------------------------------------------------------------------------------------*
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2507,6 +2575,7 @@ void routine_displayArgVarVarValueSet (const class GALGAS_string constinArgument
                                        const class GALGAS_binaryset constinArgument1,
                                        const class GALGAS_varList constinArgument2,
                                        const class GALGAS_varList constinArgument3,
+                                       class GALGAS_string & ioArgument4,
                                        class C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
@@ -2553,6 +2622,7 @@ void routine_displayVarNames (const class GALGAS_machineVarListForDisplay consti
 void routine_displayVarValueSet (const class GALGAS_string constinArgument0,
                                  const class GALGAS_binaryset constinArgument1,
                                  const class GALGAS_varList constinArgument2,
+                                 class GALGAS_string & ioArgument3,
                                  class C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
@@ -2565,8 +2635,38 @@ void routine_displayVarValueSet (const class GALGAS_string constinArgument0,
 void routine_displayVarVarValueSet (const class GALGAS_string constinArgument0,
                                     const class GALGAS_binaryset constinArgument1,
                                     const class GALGAS_varList constinArgument2,
+                                    class GALGAS_string & ioArgument3,
                                     class C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Bool options                                                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern C_BoolCommandLineOption gOption_omnibus_5F_options_generateCCode ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               UInt options                                                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              String options                                                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              String List options                                                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+//---------------------------------------------------------------------------------------------------------------------*
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2590,6 +2690,7 @@ void routine_performStaticAnalysis (const class GALGAS_ast constinArgument0,
 void routine_performDisplay (const class GALGAS_string constinArgument0,
                              const class GALGAS_binaryset constinArgument1,
                              const class GALGAS_machineVarListForDisplay constinArgument2,
+                             class GALGAS_string & ioArgument3,
                              class C_Compiler * inCompiler
                              COMMA_LOCATION_ARGS) ;
 
@@ -2604,6 +2705,7 @@ void routine_performDynamicAnalysis (const class GALGAS_string constinArgument0,
                                      const class GALGAS_unifiedScalarTypeMap constinArgument2,
                                      const class GALGAS_functionMap constinArgument3,
                                      const class GALGAS_machineMap constinArgument4,
+                                     class GALGAS_string & outArgument5,
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 

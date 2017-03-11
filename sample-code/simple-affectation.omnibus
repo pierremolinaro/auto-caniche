@@ -3,7 +3,7 @@ enum $couleur {vert, orange, rouge}
 
 #--------------------------------------------------------*
 
-machine @sequentiel
+machine SimpleAffectation
 
   var feu $couleur = .vert
 
@@ -20,13 +20,13 @@ machine @sequentiel
 
 #--------------------------------------------------------*
 
-scenario @sequentiel "nop sequence" {
+scenario SimpleAffectation "nop sequence" {
   nop () nop ()
 }
 
 #--------------------------------------------------------*
 
-scenario @sequentiel "assignment sequence" {
+scenario SimpleAffectation "assignment sequence" {
   assignment(!orange)
   assignment(!rouge)
 }

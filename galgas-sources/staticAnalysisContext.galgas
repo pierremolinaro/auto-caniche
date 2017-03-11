@@ -42,6 +42,7 @@ shared map @unifiedScalarTypeMap {
   @scalarTypeKind mKind
   @enumConstantMap mConstantMap
   @lstringlist mEnumConstantList
+  @bool mGenerate
   insert insertKey error message "the '%K' scalar type is already declared"
   search searchKey error message "there is no '%K' scalar type"
 }

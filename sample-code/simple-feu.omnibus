@@ -11,7 +11,7 @@ function succ $couleur -> $couleur
 
 #--------------------------------------------------------*
 
-machine @sequentiel
+machine SimpleFeuSequentiel
   var feu $couleur = .vert
   event tick () {
     feu = succ (feu)
@@ -20,7 +20,7 @@ machine @sequentiel
 
 #--------------------------------------------------------*
 
-scenario @sequentiel "essai" {
+scenario SimpleFeuSequentiel "essai" {
   tick () tick () tick () tick () tick ()
 }
 

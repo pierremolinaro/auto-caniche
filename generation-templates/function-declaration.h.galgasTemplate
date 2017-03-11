@@ -7,11 +7,11 @@
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#include "%!FILE_NAME%-enum-%![RESULT_TYPE_NAME identifierRepresentation]%.h"
+#include "%![RESULT_TYPE_NAME identifierRepresentation]%.h"
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern const enum_%![RESULT_TYPE_NAME identifierRepresentation]% function_%![FUNCTION_NAME identifierRepresentation]% [%![OPERAND_VALUE_COUNT string]%] ;
+extern const ::%![RESULT_TYPE_NAME identifierRepresentation]% function_%![FUNCTION_NAME identifierRepresentation]% [%![OPERAND_VALUE_COUNT string]%] ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

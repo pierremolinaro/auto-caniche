@@ -27,7 +27,7 @@ enum $etat {
 
 #--------------------------------------------------------*
 
-machine @carrefour
+machine Carrefour
 
   var souhait $souhait = .hs
   var etat $etat = .hs

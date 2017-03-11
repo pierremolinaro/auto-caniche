@@ -1,6 +1,5 @@
 option omnibus_options {
 
-@bool veryVerbose: 'V', "very-verbose" -> "More verbose output"
 @bool generateCCode: 'c', "generate-c-code" -> "Generate C code"
 
 }

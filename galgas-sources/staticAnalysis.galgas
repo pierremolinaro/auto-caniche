@@ -22,15 +22,16 @@ proc performStaticAnalysis
       !@scalarTypeKind. enumeration
       !enumConstantMap
       !e.mEnumConstantList
+      !e.mGenerateCode
     ]
   end
 #-------------------------------------------- Analyze functions
   outFunctionMap = @functionMap.default
   for f in inAST.mFunctionDefinitionList do
   #--- Operand type
-    [outUnifiedScalarTypeMap searchKey !f.mOperandEnumTypeName ?* ?let @enumConstantMap operandEnumMap ?*]
+    [outUnifiedScalarTypeMap searchKey !f.mOperandEnumTypeName ?* ?let @enumConstantMap operandEnumMap ?2*]
   #--- Result type
-    [outUnifiedScalarTypeMap searchKey !f.mResultEnumTypeName ?* ?let @enumConstantMap resultEnumMap ?*]
+    [outUnifiedScalarTypeMap searchKey !f.mResultEnumTypeName ?* ?let @enumConstantMap resultEnumMap ?2*]
   #--- Check function values
     var handledOperandSet =@stringset.default
     var decoratedFunctionValueList =@decoratedFunctionValueList.default
@@ -73,6 +74,7 @@ proc performStaticAnalysis
         ?*
         ?let @enumConstantMap enumCstMap
         ?var @lstringlist constantList
+        ?*
       ]
       [enumCstMap searchKey !e.mConstantName ?let @uint constantIndex]
       let t = @unifiedScalarTypeMap-proxy.searchKey { !outUnifiedScalarTypeMap !e.mEnumTypeName}
@@ -107,7 +109,7 @@ proc performStaticAnalysis
       @analyzeContext analyzeContextForEvent = analyzeContext
       var decoratedArgumentList =@decoratedArgumentList.default
       for arg in event.mEventArgumentList do
-        [outUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?2* ?let   @lstringlist enumConstantList]
+        [outUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?2* ?let   @lstringlist enumConstantList ?*]
         [!?analyzeContextForEvent.mMachineVarMap insertKey
           !arg.mArgumentVarName
           !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}

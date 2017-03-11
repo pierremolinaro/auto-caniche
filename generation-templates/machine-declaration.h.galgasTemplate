@@ -8,7 +8,9 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 %for () in ENUM_DECLARATION_MAP do
-  %#include "%!FILE_NAME%-enum-%!lkey.string%.h"\n%
+  if mGenerate then
+    %#include "%!lkey.string%.h"\n%
+  end
 end
 %
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -24,13 +26,13 @@ class machine_%!MACHINE_NAME% {
 //--- Attributes
 %
 for () in ATTRIBUTE_LIST do
-  %  private : enum_%![[mTypeProxy key] identifierRepresentation]% %![mVarName.string identifierRepresentation]% ;\n%
-  %  private : enum_%![[mTypeProxy key] identifierRepresentation]% old_%![mVarName.string identifierRepresentation]% ;\n%
+  %  private : ::%![[mTypeProxy key] identifierRepresentation]% %![mVarName.string identifierRepresentation]% ;\n%
+  %  private : ::%![[mTypeProxy key] identifierRepresentation]% old_%![mVarName.string identifierRepresentation]% ;\n%
 end%
 //--- Accessors
 %
 for () in ATTRIBUTE_LIST do
-  %  public : inline enum_%![[mTypeProxy key] identifierRepresentation]% get_%![mVarName.string identifierRepresentation]% (void) const {\n%
+  %  public : inline ::%![[mTypeProxy key] identifierRepresentation]% get_%![mVarName.string identifierRepresentation]% (void) const {\n%
   %    return %![mVarName.string identifierRepresentation]% ;\n%
   %  }\n%
   %  public : inline bool %![mVarName.string identifierRepresentation]%_didChange (void) const {\n%
@@ -48,7 +50,7 @@ for () in EVENT_MAP do
     %void%
   else
     for () in mDecoratedArgumentList
-    do %const enum_%![[mArgumentTypeProxy key] identifierRepresentation]% %![mArgumentName identifierRepresentation]
+    do %const %![[mArgumentTypeProxy key] identifierRepresentation]% %![mArgumentName identifierRepresentation]
     between %, %
     end
   end

@@ -13,7 +13,7 @@ for () in CONSTANT_LIST
 do %  %![ENUMERATION_NAME identifierRepresentation]%_%![mValue.string identifierRepresentation]
 between %,\n%
 end%
-}  enum_%![ENUMERATION_NAME identifierRepresentation]% ;
+}  %![ENUMERATION_NAME identifierRepresentation]% ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

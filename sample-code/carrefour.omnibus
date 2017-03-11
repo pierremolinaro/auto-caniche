@@ -1,9 +1,9 @@
 
-enum $couleur {vert, orange, rouge}
+enum $CouleurCarrefourAvecMiseEnService {vert, orange, rouge}
 
 #--------------------------------------------------------*
 
-function succ $couleur -> $couleur
+function succ $CouleurCarrefourAvecMiseEnService -> $CouleurCarrefourAvecMiseEnService
   vert : orange
   orange : rouge
   rouge : vert
@@ -11,15 +11,15 @@ function succ $couleur -> $couleur
 
 #--------------------------------------------------------*
 
-enum $etat {hs, es}
+enum $EtatCarrefourAvecMiseEnService {hs, es}
 
 #--------------------------------------------------------*
 
-machine @carrefour
+machine CarrefourAvecMiseEnService
 
-  var etat $etat = .hs
-  var feuA $couleur = .orange
-  var feuB $couleur = .orange
+  var etat $EtatCarrefourAvecMiseEnService = .hs
+  var feuA $CouleurCarrefourAvecMiseEnService = .orange
+  var feuB $CouleurCarrefourAvecMiseEnService = .orange
 
   invariant "1" : (etat == .hs) -> ((feuA == .orange) & (feuB == .orange))
   invariant "2" : (etat == .es) -> (((feuA == .rouge) | (feuB == .rouge)) & (feuA != feuB))
@@ -30,13 +30,6 @@ machine @carrefour
       feuA = .vert
       feuB = .rouge
     }
-#    switch etat {
-#    case .hs:
-#      etat = .es
-#      feuA = .vert
-#      feuB = .rouge
-#    case .es:
-#    }
   ensures
     "A" : (etat == .es)
   }
