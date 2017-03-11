@@ -1,6 +1,6 @@
 
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @machineVarListForDisplay {
   @string mAttributeName
@@ -10,7 +10,7 @@ list @machineVarListForDisplay {
   @uint mColumnLength
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @varList displayVarInfo 
   ->@machineVarListForDisplay outResult {
@@ -32,7 +32,7 @@ getter @varList displayVarInfo
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @varList displayVarVarInfo 
   ->@machineVarListForDisplay outResult {
@@ -70,7 +70,7 @@ getter @varList displayVarVarInfo
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @varList displayArgVarVarInfo
   ?let @varList inArgumentList
@@ -124,7 +124,7 @@ getter @varList displayArgVarVarInfo
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc displayVarValueSet
   ?let @string inTitle
@@ -137,7 +137,7 @@ proc displayVarValueSet
   )
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc displayArgVarVarValueSet
   ?let @string inTitle
@@ -151,7 +151,7 @@ proc displayArgVarVarValueSet
   )
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc displayVarVarValueSet
   ?let @string inTitle
@@ -164,7 +164,7 @@ proc displayVarVarValueSet
   )
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func nameForValue
   ?let @uint64 inValue
@@ -183,7 +183,7 @@ func nameForValue
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc displayVarNames
   ?let @machineVarListForDisplay inAttributeList
@@ -195,7 +195,7 @@ proc displayVarNames
   ioString += "\n"
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc displaySeparator
   ?let @machineVarListForDisplay inAttributeList
@@ -207,7 +207,7 @@ proc displaySeparator
   ioString += "\n"
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc displayValue
   ?let @machineVarListForDisplay inAttributeList
@@ -224,7 +224,7 @@ proc displayValue
   ioString += "\n"
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc performDisplay
   ?let @string inTitle
@@ -251,7 +251,7 @@ proc performDisplay
   message s
 } 
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @transitionEventMap {
   @eventArgumentList mArgumentList
@@ -260,7 +260,7 @@ map @transitionEventMap {
   search searchKey error message "there is no '%K' event"
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @varList {
   @lstring mVarName
@@ -270,14 +270,14 @@ list @varList {
   @uint mInitialValueIndex
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @binarysetList {
   @lstring mLabel
   @binaryset mSet
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @varMap {
   @lstringlist mConstantList
@@ -288,7 +288,7 @@ map @varMap {
   search searchKey error message "there is var '%K' key"
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @machineList-element performMachineDynamicAnalysis
   ?let @string inSourceFileName
@@ -607,7 +607,7 @@ method @machineList-element performMachineDynamicAnalysis
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc addTransitionsToGraphvizString
   ?let @eventDeclarationList-element inEvent
@@ -636,7 +636,7 @@ proc addTransitionsToGraphvizString
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc performDynamicAnalysis
   ?let @string inSourceFileName
@@ -655,25 +655,26 @@ proc performDynamicAnalysis
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @expression computeExpressionBDD
   ?let @varMap inVarMap
   ?let @uint inVarTotalBDDBitCount
   !@binaryset outExpressionBDD
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @implicationExpression computeExpressionBDD
   ?let @varMap inVarMap
   ?let @uint inVarTotalBDDBitCount
-  !@binaryset outExpressionBDD {
+  !@binaryset outExpressionBDD
+{
   [mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
   [mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
   outExpressionBDD = [left implies !right]
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @logicalOrExpression computeExpressionBDD
   ?let @varMap inVarMap
@@ -684,7 +685,7 @@ override method @logicalOrExpression computeExpressionBDD
   outExpressionBDD = left | right
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @logicalAndExpression computeExpressionBDD
   ?let @varMap inVarMap
@@ -700,7 +701,8 @@ override method @logicalAndExpression computeExpressionBDD
 override method @comparisonInExpression computeExpressionBDD
   ?let @varMap inVarMap
   ?let @uint inVarTotalBDDBitCount
-  !@binaryset outExpressionBDD {
+  !@binaryset outExpressionBDD
+{
   [inVarMap searchKey
     !mAttributeName 
     ?*
@@ -719,7 +721,7 @@ override method @comparisonInExpression computeExpressionBDD
   ]
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @comparisonRightOperand computeRightOperandBDD
   ?let @varMap inVarMap
@@ -730,7 +732,7 @@ abstract method @comparisonRightOperand computeRightOperandBDD
   ?let @uint inVarTotalBDDBitCount
   !@binaryset outExpressionBDD
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @attributeAsComparisonRightOperand computeRightOperandBDD
   ?let @varMap inVarMap
@@ -763,7 +765,7 @@ override method @attributeAsComparisonRightOperand computeRightOperandBDD
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @constantAsComparisonRightOperand computeRightOperandBDD
   ?let @varMap unused inVarMap
@@ -779,18 +781,18 @@ override method @constantAsComparisonRightOperand computeRightOperandBDD
     outExpressionBDD = @binaryset. binarySetWithEqualToConstant {
       !leftVarBDDStartBit
       !leftVarBDDBitCount
-      ![constantValue uint64]}
+      ![constantValue uint64]
+    }
   case notEqual :
     outExpressionBDD = @binaryset. binarySetWithNotEqualToConstant {
       !leftVarBDDStartBit
       !leftVarBDDBitCount
-      ![constantValue uint64]}
+      ![constantValue uint64]
+    }
   end
 }
 
-#-------------------------------------------------------------------*
-#! @ifInstruction
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @instruction computeInstructionBDD
   ?let @uint inVarTotalBDDBitCount
@@ -799,7 +801,7 @@ abstract method @instruction computeInstructionBDD
   ?let @uint inArgOldVarVarBDDBitCount
   ?!@binaryset ioArgOldVarVarValueSet
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @instructionList computeInstructionListBDD
   ?let @uint inVarTotalBDDBitCount
@@ -818,7 +820,7 @@ method @instructionList computeInstructionListBDD
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @assignmentInstruction computeInstructionBDD
   ?let @uint unused inVarTotalBDDBitCount
@@ -848,7 +850,7 @@ override method @assignmentInstruction computeInstructionBDD
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @assertInstruction computeInstructionBDD
   ?let @uint inVarTotalBDDBitCount
@@ -869,14 +871,80 @@ override method @assertInstruction computeInstructionBDD
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @switchInstruction computeInstructionBDD
+  ?let @uint inVarTotalBDDBitCount
+  ?let @varMap inVarMap
+  ?let @functionMap inFunctionMap
+  ?let @uint inArgOldVarVarBDDBitCount
+  ?!@binaryset ioArgOldVarVarValueSet
+{
+  let @binaryset oldAttributeValueSet = ioArgOldVarVarValueSet
+#--- Search variable in variable map
+  [inVarMap searchKey
+    !mVariableName 
+    ?*
+    ?let @enumConstantMap constantMap
+    ?let @uint leftVarBDDStartBit
+    ?let @uint leftVarBDDBitCount
+  ]
+#--- Check case list
+  ioArgOldVarVarValueSet = .emptyBinarySet
+  for (constantlist endOfConstantList instructionList) in mSwitchCaseList do
+    @binaryset testExpression = .emptyBinarySet
+    for (constantName) in constantlist do
+      [constantMap searchKey !constantName ?let constantValue]
+      let comparisonExpressionBDD = @binaryset.binarySetWithEqualToConstant {
+        !leftVarBDDStartBit
+        !leftVarBDDBitCount
+        ![constantValue uint64]
+      }
+      testExpression = testExpression | comparisonExpressionBDD
+    end
+    let @binaryset resultingThenCondition = oldAttributeValueSet & testExpression
+  #  let @binaryset resultingElseCondition = oldAttributeValueSet & ~ testExpression
+    if [testExpression isEmpty] then
+      error endOfConstantList : "expression is always false"
+    elsif [testExpression isFull] then
+      error endOfConstantList : "expression is always true"
+    elsif [resultingThenCondition isEmpty] then
+      error endOfConstantList : "expression is always false within current context"
+    elsif resultingThenCondition == ioArgOldVarVarValueSet then
+      error endOfConstantList : "expression is always true within current context"
+#    elsif [resultingElseCondition isEmpty] then
+#      error endOfConstantList : "expression is always true"
+#    elsif resultingElseCondition == ioArgOldVarVarValueSet then
+#      error endOfConstantList : "expression is always false within current context"
+    end
+    if [resultingThenCondition isEmpty] then
+      error endOfConstantList : "this case branch is never executed" : ioArgOldVarVarValueSet
+    else
+      @binaryset thenBranchAttributeValueSet = resultingThenCondition
+      [instructionList computeInstructionListBDD
+        !inVarTotalBDDBitCount
+        !inVarMap !inFunctionMap
+        !inArgOldVarVarBDDBitCount
+        !?thenBranchAttributeValueSet
+      ]
+      ioArgOldVarVarValueSet = ioArgOldVarVarValueSet | thenBranchAttributeValueSet
+    end
+   end
+#--- Has effect ?
+  if oldAttributeValueSet == ioArgOldVarVarValueSet then
+    error mSWITCHinstructionLocation : "this 'switch' instruction has no effect and is useless"
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @ifInstruction computeInstructionBDD
   ?let @uint inVarTotalBDDBitCount
   ?let @varMap inVarMap
   ?let @functionMap inFunctionMap
   ?let @uint inArgOldVarVarBDDBitCount
-  ?!@binaryset ioArgOldVarVarValueSet {
+  ?!@binaryset ioArgOldVarVarValueSet
+{
   let @binaryset oldAttributeValueSet = ioArgOldVarVarValueSet
 #--- Test expression
   [mTestExpression computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset expressionValueSet]
@@ -895,13 +963,18 @@ override method @ifInstruction computeInstructionBDD
   elsif resultingElseCondition == ioArgOldVarVarValueSet then
     error mEndOfTestExpression : "expression is always false within current context"
   end
-  ioArgOldVarVarValueSet = @binaryset. emptyBinarySet
+  drop ioArgOldVarVarValueSet
 #--- Then branch
   if [resultingThenCondition isEmpty] then
-    error mEndOfTestExpression : "then branch is never executed"
+    error mEndOfTestExpression : "then branch is never executed" : ioArgOldVarVarValueSet
   else
     @binaryset thenBranchAttributeValueSet = resultingThenCondition
-    [mThenInstructionList computeInstructionListBDD !inVarTotalBDDBitCount !inVarMap !inFunctionMap !inArgOldVarVarBDDBitCount !?thenBranchAttributeValueSet]
+    [mThenInstructionList computeInstructionListBDD
+      !inVarTotalBDDBitCount
+      !inVarMap !inFunctionMap
+      !inArgOldVarVarBDDBitCount
+      !?thenBranchAttributeValueSet
+    ]
     ioArgOldVarVarValueSet = thenBranchAttributeValueSet
   end
 #--- Else branch
@@ -909,7 +982,13 @@ override method @ifInstruction computeInstructionBDD
     error mEndOfTestExpression : "else branch is never executed"
   else
     @binaryset elseBranchAttributeValueSet = resultingElseCondition
-    [mElseInstructionList computeInstructionListBDD !inVarTotalBDDBitCount !inVarMap !inFunctionMap !inArgOldVarVarBDDBitCount !?elseBranchAttributeValueSet]
+    [mElseInstructionList computeInstructionListBDD
+      !inVarTotalBDDBitCount
+      !inVarMap
+      !inFunctionMap
+      !inArgOldVarVarBDDBitCount
+      !?elseBranchAttributeValueSet
+    ]
     ioArgOldVarVarValueSet = ioArgOldVarVarValueSet | elseBranchAttributeValueSet
   end
 #--- Has effect ?
@@ -918,7 +997,7 @@ override method @ifInstruction computeInstructionBDD
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @assignmentSourceExpression computeAssignmentInstructionBDD
   ?let @varMap inVarMap
@@ -929,7 +1008,7 @@ abstract method @assignmentSourceExpression computeAssignmentInstructionBDD
   ?let @uint inArgOldVarVarBDDBitCount
   ?!@binaryset ioArgOldVarVarValueSet
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @varAsAssignmentSourceExpression computeAssignmentInstructionBDD
   ?let @varMap inVarMap
@@ -975,7 +1054,7 @@ override method @varAsAssignmentSourceExpression computeAssignmentInstructionBDD
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @constantAsAssignmentSourceExpression computeAssignmentInstructionBDD
   ?let @varMap unused inVarMap
@@ -998,7 +1077,7 @@ override method @constantAsAssignmentSourceExpression computeAssignmentInstructi
   ioArgOldVarVarValueSet = v & expressionValueSet
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionAsAssignmentSourceExpression computeAssignmentInstructionBDD
   ?let @varMap inVarMap
@@ -1051,5 +1130,5 @@ override method @functionAsAssignmentSourceExpression computeAssignmentInstructi
   ioArgOldVarVarValueSet = [v & constraint existOnBitIndexAndBeyond !inArgOldVarVarBDDBitCount]
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

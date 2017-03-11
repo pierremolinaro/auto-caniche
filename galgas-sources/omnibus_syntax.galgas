@@ -200,7 +200,7 @@ rule <expression4> !@expression outExpression {
 #--------------------------------------------------------------------*
 
 rule <expression4> !@expression outExpression {
-  $identifier$ ?var  @lstring attributeName
+  $identifier$ ?var  @lstring propertyName
   @enumComparisonOperator comparisonOperator
   select
     $==$
@@ -210,10 +210,11 @@ rule <expression4> !@expression outExpression {
     comparisonOperator = @enumComparisonOperator.notEqual
   end
   <comparison_right_operand> ?let @comparisonRightOperand comparisonRightOperand
-  outExpression = @comparisonInExpression. new {
-    !attributeName
+  outExpression = @comparisonInExpression.new {
+    !propertyName
     !comparisonOperator
-    !comparisonRightOperand}
+    !comparisonRightOperand
+  }
 }
 
 #--------------------------------------------------------------------*
@@ -235,9 +236,9 @@ rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOpera
     $old$
     hasOldQualifier = true
   end
-  $identifier$ ?var  @lstring attributeName
+  $identifier$ ?var  @lstring propertyName
   outComparisonRightOperand = @attributeAsComparisonRightOperand. new {
-    !attributeName
+    !propertyName
     !hasOldQualifier}
 }
 
@@ -272,8 +273,8 @@ rule <instruction> !@instruction outInstruction {
 #--------------------------------------------------------------------*
 
 rule <assignment_source_expression> !@assignmentSourceExpression outExp {
-  $identifier$ ?var  @lstring attributeName
-  outExp = @varAsAssignmentSourceExpression. new { !attributeName}
+  $identifier$ ?let @lstring propertyName
+  outExp = @varAsAssignmentSourceExpression. new { !propertyName}
 }
 
 #--------------------------------------------------------------------*
@@ -289,9 +290,42 @@ rule <assignment_source_expression> !@assignmentSourceExpression outExp {
 rule <assignment_source_expression> !@assignmentSourceExpression outExp {
   $identifier$ ?var  @lstring functionName
   $($
-  $identifier$ ?var  @lstring attributeName
+  $identifier$ ?var  @lstring propertyName
   $)$
-  outExp = @functionAsAssignmentSourceExpression. new { !functionName !attributeName}
+  outExp = @functionAsAssignmentSourceExpression. new { !functionName !propertyName}
+}
+
+#--------------------------------------------------------------------*
+
+rule <instruction> !@instruction outInstruction {
+  $switch$
+  $identifier$ ?let @lstring variableName
+  ${$
+  @switchCaseList switchCaseList = {} 
+  repeat
+    $case$
+    @lstringlist constantNameList = {}
+    repeat
+      $.$
+      $identifier$ ?let @lstring constantName
+      constantNameList += !constantName
+    while
+      $,$
+    end
+    let endOfConstantList = @location.here
+    $:$
+    @instructionList caseInstructionList = {}
+    <instruction_list> !?caseInstructionList
+    switchCaseList += !constantNameList !endOfConstantList !caseInstructionList
+  while
+  end
+  outInstruction = @switchInstruction.new {
+    !variableName.location
+    !variableName
+    !switchCaseList
+    !.here
+  }
+  $}$
 }
 
 #--------------------------------------------------------------------*
@@ -306,12 +340,13 @@ rule <instruction> !@instruction outInstruction {
   <instruction_list> !?thenInstructionList
   $}$
   <else_part> ?let @instructionList elseInstructionList
-  outInstruction = @ifInstruction. new {
+  outInstruction = @ifInstruction.new {
     !IFinstructionLocation
     !testExpression
     !endOfTestExpression
     !thenInstructionList
-    !elseInstructionList}
+    !elseInstructionList
+  }
 }
 
 #--------------------------------------------------------------------*

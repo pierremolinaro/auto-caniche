@@ -83,15 +83,17 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_cocoa_lexique_table_entry ktable_for_lexicalAnalyzer_keyWordList [14] = {
+static const C_cocoa_lexique_table_entry ktable_for_lexicalAnalyzer_keyWordList [16] = {
   {"do", lexicalAnalyzer_1_do},
   {"if", lexicalAnalyzer_1_if},
   {"old", lexicalAnalyzer_1_old},
   {"var", lexicalAnalyzer_1_var},
+  {"case", lexicalAnalyzer_1_case},
   {"else", lexicalAnalyzer_1_else},
   {"enum", lexicalAnalyzer_1_enum},
   {"event", lexicalAnalyzer_1_event},
   {"assert", lexicalAnalyzer_1_assert},
+  {"switch", lexicalAnalyzer_1_switch},
   {"system", lexicalAnalyzer_1_system},
   {"ensures", lexicalAnalyzer_1_ensures},
   {"machine", lexicalAnalyzer_1_machine},
@@ -101,7 +103,7 @@ static const C_cocoa_lexique_table_entry ktable_for_lexicalAnalyzer_keyWordList 
 } ;
 
 static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_lexicalAnalyzer_keyWordList, 14) ;
+  return searchStringInTable (inSearchedString, ktable_for_lexicalAnalyzer_keyWordList, 16) ;
 }
 
 
@@ -254,7 +256,7 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) terminalVocabularyCount {
-  return 37 ;
+  return 39 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -284,7 +286,7 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [38] = {0,
+  static const NSUInteger kTerminalSymbolStyles [40] = {0,
     0 /* lexicalAnalyzer_1_identifier */,
     3 /* lexicalAnalyzer_1_integer */,
     4 /* lexicalAnalyzer_1_literal_5F_string */,
@@ -304,6 +306,8 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
     1 /* lexicalAnalyzer_1_old */,
     1 /* lexicalAnalyzer_1_scenario */,
     1 /* lexicalAnalyzer_1_system */,
+    1 /* lexicalAnalyzer_1_switch */,
+    1 /* lexicalAnalyzer_1_case */,
     1 /* lexicalAnalyzer_1_var */,
     2 /* lexicalAnalyzer_1__3A_ */,
     2 /* lexicalAnalyzer_1__2C_ */,
@@ -333,7 +337,7 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [38] = {NO,
+  static const BOOL kTerminalAtomicSelection [40] = {NO,
     YES /* lexicalAnalyzer_1_identifier */,
     YES /* lexicalAnalyzer_1_integer */,
     NO /* lexicalAnalyzer_1_literal_5F_string */,
@@ -353,6 +357,8 @@ static NSInteger search_into_lexicalAnalyzer_keyWordList (NSString * inSearchedS
     YES /* lexicalAnalyzer_1_old */,
     YES /* lexicalAnalyzer_1_scenario */,
     YES /* lexicalAnalyzer_1_system */,
+    YES /* lexicalAnalyzer_1_switch */,
+    YES /* lexicalAnalyzer_1_case */,
     YES /* lexicalAnalyzer_1_var */,
     YES /* lexicalAnalyzer_1__3A_ */,
     YES /* lexicalAnalyzer_1__2C_ */,

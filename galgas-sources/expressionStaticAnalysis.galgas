@@ -167,7 +167,8 @@ override method @constantAsComparisonRightOperand analyzeComparisonRightOperand
   ?let @analyzeContext unused inAnalyzeContext
   ?let @bool unused inEnsureClause
   !@decoratedComparisonRightOperand outDecoratedExpression
-  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy {
+  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy
+{
   [[inVarTypeProxy mConstantMap] searchKey !mConstantName ?let @uint constantValue]
   outDecoratedExpression = @decoratedConstantAsComparisonRightOperand. new { !inVarTypeProxy !mConstantName !constantValue}
 }

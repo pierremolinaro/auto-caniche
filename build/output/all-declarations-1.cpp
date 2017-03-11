@@ -1132,37 +1132,37 @@ GALGAS_machineVarListForDisplay extensionGetter_displayVarVarInfo (const GALGAS_
   GALGAS_machineVarListForDisplay result_outResult ; // Returned variable
   result_outResult = GALGAS_machineVarListForDisplay::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 39)) ;
   const GALGAS_varList temp_0 = inObject ;
-  cEnumerator_varList enumerator_1010 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_1010.hasCurrentObject ()) {
-    GALGAS_string var_columnName_1032 = GALGAS_string ("old ").add_operation (enumerator_1010.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 41)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 41)) ;
-    GALGAS_uint var_columnLength_1077 = var_columnName_1032.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 42)) ;
-    cEnumerator_lstringlist enumerator_1125 (enumerator_1010.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
-    while (enumerator_1125.hasCurrentObject ()) {
-      GALGAS_uint var_cstNameLength_1158 = enumerator_1125.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 44)) ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictInf, var_columnLength_1077.objectCompare (var_cstNameLength_1158)).boolEnum () ;
+  cEnumerator_varList enumerator_1163 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_1163.hasCurrentObject ()) {
+    GALGAS_string var_columnName_1185 = GALGAS_string ("old ").add_operation (enumerator_1163.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 41)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 41)) ;
+    GALGAS_uint var_columnLength_1230 = var_columnName_1185.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 42)) ;
+    cEnumerator_lstringlist enumerator_1278 (enumerator_1163.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
+    while (enumerator_1278.hasCurrentObject ()) {
+      GALGAS_uint var_cstNameLength_1311 = enumerator_1278.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 44)) ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictInf, var_columnLength_1230.objectCompare (var_cstNameLength_1311)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        var_columnLength_1077 = var_cstNameLength_1158 ;
+        var_columnLength_1230 = var_cstNameLength_1311 ;
       }
-      enumerator_1125.gotoNextObject () ;
+      enumerator_1278.gotoNextObject () ;
     }
-    result_outResult.addAssign_operation (var_columnName_1032, enumerator_1010.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_1010.current (HERE).getter_mBDDBitCount (HERE), enumerator_1010.current (HERE).getter_mValueList (HERE), var_columnLength_1077  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 49)) ;
-    enumerator_1010.gotoNextObject () ;
+    result_outResult.addAssign_operation (var_columnName_1185, enumerator_1163.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_1163.current (HERE).getter_mBDDBitCount (HERE), enumerator_1163.current (HERE).getter_mValueList (HERE), var_columnLength_1230  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 49)) ;
+    enumerator_1163.gotoNextObject () ;
   }
   const GALGAS_varList temp_2 = inObject ;
-  cEnumerator_varList enumerator_1429 (temp_2, kENUMERATION_UP) ;
-  while (enumerator_1429.hasCurrentObject ()) {
-    GALGAS_uint var_columnLength_1455 = enumerator_1429.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 57)) ;
-    cEnumerator_lstringlist enumerator_1503 (enumerator_1429.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
-    while (enumerator_1503.hasCurrentObject ()) {
-      GALGAS_uint var_cstNameLength_1536 = enumerator_1503.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 59)) ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsStrictInf, var_columnLength_1455.objectCompare (var_cstNameLength_1536)).boolEnum () ;
+  cEnumerator_varList enumerator_1582 (temp_2, kENUMERATION_UP) ;
+  while (enumerator_1582.hasCurrentObject ()) {
+    GALGAS_uint var_columnLength_1608 = enumerator_1582.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 57)) ;
+    cEnumerator_lstringlist enumerator_1656 (enumerator_1582.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
+    while (enumerator_1656.hasCurrentObject ()) {
+      GALGAS_uint var_cstNameLength_1689 = enumerator_1656.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 59)) ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsStrictInf, var_columnLength_1608.objectCompare (var_cstNameLength_1689)).boolEnum () ;
       if (kBoolTrue == test_3) {
-        var_columnLength_1455 = var_cstNameLength_1536 ;
+        var_columnLength_1608 = var_cstNameLength_1689 ;
       }
-      enumerator_1503.gotoNextObject () ;
+      enumerator_1656.gotoNextObject () ;
     }
-    result_outResult.addAssign_operation (enumerator_1429.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 65)), enumerator_1429.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_1429.current (HERE).getter_mBDDBitCount (HERE), enumerator_1429.current (HERE).getter_mValueList (HERE), var_columnLength_1455  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 64)) ;
-    enumerator_1429.gotoNextObject () ;
+    result_outResult.addAssign_operation (enumerator_1582.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 65)), enumerator_1582.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_1582.current (HERE).getter_mBDDBitCount (HERE), enumerator_1582.current (HERE).getter_mValueList (HERE), var_columnLength_1608  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 64)) ;
+    enumerator_1582.gotoNextObject () ;
   }
 //---
   return result_outResult ;
@@ -1184,52 +1184,52 @@ GALGAS_machineVarListForDisplay extensionGetter_displayArgVarVarInfo (const GALG
   GALGAS_machineVarListForDisplay result_outResult ; // Returned variable
   result_outResult = GALGAS_machineVarListForDisplay::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 78)) ;
   const GALGAS_varList temp_0 = inObject ;
-  cEnumerator_varList enumerator_2039 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_2039.hasCurrentObject ()) {
-    GALGAS_string var_columnName_2061 = GALGAS_string ("old ").add_operation (enumerator_2039.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 80)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 80)) ;
-    GALGAS_uint var_columnLength_2106 = var_columnName_2061.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 81)) ;
-    cEnumerator_lstringlist enumerator_2154 (enumerator_2039.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
-    while (enumerator_2154.hasCurrentObject ()) {
-      GALGAS_uint var_cstNameLength_2187 = enumerator_2154.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 83)) ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictInf, var_columnLength_2106.objectCompare (var_cstNameLength_2187)).boolEnum () ;
+  cEnumerator_varList enumerator_2243 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_2243.hasCurrentObject ()) {
+    GALGAS_string var_columnName_2265 = GALGAS_string ("old ").add_operation (enumerator_2243.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 80)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 80)) ;
+    GALGAS_uint var_columnLength_2310 = var_columnName_2265.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 81)) ;
+    cEnumerator_lstringlist enumerator_2358 (enumerator_2243.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
+    while (enumerator_2358.hasCurrentObject ()) {
+      GALGAS_uint var_cstNameLength_2391 = enumerator_2358.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 83)) ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictInf, var_columnLength_2310.objectCompare (var_cstNameLength_2391)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        var_columnLength_2106 = var_cstNameLength_2187 ;
+        var_columnLength_2310 = var_cstNameLength_2391 ;
       }
-      enumerator_2154.gotoNextObject () ;
+      enumerator_2358.gotoNextObject () ;
     }
-    result_outResult.addAssign_operation (var_columnName_2061, enumerator_2039.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_2039.current (HERE).getter_mBDDBitCount (HERE), enumerator_2039.current (HERE).getter_mValueList (HERE), var_columnLength_2106  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 88)) ;
-    enumerator_2039.gotoNextObject () ;
+    result_outResult.addAssign_operation (var_columnName_2265, enumerator_2243.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_2243.current (HERE).getter_mBDDBitCount (HERE), enumerator_2243.current (HERE).getter_mValueList (HERE), var_columnLength_2310  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 88)) ;
+    enumerator_2243.gotoNextObject () ;
   }
   const GALGAS_varList temp_2 = inObject ;
-  cEnumerator_varList enumerator_2458 (temp_2, kENUMERATION_UP) ;
-  while (enumerator_2458.hasCurrentObject ()) {
-    GALGAS_uint var_columnLength_2484 = enumerator_2458.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 96)) ;
-    cEnumerator_lstringlist enumerator_2532 (enumerator_2458.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
-    while (enumerator_2532.hasCurrentObject ()) {
-      GALGAS_uint var_cstNameLength_2565 = enumerator_2532.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 98)) ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsStrictInf, var_columnLength_2484.objectCompare (var_cstNameLength_2565)).boolEnum () ;
+  cEnumerator_varList enumerator_2662 (temp_2, kENUMERATION_UP) ;
+  while (enumerator_2662.hasCurrentObject ()) {
+    GALGAS_uint var_columnLength_2688 = enumerator_2662.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 96)) ;
+    cEnumerator_lstringlist enumerator_2736 (enumerator_2662.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
+    while (enumerator_2736.hasCurrentObject ()) {
+      GALGAS_uint var_cstNameLength_2769 = enumerator_2736.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 98)) ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsStrictInf, var_columnLength_2688.objectCompare (var_cstNameLength_2769)).boolEnum () ;
       if (kBoolTrue == test_3) {
-        var_columnLength_2484 = var_cstNameLength_2565 ;
+        var_columnLength_2688 = var_cstNameLength_2769 ;
       }
-      enumerator_2532.gotoNextObject () ;
+      enumerator_2736.gotoNextObject () ;
     }
-    result_outResult.addAssign_operation (enumerator_2458.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 104)), enumerator_2458.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_2458.current (HERE).getter_mBDDBitCount (HERE), enumerator_2458.current (HERE).getter_mValueList (HERE), var_columnLength_2484  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 103)) ;
-    enumerator_2458.gotoNextObject () ;
+    result_outResult.addAssign_operation (enumerator_2662.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 104)), enumerator_2662.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_2662.current (HERE).getter_mBDDBitCount (HERE), enumerator_2662.current (HERE).getter_mValueList (HERE), var_columnLength_2688  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 103)) ;
+    enumerator_2662.gotoNextObject () ;
   }
-  cEnumerator_varList enumerator_2846 (constinArgument_inArgumentList, kENUMERATION_UP) ;
-  while (enumerator_2846.hasCurrentObject ()) {
-    GALGAS_uint var_columnLength_2872 = enumerator_2846.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 111)) ;
-    cEnumerator_lstringlist enumerator_2920 (enumerator_2846.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
-    while (enumerator_2920.hasCurrentObject ()) {
-      GALGAS_uint var_cstNameLength_2953 = enumerator_2920.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 113)) ;
-      const enumGalgasBool test_4 = GALGAS_bool (kIsStrictInf, var_columnLength_2872.objectCompare (var_cstNameLength_2953)).boolEnum () ;
+  cEnumerator_varList enumerator_3050 (constinArgument_inArgumentList, kENUMERATION_UP) ;
+  while (enumerator_3050.hasCurrentObject ()) {
+    GALGAS_uint var_columnLength_3076 = enumerator_3050.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 111)) ;
+    cEnumerator_lstringlist enumerator_3124 (enumerator_3050.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
+    while (enumerator_3124.hasCurrentObject ()) {
+      GALGAS_uint var_cstNameLength_3157 = enumerator_3124.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 113)) ;
+      const enumGalgasBool test_4 = GALGAS_bool (kIsStrictInf, var_columnLength_3076.objectCompare (var_cstNameLength_3157)).boolEnum () ;
       if (kBoolTrue == test_4) {
-        var_columnLength_2872 = var_cstNameLength_2953 ;
+        var_columnLength_3076 = var_cstNameLength_3157 ;
       }
-      enumerator_2920.gotoNextObject () ;
+      enumerator_3124.gotoNextObject () ;
     }
-    result_outResult.addAssign_operation (enumerator_2846.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 119)), enumerator_2846.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_2846.current (HERE).getter_mBDDBitCount (HERE), enumerator_2846.current (HERE).getter_mValueList (HERE), var_columnLength_2872  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 118)) ;
-    enumerator_2846.gotoNextObject () ;
+    result_outResult.addAssign_operation (enumerator_3050.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 119)), enumerator_3050.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_3050.current (HERE).getter_mBDDBitCount (HERE), enumerator_3050.current (HERE).getter_mValueList (HERE), var_columnLength_3076  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 118)) ;
+    enumerator_3050.gotoNextObject () ;
   }
 //---
   return result_outResult ;
@@ -2576,10 +2576,10 @@ void extensionMethod_computeInstructionListBDD (const GALGAS_instructionList inO
                                                 C_Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_instructionList temp_0 = inObject ;
-  cEnumerator_instructionList enumerator_26747 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_26747.hasCurrentObject ()) {
-    callExtensionMethod_computeInstructionBDD ((const cPtr_instruction *) enumerator_26747.current (HERE).getter_mInstruction (HERE).ptr (), constinArgument_inVarTotalBDDBitCount, constinArgument_inVarMap, constinArgument_inFunctionMap, constinArgument_inArgOldVarVarBDDBitCount, ioArgument_ioArgOldVarVarValueSet, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 811)) ;
-    enumerator_26747.gotoNextObject () ;
+  cEnumerator_instructionList enumerator_28097 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_28097.hasCurrentObject ()) {
+    callExtensionMethod_computeInstructionBDD ((const cPtr_instruction *) enumerator_28097.current (HERE).getter_mInstruction (HERE).ptr (), constinArgument_inVarTotalBDDBitCount, constinArgument_inVarMap, constinArgument_inFunctionMap, constinArgument_inArgOldVarVarBDDBitCount, ioArgument_ioArgOldVarVarValueSet, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 813)) ;
+    enumerator_28097.gotoNextObject () ;
   }
 }
 
@@ -3033,6 +3033,160 @@ GALGAS_instructionList_2D_element GALGAS_instructionList_2D_element::extractObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_switchCaseList_2D_element::GALGAS_switchCaseList_2D_element (void) :
+mProperty_mConstantNameList (),
+mProperty_mEndOfConstantList (),
+mProperty_mInstructionList () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList_2D_element::~ GALGAS_switchCaseList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList_2D_element::GALGAS_switchCaseList_2D_element (const GALGAS_lstringlist & inOperand0,
+                                                                    const GALGAS_location & inOperand1,
+                                                                    const GALGAS_instructionList & inOperand2) :
+mProperty_mConstantNameList (inOperand0),
+mProperty_mEndOfConstantList (inOperand1),
+mProperty_mInstructionList (inOperand2) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList_2D_element GALGAS_switchCaseList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_switchCaseList_2D_element (GALGAS_lstringlist::constructor_emptyList (HERE),
+                                           GALGAS_location::constructor_nowhere (HERE),
+                                           GALGAS_instructionList::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList_2D_element GALGAS_switchCaseList_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
+                                                                                    const GALGAS_location & inOperand1,
+                                                                                    const GALGAS_instructionList & inOperand2 
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_switchCaseList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_switchCaseList_2D_element (inOperand0, inOperand1, inOperand2) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_switchCaseList_2D_element::objectCompare (const GALGAS_switchCaseList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mConstantNameList.objectCompare (inOperand.mProperty_mConstantNameList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mEndOfConstantList.objectCompare (inOperand.mProperty_mEndOfConstantList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mInstructionList.objectCompare (inOperand.mProperty_mInstructionList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_switchCaseList_2D_element::isValid (void) const {
+  return mProperty_mConstantNameList.isValid () && mProperty_mEndOfConstantList.isValid () && mProperty_mInstructionList.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList_2D_element::drop (void) {
+  mProperty_mConstantNameList.drop () ;
+  mProperty_mEndOfConstantList.drop () ;
+  mProperty_mInstructionList.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList_2D_element::description (C_String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString << "<struct @switchCaseList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_mConstantNameList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mEndOfConstantList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mInstructionList.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_switchCaseList_2D_element::getter_mConstantNameList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mConstantNameList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_switchCaseList_2D_element::getter_mEndOfConstantList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mEndOfConstantList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_instructionList GALGAS_switchCaseList_2D_element::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mInstructionList ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @switchCaseList-element type                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_switchCaseList_2D_element ("switchCaseList-element",
+                                                  NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_switchCaseList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchCaseList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_switchCaseList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_switchCaseList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList_2D_element GALGAS_switchCaseList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_switchCaseList_2D_element result ;
+  const GALGAS_switchCaseList_2D_element * p = (const GALGAS_switchCaseList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_switchCaseList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchCaseList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_decoratedInstructionList_2D_element::GALGAS_decoratedInstructionList_2D_element (void) :
 mProperty_mDecoratedInstruction () {
 }
@@ -3140,6 +3294,143 @@ GALGAS_decoratedInstructionList_2D_element GALGAS_decoratedInstructionList_2D_el
       result = *p ;
     }else{
       inCompiler->castError ("decoratedInstructionList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList_2D_element::GALGAS_switchDecoratedCaseList_2D_element (void) :
+mProperty_mConstantNameList (),
+mProperty_mInstructionList () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList_2D_element::~ GALGAS_switchDecoratedCaseList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList_2D_element::GALGAS_switchDecoratedCaseList_2D_element (const GALGAS_lstringlist & inOperand0,
+                                                                                      const GALGAS_decoratedInstructionList & inOperand1) :
+mProperty_mConstantNameList (inOperand0),
+mProperty_mInstructionList (inOperand1) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList_2D_element GALGAS_switchDecoratedCaseList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_switchDecoratedCaseList_2D_element (GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                    GALGAS_decoratedInstructionList::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList_2D_element GALGAS_switchDecoratedCaseList_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
+                                                                                                      const GALGAS_decoratedInstructionList & inOperand1 
+                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_switchDecoratedCaseList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_switchDecoratedCaseList_2D_element (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_switchDecoratedCaseList_2D_element::objectCompare (const GALGAS_switchDecoratedCaseList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mProperty_mConstantNameList.objectCompare (inOperand.mProperty_mConstantNameList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mInstructionList.objectCompare (inOperand.mProperty_mInstructionList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_switchDecoratedCaseList_2D_element::isValid (void) const {
+  return mProperty_mConstantNameList.isValid () && mProperty_mInstructionList.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList_2D_element::drop (void) {
+  mProperty_mConstantNameList.drop () ;
+  mProperty_mInstructionList.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList_2D_element::description (C_String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString << "<struct @switchDecoratedCaseList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mProperty_mConstantNameList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mInstructionList.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_switchDecoratedCaseList_2D_element::getter_mConstantNameList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mConstantNameList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_decoratedInstructionList GALGAS_switchDecoratedCaseList_2D_element::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mInstructionList ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @switchDecoratedCaseList-element type                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_switchDecoratedCaseList_2D_element ("switchDecoratedCaseList-element",
+                                                           NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_switchDecoratedCaseList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchDecoratedCaseList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_switchDecoratedCaseList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_switchDecoratedCaseList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList_2D_element GALGAS_switchDecoratedCaseList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_switchDecoratedCaseList_2D_element result ;
+  const GALGAS_switchDecoratedCaseList_2D_element * p = (const GALGAS_switchDecoratedCaseList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_switchDecoratedCaseList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchDecoratedCaseList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -4554,6 +4845,244 @@ GALGAS_assignmentInstruction GALGAS_assignmentInstruction::extractObject (const 
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_switchInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_switchInstruction * p = (const cPtr_switchInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_switchInstruction) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mSWITCHinstructionLocation.objectCompare (p->mProperty_mSWITCHinstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mVariableName.objectCompare (p->mProperty_mVariableName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mSwitchCaseList.objectCompare (p->mProperty_mSwitchCaseList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mEndOfSwitchExpression.objectCompare (p->mProperty_mEndOfSwitchExpression) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_switchInstruction::objectCompare (const GALGAS_switchInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchInstruction::GALGAS_switchInstruction (void) :
+GALGAS_instruction () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchInstruction GALGAS_switchInstruction::constructor_default (LOCATION_ARGS) {
+  return GALGAS_switchInstruction::constructor_new (GALGAS_location::constructor_nowhere (HERE),
+                                                    GALGAS_lstring::constructor_default (HERE),
+                                                    GALGAS_switchCaseList::constructor_emptyList (HERE),
+                                                    GALGAS_location::constructor_nowhere (HERE)
+                                                    COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchInstruction::GALGAS_switchInstruction (const cPtr_switchInstruction * inSourcePtr) :
+GALGAS_instruction (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_switchInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchInstruction GALGAS_switchInstruction::constructor_new (const GALGAS_location & inAttribute_mSWITCHinstructionLocation,
+                                                                    const GALGAS_lstring & inAttribute_mVariableName,
+                                                                    const GALGAS_switchCaseList & inAttribute_mSwitchCaseList,
+                                                                    const GALGAS_location & inAttribute_mEndOfSwitchExpression
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_switchInstruction result ;
+  if (inAttribute_mSWITCHinstructionLocation.isValid () && inAttribute_mVariableName.isValid () && inAttribute_mSwitchCaseList.isValid () && inAttribute_mEndOfSwitchExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_switchInstruction (inAttribute_mSWITCHinstructionLocation, inAttribute_mVariableName, inAttribute_mSwitchCaseList, inAttribute_mEndOfSwitchExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_switchInstruction::getter_mSWITCHinstructionLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_switchInstruction * p = (const cPtr_switchInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_switchInstruction) ;
+    result = p->mProperty_mSWITCHinstructionLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_switchInstruction::getter_mSWITCHinstructionLocation (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mSWITCHinstructionLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_switchInstruction::getter_mVariableName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_switchInstruction * p = (const cPtr_switchInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_switchInstruction) ;
+    result = p->mProperty_mVariableName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_switchInstruction::getter_mVariableName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mVariableName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchInstruction::getter_mSwitchCaseList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_switchCaseList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_switchInstruction * p = (const cPtr_switchInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_switchInstruction) ;
+    result = p->mProperty_mSwitchCaseList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList cPtr_switchInstruction::getter_mSwitchCaseList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mSwitchCaseList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_switchInstruction::getter_mEndOfSwitchExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_switchInstruction * p = (const cPtr_switchInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_switchInstruction) ;
+    result = p->mProperty_mEndOfSwitchExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_switchInstruction::getter_mEndOfSwitchExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mEndOfSwitchExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                     Pointer class for @switchInstruction class                                      *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_switchInstruction::cPtr_switchInstruction (const GALGAS_location & in_mSWITCHinstructionLocation,
+                                                const GALGAS_lstring & in_mVariableName,
+                                                const GALGAS_switchCaseList & in_mSwitchCaseList,
+                                                const GALGAS_location & in_mEndOfSwitchExpression
+                                                COMMA_LOCATION_ARGS) :
+cPtr_instruction (THERE),
+mProperty_mSWITCHinstructionLocation (in_mSWITCHinstructionLocation),
+mProperty_mVariableName (in_mVariableName),
+mProperty_mSwitchCaseList (in_mSwitchCaseList),
+mProperty_mEndOfSwitchExpression (in_mEndOfSwitchExpression) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_switchInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchInstruction ;
+}
+
+void cPtr_switchInstruction::description (C_String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString << "[@switchInstruction:" ;
+  mProperty_mSWITCHinstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mVariableName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mSwitchCaseList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mEndOfSwitchExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_switchInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_switchInstruction (mProperty_mSWITCHinstructionLocation, mProperty_mVariableName, mProperty_mSwitchCaseList, mProperty_mEndOfSwitchExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                               @switchInstruction type                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_switchInstruction ("switchInstruction",
+                                          & kTypeDescriptor_GALGAS_instruction) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_switchInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_switchInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_switchInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchInstruction GALGAS_switchInstruction::extractObject (const GALGAS_object & inObject,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_switchInstruction result ;
+  const GALGAS_switchInstruction * p = (const GALGAS_switchInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_switchInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_decoratedComparisonInExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_decoratedComparisonInExpression * p = (const cPtr_decoratedComparisonInExpression *) inOperandPtr ;
@@ -5326,6 +5855,190 @@ GALGAS_assignmentDecoratedInstruction GALGAS_assignmentDecoratedInstruction::ext
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult cPtr_switchDecoratedInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_switchDecoratedInstruction * p = (const cPtr_switchDecoratedInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_switchDecoratedInstruction) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mVarName.objectCompare (p->mProperty_mVarName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mSwitchDecoratedCaseList.objectCompare (p->mProperty_mSwitchDecoratedCaseList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_switchDecoratedInstruction::objectCompare (const GALGAS_switchDecoratedInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedInstruction::GALGAS_switchDecoratedInstruction (void) :
+GALGAS_decoratedInstruction () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedInstruction GALGAS_switchDecoratedInstruction::constructor_default (LOCATION_ARGS) {
+  return GALGAS_switchDecoratedInstruction::constructor_new (GALGAS_lstring::constructor_default (HERE),
+                                                             GALGAS_switchDecoratedCaseList::constructor_emptyList (HERE)
+                                                             COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedInstruction::GALGAS_switchDecoratedInstruction (const cPtr_switchDecoratedInstruction * inSourcePtr) :
+GALGAS_decoratedInstruction (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_switchDecoratedInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedInstruction GALGAS_switchDecoratedInstruction::constructor_new (const GALGAS_lstring & inAttribute_mVarName,
+                                                                                      const GALGAS_switchDecoratedCaseList & inAttribute_mSwitchDecoratedCaseList
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_switchDecoratedInstruction result ;
+  if (inAttribute_mVarName.isValid () && inAttribute_mSwitchDecoratedCaseList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_switchDecoratedInstruction (inAttribute_mVarName, inAttribute_mSwitchDecoratedCaseList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_switchDecoratedInstruction::getter_mVarName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_switchDecoratedInstruction * p = (const cPtr_switchDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_switchDecoratedInstruction) ;
+    result = p->mProperty_mVarName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_switchDecoratedInstruction::getter_mVarName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mVarName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedInstruction::getter_mSwitchDecoratedCaseList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_switchDecoratedCaseList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_switchDecoratedInstruction * p = (const cPtr_switchDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_switchDecoratedInstruction) ;
+    result = p->mProperty_mSwitchDecoratedCaseList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList cPtr_switchDecoratedInstruction::getter_mSwitchDecoratedCaseList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mSwitchDecoratedCaseList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                 Pointer class for @switchDecoratedInstruction class                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_switchDecoratedInstruction::cPtr_switchDecoratedInstruction (const GALGAS_lstring & in_mVarName,
+                                                                  const GALGAS_switchDecoratedCaseList & in_mSwitchDecoratedCaseList
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_decoratedInstruction (THERE),
+mProperty_mVarName (in_mVarName),
+mProperty_mSwitchDecoratedCaseList (in_mSwitchDecoratedCaseList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_switchDecoratedInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchDecoratedInstruction ;
+}
+
+void cPtr_switchDecoratedInstruction::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "[@switchDecoratedInstruction:" ;
+  mProperty_mVarName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mSwitchDecoratedCaseList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_switchDecoratedInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_switchDecoratedInstruction (mProperty_mVarName, mProperty_mSwitchDecoratedCaseList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @switchDecoratedInstruction type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_switchDecoratedInstruction ("switchDecoratedInstruction",
+                                                   & kTypeDescriptor_GALGAS_decoratedInstruction) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_switchDecoratedInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchDecoratedInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_switchDecoratedInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_switchDecoratedInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedInstruction GALGAS_switchDecoratedInstruction::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_switchDecoratedInstruction result ;
+  const GALGAS_switchDecoratedInstruction * p = (const GALGAS_switchDecoratedInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_switchDecoratedInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchDecoratedInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult cPtr_attributeInDecoratedAssignmentSourceExpression::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_attributeInDecoratedAssignmentSourceExpression * p = (const cPtr_attributeInDecoratedAssignmentSourceExpression *) inOperandPtr ;
@@ -5917,7 +6630,7 @@ GALGAS_functionInDecoratedAssignmentSourceExpression GALGAS_functionInDecoratedA
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const char * gNonTerminalNames_omnibus_grammar [30] = {
+static const char * gNonTerminalNames_omnibus_grammar [32] = {
   "<start_symbol>",// Index 0
   "<scenario>",// Index 1
   "<enum_declaration>",// Index 2
@@ -5947,7 +6660,9 @@ static const char * gNonTerminalNames_omnibus_grammar [30] = {
   "<select_omnibus_5F_syntax_12>",// Index 26
   "<select_omnibus_5F_syntax_13>",// Index 27
   "<select_omnibus_5F_syntax_14>",// Index 28
-  "<>"// Index 29
+  "<select_omnibus_5F_syntax_15>",// Index 29
+  "<select_omnibus_5F_syntax_16>",// Index 30
+  "<>"// Index 31
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5972,7 +6687,7 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken_enum, SHIFT (2)
 , C_Lexique_lexicalAnalyzer::kToken_function, SHIFT (3)
 , C_Lexique_lexicalAnalyzer::kToken_machine, SHIFT (4)
-, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (23)
 , END
 // State S1 (index = 11)
 , C_Lexique_lexicalAnalyzer::kToken_machine_2D_type_2D_name, SHIFT (11)
@@ -5994,28 +6709,28 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken_enum, SHIFT (2)
 , C_Lexique_lexicalAnalyzer::kToken_function, SHIFT (3)
 , C_Lexique_lexicalAnalyzer::kToken_machine, SHIFT (4)
-, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (23)
 , END
 // State S7 (index = 37)
 , C_Lexique_lexicalAnalyzer::kToken_scenario, SHIFT (1)
 , C_Lexique_lexicalAnalyzer::kToken_enum, SHIFT (2)
 , C_Lexique_lexicalAnalyzer::kToken_function, SHIFT (3)
 , C_Lexique_lexicalAnalyzer::kToken_machine, SHIFT (4)
-, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (23)
 , END
 // State S8 (index = 48)
 , C_Lexique_lexicalAnalyzer::kToken_scenario, SHIFT (1)
 , C_Lexique_lexicalAnalyzer::kToken_enum, SHIFT (2)
 , C_Lexique_lexicalAnalyzer::kToken_function, SHIFT (3)
 , C_Lexique_lexicalAnalyzer::kToken_machine, SHIFT (4)
-, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (23)
 , END
 // State S9 (index = 59)
 , C_Lexique_lexicalAnalyzer::kToken_scenario, SHIFT (1)
 , C_Lexique_lexicalAnalyzer::kToken_enum, SHIFT (2)
 , C_Lexique_lexicalAnalyzer::kToken_function, SHIFT (3)
 , C_Lexique_lexicalAnalyzer::kToken_machine, SHIFT (4)
-, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (23)
 , END
 // State S10 (index = 70)
 , C_Lexique_lexicalAnalyzer::kToken_, REDUCE (0)
@@ -6030,22 +6745,22 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken_enum_2D_type_2D_name, SHIFT (21)
 , END
 // State S14 (index = 82)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (35)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (36)
 , C_Lexique_lexicalAnalyzer::kToken_var, SHIFT (22)
 , C_Lexique_lexicalAnalyzer::kToken_invariant, SHIFT (23)
 , C_Lexique_lexicalAnalyzer::kToken_event, SHIFT (24)
 , END
 // State S15 (index = 91)
-, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (26)
+, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (27)
 , END
 // State S16 (index = 94)
-, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (23)
-, END
-// State S17 (index = 97)
 , C_Lexique_lexicalAnalyzer::kToken_, REDUCE (24)
 , END
-// State S18 (index = 100)
+// State S17 (index = 97)
 , C_Lexique_lexicalAnalyzer::kToken_, REDUCE (25)
+, END
+// State S18 (index = 100)
+, C_Lexique_lexicalAnalyzer::kToken_, REDUCE (26)
 , END
 // State S19 (index = 103)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (26)
@@ -6072,7 +6787,7 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (33)
 , END
 // State S27 (index = 127)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (31)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (32)
 , C_Lexique_lexicalAnalyzer::kToken__2C_, SHIFT (34)
 , END
 // State S28 (index = 132)
@@ -6114,15 +6829,15 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
 // State S39 (index = 175)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (39)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (40)
 , C_Lexique_lexicalAnalyzer::kToken__3F_, SHIFT (51)
 , END
 // State S40 (index = 180)
 , C_Lexique_lexicalAnalyzer::kToken__21_, SHIFT (53)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (29)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (30)
 , END
 // State S41 (index = 185)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (31)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (32)
 , C_Lexique_lexicalAnalyzer::kToken__2C_, SHIFT (34)
 , END
 // State S42 (index = 190)
@@ -6147,103 +6862,109 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
 // State S47 (index = 217)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (35)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (36)
 , C_Lexique_lexicalAnalyzer::kToken_var, SHIFT (22)
 , C_Lexique_lexicalAnalyzer::kToken_invariant, SHIFT (23)
 , C_Lexique_lexicalAnalyzer::kToken_event, SHIFT (24)
 , END
 // State S48 (index = 226)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (45)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (46)
 , C_Lexique_lexicalAnalyzer::kToken__2D__3E_, SHIFT (63)
-, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (45)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (45)
+, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (46)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (46)
 , END
-// State S49 (index = 251)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (47)
+// State S49 (index = 255)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (48)
 , C_Lexique_lexicalAnalyzer::kToken__7C_, SHIFT (65)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (47)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (48)
 , END
-// State S50 (index = 278)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (49)
+// State S50 (index = 286)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (50)
 , C_Lexique_lexicalAnalyzer::kToken__26_, SHIFT (67)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (50)
 , END
-// State S51 (index = 307)
+// State S51 (index = 319)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (69)
 , END
-// State S52 (index = 310)
+// State S52 (index = 322)
 , C_Lexique_lexicalAnalyzer::kToken__29_, SHIFT (70)
 , END
-// State S53 (index = 313)
+// State S53 (index = 325)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (71)
 , END
-// State S54 (index = 316)
+// State S54 (index = 328)
 , C_Lexique_lexicalAnalyzer::kToken__29_, SHIFT (72)
 , END
-// State S55 (index = 319)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (32)
+// State S55 (index = 331)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (33)
 , END
-// State S56 (index = 322)
+// State S56 (index = 334)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (73)
 , END
-// State S57 (index = 325)
+// State S57 (index = 337)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (74)
 , END
-// State S58 (index = 328)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (51)
-, C_Lexique_lexicalAnalyzer::kToken__2E_, REDUCE (51)
-, C_Lexique_lexicalAnalyzer::kToken_old, REDUCE (51)
-, END
-// State S59 (index = 335)
+// State S58 (index = 340)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (52)
 , C_Lexique_lexicalAnalyzer::kToken__2E_, REDUCE (52)
 , C_Lexique_lexicalAnalyzer::kToken_old, REDUCE (52)
 , END
-// State S60 (index = 342)
+// State S59 (index = 347)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (53)
+, C_Lexique_lexicalAnalyzer::kToken__2E_, REDUCE (53)
+, C_Lexique_lexicalAnalyzer::kToken_old, REDUCE (53)
+, END
+// State S60 (index = 354)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (54)
 , C_Lexique_lexicalAnalyzer::kToken__2E_, SHIFT (75)
 , C_Lexique_lexicalAnalyzer::kToken_old, SHIFT (76)
 , END
-// State S61 (index = 349)
+// State S61 (index = 361)
 , C_Lexique_lexicalAnalyzer::kToken__29_, SHIFT (79)
 , END
-// State S62 (index = 352)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (37)
+// State S62 (index = 364)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (38)
 , END
-// State S63 (index = 355)
+// State S63 (index = 367)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
-// State S64 (index = 360)
+// State S64 (index = 372)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (5)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (5)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (5)
@@ -6254,13 +6975,15 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (5)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (5)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (5)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (5)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (5)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (5)
 , END
-// State S65 (index = 383)
+// State S65 (index = 399)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
-// State S66 (index = 388)
+// State S66 (index = 404)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (6)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (6)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (6)
@@ -6272,13 +6995,15 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (6)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (6)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (6)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (6)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (6)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (6)
 , END
-// State S67 (index = 413)
+// State S67 (index = 433)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
-// State S68 (index = 418)
+// State S68 (index = 438)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (7)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (7)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (7)
@@ -6291,39 +7016,41 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (7)
 , C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (7)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (7)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (7)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (7)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (7)
 , END
-// State S69 (index = 445)
+// State S69 (index = 469)
 , C_Lexique_lexicalAnalyzer::kToken_enum_2D_type_2D_name, SHIFT (83)
 , END
-// State S70 (index = 448)
+// State S70 (index = 472)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (84)
 , END
-// State S71 (index = 451)
+// State S71 (index = 475)
 , C_Lexique_lexicalAnalyzer::kToken__21_, SHIFT (53)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (29)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (30)
 , END
-// State S72 (index = 456)
+// State S72 (index = 480)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (86)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (27)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (28)
 , END
-// State S73 (index = 461)
+// State S73 (index = 485)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (88)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (33)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (34)
 , END
-// State S74 (index = 466)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (35)
+// State S74 (index = 490)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (36)
 , C_Lexique_lexicalAnalyzer::kToken_var, SHIFT (22)
 , C_Lexique_lexicalAnalyzer::kToken_invariant, SHIFT (23)
 , C_Lexique_lexicalAnalyzer::kToken_event, SHIFT (24)
 , END
-// State S75 (index = 475)
+// State S75 (index = 499)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (91)
 , END
-// State S76 (index = 478)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (54)
+// State S76 (index = 502)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (55)
 , END
-// State S77 (index = 481)
+// State S77 (index = 505)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (9)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (9)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (9)
@@ -6337,12 +7064,14 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (9)
 , C_Lexique_lexicalAnalyzer::kToken__26_, REDUCE (9)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (9)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (9)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (9)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (9)
 , END
-// State S78 (index = 510)
+// State S78 (index = 538)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (92)
 , END
-// State S79 (index = 513)
+// State S79 (index = 541)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (8)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (8)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (8)
@@ -6356,82 +7085,92 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (8)
 , C_Lexique_lexicalAnalyzer::kToken__26_, REDUCE (8)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (8)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (8)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (8)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (8)
 , END
-// State S80 (index = 542)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (46)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (46)
-, END
-// State S81 (index = 565)
+// State S80 (index = 574)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (47)
-, C_Lexique_lexicalAnalyzer::kToken__7C_, SHIFT (65)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (47)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (47)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (47)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (47)
 , END
-// State S82 (index = 592)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken__26_, SHIFT (67)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (49)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (49)
+// State S81 (index = 601)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken__7C_, SHIFT (65)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (48)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (48)
 , END
-// State S83 (index = 621)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (39)
+// State S82 (index = 632)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken__26_, SHIFT (67)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (50)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (50)
+, END
+// State S83 (index = 665)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (40)
 , C_Lexique_lexicalAnalyzer::kToken__3F_, SHIFT (51)
 , END
-// State S84 (index = 626)
+// State S84 (index = 670)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (55)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (55)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
 , C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
-, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_switch, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (99)
 , END
-// State S85 (index = 637)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (30)
+// State S85 (index = 685)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (31)
 , END
-// State S86 (index = 640)
-, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (102)
+// State S86 (index = 688)
+, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (103)
 , END
-// State S87 (index = 643)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (103)
+// State S87 (index = 691)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (104)
 , END
-// State S88 (index = 646)
-, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (104)
+// State S88 (index = 694)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (105)
 , END
-// State S89 (index = 649)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (105)
+// State S89 (index = 697)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (106)
 , END
-// State S90 (index = 652)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (36)
+// State S90 (index = 700)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (37)
 , END
-// State S91 (index = 655)
+// State S91 (index = 703)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (10)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (10)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (10)
@@ -6445,9 +7184,11 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (10)
 , C_Lexique_lexicalAnalyzer::kToken__26_, REDUCE (10)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (10)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (10)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (10)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (10)
 , END
-// State S92 (index = 684)
+// State S92 (index = 736)
 , C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (11)
 , C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (11)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (11)
@@ -6461,283 +7202,408 @@ static const int16_t gActionTable_omnibus_grammar [] = {
 , C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (11)
 , C_Lexique_lexicalAnalyzer::kToken__26_, REDUCE (11)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (11)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (11)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (11)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (11)
 , END
-// State S93 (index = 713)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (48)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (48)
+// State S93 (index = 769)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (49)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (49)
 , END
-// State S94 (index = 738)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (50)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (50)
+// State S94 (index = 798)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken__2D__3E_, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_var, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_invariant, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_event, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken__7C_, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (51)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (51)
 , END
-// State S95 (index = 765)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (40)
+// State S95 (index = 829)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (41)
 , END
-// State S96 (index = 768)
-, C_Lexique_lexicalAnalyzer::kToken__3D_, SHIFT (106)
+// State S96 (index = 832)
+, C_Lexique_lexicalAnalyzer::kToken__3D_, SHIFT (107)
 , END
-// State S97 (index = 771)
+// State S97 (index = 835)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
-// State S98 (index = 776)
+// State S98 (index = 840)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (109)
+, END
+// State S99 (index = 843)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
-// State S99 (index = 781)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (41)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, SHIFT (109)
+// State S100 (index = 848)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (42)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, SHIFT (111)
 , END
-// State S100 (index = 786)
+// State S101 (index = 853)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (55)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (55)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
 , C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
-, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_switch, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (99)
 , END
-// State S101 (index = 797)
+// State S102 (index = 868)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (12)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (12)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (12)
 , END
-// State S102 (index = 802)
+// State S103 (index = 875)
 , C_Lexique_lexicalAnalyzer::kToken__21_, SHIFT (53)
-, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (29)
+, C_Lexique_lexicalAnalyzer::kToken__29_, REDUCE (30)
 , END
-// State S103 (index = 807)
+// State S104 (index = 880)
 , C_Lexique_lexicalAnalyzer::kToken_scenario, REDUCE (1)
 , C_Lexique_lexicalAnalyzer::kToken_enum, REDUCE (1)
 , C_Lexique_lexicalAnalyzer::kToken_function, REDUCE (1)
 , C_Lexique_lexicalAnalyzer::kToken_machine, REDUCE (1)
 , C_Lexique_lexicalAnalyzer::kToken_, REDUCE (1)
 , END
-// State S104 (index = 818)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (113)
+// State S105 (index = 891)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (115)
 , END
-// State S105 (index = 821)
+// State S106 (index = 894)
 , C_Lexique_lexicalAnalyzer::kToken_scenario, REDUCE (3)
 , C_Lexique_lexicalAnalyzer::kToken_enum, REDUCE (3)
 , C_Lexique_lexicalAnalyzer::kToken_function, REDUCE (3)
 , C_Lexique_lexicalAnalyzer::kToken_machine, REDUCE (3)
 , C_Lexique_lexicalAnalyzer::kToken_, REDUCE (3)
 , END
-// State S106 (index = 832)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (114)
-, C_Lexique_lexicalAnalyzer::kToken__2E_, SHIFT (115)
+// State S107 (index = 905)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (116)
+, C_Lexique_lexicalAnalyzer::kToken__2E_, SHIFT (117)
 , END
-// State S107 (index = 837)
+// State S108 (index = 910)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (13)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (13)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (13)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (13)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (13)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (13)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (13)
 , END
-// State S108 (index = 848)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (117)
+// State S109 (index = 925)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (119)
 , END
-// State S109 (index = 851)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, SHIFT (118)
+// State S110 (index = 928)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (120)
 , END
-// State S110 (index = 854)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (119)
+// State S111 (index = 931)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, SHIFT (121)
 , END
-// State S111 (index = 857)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
+// State S112 (index = 934)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (122)
 , END
-// State S112 (index = 862)
-, C_Lexique_lexicalAnalyzer::kToken__29_, SHIFT (120)
+// State S113 (index = 937)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (57)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (57)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (57)
 , END
-// State S113 (index = 865)
+// State S114 (index = 944)
+, C_Lexique_lexicalAnalyzer::kToken__29_, SHIFT (123)
+, END
+// State S115 (index = 947)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (88)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (33)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (34)
 , END
-// State S114 (index = 870)
+// State S116 (index = 952)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (15)
-, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (122)
+, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (125)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (15)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (15)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (15)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (15)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (15)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (15)
 , END
-// State S115 (index = 883)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (123)
+// State S117 (index = 969)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (126)
 , END
-// State S116 (index = 886)
+// State S118 (index = 972)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (14)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (14)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (14)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (14)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (14)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (14)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (14)
 , END
-// State S117 (index = 897)
+// State S119 (index = 987)
+, C_Lexique_lexicalAnalyzer::kToken_case, SHIFT (127)
+, END
+// State S120 (index = 990)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (55)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (55)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
 , C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
-, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_switch, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (99)
 , END
-// State S118 (index = 908)
-, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (125)
+// State S121 (index = 1005)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (129)
 , END
-// State S119 (index = 911)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (35)
+// State S122 (index = 1008)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (36)
 , C_Lexique_lexicalAnalyzer::kToken_var, SHIFT (22)
 , C_Lexique_lexicalAnalyzer::kToken_invariant, SHIFT (23)
 , C_Lexique_lexicalAnalyzer::kToken_event, SHIFT (24)
 , END
-// State S120 (index = 920)
+// State S123 (index = 1017)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (86)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (27)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (28)
 , END
-// State S121 (index = 925)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (34)
+// State S124 (index = 1022)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (35)
 , END
-// State S122 (index = 928)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (128)
+// State S125 (index = 1025)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (132)
 , END
-// State S123 (index = 931)
+// State S126 (index = 1028)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (16)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (16)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (16)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (16)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (16)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (16)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (16)
 , END
-// State S124 (index = 942)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (129)
+// State S127 (index = 1043)
+, C_Lexique_lexicalAnalyzer::kToken__2E_, SHIFT (133)
 , END
-// State S125 (index = 945)
+// State S128 (index = 1046)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (134)
+, END
+// State S129 (index = 1049)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
 , C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
 , END
-// State S126 (index = 950)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (38)
+// State S130 (index = 1054)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (39)
 , END
-// State S127 (index = 953)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (28)
+// State S131 (index = 1057)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (29)
 , END
-// State S128 (index = 956)
-, C_Lexique_lexicalAnalyzer::kToken__29_, SHIFT (131)
+// State S132 (index = 1060)
+, C_Lexique_lexicalAnalyzer::kToken__29_, SHIFT (136)
 , END
-// State S129 (index = 959)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (19)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (19)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (19)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (19)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (19)
-, C_Lexique_lexicalAnalyzer::kToken_else, SHIFT (132)
+// State S133 (index = 1063)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (137)
 , END
-// State S130 (index = 972)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, SHIFT (134)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (43)
-, END
-// State S131 (index = 977)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (17)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (17)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (17)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (17)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (17)
-, END
-// State S132 (index = 988)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (136)
-, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (137)
-, END
-// State S133 (index = 993)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (18)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (18)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (18)
-, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (18)
-, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (18)
-, END
-// State S134 (index = 1004)
-, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (138)
-, END
-// State S135 (index = 1007)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (42)
-, END
-// State S136 (index = 1010)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (55)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (55)
-, C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
-, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (98)
-, END
-// State S137 (index = 1021)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
-, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
-, END
-// State S138 (index = 1026)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
-, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
-, END
-// State S139 (index = 1031)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (142)
-, END
-// State S140 (index = 1034)
-, C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (143)
-, END
-// State S141 (index = 1037)
-, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, SHIFT (134)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (43)
-, END
-// State S142 (index = 1042)
+// State S134 (index = 1066)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (20)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (20)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (20)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (20)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_else, SHIFT (138)
 , END
-// State S143 (index = 1053)
-, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (55)
-, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (55)
-, C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
-, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (98)
-, END
-// State S144 (index = 1064)
+// State S135 (index = 1083)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, SHIFT (140)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (44)
 , END
-// State S145 (index = 1067)
-, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (146)
+// State S136 (index = 1088)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (17)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (17)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (17)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (17)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (17)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (17)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (17)
 , END
-// State S146 (index = 1070)
+// State S137 (index = 1103)
+, C_Lexique_lexicalAnalyzer::kToken__2C_, SHIFT (142)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, REDUCE (60)
+, END
+// State S138 (index = 1108)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (144)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (145)
+, END
+// State S139 (index = 1113)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (19)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (19)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (19)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (19)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (19)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (19)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (19)
-, C_Lexique_lexicalAnalyzer::kToken_else, SHIFT (132)
 , END
-// State S147 (index = 1083)
+// State S140 (index = 1128)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (146)
+, END
+// State S141 (index = 1131)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (43)
+, END
+// State S142 (index = 1134)
+, C_Lexique_lexicalAnalyzer::kToken__2E_, SHIFT (147)
+, END
+// State S143 (index = 1137)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (148)
+, END
+// State S144 (index = 1140)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
+, C_Lexique_lexicalAnalyzer::kToken_switch, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (99)
+, END
+// State S145 (index = 1155)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
+, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
+, END
+// State S146 (index = 1160)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (45)
+, C_Lexique_lexicalAnalyzer::kToken__28_, SHIFT (46)
+, END
+// State S147 (index = 1165)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (152)
+, END
+// State S148 (index = 1168)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
+, C_Lexique_lexicalAnalyzer::kToken_switch, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (99)
+, END
+// State S149 (index = 1183)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (154)
+, END
+// State S150 (index = 1186)
+, C_Lexique_lexicalAnalyzer::kToken__7B_, SHIFT (155)
+, END
+// State S151 (index = 1189)
+, C_Lexique_lexicalAnalyzer::kToken_literal_5F_string, SHIFT (140)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (44)
+, END
+// State S152 (index = 1194)
+, C_Lexique_lexicalAnalyzer::kToken__2C_, SHIFT (142)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, REDUCE (60)
+, END
+// State S153 (index = 1199)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (58)
+, C_Lexique_lexicalAnalyzer::kToken_case, SHIFT (158)
+, END
+// State S154 (index = 1204)
 , C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (21)
 , C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (21)
 , C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (21)
 , C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (21)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (21)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (21)
 , C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (21)
+, END
+// State S155 (index = 1219)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
+, C_Lexique_lexicalAnalyzer::kToken_switch, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (99)
+, END
+// State S156 (index = 1234)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (45)
+, END
+// State S157 (index = 1237)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, REDUCE (61)
+, END
+// State S158 (index = 1240)
+, C_Lexique_lexicalAnalyzer::kToken__2E_, SHIFT (161)
+, END
+// State S159 (index = 1243)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (162)
+, END
+// State S160 (index = 1246)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, SHIFT (163)
+, END
+// State S161 (index = 1249)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (164)
+, END
+// State S162 (index = 1252)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (18)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (18)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (18)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (18)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (18)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (18)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (18)
+, END
+// State S163 (index = 1267)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (20)
+, C_Lexique_lexicalAnalyzer::kToken_else, SHIFT (138)
+, END
+// State S164 (index = 1284)
+, C_Lexique_lexicalAnalyzer::kToken__2C_, SHIFT (142)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, REDUCE (60)
+, END
+// State S165 (index = 1289)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_assert, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_switch, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (22)
+, C_Lexique_lexicalAnalyzer::kToken_if, REDUCE (22)
+, END
+// State S166 (index = 1304)
+, C_Lexique_lexicalAnalyzer::kToken__3A_, SHIFT (167)
+, END
+// State S167 (index = 1307)
+, C_Lexique_lexicalAnalyzer::kToken_identifier, SHIFT (96)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_ensures, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_assert, SHIFT (97)
+, C_Lexique_lexicalAnalyzer::kToken_switch, SHIFT (98)
+, C_Lexique_lexicalAnalyzer::kToken_case, REDUCE (56)
+, C_Lexique_lexicalAnalyzer::kToken_if, SHIFT (99)
+, END
+// State S168 (index = 1322)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (58)
+, C_Lexique_lexicalAnalyzer::kToken_case, SHIFT (158)
+, END
+// State S169 (index = 1327)
+, C_Lexique_lexicalAnalyzer::kToken__7D_, REDUCE (59)
 , END} ;
 
-static const uint32_t gActionTableIndex_omnibus_grammar [148] = {
+static const uint32_t gActionTableIndex_omnibus_grammar [170] = {
   0  // S0
 , 11  // S1
 , 14  // S2
@@ -6787,105 +7653,127 @@ static const uint32_t gActionTableIndex_omnibus_grammar [148] = {
 , 212  // S46
 , 217  // S47
 , 226  // S48
-, 251  // S49
-, 278  // S50
-, 307  // S51
-, 310  // S52
-, 313  // S53
-, 316  // S54
-, 319  // S55
-, 322  // S56
-, 325  // S57
-, 328  // S58
-, 335  // S59
-, 342  // S60
-, 349  // S61
-, 352  // S62
-, 355  // S63
-, 360  // S64
-, 383  // S65
-, 388  // S66
-, 413  // S67
-, 418  // S68
-, 445  // S69
-, 448  // S70
-, 451  // S71
-, 456  // S72
-, 461  // S73
-, 466  // S74
-, 475  // S75
-, 478  // S76
-, 481  // S77
-, 510  // S78
-, 513  // S79
-, 542  // S80
-, 565  // S81
-, 592  // S82
-, 621  // S83
-, 626  // S84
-, 637  // S85
-, 640  // S86
-, 643  // S87
-, 646  // S88
-, 649  // S89
-, 652  // S90
-, 655  // S91
-, 684  // S92
-, 713  // S93
-, 738  // S94
-, 765  // S95
-, 768  // S96
-, 771  // S97
-, 776  // S98
-, 781  // S99
-, 786  // S100
-, 797  // S101
-, 802  // S102
-, 807  // S103
-, 818  // S104
-, 821  // S105
-, 832  // S106
-, 837  // S107
-, 848  // S108
-, 851  // S109
-, 854  // S110
-, 857  // S111
-, 862  // S112
-, 865  // S113
-, 870  // S114
-, 883  // S115
-, 886  // S116
-, 897  // S117
-, 908  // S118
-, 911  // S119
-, 920  // S120
-, 925  // S121
-, 928  // S122
-, 931  // S123
-, 942  // S124
-, 945  // S125
-, 950  // S126
-, 953  // S127
-, 956  // S128
-, 959  // S129
-, 972  // S130
-, 977  // S131
-, 988  // S132
-, 993  // S133
-, 1004  // S134
-, 1007  // S135
-, 1010  // S136
-, 1021  // S137
-, 1026  // S138
-, 1031  // S139
-, 1034  // S140
-, 1037  // S141
-, 1042  // S142
-, 1053  // S143
-, 1064  // S144
-, 1067  // S145
-, 1070  // S146
-, 1083  // S147
+, 255  // S49
+, 286  // S50
+, 319  // S51
+, 322  // S52
+, 325  // S53
+, 328  // S54
+, 331  // S55
+, 334  // S56
+, 337  // S57
+, 340  // S58
+, 347  // S59
+, 354  // S60
+, 361  // S61
+, 364  // S62
+, 367  // S63
+, 372  // S64
+, 399  // S65
+, 404  // S66
+, 433  // S67
+, 438  // S68
+, 469  // S69
+, 472  // S70
+, 475  // S71
+, 480  // S72
+, 485  // S73
+, 490  // S74
+, 499  // S75
+, 502  // S76
+, 505  // S77
+, 538  // S78
+, 541  // S79
+, 574  // S80
+, 601  // S81
+, 632  // S82
+, 665  // S83
+, 670  // S84
+, 685  // S85
+, 688  // S86
+, 691  // S87
+, 694  // S88
+, 697  // S89
+, 700  // S90
+, 703  // S91
+, 736  // S92
+, 769  // S93
+, 798  // S94
+, 829  // S95
+, 832  // S96
+, 835  // S97
+, 840  // S98
+, 843  // S99
+, 848  // S100
+, 853  // S101
+, 868  // S102
+, 875  // S103
+, 880  // S104
+, 891  // S105
+, 894  // S106
+, 905  // S107
+, 910  // S108
+, 925  // S109
+, 928  // S110
+, 931  // S111
+, 934  // S112
+, 937  // S113
+, 944  // S114
+, 947  // S115
+, 952  // S116
+, 969  // S117
+, 972  // S118
+, 987  // S119
+, 990  // S120
+, 1005  // S121
+, 1008  // S122
+, 1017  // S123
+, 1022  // S124
+, 1025  // S125
+, 1028  // S126
+, 1043  // S127
+, 1046  // S128
+, 1049  // S129
+, 1054  // S130
+, 1057  // S131
+, 1060  // S132
+, 1063  // S133
+, 1066  // S134
+, 1083  // S135
+, 1088  // S136
+, 1103  // S137
+, 1108  // S138
+, 1113  // S139
+, 1128  // S140
+, 1131  // S141
+, 1134  // S142
+, 1137  // S143
+, 1140  // S144
+, 1155  // S145
+, 1160  // S146
+, 1165  // S147
+, 1168  // S148
+, 1183  // S149
+, 1186  // S150
+, 1189  // S151
+, 1194  // S152
+, 1199  // S153
+, 1204  // S154
+, 1219  // S155
+, 1234  // S156
+, 1237  // S157
+, 1240  // S158
+, 1243  // S159
+, 1246  // S160
+, 1249  // S161
+, 1252  // S162
+, 1267  // S163
+, 1284  // S164
+, 1289  // S165
+, 1304  // S166
+, 1307  // S167
+, 1322  // S168
+, 1327  // S169
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6984,71 +7872,89 @@ static const int16_t gSuccessorTable_omnibus_grammar_82 [3] = {25, 94, -1} ;
 
 static const int16_t gSuccessorTable_omnibus_grammar_83 [3] = {20, 95, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_84 [7] = {10, 99,
-  11, 100,
-  28, 101, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_84 [7] = {10, 100,
+  11, 101,
+  28, 102, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_97 [9] = {5, 107,
+static const int16_t gSuccessorTable_omnibus_grammar_97 [9] = {5, 108,
   6, 48,
   7, 49,
   8, 50, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_98 [9] = {5, 108,
+static const int16_t gSuccessorTable_omnibus_grammar_99 [9] = {5, 110,
   6, 48,
   7, 49,
   8, 50, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_99 [3] = {21, 110, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_100 [3] = {21, 112, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_100 [5] = {11, 100,
-  28, 111, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_101 [5] = {11, 101,
+  28, 113, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_102 [3] = {16, 112, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_103 [3] = {16, 114, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_106 [3] = {12, 116, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_107 [3] = {12, 118, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_113 [3] = {18, 121, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_115 [3] = {18, 124, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_117 [7] = {10, 124,
-  11, 100,
-  28, 101, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_120 [7] = {10, 128,
+  11, 101,
+  28, 102, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_119 [3] = {19, 126, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_122 [3] = {19, 130, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_120 [3] = {15, 127, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_123 [3] = {15, 131, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_125 [9] = {5, 130,
+static const int16_t gSuccessorTable_omnibus_grammar_129 [9] = {5, 135,
   6, 48,
   7, 49,
   8, 50, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_129 [3] = {13, 133, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_134 [3] = {13, 139, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_130 [3] = {22, 135, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_135 [3] = {22, 141, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_136 [7] = {10, 139,
-  11, 100,
-  28, 101, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_137 [3] = {30, 143, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_137 [9] = {5, 140,
+static const int16_t gSuccessorTable_omnibus_grammar_144 [7] = {10, 149,
+  11, 101,
+  28, 102, -1} ;
+
+static const int16_t gSuccessorTable_omnibus_grammar_145 [9] = {5, 150,
   6, 48,
   7, 49,
   8, 50, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_138 [9] = {5, 141,
+static const int16_t gSuccessorTable_omnibus_grammar_146 [9] = {5, 151,
   6, 48,
   7, 49,
   8, 50, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_141 [3] = {22, 144, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_148 [7] = {10, 153,
+  11, 101,
+  28, 102, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_143 [7] = {10, 145,
-  11, 100,
-  28, 101, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_151 [3] = {22, 156, -1} ;
 
-static const int16_t gSuccessorTable_omnibus_grammar_146 [3] = {13, 147, -1} ;
+static const int16_t gSuccessorTable_omnibus_grammar_152 [3] = {30, 157, -1} ;
 
-static const int16_t * gSuccessorTable_omnibus_grammar [148] = {
+static const int16_t gSuccessorTable_omnibus_grammar_153 [3] = {29, 159, -1} ;
+
+static const int16_t gSuccessorTable_omnibus_grammar_155 [7] = {10, 160,
+  11, 101,
+  28, 102, -1} ;
+
+static const int16_t gSuccessorTable_omnibus_grammar_163 [3] = {13, 165, -1} ;
+
+static const int16_t gSuccessorTable_omnibus_grammar_164 [3] = {30, 166, -1} ;
+
+static const int16_t gSuccessorTable_omnibus_grammar_167 [7] = {10, 168,
+  11, 101,
+  28, 102, -1} ;
+
+static const int16_t gSuccessorTable_omnibus_grammar_168 [3] = {29, 169, -1} ;
+
+static const int16_t * gSuccessorTable_omnibus_grammar [170] = {
 gSuccessorTable_omnibus_grammar_0, NULL, NULL, NULL, 
   NULL, NULL, gSuccessorTable_omnibus_grammar_6, gSuccessorTable_omnibus_grammar_7, 
   gSuccessorTable_omnibus_grammar_8, gSuccessorTable_omnibus_grammar_9, NULL, NULL, 
@@ -7073,19 +7979,25 @@ gSuccessorTable_omnibus_grammar_0, NULL, NULL, NULL,
   gSuccessorTable_omnibus_grammar_84, NULL, NULL, NULL, 
   NULL, NULL, NULL, NULL, 
   NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_omnibus_grammar_97, gSuccessorTable_omnibus_grammar_98, gSuccessorTable_omnibus_grammar_99, 
-  gSuccessorTable_omnibus_grammar_100, NULL, gSuccessorTable_omnibus_grammar_102, NULL, 
-  NULL, NULL, gSuccessorTable_omnibus_grammar_106, NULL, 
+  NULL, gSuccessorTable_omnibus_grammar_97, NULL, gSuccessorTable_omnibus_grammar_99, 
+  gSuccessorTable_omnibus_grammar_100, gSuccessorTable_omnibus_grammar_101, NULL, gSuccessorTable_omnibus_grammar_103, 
+  NULL, NULL, NULL, gSuccessorTable_omnibus_grammar_107, 
   NULL, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_omnibus_grammar_113, NULL, NULL, 
-  NULL, gSuccessorTable_omnibus_grammar_117, NULL, gSuccessorTable_omnibus_grammar_119, 
-  gSuccessorTable_omnibus_grammar_120, NULL, NULL, NULL, 
-  NULL, gSuccessorTable_omnibus_grammar_125, NULL, NULL, 
-  NULL, gSuccessorTable_omnibus_grammar_129, gSuccessorTable_omnibus_grammar_130, NULL, 
+  NULL, NULL, NULL, gSuccessorTable_omnibus_grammar_115, 
   NULL, NULL, NULL, NULL, 
-  gSuccessorTable_omnibus_grammar_136, gSuccessorTable_omnibus_grammar_137, gSuccessorTable_omnibus_grammar_138, NULL, 
-  NULL, gSuccessorTable_omnibus_grammar_141, NULL, gSuccessorTable_omnibus_grammar_143, 
-  NULL, NULL, gSuccessorTable_omnibus_grammar_146, NULL} ;
+  gSuccessorTable_omnibus_grammar_120, NULL, gSuccessorTable_omnibus_grammar_122, gSuccessorTable_omnibus_grammar_123, 
+  NULL, NULL, NULL, NULL, 
+  NULL, gSuccessorTable_omnibus_grammar_129, NULL, NULL, 
+  NULL, NULL, gSuccessorTable_omnibus_grammar_134, gSuccessorTable_omnibus_grammar_135, 
+  NULL, gSuccessorTable_omnibus_grammar_137, NULL, NULL, 
+  NULL, NULL, NULL, NULL, 
+  gSuccessorTable_omnibus_grammar_144, gSuccessorTable_omnibus_grammar_145, gSuccessorTable_omnibus_grammar_146, NULL, 
+  gSuccessorTable_omnibus_grammar_148, NULL, NULL, gSuccessorTable_omnibus_grammar_151, 
+  gSuccessorTable_omnibus_grammar_152, gSuccessorTable_omnibus_grammar_153, NULL, gSuccessorTable_omnibus_grammar_155, 
+  NULL, NULL, NULL, NULL, 
+  NULL, NULL, NULL, gSuccessorTable_omnibus_grammar_163, 
+  gSuccessorTable_omnibus_grammar_164, NULL, NULL, gSuccessorTable_omnibus_grammar_167, 
+  gSuccessorTable_omnibus_grammar_168, NULL} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
@@ -7093,7 +8005,7 @@ gSuccessorTable_omnibus_grammar_0, NULL, NULL, NULL,
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int16_t gProductionsTable_omnibus_grammar [58 * 2] = {
+static const int16_t gProductionsTable_omnibus_grammar [63 * 2] = {
   0, 1,
   1, 10,
   2, 6,
@@ -7112,6 +8024,7 @@ static const int16_t gProductionsTable_omnibus_grammar [58 * 2] = {
   12, 1,
   12, 2,
   12, 4,
+  11, 11,
   11, 6,
   13, 0,
   13, 4,
@@ -7151,7 +8064,11 @@ static const int16_t gProductionsTable_omnibus_grammar [58 * 2] = {
   27, 1,
   28, 0,
   28, 2,
-  29, 1
+  29, 0,
+  29, 7,
+  30, 0,
+  30, 4,
+  31, 1
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7585,6 +8502,9 @@ void cGrammar_omnibus_5F_grammar::nt_instruction_parse (C_Lexique_lexicalAnalyze
   case 18 :
       rule_omnibus_5F_syntax_instruction_i18_parse(inLexique) ;
     break ;
+  case 19 :
+      rule_omnibus_5F_syntax_instruction_i19_parse(inLexique) ;
+    break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
     break ;
@@ -7602,6 +8522,9 @@ void cGrammar_omnibus_5F_grammar::nt_instruction_ (GALGAS_instruction &  paramet
     break ;
   case 18 :
       rule_omnibus_5F_syntax_instruction_i18_(parameter_1, inLexique) ;
+    break ;
+  case 19 :
+      rule_omnibus_5F_syntax_instruction_i19_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -7656,14 +8579,14 @@ void cGrammar_omnibus_5F_grammar::nt_assignment_5F_source_5F_expression_ (GALGAS
 
 void cGrammar_omnibus_5F_grammar::nt_else_5F_part_parse (C_Lexique_lexicalAnalyzer * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
-  case 19 :
-      rule_omnibus_5F_syntax_else_5F_part_i19_parse(inLexique) ;
-    break ;
   case 20 :
       rule_omnibus_5F_syntax_else_5F_part_i20_parse(inLexique) ;
     break ;
   case 21 :
       rule_omnibus_5F_syntax_else_5F_part_i21_parse(inLexique) ;
+    break ;
+  case 22 :
+      rule_omnibus_5F_syntax_else_5F_part_i22_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -7674,14 +8597,14 @@ void cGrammar_omnibus_5F_grammar::nt_else_5F_part_parse (C_Lexique_lexicalAnalyz
 void cGrammar_omnibus_5F_grammar::nt_else_5F_part_ (GALGAS_instructionList &  parameter_1,
                                 C_Lexique_lexicalAnalyzer * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
-  case 19 :
-      rule_omnibus_5F_syntax_else_5F_part_i19_(parameter_1, inLexique) ;
-    break ;
   case 20 :
       rule_omnibus_5F_syntax_else_5F_part_i20_(parameter_1, inLexique) ;
     break ;
   case 21 :
       rule_omnibus_5F_syntax_else_5F_part_i21_(parameter_1, inLexique) ;
+    break ;
+  case 22 :
+      rule_omnibus_5F_syntax_else_5F_part_i22_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -7695,8 +8618,8 @@ void cGrammar_omnibus_5F_grammar::nt_else_5F_part_ (GALGAS_instructionList &  pa
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_0 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 22 23 24 25 26
-  return inLexique->nextProductionIndex () - 21 ;
+// Productions numbers : 23 24 25 26 27
+  return inLexique->nextProductionIndex () - 22 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7706,8 +8629,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_0 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_1 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 27 28
-  return inLexique->nextProductionIndex () - 26 ;
+// Productions numbers : 28 29
+  return inLexique->nextProductionIndex () - 27 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7717,8 +8640,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_1 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_2 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 29 30
-  return inLexique->nextProductionIndex () - 28 ;
+// Productions numbers : 30 31
+  return inLexique->nextProductionIndex () - 29 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7728,8 +8651,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_2 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_3 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 31 32
-  return inLexique->nextProductionIndex () - 30 ;
+// Productions numbers : 32 33
+  return inLexique->nextProductionIndex () - 31 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7739,8 +8662,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_3 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_4 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 33 34
-  return inLexique->nextProductionIndex () - 32 ;
+// Productions numbers : 34 35
+  return inLexique->nextProductionIndex () - 33 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7750,8 +8673,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_4 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_5 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 35 36 37 38
-  return inLexique->nextProductionIndex () - 34 ;
+// Productions numbers : 36 37 38 39
+  return inLexique->nextProductionIndex () - 35 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7761,8 +8684,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_5 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_6 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 39 40
-  return inLexique->nextProductionIndex () - 38 ;
+// Productions numbers : 40 41
+  return inLexique->nextProductionIndex () - 39 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7772,8 +8695,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_6 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_7 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 41 42
-  return inLexique->nextProductionIndex () - 40 ;
+// Productions numbers : 42 43
+  return inLexique->nextProductionIndex () - 41 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7783,8 +8706,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_7 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_8 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 43 44
-  return inLexique->nextProductionIndex () - 42 ;
+// Productions numbers : 44 45
+  return inLexique->nextProductionIndex () - 43 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7794,8 +8717,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_8 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_9 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 45 46
-  return inLexique->nextProductionIndex () - 44 ;
+// Productions numbers : 46 47
+  return inLexique->nextProductionIndex () - 45 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7805,8 +8728,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_9 (C_Lexique_lexic
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_10 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 47 48
-  return inLexique->nextProductionIndex () - 46 ;
+// Productions numbers : 48 49
+  return inLexique->nextProductionIndex () - 47 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7816,8 +8739,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_10 (C_Lexique_lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_11 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 49 50
-  return inLexique->nextProductionIndex () - 48 ;
+// Productions numbers : 50 51
+  return inLexique->nextProductionIndex () - 49 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7827,8 +8750,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_11 (C_Lexique_lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_12 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 51 52
-  return inLexique->nextProductionIndex () - 50 ;
+// Productions numbers : 52 53
+  return inLexique->nextProductionIndex () - 51 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7838,8 +8761,8 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_12 (C_Lexique_lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_13 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 53 54
-  return inLexique->nextProductionIndex () - 52 ;
+// Productions numbers : 54 55
+  return inLexique->nextProductionIndex () - 53 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7849,8 +8772,30 @@ int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_13 (C_Lexique_lexi
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_14 (C_Lexique_lexicalAnalyzer * inLexique) {
-// Productions numbers : 55 56
-  return inLexique->nextProductionIndex () - 54 ;
+// Productions numbers : 56 57
+  return inLexique->nextProductionIndex () - 55 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                      
+//                             'select_omnibus_5F_syntax_15' non terminal implementation                                
+//                                                                                                                      
+//---------------------------------------------------------------------------------------------------------------------*
+
+int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_15 (C_Lexique_lexicalAnalyzer * inLexique) {
+// Productions numbers : 58 59
+  return inLexique->nextProductionIndex () - 57 ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                      
+//                             'select_omnibus_5F_syntax_16' non terminal implementation                                
+//                                                                                                                      
+//---------------------------------------------------------------------------------------------------------------------*
+
+int32_t cGrammar_omnibus_5F_grammar::select_omnibus_5F_syntax_16 (C_Lexique_lexicalAnalyzer * inLexique) {
+// Productions numbers : 60 61
+  return inLexique->nextProductionIndex () - 59 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7867,20 +8812,20 @@ GALGAS_machineVarListForDisplay extensionGetter_displayVarInfo (const GALGAS_var
   GALGAS_machineVarListForDisplay result_outResult ; // Returned variable
   result_outResult = GALGAS_machineVarListForDisplay::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 17)) ;
   const GALGAS_varList temp_0 = inObject ;
-  cEnumerator_varList enumerator_433 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_433.hasCurrentObject ()) {
-    GALGAS_uint var_columnLength_459 = enumerator_433.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 19)) ;
-    cEnumerator_lstringlist enumerator_507 (enumerator_433.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
-    while (enumerator_507.hasCurrentObject ()) {
-      GALGAS_uint var_cstNameLength_540 = enumerator_507.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 21)) ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictInf, var_columnLength_459.objectCompare (var_cstNameLength_540)).boolEnum () ;
+  cEnumerator_varList enumerator_535 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_535.hasCurrentObject ()) {
+    GALGAS_uint var_columnLength_561 = enumerator_535.current (HERE).getter_mVarName (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 19)) ;
+    cEnumerator_lstringlist enumerator_609 (enumerator_535.current (HERE).getter_mValueList (HERE), kENUMERATION_UP) ;
+    while (enumerator_609.hasCurrentObject ()) {
+      GALGAS_uint var_cstNameLength_642 = enumerator_609.current (HERE).getter_mValue (HERE).getter_string (HERE).getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 21)) ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsStrictInf, var_columnLength_561.objectCompare (var_cstNameLength_642)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        var_columnLength_459 = var_cstNameLength_540 ;
+        var_columnLength_561 = var_cstNameLength_642 ;
       }
-      enumerator_507.gotoNextObject () ;
+      enumerator_609.gotoNextObject () ;
     }
-    result_outResult.addAssign_operation (enumerator_433.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 27)), enumerator_433.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_433.current (HERE).getter_mBDDBitCount (HERE), enumerator_433.current (HERE).getter_mValueList (HERE), var_columnLength_459  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 26)) ;
-    enumerator_433.gotoNextObject () ;
+    result_outResult.addAssign_operation (enumerator_535.current (HERE).getter_mVarName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 27)), enumerator_535.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_535.current (HERE).getter_mBDDBitCount (HERE), enumerator_535.current (HERE).getter_mValueList (HERE), var_columnLength_561  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 26)) ;
+    enumerator_535.gotoNextObject () ;
   }
 //---
   return result_outResult ;
@@ -11703,352 +12648,352 @@ void extensionMethod_performMachineDynamicAnalysis (const GALGAS_machineList_2D_
                                                     const GALGAS_functionMap constinArgument_inFunctionMap,
                                                     C_Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool var_veryVerbose_7706 = GALGAS_bool (gOption_omnibus_5F_options_veryVerbose.getter_value ()) ;
-  GALGAS_bool var_verbose_7771 = var_veryVerbose_7706.operator_or (GALGAS_application::constructor_verboseOutput (SOURCE_FILE ("dynamicAnalysis.galgas", 299)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 299)) ;
-  GALGAS_string var_dotFileContents_7840 = GALGAS_string ("digraph G {\n") ;
-  var_dotFileContents_7840.plusAssign_operation(GALGAS_string ("  node [fontname=courier]\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 301)) ;
-  var_dotFileContents_7840.plusAssign_operation(GALGAS_string ("  edge [fontname=courier]\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 302)) ;
-  GALGAS_uint var_bddStartBitIndex_8063 = GALGAS_uint ((uint32_t) 0U) ;
-  GALGAS_varMap var_varMap_8084 = GALGAS_varMap::constructor_emptyMap (SOURCE_FILE ("dynamicAnalysis.galgas", 305)) ;
-  GALGAS_varList var_varList_8108 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 306)) ;
-  GALGAS_binaryset var_varContraintSet_8142 = GALGAS_binaryset::constructor_fullBinarySet (SOURCE_FILE ("dynamicAnalysis.galgas", 307)) ;
+  GALGAS_bool var_veryVerbose_8573 = GALGAS_bool (gOption_omnibus_5F_options_veryVerbose.getter_value ()) ;
+  GALGAS_bool var_verbose_8638 = var_veryVerbose_8573.operator_or (GALGAS_application::constructor_verboseOutput (SOURCE_FILE ("dynamicAnalysis.galgas", 299)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 299)) ;
+  GALGAS_string var_dotFileContents_8707 = GALGAS_string ("digraph G {\n") ;
+  var_dotFileContents_8707.plusAssign_operation(GALGAS_string ("  node [fontname=courier]\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 301)) ;
+  var_dotFileContents_8707.plusAssign_operation(GALGAS_string ("  edge [fontname=courier]\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 302)) ;
+  GALGAS_uint var_bddStartBitIndex_8930 = GALGAS_uint ((uint32_t) 0U) ;
+  GALGAS_varMap var_varMap_8951 = GALGAS_varMap::constructor_emptyMap (SOURCE_FILE ("dynamicAnalysis.galgas", 305)) ;
+  GALGAS_varList var_varList_8975 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 306)) ;
+  GALGAS_binaryset var_varContraintSet_9009 = GALGAS_binaryset::constructor_fullBinarySet (SOURCE_FILE ("dynamicAnalysis.galgas", 307)) ;
   const GALGAS_machineList_2D_element temp_0 = inObject ;
-  cEnumerator_enumVarDeclarationList enumerator_8208 (temp_0.getter_mEnumVarDeclarationList (HERE), kENUMERATION_UP) ;
-  while (enumerator_8208.hasCurrentObject ()) {
-    GALGAS_enumConstantMap var_constantMap_8293 ;
-    GALGAS_lstringlist var_constantList_8311 ;
-    GALGAS_scalarTypeKind joker_8275 ; // Joker input parameter
-    constinArgument_inUnifiedScalarTypeMap.method_searchKey (enumerator_8208.current (HERE).getter_mEnumTypeName (HERE), joker_8275, var_constantMap_8293, var_constantList_8311, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 309)) ;
-    GALGAS_uint var_initialValueIndex_8392 ;
-    var_constantMap_8293.method_searchKey (enumerator_8208.current (HERE).getter_mConstantName (HERE), var_initialValueIndex_8392, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 310)) ;
-    GALGAS_uint var_bddBitCount_8419 = var_constantList_8311.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 311)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 311)).getter_significantBitCount (SOURCE_FILE ("dynamicAnalysis.galgas", 311)) ;
+  cEnumerator_enumVarDeclarationList enumerator_9075 (temp_0.getter_mEnumVarDeclarationList (HERE), kENUMERATION_UP) ;
+  while (enumerator_9075.hasCurrentObject ()) {
+    GALGAS_enumConstantMap var_constantMap_9160 ;
+    GALGAS_lstringlist var_constantList_9178 ;
+    GALGAS_scalarTypeKind joker_9142 ; // Joker input parameter
+    constinArgument_inUnifiedScalarTypeMap.method_searchKey (enumerator_9075.current (HERE).getter_mEnumTypeName (HERE), joker_9142, var_constantMap_9160, var_constantList_9178, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 309)) ;
+    GALGAS_uint var_initialValueIndex_9259 ;
+    var_constantMap_9160.method_searchKey (enumerator_9075.current (HERE).getter_mConstantName (HERE), var_initialValueIndex_9259, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 310)) ;
+    GALGAS_uint var_bddBitCount_9286 = var_constantList_9178.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 311)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 311)).getter_significantBitCount (SOURCE_FILE ("dynamicAnalysis.galgas", 311)) ;
     {
-    var_varMap_8084.setter_insertKey (enumerator_8208.current (HERE).getter_mEnumVarName (HERE), var_constantList_8311, var_constantMap_8293, var_bddStartBitIndex_8063, var_bddBitCount_8419, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 312)) ;
+    var_varMap_8951.setter_insertKey (enumerator_9075.current (HERE).getter_mEnumVarName (HERE), var_constantList_9178, var_constantMap_9160, var_bddStartBitIndex_8930, var_bddBitCount_9286, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 312)) ;
     }
-    var_varList_8108.addAssign_operation (enumerator_8208.current (HERE).getter_mEnumVarName (HERE), var_constantList_8311, var_bddStartBitIndex_8063, var_bddBitCount_8419, var_initialValueIndex_8392  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 319)) ;
-    var_varContraintSet_8142 = var_varContraintSet_8142.operator_and (GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_bddStartBitIndex_8063, var_bddBitCount_8419, var_constantList_8311.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 328)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 328)).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 325)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 325)) ;
-    var_bddStartBitIndex_8063 = var_bddStartBitIndex_8063.add_operation (var_bddBitCount_8419, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 330)) ;
-    enumerator_8208.gotoNextObject () ;
+    var_varList_8975.addAssign_operation (enumerator_9075.current (HERE).getter_mEnumVarName (HERE), var_constantList_9178, var_bddStartBitIndex_8930, var_bddBitCount_9286, var_initialValueIndex_9259  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 319)) ;
+    var_varContraintSet_9009 = var_varContraintSet_9009.operator_and (GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_bddStartBitIndex_8930, var_bddBitCount_9286, var_constantList_9178.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 328)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 328)).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 325)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 325)) ;
+    var_bddStartBitIndex_8930 = var_bddStartBitIndex_8930.add_operation (var_bddBitCount_9286, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 330)) ;
+    enumerator_9075.gotoNextObject () ;
   }
-  GALGAS_uint var_varTotalBitCount_9011 = var_bddStartBitIndex_8063 ;
-  GALGAS_binaryset var_initValueSet_9159 = var_varContraintSet_8142 ;
-  cEnumerator_varList enumerator_9203 (var_varList_8108, kENUMERATION_UP) ;
-  while (enumerator_9203.hasCurrentObject ()) {
-    GALGAS_binaryset var_s_9216 = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (enumerator_9203.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_9203.current (HERE).getter_mBDDBitCount (HERE), enumerator_9203.current (HERE).getter_mInitialValueIndex (HERE).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 340)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 337)) ;
-    var_initValueSet_9159 = var_initValueSet_9159.operator_and (var_s_9216 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 342)) ;
-    enumerator_9203.gotoNextObject () ;
+  GALGAS_uint var_varTotalBitCount_9878 = var_bddStartBitIndex_8930 ;
+  GALGAS_binaryset var_initValueSet_10026 = var_varContraintSet_9009 ;
+  cEnumerator_varList enumerator_10070 (var_varList_8975, kENUMERATION_UP) ;
+  while (enumerator_10070.hasCurrentObject ()) {
+    GALGAS_binaryset var_s_10083 = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (enumerator_10070.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_10070.current (HERE).getter_mBDDBitCount (HERE), enumerator_10070.current (HERE).getter_mInitialValueIndex (HERE).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 340)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 337)) ;
+    var_initValueSet_10026 = var_initValueSet_10026.operator_and (var_s_10083 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 342)) ;
+    enumerator_10070.gotoNextObject () ;
   }
-  GALGAS_uint_36__34_list var_initValueList_9447 = var_initValueSet_9159.getter_uint_36__34_ValueList (var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 344)) ;
-  cEnumerator_uint_36__34_list enumerator_9523 (var_initValueList_9447, kENUMERATION_UP) ;
-  while (enumerator_9523.hasCurrentObject ()) {
-    var_dotFileContents_7840.plusAssign_operation(GALGAS_string ("  \"\" [shape=plaintext]\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 346)) ;
-    var_dotFileContents_7840.plusAssign_operation(GALGAS_string ("  \"\" -> \"").add_operation (function_nameForValue (enumerator_9523.current (HERE).getter_mValue (HERE), var_varList_8108, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)).add_operation (GALGAS_string ("\" ;\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)) ;
-    enumerator_9523.gotoNextObject () ;
+  GALGAS_uint_36__34_list var_initValueList_10314 = var_initValueSet_10026.getter_uint_36__34_ValueList (var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 344)) ;
+  cEnumerator_uint_36__34_list enumerator_10390 (var_initValueList_10314, kENUMERATION_UP) ;
+  while (enumerator_10390.hasCurrentObject ()) {
+    var_dotFileContents_8707.plusAssign_operation(GALGAS_string ("  \"\" [shape=plaintext]\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 346)) ;
+    var_dotFileContents_8707.plusAssign_operation(GALGAS_string ("  \"\" -> \"").add_operation (function_nameForValue (enumerator_10390.current (HERE).getter_mValue (HERE), var_varList_8975, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)).add_operation (GALGAS_string ("\" ;\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 347)) ;
+    enumerator_10390.gotoNextObject () ;
   }
-  const enumGalgasBool test_1 = var_verbose_7771.boolEnum () ;
+  const enumGalgasBool test_1 = var_verbose_8638.boolEnum () ;
   if (kBoolTrue == test_1) {
     {
     const GALGAS_machineList_2D_element temp_2 = inObject ;
-    routine_displayVarValueSet (GALGAS_string ("@").add_operation (temp_2.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 351)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 351)).add_operation (GALGAS_string (" init configuration"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 351)), var_initValueSet_9159, var_varList_8108, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 350)) ;
+    routine_displayVarValueSet (GALGAS_string ("@").add_operation (temp_2.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 351)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 351)).add_operation (GALGAS_string (" init configuration"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 351)), var_initValueSet_10026, var_varList_8975, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 350)) ;
     }
   }
-  GALGAS_binarysetList var_invariantList_9910 = GALGAS_binarysetList::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 357)) ;
-  GALGAS_binaryset var_invariantValueSet_9946 = var_varContraintSet_8142 ;
+  GALGAS_binarysetList var_invariantList_10777 = GALGAS_binarysetList::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 357)) ;
+  GALGAS_binaryset var_invariantValueSet_10813 = var_varContraintSet_9009 ;
   const GALGAS_machineList_2D_element temp_3 = inObject ;
-  cEnumerator_expressionList enumerator_10007 (temp_3.getter_mInvariantExpressionList (HERE), kENUMERATION_UP) ;
-  while (enumerator_10007.hasCurrentObject ()) {
-    GALGAS_binaryset var_expressionBDD_10108 ;
-    callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) enumerator_10007.current (HERE).getter_mExpression (HERE).ptr (), var_varMap_8084, var_varTotalBitCount_9011, var_expressionBDD_10108, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 360)) ;
-    GALGAS_binaryset var_inv_10132 = var_expressionBDD_10108.operator_and (var_varContraintSet_8142 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 361)) ;
-    var_invariantList_9910.addAssign_operation (enumerator_10007.current (HERE).getter_mLabel (HERE), var_inv_10132  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 362)) ;
-    const enumGalgasBool test_4 = var_inv_10132.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 363)).boolEnum () ;
+  cEnumerator_expressionList enumerator_10874 (temp_3.getter_mInvariantExpressionList (HERE), kENUMERATION_UP) ;
+  while (enumerator_10874.hasCurrentObject ()) {
+    GALGAS_binaryset var_expressionBDD_10975 ;
+    callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) enumerator_10874.current (HERE).getter_mExpression (HERE).ptr (), var_varMap_8951, var_varTotalBitCount_9878, var_expressionBDD_10975, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 360)) ;
+    GALGAS_binaryset var_inv_10999 = var_expressionBDD_10975.operator_and (var_varContraintSet_9009 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 361)) ;
+    var_invariantList_10777.addAssign_operation (enumerator_10874.current (HERE).getter_mLabel (HERE), var_inv_10999  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 362)) ;
+    const enumGalgasBool test_4 = var_inv_10999.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 363)).boolEnum () ;
     if (kBoolTrue == test_4) {
       TC_Array <C_FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (enumerator_10007.current (HERE).getter_mLabel (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 364)), GALGAS_string ("this invariant is empty"), fixItArray5  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 364)) ;
+      inCompiler->emitSemanticError (enumerator_10874.current (HERE).getter_mLabel (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 364)), GALGAS_string ("this invariant is empty"), fixItArray5  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 364)) ;
     }
-    var_invariantValueSet_9946 = var_invariantValueSet_9946.operator_and (var_inv_10132 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 366)) ;
-    enumerator_10007.gotoNextObject () ;
+    var_invariantValueSet_10813 = var_invariantValueSet_10813.operator_and (var_inv_10999 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 366)) ;
+    enumerator_10874.gotoNextObject () ;
   }
-  GALGAS_uint_36__34_list var_valueList_10370 = var_invariantValueSet_9946.getter_uint_36__34_ValueList (var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 368)) ;
-  const enumGalgasBool test_6 = var_verbose_7771.boolEnum () ;
+  GALGAS_uint_36__34_list var_valueList_11237 = var_invariantValueSet_10813.getter_uint_36__34_ValueList (var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 368)) ;
+  const enumGalgasBool test_6 = var_verbose_8638.boolEnum () ;
   if (kBoolTrue == test_6) {
     {
     const GALGAS_machineList_2D_element temp_7 = inObject ;
     GALGAS_string temp_8 ;
-    const enumGalgasBool test_9 = GALGAS_bool (kIsStrictSup, var_valueList_10370.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 371)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    const enumGalgasBool test_9 = GALGAS_bool (kIsStrictSup, var_valueList_11237.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 371)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_9) {
       temp_8 = GALGAS_string ("s") ;
     }else if (kBoolFalse == test_9) {
       temp_8 = GALGAS_string::makeEmptyString () ;
     }
-    routine_displayVarValueSet (GALGAS_string (" Invariant of @").add_operation (temp_7.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 371)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (var_valueList_10370.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 371)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 371)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)), var_invariantValueSet_9946, var_varList_8108, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 370)) ;
+    routine_displayVarValueSet (GALGAS_string (" Invariant of @").add_operation (temp_7.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 371)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (var_valueList_11237.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 371)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 371)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (temp_8, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 371)), var_invariantValueSet_10813, var_varList_8975, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 370)) ;
     }
   }else if (kBoolFalse == test_6) {
     const GALGAS_machineList_2D_element temp_10 = inObject ;
     GALGAS_string temp_11 ;
-    const enumGalgasBool test_12 = GALGAS_bool (kIsStrictSup, var_valueList_10370.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 376)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    const enumGalgasBool test_12 = GALGAS_bool (kIsStrictSup, var_valueList_11237.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 376)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_12) {
       temp_11 = GALGAS_string ("s") ;
     }else if (kBoolFalse == test_12) {
       temp_11 = GALGAS_string::makeEmptyString () ;
     }
-    inCompiler->printMessage (GALGAS_string (" invariant of @").add_operation (temp_10.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 376)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (GALGAS_string (": "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (var_valueList_10370.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 376)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 376)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (temp_11, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)) ;
+    inCompiler->printMessage (GALGAS_string (" invariant of @").add_operation (temp_10.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 376)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (GALGAS_string (": "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (var_valueList_11237.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 376)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 376)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (temp_11, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 376)) ;
   }
-  cEnumerator_uint_36__34_list enumerator_10833 (var_valueList_10370, kENUMERATION_UP) ;
-  while (enumerator_10833.hasCurrentObject ()) {
-    var_dotFileContents_7840.plusAssign_operation(GALGAS_string ("  \"").add_operation (function_nameForValue (enumerator_10833.current (HERE).getter_mValue (HERE), var_varList_8108, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)).add_operation (GALGAS_string ("\" [shape=rectangle]\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)) ;
-    enumerator_10833.gotoNextObject () ;
+  cEnumerator_uint_36__34_list enumerator_11700 (var_valueList_11237, kENUMERATION_UP) ;
+  while (enumerator_11700.hasCurrentObject ()) {
+    var_dotFileContents_8707.plusAssign_operation(GALGAS_string ("  \"").add_operation (function_nameForValue (enumerator_11700.current (HERE).getter_mValue (HERE), var_varList_8975, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)).add_operation (GALGAS_string ("\" [shape=rectangle]\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 379)) ;
+    enumerator_11700.gotoNextObject () ;
   }
-  GALGAS_binaryset var_oldVar_5F_Var_5F_EqualitySet_11075 = var_varContraintSet_8142 ;
-  cEnumerator_varList enumerator_11119 (var_varList_8108, kENUMERATION_UP) ;
-  while (enumerator_11119.hasCurrentObject ()) {
-    GALGAS_binaryset var_constraint_11141 = GALGAS_binaryset::constructor_binarySetWithEqualComparison (enumerator_11119.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_11119.current (HERE).getter_mBDDBitCount (HERE), enumerator_11119.current (HERE).getter_mBDDStartBitIndex (HERE).add_operation (var_varTotalBitCount_9011, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 388)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 385)) ;
-    var_oldVar_5F_Var_5F_EqualitySet_11075 = var_oldVar_5F_Var_5F_EqualitySet_11075.operator_and (var_constraint_11141 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 390)) ;
-    enumerator_11119.gotoNextObject () ;
+  GALGAS_binaryset var_oldVar_5F_Var_5F_EqualitySet_11942 = var_varContraintSet_9009 ;
+  cEnumerator_varList enumerator_11986 (var_varList_8975, kENUMERATION_UP) ;
+  while (enumerator_11986.hasCurrentObject ()) {
+    GALGAS_binaryset var_constraint_12008 = GALGAS_binaryset::constructor_binarySetWithEqualComparison (enumerator_11986.current (HERE).getter_mBDDStartBitIndex (HERE), enumerator_11986.current (HERE).getter_mBDDBitCount (HERE), enumerator_11986.current (HERE).getter_mBDDStartBitIndex (HERE).add_operation (var_varTotalBitCount_9878, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 388)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 385)) ;
+    var_oldVar_5F_Var_5F_EqualitySet_11942 = var_oldVar_5F_Var_5F_EqualitySet_11942.operator_and (var_constraint_12008 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 390)) ;
+    enumerator_11986.gotoNextObject () ;
   }
-  GALGAS_varMap var_varMapForEventInstructionComputing_11423 = GALGAS_varMap::constructor_emptyMap (SOURCE_FILE ("dynamicAnalysis.galgas", 392)) ;
-  cEnumerator_varMap enumerator_11453 (var_varMap_8084, kENUMERATION_UP) ;
-  while (enumerator_11453.hasCurrentObject ()) {
+  GALGAS_varMap var_varMapForEventInstructionComputing_12290 = GALGAS_varMap::constructor_emptyMap (SOURCE_FILE ("dynamicAnalysis.galgas", 392)) ;
+  cEnumerator_varMap enumerator_12320 (var_varMap_8951, kENUMERATION_UP) ;
+  while (enumerator_12320.hasCurrentObject ()) {
     {
-    var_varMapForEventInstructionComputing_11423.setter_insertKey (enumerator_11453.current (HERE).getter_lkey (HERE), enumerator_11453.current (HERE).getter_mConstantList (HERE), enumerator_11453.current (HERE).getter_mConstantMap (HERE), enumerator_11453.current (HERE).getter_mBDDStartBit (HERE).add_operation (var_varTotalBitCount_9011, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 398)), enumerator_11453.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 394)) ;
+    var_varMapForEventInstructionComputing_12290.setter_insertKey (enumerator_12320.current (HERE).getter_lkey (HERE), enumerator_12320.current (HERE).getter_mConstantList (HERE), enumerator_12320.current (HERE).getter_mConstantMap (HERE), enumerator_12320.current (HERE).getter_mBDDStartBit (HERE).add_operation (var_varTotalBitCount_9878, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 398)), enumerator_12320.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 394)) ;
     }
-    enumerator_11453.gotoNextObject () ;
+    enumerator_12320.gotoNextObject () ;
   }
-  GALGAS_binaryset var_allTransitions_11704 = GALGAS_binaryset::constructor_emptyBinarySet (SOURCE_FILE ("dynamicAnalysis.galgas", 402)) ;
-  GALGAS_transitionEventMap var_transitionEventMap_11763 = GALGAS_transitionEventMap::constructor_emptyMap (SOURCE_FILE ("dynamicAnalysis.galgas", 403)) ;
-  cEnumerator_eventDeclarationList enumerator_11794 (inObject.mProperty_mEventList, kENUMERATION_UP) ;
-  while (enumerator_11794.hasCurrentObject ()) {
-    GALGAS_varList var_argumentList_11847 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 406)) ;
-    GALGAS_varMap var_argVarMap_11874 = var_varMapForEventInstructionComputing_11423 ;
-    GALGAS_uint var_bddArgOldVarVarTotalBitCount_11950 = var_varTotalBitCount_9011.add_operation (var_varTotalBitCount_9011, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 408)) ;
-    GALGAS_binaryset var_eventTransformationSet_12026 = var_invariantValueSet_9946.operator_and (var_oldVar_5F_Var_5F_EqualitySet_11075 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 409)) ;
-    cEnumerator_eventArgumentList enumerator_12111 (enumerator_11794.current (HERE).getter_mEventArgumentList (HERE), kENUMERATION_UP) ;
-    while (enumerator_12111.hasCurrentObject ()) {
-      GALGAS_enumConstantMap var_constantMap_12197 ;
-      GALGAS_lstringlist var_constantList_12215 ;
-      GALGAS_scalarTypeKind joker_12179 ; // Joker input parameter
-      constinArgument_inUnifiedScalarTypeMap.method_searchKey (enumerator_12111.current (HERE).getter_mArgumentTypeName (HERE), joker_12179, var_constantMap_12197, var_constantList_12215, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 411)) ;
-      GALGAS_uint var_bddBitCount_12244 = var_constantList_12215.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 412)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 412)).getter_significantBitCount (SOURCE_FILE ("dynamicAnalysis.galgas", 412)) ;
+  GALGAS_binaryset var_allTransitions_12571 = GALGAS_binaryset::constructor_emptyBinarySet (SOURCE_FILE ("dynamicAnalysis.galgas", 402)) ;
+  GALGAS_transitionEventMap var_transitionEventMap_12630 = GALGAS_transitionEventMap::constructor_emptyMap (SOURCE_FILE ("dynamicAnalysis.galgas", 403)) ;
+  cEnumerator_eventDeclarationList enumerator_12661 (inObject.mProperty_mEventList, kENUMERATION_UP) ;
+  while (enumerator_12661.hasCurrentObject ()) {
+    GALGAS_varList var_argumentList_12714 = GALGAS_varList::constructor_emptyList (SOURCE_FILE ("dynamicAnalysis.galgas", 406)) ;
+    GALGAS_varMap var_argVarMap_12741 = var_varMapForEventInstructionComputing_12290 ;
+    GALGAS_uint var_bddArgOldVarVarTotalBitCount_12817 = var_varTotalBitCount_9878.add_operation (var_varTotalBitCount_9878, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 408)) ;
+    GALGAS_binaryset var_eventTransformationSet_12893 = var_invariantValueSet_10813.operator_and (var_oldVar_5F_Var_5F_EqualitySet_11942 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 409)) ;
+    cEnumerator_eventArgumentList enumerator_12978 (enumerator_12661.current (HERE).getter_mEventArgumentList (HERE), kENUMERATION_UP) ;
+    while (enumerator_12978.hasCurrentObject ()) {
+      GALGAS_enumConstantMap var_constantMap_13064 ;
+      GALGAS_lstringlist var_constantList_13082 ;
+      GALGAS_scalarTypeKind joker_13046 ; // Joker input parameter
+      constinArgument_inUnifiedScalarTypeMap.method_searchKey (enumerator_12978.current (HERE).getter_mArgumentTypeName (HERE), joker_13046, var_constantMap_13064, var_constantList_13082, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 411)) ;
+      GALGAS_uint var_bddBitCount_13111 = var_constantList_13082.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 412)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 412)).getter_significantBitCount (SOURCE_FILE ("dynamicAnalysis.galgas", 412)) ;
       {
-      var_argVarMap_11874.setter_insertKey (enumerator_12111.current (HERE).getter_mArgumentVarName (HERE), var_constantList_12215, var_constantMap_12197, var_bddArgOldVarVarTotalBitCount_11950, var_bddBitCount_12244, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 413)) ;
+      var_argVarMap_12741.setter_insertKey (enumerator_12978.current (HERE).getter_mArgumentVarName (HERE), var_constantList_13082, var_constantMap_13064, var_bddArgOldVarVarTotalBitCount_12817, var_bddBitCount_13111, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 413)) ;
       }
-      var_argumentList_11847.addAssign_operation (enumerator_12111.current (HERE).getter_mArgumentVarName (HERE), var_constantList_12215, var_bddArgOldVarVarTotalBitCount_11950, var_bddBitCount_12244, GALGAS_uint ((uint32_t) 0U)  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 420)) ;
-      var_eventTransformationSet_12026 = var_eventTransformationSet_12026.operator_and (GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_bddArgOldVarVarTotalBitCount_11950, var_bddBitCount_12244, var_constantList_12215.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 429)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 429)).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 429)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 426)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 426)) ;
-      var_bddArgOldVarVarTotalBitCount_11950 = var_bddArgOldVarVarTotalBitCount_11950.add_operation (var_bddBitCount_12244, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 430)) ;
-      enumerator_12111.gotoNextObject () ;
+      var_argumentList_12714.addAssign_operation (enumerator_12978.current (HERE).getter_mArgumentVarName (HERE), var_constantList_13082, var_bddArgOldVarVarTotalBitCount_12817, var_bddBitCount_13111, GALGAS_uint ((uint32_t) 0U)  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 420)) ;
+      var_eventTransformationSet_12893 = var_eventTransformationSet_12893.operator_and (GALGAS_binaryset::constructor_binarySetWithLowerOrEqualToConstant (var_bddArgOldVarVarTotalBitCount_12817, var_bddBitCount_13111, var_constantList_13082.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 429)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 429)).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 429)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 426)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 426)) ;
+      var_bddArgOldVarVarTotalBitCount_12817 = var_bddArgOldVarVarTotalBitCount_12817.add_operation (var_bddBitCount_13111, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 430)) ;
+      enumerator_12978.gotoNextObject () ;
     }
-    extensionMethod_computeInstructionListBDD (enumerator_11794.current (HERE).getter_mEventInstructionList (HERE), var_varTotalBitCount_9011, var_argVarMap_11874, constinArgument_inFunctionMap, var_bddArgOldVarVarTotalBitCount_11950, var_eventTransformationSet_12026, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 433)) ;
-    const enumGalgasBool test_13 = var_verbose_7771.boolEnum () ;
+    extensionMethod_computeInstructionListBDD (enumerator_12661.current (HERE).getter_mEventInstructionList (HERE), var_varTotalBitCount_9878, var_argVarMap_12741, constinArgument_inFunctionMap, var_bddArgOldVarVarTotalBitCount_12817, var_eventTransformationSet_12893, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 433)) ;
+    const enumGalgasBool test_13 = var_verbose_8638.boolEnum () ;
     if (kBoolTrue == test_13) {
       {
       const GALGAS_machineList_2D_element temp_14 = inObject ;
-      routine_displayArgVarVarValueSet (GALGAS_string (" Execution of @").add_operation (temp_14.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 443)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 443)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 443)).add_operation (enumerator_11794.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 443)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 443)), var_eventTransformationSet_12026, var_argumentList_11847, var_varList_8108, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 442)) ;
+      routine_displayArgVarVarValueSet (GALGAS_string (" Execution of @").add_operation (temp_14.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 443)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 443)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 443)).add_operation (enumerator_12661.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 443)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 443)), var_eventTransformationSet_12893, var_argumentList_12714, var_varList_8975, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 442)) ;
       }
     }
-    GALGAS_binaryset var_transitions_13385 = var_eventTransformationSet_12026.getter_existOnBitIndexAndBeyond (var_varTotalBitCount_9011.add_operation (var_varTotalBitCount_9011, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 449)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 449)) ;
+    GALGAS_binaryset var_transitions_14252 = var_eventTransformationSet_12893.getter_existOnBitIndexAndBeyond (var_varTotalBitCount_9878.add_operation (var_varTotalBitCount_9878, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 449)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 449)) ;
     {
-    var_transitionEventMap_11763.setter_insertKey (enumerator_11794.current (HERE).getter_mEventName (HERE), enumerator_11794.current (HERE).getter_mEventArgumentList (HERE), var_eventTransformationSet_12026, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 450)) ;
+    var_transitionEventMap_12630.setter_insertKey (enumerator_12661.current (HERE).getter_mEventName (HERE), enumerator_12661.current (HERE).getter_mEventArgumentList (HERE), var_eventTransformationSet_12893, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 450)) ;
     }
-    var_allTransitions_11704 = var_allTransitions_11704.operator_or (var_transitions_13385 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 455)) ;
+    var_allTransitions_12571 = var_allTransitions_12571.operator_or (var_transitions_14252 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 455)) ;
     {
-    routine_addTransitionsToGraphvizString (enumerator_11794.current (HERE), var_bddArgOldVarVarTotalBitCount_11950, var_eventTransformationSet_12026, var_varList_8108, var_varTotalBitCount_9011, var_argumentList_11847, var_dotFileContents_7840, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 457)) ;
+    routine_addTransitionsToGraphvizString (enumerator_12661.current (HERE), var_bddArgOldVarVarTotalBitCount_12817, var_eventTransformationSet_12893, var_varList_8975, var_varTotalBitCount_9878, var_argumentList_12714, var_dotFileContents_8707, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 457)) ;
     }
-    GALGAS_binaryset var_ensureValueSet_13947 = var_varContraintSet_8142.operator_and (var_varContraintSet_8142.left_shift_operation (var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 467)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 467)) ;
-    cEnumerator_expressionList enumerator_14049 (enumerator_11794.current (HERE).getter_mEnsureExpressionList (HERE), kENUMERATION_UP) ;
-    while (enumerator_14049.hasCurrentObject ()) {
-      GALGAS_binaryset var_s_14169 ;
-      callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) enumerator_14049.current (HERE).getter_mExpression (HERE).ptr (), var_varMapForEventInstructionComputing_11423, var_varTotalBitCount_9011, var_s_14169, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 469)) ;
-      var_ensureValueSet_13947 = var_ensureValueSet_13947.operator_and (var_s_14169 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 470)) ;
-      enumerator_14049.gotoNextObject () ;
+    GALGAS_binaryset var_ensureValueSet_14814 = var_varContraintSet_9009.operator_and (var_varContraintSet_9009.left_shift_operation (var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 467)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 467)) ;
+    cEnumerator_expressionList enumerator_14916 (enumerator_12661.current (HERE).getter_mEnsureExpressionList (HERE), kENUMERATION_UP) ;
+    while (enumerator_14916.hasCurrentObject ()) {
+      GALGAS_binaryset var_s_15036 ;
+      callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) enumerator_14916.current (HERE).getter_mExpression (HERE).ptr (), var_varMapForEventInstructionComputing_12290, var_varTotalBitCount_9878, var_s_15036, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 469)) ;
+      var_ensureValueSet_14814 = var_ensureValueSet_14814.operator_and (var_s_15036 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 470)) ;
+      enumerator_14916.gotoNextObject () ;
     }
-    GALGAS_uint_36__34_ var_valueCount_14247 = var_ensureValueSet_13947.getter_valueCount (var_varTotalBitCount_9011.add_operation (var_varTotalBitCount_9011, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 472)) ;
-    const enumGalgasBool test_15 = var_veryVerbose_7706.boolEnum () ;
+    GALGAS_uint_36__34_ var_valueCount_15114 = var_ensureValueSet_14814.getter_valueCount (var_varTotalBitCount_9878.add_operation (var_varTotalBitCount_9878, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 472)) ;
+    const enumGalgasBool test_15 = var_veryVerbose_8573.boolEnum () ;
     if (kBoolTrue == test_15) {
       {
       const GALGAS_machineList_2D_element temp_16 = inObject ;
       GALGAS_string temp_17 ;
-      const enumGalgasBool test_18 = GALGAS_bool (kIsStrictSup, var_valueCount_14247.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
+      const enumGalgasBool test_18 = GALGAS_bool (kIsStrictSup, var_valueCount_15114.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
       if (kBoolTrue == test_18) {
         temp_17 = GALGAS_string ("s") ;
       }else if (kBoolFalse == test_18) {
         temp_17 = GALGAS_string::makeEmptyString () ;
       }
-      routine_displayVarVarValueSet (GALGAS_string ("Post-condition of @").add_operation (temp_16.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 475)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (enumerator_11794.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 475)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (var_valueCount_14247.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 476)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)), var_ensureValueSet_13947, var_varList_8108, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 474)) ;
+      routine_displayVarVarValueSet (GALGAS_string ("Post-condition of @").add_operation (temp_16.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 475)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (enumerator_12661.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 475)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 475)).add_operation (var_valueCount_15114.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 476)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)).add_operation (temp_17, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 476)), var_ensureValueSet_14814, var_varList_8975, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 474)) ;
       }
     }else if (kBoolFalse == test_15) {
       const GALGAS_machineList_2D_element temp_19 = inObject ;
       GALGAS_string temp_20 ;
-      const enumGalgasBool test_21 = GALGAS_bool (kIsStrictSup, var_valueCount_14247.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
+      const enumGalgasBool test_21 = GALGAS_bool (kIsStrictSup, var_valueCount_15114.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
       if (kBoolTrue == test_21) {
         temp_20 = GALGAS_string ("s") ;
       }else if (kBoolFalse == test_21) {
         temp_20 = GALGAS_string::makeEmptyString () ;
       }
-      inCompiler->printMessage (GALGAS_string (" Post-condition of @").add_operation (temp_19.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 481)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (enumerator_11794.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 481)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (GALGAS_string (": "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (var_valueCount_14247.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 481)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 482)).add_operation (temp_20, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 482)).add_operation (GALGAS_string ("\n"
+      inCompiler->printMessage (GALGAS_string (" Post-condition of @").add_operation (temp_19.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 481)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (enumerator_12661.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 481)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (GALGAS_string (": "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (var_valueCount_15114.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 481)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)).add_operation (GALGAS_string (" value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 482)).add_operation (temp_20, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 482)).add_operation (GALGAS_string ("\n"
         "\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 482))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 481)) ;
     }
-    const enumGalgasBool test_22 = var_ensureValueSet_13947.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 485)).boolEnum () ;
+    const enumGalgasBool test_22 = var_ensureValueSet_14814.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 485)).boolEnum () ;
     if (kBoolTrue == test_22) {
       TC_Array <C_FixItDescription> fixItArray23 ;
-      inCompiler->emitSemanticError (enumerator_11794.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("ensure condition is empty"), fixItArray23  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 486)) ;
+      inCompiler->emitSemanticError (enumerator_12661.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("ensure condition is empty"), fixItArray23  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 486)) ;
     }else if (kBoolFalse == test_22) {
-      GALGAS_binaryset var_ensureAndInvariant_14994 = var_ensureValueSet_13947.operator_and (var_invariantValueSet_9946 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 488)) ;
-      const enumGalgasBool test_24 = var_veryVerbose_7706.boolEnum () ;
+      GALGAS_binaryset var_ensureAndInvariant_15861 = var_ensureValueSet_14814.operator_and (var_invariantValueSet_10813 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 488)) ;
+      const enumGalgasBool test_24 = var_veryVerbose_8573.boolEnum () ;
       if (kBoolTrue == test_24) {
         {
         const GALGAS_machineList_2D_element temp_25 = inObject ;
-        routine_displayVarVarValueSet (GALGAS_string ("Post-condition @").add_operation (temp_25.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)).add_operation (enumerator_11794.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)).add_operation (GALGAS_string ("' and invariant"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)), var_ensureAndInvariant_14994, var_varList_8108, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 490)) ;
+        routine_displayVarVarValueSet (GALGAS_string ("Post-condition @").add_operation (temp_25.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)).add_operation (enumerator_12661.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)).add_operation (GALGAS_string ("' and invariant"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 491)), var_ensureAndInvariant_15861, var_varList_8975, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 490)) ;
         }
       }
-      const enumGalgasBool test_26 = var_ensureAndInvariant_14994.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 496)).boolEnum () ;
+      const enumGalgasBool test_26 = var_ensureAndInvariant_15861.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 496)).boolEnum () ;
       if (kBoolTrue == test_26) {
         TC_Array <C_FixItDescription> fixItArray27 ;
-        inCompiler->emitSemanticError (enumerator_11794.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("post condition condition is not compatible with invariant"), fixItArray27  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 497)) ;
+        inCompiler->emitSemanticError (enumerator_12661.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("post condition condition is not compatible with invariant"), fixItArray27  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 497)) ;
       }else if (kBoolFalse == test_26) {
-        GALGAS_binaryset var_ensureAndContext_15467 = var_transitions_13385.operator_and (var_ensureValueSet_13947 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 500)) ;
-        const enumGalgasBool test_28 = var_veryVerbose_7706.boolEnum () ;
+        GALGAS_binaryset var_ensureAndContext_16334 = var_transitions_14252.operator_and (var_ensureValueSet_14814 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 500)) ;
+        const enumGalgasBool test_28 = var_veryVerbose_8573.boolEnum () ;
         if (kBoolTrue == test_28) {
           {
           const GALGAS_machineList_2D_element temp_29 = inObject ;
-          routine_displayVarVarValueSet (GALGAS_string ("Post-condition and execution of @").add_operation (temp_29.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 503)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 503)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 503)).add_operation (enumerator_11794.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 503)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 503)), var_ensureAndContext_15467, var_varList_8108, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 502)) ;
+          routine_displayVarVarValueSet (GALGAS_string ("Post-condition and execution of @").add_operation (temp_29.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 503)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 503)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 503)).add_operation (enumerator_12661.current (HERE).getter_mEventName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 503)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 503)), var_ensureAndContext_16334, var_varList_8975, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 502)) ;
           }
         }
-        const enumGalgasBool test_30 = GALGAS_bool (kIsNotEqual, var_ensureAndContext_15467.objectCompare (var_transitions_13385)).boolEnum () ;
+        const enumGalgasBool test_30 = GALGAS_bool (kIsNotEqual, var_ensureAndContext_16334.objectCompare (var_transitions_14252)).boolEnum () ;
         if (kBoolTrue == test_30) {
           TC_Array <C_FixItDescription> fixItArray31 ;
-          inCompiler->emitSemanticError (enumerator_11794.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("event instructions is not compatible with post condition"), fixItArray31  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 509)) ;
+          inCompiler->emitSemanticError (enumerator_12661.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("event instructions is not compatible with post condition"), fixItArray31  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 509)) ;
         }else if (kBoolFalse == test_30) {
-          GALGAS_binaryset var_result_15945 = var_transitions_13385.right_shift_operation (var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 512)) ;
-          cEnumerator_binarysetList enumerator_16014 (var_invariantList_9910, kENUMERATION_UP) ;
-          while (enumerator_16014.hasCurrentObject ()) {
-            const enumGalgasBool test_32 = GALGAS_bool (kIsNotEqual, var_result_15945.objectCompare (var_result_15945.operator_and (enumerator_16014.current (HERE).getter_mSet (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 514)))).boolEnum () ;
+          GALGAS_binaryset var_result_16812 = var_transitions_14252.right_shift_operation (var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 512)) ;
+          cEnumerator_binarysetList enumerator_16881 (var_invariantList_10777, kENUMERATION_UP) ;
+          while (enumerator_16881.hasCurrentObject ()) {
+            const enumGalgasBool test_32 = GALGAS_bool (kIsNotEqual, var_result_16812.objectCompare (var_result_16812.operator_and (enumerator_16881.current (HERE).getter_mSet (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 514)))).boolEnum () ;
             if (kBoolTrue == test_32) {
               TC_Array <C_FixItDescription> fixItArray33 ;
-              inCompiler->emitSemanticError (enumerator_11794.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("event instructions is not compatible with invariant '").add_operation (enumerator_16014.current (HERE).getter_mLabel (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 516)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 516)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 516)), fixItArray33  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 515)) ;
+              inCompiler->emitSemanticError (enumerator_12661.current (HERE).getter_mEndOfEnsureExpressionList (HERE), GALGAS_string ("event instructions is not compatible with invariant '").add_operation (enumerator_16881.current (HERE).getter_mLabel (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 516)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 516)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 516)), fixItArray33  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 515)) ;
             }
-            enumerator_16014.gotoNextObject () ;
+            enumerator_16881.gotoNextObject () ;
           }
         }
       }
     }
-    enumerator_11794.gotoNextObject () ;
+    enumerator_12661.gotoNextObject () ;
   }
-  var_dotFileContents_7840.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 524)) ;
-  GALGAS_bool joker_16456 ; // Joker input parameter
-  var_dotFileContents_7840.method_writeToFileWhenDifferentContents (constinArgument_inSourceFileName.add_operation (GALGAS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 525)), joker_16456, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 525)) ;
-  GALGAS_binaryset var_accessibleStates_16593 = var_allTransitions_11704.getter_accessibleStates (var_initValueSet_9159, var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 527)) ;
-  const enumGalgasBool test_34 = GALGAS_bool (kIsNotEqual, var_accessibleStates_16593.objectCompare (var_invariantValueSet_9946)).boolEnum () ;
+  var_dotFileContents_8707.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 524)) ;
+  GALGAS_bool joker_17323 ; // Joker input parameter
+  var_dotFileContents_8707.method_writeToFileWhenDifferentContents (constinArgument_inSourceFileName.add_operation (GALGAS_string (".dot"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 525)), joker_17323, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 525)) ;
+  GALGAS_binaryset var_accessibleStates_17460 = var_allTransitions_12571.getter_accessibleStates (var_initValueSet_10026, var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 527)) ;
+  const enumGalgasBool test_34 = GALGAS_bool (kIsNotEqual, var_accessibleStates_17460.objectCompare (var_invariantValueSet_10813)).boolEnum () ;
   if (kBoolTrue == test_34) {
-    GALGAS_binaryset var_inaccessibleStateSet_16749 = var_invariantValueSet_9946.operator_and (var_accessibleStates_16593.operator_tilde (SOURCE_FILE ("dynamicAnalysis.galgas", 529)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 529)) ;
-    GALGAS_uint_36__34_ var_inaccessibleStateCount_16829 = var_inaccessibleStateSet_16749.getter_valueCount (var_varTotalBitCount_9011, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 530)) ;
+    GALGAS_binaryset var_inaccessibleStateSet_17616 = var_invariantValueSet_10813.operator_and (var_accessibleStates_17460.operator_tilde (SOURCE_FILE ("dynamicAnalysis.galgas", 529)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 529)) ;
+    GALGAS_uint_36__34_ var_inaccessibleStateCount_17696 = var_inaccessibleStateSet_17616.getter_valueCount (var_varTotalBitCount_9878, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 530)) ;
     const GALGAS_machineList_2D_element temp_35 = inObject ;
     GALGAS_string temp_36 ;
-    const enumGalgasBool test_37 = GALGAS_bool (kIsStrictSup, var_inaccessibleStateCount_16829.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
+    const enumGalgasBool test_37 = GALGAS_bool (kIsStrictSup, var_inaccessibleStateCount_17696.objectCompare (GALGAS_uint_36__34_ ((uint64_t) 1ULL))).boolEnum () ;
     if (kBoolTrue == test_37) {
       temp_36 = GALGAS_string ("s") ;
     }else if (kBoolFalse == test_37) {
       temp_36 = GALGAS_string::makeEmptyString () ;
     }
     TC_Array <C_FixItDescription> fixItArray38 ;
-    inCompiler->emitSemanticError (temp_35.getter_mMachineName (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 531)), var_inaccessibleStateCount_16829.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 531)).add_operation (GALGAS_string (" inaccessible invariant value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 531)).add_operation (temp_36, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 531)), fixItArray38  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 531)) ;
+    inCompiler->emitSemanticError (temp_35.getter_mMachineName (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 531)), var_inaccessibleStateCount_17696.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 531)).add_operation (GALGAS_string (" inaccessible invariant value"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 531)).add_operation (temp_36, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 531)), fixItArray38  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 531)) ;
     {
     const GALGAS_machineList_2D_element temp_39 = inObject ;
-    routine_displayVarValueSet (GALGAS_string ("Inaccessible @").add_operation (temp_39.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 534)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 534)).add_operation (GALGAS_string (" invariant values"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 534)), var_inaccessibleStateSet_16749, var_varList_8108, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 533)) ;
+    routine_displayVarValueSet (GALGAS_string ("Inaccessible @").add_operation (temp_39.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 534)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 534)).add_operation (GALGAS_string (" invariant values"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 534)), var_inaccessibleStateSet_17616, var_varList_8975, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 533)) ;
     }
   }
-  cEnumerator_scenarioList enumerator_17285 (constinArgument_inScenarioList, kENUMERATION_UP) ;
-  while (enumerator_17285.hasCurrentObject ()) {
+  cEnumerator_scenarioList enumerator_18152 (constinArgument_inScenarioList, kENUMERATION_UP) ;
+  while (enumerator_18152.hasCurrentObject ()) {
     const GALGAS_machineList_2D_element temp_40 = inObject ;
-    const enumGalgasBool test_41 = GALGAS_bool (kIsEqual, enumerator_17285.current (HERE).getter_mMachineName (HERE).getter_string (HERE).objectCompare (temp_40.getter_mMachineName (HERE).getter_string (HERE))).boolEnum () ;
+    const enumGalgasBool test_41 = GALGAS_bool (kIsEqual, enumerator_18152.current (HERE).getter_mMachineName (HERE).getter_string (HERE).objectCompare (temp_40.getter_mMachineName (HERE).getter_string (HERE))).boolEnum () ;
     if (kBoolTrue == test_41) {
-      GALGAS_binaryset var_valueSet_17383 = var_initValueSet_9159 ;
+      GALGAS_binaryset var_valueSet_18250 = var_initValueSet_10026 ;
       const GALGAS_machineList_2D_element temp_42 = inObject ;
-      GALGAS_string var_s_17414 = GALGAS_string ("*** scenario \"").add_operation (enumerator_17285.current (HERE).getter_mScenarioName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 543)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)).add_operation (GALGAS_string ("\" for @"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)).add_operation (temp_42.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 543)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)).add_operation (GALGAS_string (" machine:\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)) ;
-      GALGAS_machineVarListForDisplay var_displayStateInfo_17561 = extensionGetter_displayVarInfo (var_varList_8108, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 544)) ;
-      GALGAS_uint var_firstColumnLength_17657 = GALGAS_string ("Event").getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 546)) ;
-      cEnumerator_scenarioEventSequence enumerator_17719 (enumerator_17285.current (HERE).getter_mEventSequence (HERE), kENUMERATION_UP) ;
-      while (enumerator_17719.hasCurrentObject ()) {
-        GALGAS_string var_eventString_17750 = enumerator_17719.current (HERE).getter_mEventName (HERE).getter_string (HERE).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 548)) ;
-        cEnumerator_lstringlist enumerator_17829 (enumerator_17719.current (HERE).getter_mArgumentNameList (HERE), kENUMERATION_UP) ;
-        while (enumerator_17829.hasCurrentObject ()) {
-          var_eventString_17750.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_17829.current (HERE).getter_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 550)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 550)) ;
-          if (enumerator_17829.hasNextObject ()) {
-            var_eventString_17750.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 551)) ;
+      GALGAS_string var_s_18281 = GALGAS_string ("*** scenario \"").add_operation (enumerator_18152.current (HERE).getter_mScenarioName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 543)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)).add_operation (GALGAS_string ("\" for @"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)).add_operation (temp_42.getter_mMachineName (HERE).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 543)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)).add_operation (GALGAS_string (" machine:\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 543)) ;
+      GALGAS_machineVarListForDisplay var_displayStateInfo_18428 = extensionGetter_displayVarInfo (var_varList_8975, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 544)) ;
+      GALGAS_uint var_firstColumnLength_18524 = GALGAS_string ("Event").getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 546)) ;
+      cEnumerator_scenarioEventSequence enumerator_18586 (enumerator_18152.current (HERE).getter_mEventSequence (HERE), kENUMERATION_UP) ;
+      while (enumerator_18586.hasCurrentObject ()) {
+        GALGAS_string var_eventString_18617 = enumerator_18586.current (HERE).getter_mEventName (HERE).getter_string (HERE).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 548)) ;
+        cEnumerator_lstringlist enumerator_18696 (enumerator_18586.current (HERE).getter_mArgumentNameList (HERE), kENUMERATION_UP) ;
+        while (enumerator_18696.hasCurrentObject ()) {
+          var_eventString_18617.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_18696.current (HERE).getter_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 550)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 550)) ;
+          if (enumerator_18696.hasNextObject ()) {
+            var_eventString_18617.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 551)) ;
           }
-          enumerator_17829.gotoNextObject () ;
+          enumerator_18696.gotoNextObject () ;
         }
-        var_eventString_17750.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 553)) ;
-        GALGAS_uint var_lg_17977 = var_eventString_17750.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 554)) ;
-        const enumGalgasBool test_43 = GALGAS_bool (kIsStrictInf, var_firstColumnLength_17657.objectCompare (var_lg_17977)).boolEnum () ;
+        var_eventString_18617.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 553)) ;
+        GALGAS_uint var_lg_18844 = var_eventString_18617.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 554)) ;
+        const enumGalgasBool test_43 = GALGAS_bool (kIsStrictInf, var_firstColumnLength_18524.objectCompare (var_lg_18844)).boolEnum () ;
         if (kBoolTrue == test_43) {
-          var_firstColumnLength_17657 = var_lg_17977 ;
+          var_firstColumnLength_18524 = var_lg_18844 ;
         }
-        enumerator_17719.gotoNextObject () ;
+        enumerator_18586.gotoNextObject () ;
       }
-      var_s_17414.plusAssign_operation(GALGAS_string ("Event").getter_stringByRightPadding (var_firstColumnLength_17657.add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 560)), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 560)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 560)) ;
+      var_s_18281.plusAssign_operation(GALGAS_string ("Event").getter_stringByRightPadding (var_firstColumnLength_18524.add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 560)), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 560)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 560)) ;
       {
-      routine_displayVarNames (var_displayStateInfo_17561, var_s_17414, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 561)) ;
+      routine_displayVarNames (var_displayStateInfo_18428, var_s_18281, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 561)) ;
       }
-      var_s_17414.plusAssign_operation(GALGAS_string::constructor_stringWithSequenceOfCharacters (GALGAS_char (TO_UNICODE (45)), var_firstColumnLength_17657.add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 562))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 562)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 562)) ;
+      var_s_18281.plusAssign_operation(GALGAS_string::constructor_stringWithSequenceOfCharacters (GALGAS_char (TO_UNICODE (45)), var_firstColumnLength_18524.add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 562))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 562)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 562)) ;
       {
-      routine_displaySeparator (var_displayStateInfo_17561, var_s_17414, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 563)) ;
+      routine_displaySeparator (var_displayStateInfo_18428, var_s_18281, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 563)) ;
       }
-      inCompiler->printMessage (var_s_17414  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 564)) ;
-      cEnumerator_scenarioEventSequence enumerator_18410 (enumerator_17285.current (HERE).getter_mEventSequence (HERE), kENUMERATION_UP) ;
-      while (enumerator_18410.hasCurrentObject ()) {
-        var_s_17414 = GALGAS_string::makeEmptyString () ;
-        GALGAS_eventArgumentList var_argumentList_18541 ;
-        GALGAS_binaryset var_transitionSet_18581 ;
-        var_transitionEventMap_11763.method_searchKey (enumerator_18410.current (HERE).getter_mEventName (HERE), var_argumentList_18541, var_transitionSet_18581, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 567)) ;
-        GALGAS_uint var_bddBitIndex_18644 = var_varTotalBitCount_9011.add_operation (var_varTotalBitCount_9011, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 573)) ;
-        GALGAS_string var_eventString_18710 = enumerator_18410.current (HERE).getter_mEventName (HERE).getter_string (HERE).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 574)) ;
-        cEnumerator_eventArgumentList enumerator_18778 (var_argumentList_18541, kENUMERATION_UP) ;
-        cEnumerator_lstringlist enumerator_18813 (enumerator_18410.current (HERE).getter_mArgumentNameList (HERE), kENUMERATION_UP) ;
-        while (enumerator_18778.hasCurrentObject () && enumerator_18813.hasCurrentObject ()) {
-          var_eventString_18710.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_18813.current (HERE).getter_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 577)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 577)) ;
-          GALGAS_enumConstantMap var_constantMap_18983 ;
-          GALGAS_scalarTypeKind joker_18948 ; // Joker input parameter
-          GALGAS_lstringlist joker_18985 ; // Joker input parameter
-          constinArgument_inUnifiedScalarTypeMap.method_searchKey (enumerator_18778.current (HERE).getter_mArgumentTypeName (HERE), joker_18948, var_constantMap_18983, joker_18985, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 578)) ;
-          GALGAS_uint var_constantIndex_19060 ;
-          var_constantMap_18983.method_searchKey (enumerator_18813.current (HERE).getter_mValue (HERE), var_constantIndex_19060, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 579)) ;
-          GALGAS_uint var_bitCount_19090 = var_constantMap_18983.getter_count (SOURCE_FILE ("dynamicAnalysis.galgas", 580)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 580)).getter_significantBitCount (SOURCE_FILE ("dynamicAnalysis.galgas", 580)) ;
-          var_transitionSet_18581 = var_transitionSet_18581.operator_and (GALGAS_binaryset::constructor_binarySetWithEqualToConstant (var_bddBitIndex_18644, var_bitCount_19090, var_constantIndex_19060.getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 584)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 581)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 581)) ;
-          var_bddBitIndex_18644 = var_bddBitIndex_18644.add_operation (var_bitCount_19090, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 585)) ;
-          if (enumerator_18778.hasNextObject () && enumerator_18813.hasNextObject ()) {
-            var_eventString_18710.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 587)) ;
+      inCompiler->printMessage (var_s_18281  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 564)) ;
+      cEnumerator_scenarioEventSequence enumerator_19277 (enumerator_18152.current (HERE).getter_mEventSequence (HERE), kENUMERATION_UP) ;
+      while (enumerator_19277.hasCurrentObject ()) {
+        var_s_18281 = GALGAS_string::makeEmptyString () ;
+        GALGAS_eventArgumentList var_argumentList_19408 ;
+        GALGAS_binaryset var_transitionSet_19448 ;
+        var_transitionEventMap_12630.method_searchKey (enumerator_19277.current (HERE).getter_mEventName (HERE), var_argumentList_19408, var_transitionSet_19448, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 567)) ;
+        GALGAS_uint var_bddBitIndex_19511 = var_varTotalBitCount_9878.add_operation (var_varTotalBitCount_9878, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 573)) ;
+        GALGAS_string var_eventString_19577 = enumerator_19277.current (HERE).getter_mEventName (HERE).getter_string (HERE).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 574)) ;
+        cEnumerator_eventArgumentList enumerator_19645 (var_argumentList_19408, kENUMERATION_UP) ;
+        cEnumerator_lstringlist enumerator_19680 (enumerator_19277.current (HERE).getter_mArgumentNameList (HERE), kENUMERATION_UP) ;
+        while (enumerator_19645.hasCurrentObject () && enumerator_19680.hasCurrentObject ()) {
+          var_eventString_19577.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_19680.current (HERE).getter_mValue (HERE).getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 577)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 577)) ;
+          GALGAS_enumConstantMap var_constantMap_19850 ;
+          GALGAS_scalarTypeKind joker_19815 ; // Joker input parameter
+          GALGAS_lstringlist joker_19852 ; // Joker input parameter
+          constinArgument_inUnifiedScalarTypeMap.method_searchKey (enumerator_19645.current (HERE).getter_mArgumentTypeName (HERE), joker_19815, var_constantMap_19850, joker_19852, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 578)) ;
+          GALGAS_uint var_constantIndex_19927 ;
+          var_constantMap_19850.method_searchKey (enumerator_19680.current (HERE).getter_mValue (HERE), var_constantIndex_19927, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 579)) ;
+          GALGAS_uint var_bitCount_19957 = var_constantMap_19850.getter_count (SOURCE_FILE ("dynamicAnalysis.galgas", 580)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 580)).getter_significantBitCount (SOURCE_FILE ("dynamicAnalysis.galgas", 580)) ;
+          var_transitionSet_19448 = var_transitionSet_19448.operator_and (GALGAS_binaryset::constructor_binarySetWithEqualToConstant (var_bddBitIndex_19511, var_bitCount_19957, var_constantIndex_19927.getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 584)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 581)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 581)) ;
+          var_bddBitIndex_19511 = var_bddBitIndex_19511.add_operation (var_bitCount_19957, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 585)) ;
+          if (enumerator_19645.hasNextObject () && enumerator_19680.hasNextObject ()) {
+            var_eventString_19577.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 587)) ;
           }
-          enumerator_18778.gotoNextObject () ;
-          enumerator_18813.gotoNextObject () ;
+          enumerator_19645.gotoNextObject () ;
+          enumerator_19680.gotoNextObject () ;
         }
-        var_eventString_18710.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 589)) ;
-        var_valueSet_17383 = var_valueSet_17383.operator_and (var_transitionSet_18581 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 590)).right_shift_operation (var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 590)).getter_existOnBitIndexAndBeyond (var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 590)) ;
-        var_s_17414.plusAssign_operation(var_eventString_18710.getter_stringByRightPadding (var_firstColumnLength_17657, GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 591)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 591)) ;
-        GALGAS_uint_36__34_list var_valueList_19655 = var_valueSet_17383.getter_uint_36__34_ValueList (var_varTotalBitCount_9011 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 592)) ;
-        const enumGalgasBool test_44 = GALGAS_bool (kIsEqual, var_valueList_19655.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 593)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+        var_eventString_19577.plusAssign_operation(GALGAS_string (")"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 589)) ;
+        var_valueSet_18250 = var_valueSet_18250.operator_and (var_transitionSet_19448 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 590)).right_shift_operation (var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 590)).getter_existOnBitIndexAndBeyond (var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 590)) ;
+        var_s_18281.plusAssign_operation(var_eventString_19577.getter_stringByRightPadding (var_firstColumnLength_18524, GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 591)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 591)) ;
+        GALGAS_uint_36__34_list var_valueList_20522 = var_valueSet_18250.getter_uint_36__34_ValueList (var_varTotalBitCount_9878 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 592)) ;
+        const enumGalgasBool test_44 = GALGAS_bool (kIsEqual, var_valueList_20522.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 593)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
         if (kBoolTrue == test_44) {
           TC_Array <C_FixItDescription> fixItArray45 ;
-          inCompiler->emitSemanticError (enumerator_18410.current (HERE).getter_mEventName (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 594)), GALGAS_string ("no value instead of 1"), fixItArray45  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 594)) ;
-          var_s_17414.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 595)) ;
+          inCompiler->emitSemanticError (enumerator_19277.current (HERE).getter_mEventName (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 594)), GALGAS_string ("no value instead of 1"), fixItArray45  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 594)) ;
+          var_s_18281.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 595)) ;
         }else if (kBoolFalse == test_44) {
-          const enumGalgasBool test_46 = GALGAS_bool (kIsStrictSup, var_valueList_19655.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 596)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+          const enumGalgasBool test_46 = GALGAS_bool (kIsStrictSup, var_valueList_20522.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 596)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
           if (kBoolTrue == test_46) {
             TC_Array <C_FixItDescription> fixItArray47 ;
-            inCompiler->emitSemanticError (enumerator_18410.current (HERE).getter_mEventName (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 597)), var_valueList_19655.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 597)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 597)).add_operation (GALGAS_string (" values instead of 1"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 597)), fixItArray47  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 597)) ;
-            var_s_17414.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 598)) ;
+            inCompiler->emitSemanticError (enumerator_19277.current (HERE).getter_mEventName (HERE).getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 597)), var_valueList_20522.getter_length (SOURCE_FILE ("dynamicAnalysis.galgas", 597)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 597)).add_operation (GALGAS_string (" values instead of 1"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 597)), fixItArray47  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 597)) ;
+            var_s_18281.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 598)) ;
           }else if (kBoolFalse == test_46) {
-            var_s_17414.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 600)) ;
+            var_s_18281.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 600)) ;
             {
-            routine_displayValue (var_displayStateInfo_17561, var_valueList_19655.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 601)), var_s_17414, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 601)) ;
+            routine_displayValue (var_displayStateInfo_18428, var_valueList_20522.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 601)), var_s_18281, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 601)) ;
             }
           }
         }
-        inCompiler->printMessage (var_s_17414  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 603)) ;
-        enumerator_18410.gotoNextObject () ;
+        inCompiler->printMessage (var_s_18281  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 603)) ;
+        enumerator_19277.gotoNextObject () ;
       }
       inCompiler->printMessage (GALGAS_string ("\n")  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 605)) ;
     }
-    enumerator_17285.gotoNextObject () ;
+    enumerator_18152.gotoNextObject () ;
   }
 }
 
@@ -12237,8 +13182,8 @@ static void extensionMethod_constantAsComparisonRightOperand_analyzeComparisonRi
   const cPtr_constantAsComparisonRightOperand * object = (const cPtr_constantAsComparisonRightOperand *) inObject ;
   macroValidSharedObject (object, cPtr_constantAsComparisonRightOperand) ;
   GALGAS_uint var_constantValue_5364 ;
-  constinArgument_inVarTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 171)).method_searchKey (object->mProperty_mConstantName, var_constantValue_5364, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 171)) ;
-  outArgument_outDecoratedExpression = GALGAS_decoratedConstantAsComparisonRightOperand::constructor_new (constinArgument_inVarTypeProxy, object->mProperty_mConstantName, var_constantValue_5364  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)) ;
+  constinArgument_inVarTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)).method_searchKey (object->mProperty_mConstantName, var_constantValue_5364, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)) ;
+  outArgument_outDecoratedExpression = GALGAS_decoratedConstantAsComparisonRightOperand::constructor_new (constinArgument_inVarTypeProxy, object->mProperty_mConstantName, var_constantValue_5364  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 173)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12267,20 +13212,20 @@ static void extensionMethod_attributeAsComparisonRightOperand_analyzeComparisonR
                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_attributeAsComparisonRightOperand * object = (const cPtr_attributeAsComparisonRightOperand *) inObject ;
   macroValidSharedObject (object, cPtr_attributeAsComparisonRightOperand) ;
-  const enumGalgasBool test_0 = object->mProperty_mHasOldQualifier.operator_and (constinArgument_inEnsureClause.operator_not (SOURCE_FILE ("expressionStaticAnalysis.galgas", 182)) COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 182)).boolEnum () ;
+  const enumGalgasBool test_0 = object->mProperty_mHasOldQualifier.operator_and (constinArgument_inEnsureClause.operator_not (SOURCE_FILE ("expressionStaticAnalysis.galgas", 183)) COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 183)).boolEnum () ;
   if (kBoolTrue == test_0) {
     TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (object->mProperty_mAttributeName.getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 183)), GALGAS_string ("'old' qualifier is allowed only in post condition"), fixItArray1  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 183)) ;
+    inCompiler->emitSemanticError (object->mProperty_mAttributeName.getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 184)), GALGAS_string ("'old' qualifier is allowed only in post condition"), fixItArray1  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 184)) ;
   }
   GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_6075 ;
   GALGAS_uint joker_6081 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mAttributeName, var_operandTypeProxy_6075, joker_6081, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 185)) ;
-  const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 191)).objectCompare (var_operandTypeProxy_6075.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 191)))).boolEnum () ;
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mAttributeName, var_operandTypeProxy_6075, joker_6081, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 186)) ;
+  const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)).objectCompare (var_operandTypeProxy_6075.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)))).boolEnum () ;
   if (kBoolTrue == test_2) {
     TC_Array <C_FixItDescription> fixItArray3 ;
-    inCompiler->emitSemanticError (object->mProperty_mAttributeName.getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)), GALGAS_string ("var type is '%").add_operation (constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)).add_operation (GALGAS_string ("', and is different from right expression type '%"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)).add_operation (var_operandTypeProxy_6075.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 195)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 195)), fixItArray3  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)) ;
+    inCompiler->emitSemanticError (object->mProperty_mAttributeName.getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)), GALGAS_string ("var type is '%").add_operation (constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (GALGAS_string ("', and is different from right expression type '%"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (var_operandTypeProxy_6075.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 195)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), fixItArray3  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)) ;
   }
-  outArgument_outDecoratedExpression = GALGAS_decoratedAttributeAsComparisonRightOperand::constructor_new (object->mProperty_mAttributeName  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 197)) ;
+  outArgument_outDecoratedExpression = GALGAS_decoratedAttributeAsComparisonRightOperand::constructor_new (object->mProperty_mAttributeName  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 198)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12308,15 +13253,15 @@ static void extensionMethod_varAsAssignmentSourceExpression_analyzeAssignmentSou
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_varAsAssignmentSourceExpression * object = (const cPtr_varAsAssignmentSourceExpression *) inObject ;
   macroValidSharedObject (object, cPtr_varAsAssignmentSourceExpression) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_sourceTypeProxy_3106 ;
-  GALGAS_uint joker_3112 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mSourceVarName, var_sourceTypeProxy_3106, joker_3112, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 91)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 97)).objectCompare (var_sourceTypeProxy_3106.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 97)))).boolEnum () ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_sourceTypeProxy_4045 ;
+  GALGAS_uint joker_4051 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mSourceVarName, var_sourceTypeProxy_4045, joker_4051, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 111)) ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)).objectCompare (var_sourceTypeProxy_4045.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)))).boolEnum () ;
   if (kBoolTrue == test_0) {
     TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (object->mProperty_mSourceVarName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 98)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 99)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 99)).add_operation (GALGAS_string ("', and is different from right expression type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 99)).add_operation (var_sourceTypeProxy_3106.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 101)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 100)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 101)), fixItArray1  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 98)) ;
+    inCompiler->emitSemanticError (object->mProperty_mSourceVarName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (GALGAS_string ("', and is different from right expression type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (var_sourceTypeProxy_4045.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 120)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), fixItArray1  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)) ;
   }
-  outArgument_outDecoratedExpression = GALGAS_attributeInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mSourceVarName  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 103)) ;
+  outArgument_outDecoratedExpression = GALGAS_attributeInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mSourceVarName  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 123)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12344,9 +13289,9 @@ static void extensionMethod_constantAsAssignmentSourceExpression_analyzeAssignme
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_constantAsAssignmentSourceExpression * object = (const cPtr_constantAsAssignmentSourceExpression *) inObject ;
   macroValidSharedObject (object, cPtr_constantAsAssignmentSourceExpression) ;
-  GALGAS_uint var_cstValue_3878 ;
-  constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 113)).method_searchKey (object->mProperty_mConstantName, var_cstValue_3878, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 113)) ;
-  outArgument_outDecoratedExpression = GALGAS_cstInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mConstantName, var_cstValue_3878, constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)).getter_count (SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)).getter_significantBitCount (SOURCE_FILE ("instructionStaticAnalysis.galgas", 117))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 114)) ;
+  GALGAS_uint var_cstValue_4869 ;
+  constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)).method_searchKey (object->mProperty_mConstantName, var_cstValue_4869, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)) ;
+  outArgument_outDecoratedExpression = GALGAS_cstInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mConstantName, var_cstValue_4869, constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_count (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_significantBitCount (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 135)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12374,24 +13319,24 @@ static void extensionMethod_functionAsAssignmentSourceExpression_analyzeAssignme
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_functionAsAssignmentSourceExpression * object = (const cPtr_functionAsAssignmentSourceExpression *) inObject ;
   macroValidSharedObject (object, cPtr_functionAsAssignmentSourceExpression) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_4539 ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_resultTypeProxy_4592 ;
-  GALGAS_decoratedFunctionValueList var_decoratedFunctionValueList_4656 ;
-  constinArgument_inAnalyzeContext.getter_mFunctionMap (HERE).method_searchKey (object->mProperty_mFunctionName, var_operandTypeProxy_4539, var_resultTypeProxy_4592, var_decoratedFunctionValueList_4656, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 127)) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_4818 ;
-  GALGAS_uint joker_4894 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mOperandName, var_attributeTypeProxy_4818, joker_4894, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_operandTypeProxy_4539.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 142)).objectCompare (var_attributeTypeProxy_4818.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 142)))).boolEnum () ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_5582 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_resultTypeProxy_5635 ;
+  GALGAS_decoratedFunctionValueList var_decoratedFunctionValueList_5699 ;
+  constinArgument_inAnalyzeContext.getter_mFunctionMap (HERE).method_searchKey (object->mProperty_mFunctionName, var_operandTypeProxy_5582, var_resultTypeProxy_5635, var_decoratedFunctionValueList_5699, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 149)) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_5861 ;
+  GALGAS_uint joker_5937 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mOperandName, var_attributeTypeProxy_5861, joker_5937, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 156)) ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_operandTypeProxy_5582.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)).objectCompare (var_attributeTypeProxy_5861.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)))).boolEnum () ;
   if (kBoolTrue == test_0) {
     TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (object->mProperty_mOperandName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 143)), GALGAS_string ("the '").add_operation (object->mProperty_mOperandName.getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 143)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 143)).add_operation (GALGAS_string ("' belongs to the '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 143)).add_operation (var_attributeTypeProxy_4818.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 144)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 144)).add_operation (GALGAS_string ("', but '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 144)).add_operation (object->mProperty_mFunctionName.getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 145)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 145)).add_operation (GALGAS_string ("' function requires an '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 145)).add_operation (var_operandTypeProxy_4539.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 146)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 145)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 146)), fixItArray1  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 143)) ;
+    inCompiler->emitSemanticError (object->mProperty_mOperandName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), GALGAS_string ("the '").add_operation (object->mProperty_mOperandName.getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (GALGAS_string ("' belongs to the '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (var_attributeTypeProxy_5861.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (GALGAS_string ("', but '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (object->mProperty_mFunctionName.getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' function requires an '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (var_operandTypeProxy_5582.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), fixItArray1  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)) ;
   }
-  const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 149)).objectCompare (var_resultTypeProxy_4592.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 149)))).boolEnum () ;
+  const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)).objectCompare (var_resultTypeProxy_5635.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)))).boolEnum () ;
   if (kBoolTrue == test_2) {
     TC_Array <C_FixItDescription> fixItArray3 ;
-    inCompiler->emitSemanticError (object->mProperty_mOperandName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 150)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 151)).add_operation (GALGAS_string ("', and is different from function result type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 151)).add_operation (var_resultTypeProxy_4592.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 153)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 152)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 153)), fixItArray3  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 150)) ;
+    inCompiler->emitSemanticError (object->mProperty_mOperandName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (GALGAS_string ("', and is different from function result type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (var_resultTypeProxy_5635.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 174)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), fixItArray3  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)) ;
   }
-  outArgument_outDecoratedExpression = GALGAS_functionInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mFunctionName, object->mProperty_mOperandName, var_decoratedFunctionValueList_4656  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 156)) ;
+  outArgument_outDecoratedExpression = GALGAS_functionInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mFunctionName, object->mProperty_mOperandName, var_decoratedFunctionValueList_5699  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 178)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12418,12 +13363,12 @@ static void extensionMethod_assignmentInstruction_analyzeInstruction (const cPtr
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_assignmentInstruction * object = (const cPtr_assignmentInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_assignmentInstruction) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_targetTypeProxy_6003 ;
-  GALGAS_uint joker_6009 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mTargetVarName, var_targetTypeProxy_6003, joker_6009, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)) ;
-  GALGAS_decoratedAssignmentSourceExpression var_decoratedExpression_6179 ;
-  callExtensionMethod_analyzeAssignmentSourceExpression ((const cPtr_assignmentSourceExpression *) object->mProperty_mSourceExpression.ptr (), constinArgument_inAnalyzeContext, var_targetTypeProxy_6003, var_decoratedExpression_6179, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)) ;
-  outArgument_outDecoratedInstruction = GALGAS_assignmentDecoratedInstruction::constructor_new (var_targetTypeProxy_6003, object->mProperty_mTargetVarName, var_decoratedExpression_6179  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 177)) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_targetTypeProxy_7098 ;
+  GALGAS_uint joker_7104 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mTargetVarName, var_targetTypeProxy_7098, joker_7104, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 190)) ;
+  GALGAS_decoratedAssignmentSourceExpression var_decoratedExpression_7274 ;
+  callExtensionMethod_analyzeAssignmentSourceExpression ((const cPtr_assignmentSourceExpression *) object->mProperty_mSourceExpression.ptr (), constinArgument_inAnalyzeContext, var_targetTypeProxy_7098, var_decoratedExpression_7274, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 195)) ;
+  outArgument_outDecoratedInstruction = GALGAS_assignmentDecoratedInstruction::constructor_new (var_targetTypeProxy_7098, object->mProperty_mTargetVarName, var_decoratedExpression_7274  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 200)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12439,6 +13384,64 @@ C_PrologueEpilogue gMethod_assignmentInstruction_analyzeInstruction (defineExten
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                         Overriding extension method '@switchInstruction analyzeInstruction'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void extensionMethod_switchInstruction_analyzeInstruction (const cPtr_instruction * inObject,
+                                                                  const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                  GALGAS_decoratedInstruction & outArgument_outDecoratedInstruction,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_switchInstruction * object = (const cPtr_switchInstruction *) inObject ;
+  macroValidSharedObject (object, cPtr_switchInstruction) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_variableTypeProxy_7823 ;
+  GALGAS_uint joker_7829 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mVariableName, var_variableTypeProxy_7823, joker_7829, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 213)) ;
+  GALGAS_switchDecoratedCaseList var_switchDecoratedCaseList_7908 = GALGAS_switchDecoratedCaseList::constructor_emptyList (SOURCE_FILE ("instructionStaticAnalysis.galgas", 219)) ;
+  GALGAS_stringset var_usedConstantNameSet_7946 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("instructionStaticAnalysis.galgas", 220)) ;
+  cEnumerator_switchCaseList enumerator_8009 (object->mProperty_mSwitchCaseList, kENUMERATION_UP) ;
+  while (enumerator_8009.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_8051 (enumerator_8009.current_mConstantNameList (HERE), kENUMERATION_UP) ;
+    while (enumerator_8051.hasCurrentObject ()) {
+      GALGAS_uint joker_8120 ; // Joker input parameter
+      var_variableTypeProxy_7823.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 223)).method_searchKey (enumerator_8051.current_mValue (HERE), joker_8120, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 223)) ;
+      const enumGalgasBool test_0 = var_usedConstantNameSet_7946.getter_hasKey (enumerator_8051.current_mValue (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 224)) COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 224)).boolEnum () ;
+      if (kBoolTrue == test_0) {
+        TC_Array <C_FixItDescription> fixItArray1 ;
+        inCompiler->emitSemanticError (enumerator_8051.current_mValue (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 225)), GALGAS_string ("duplicated constant"), fixItArray1  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 225)) ;
+      }
+      var_usedConstantNameSet_7946.addAssign_operation (enumerator_8051.current_mValue (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 227))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 227)) ;
+      enumerator_8051.gotoNextObject () ;
+    }
+    GALGAS_decoratedInstructionList var_decoratedInstructionList_8421 ;
+    extensionMethod_analyzeInstructionList (enumerator_8009.current_mInstructionList (HERE), constinArgument_inAnalyzeContext, var_decoratedInstructionList_8421, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 229)) ;
+    var_switchDecoratedCaseList_7908.addAssign_operation (enumerator_8009.current_mConstantNameList (HERE), var_decoratedInstructionList_8421  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 233)) ;
+    enumerator_8009.gotoNextObject () ;
+  }
+  GALGAS_stringset var_missingConstantSet_8569 = var_variableTypeProxy_7823.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)).getter_keySet (SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)).substract_operation (var_usedConstantNameSet_7946, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)) ;
+  cEnumerator_stringset enumerator_8678 (var_missingConstantSet_8569, kENUMERATION_UP) ;
+  while (enumerator_8678.hasCurrentObject ()) {
+    TC_Array <C_FixItDescription> fixItArray2 ;
+    inCompiler->emitSemanticError (object->mProperty_mEndOfSwitchExpression, GALGAS_string ("missing constant '").add_operation (enumerator_8678.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)).add_operation (GALGAS_string ("' in switch instruction"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)), fixItArray2  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)) ;
+    enumerator_8678.gotoNextObject () ;
+  }
+  outArgument_outDecoratedInstruction = GALGAS_switchDecoratedInstruction::constructor_new (object->mProperty_mVariableName, var_switchDecoratedCaseList_7908  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 241)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionMethod_switchInstruction_analyzeInstruction (void) {
+  enterExtensionMethod_analyzeInstruction (kTypeDescriptor_GALGAS_switchInstruction.mSlotID,
+                                           extensionMethod_switchInstruction_analyzeInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_switchInstruction_analyzeInstruction (defineExtensionMethod_switchInstruction_analyzeInstruction, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                           Overriding extension method '@ifInstruction analyzeInstruction'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12450,13 +13453,13 @@ static void extensionMethod_ifInstruction_analyzeInstruction (const cPtr_instruc
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_ifInstruction * object = (const cPtr_ifInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_ifInstruction) ;
-  GALGAS_decoratedExpression var_decoratedExpression_6652 ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mTestExpression.ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_6652, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 188)) ;
-  GALGAS_decoratedInstructionList var_decoratedThenInstructionList_6789 ;
-  extensionMethod_analyzeInstructionList (object->mProperty_mThenInstructionList, constinArgument_inAnalyzeContext, var_decoratedThenInstructionList_6789, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 193)) ;
-  GALGAS_decoratedInstructionList var_decoratedElseInstructionList_6926 ;
-  extensionMethod_analyzeInstructionList (object->mProperty_mElseInstructionList, constinArgument_inAnalyzeContext, var_decoratedElseInstructionList_6926, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 197)) ;
-  outArgument_outDecoratedInstruction = GALGAS_ifDecoratedInstruction::constructor_new (object->mProperty_mIFinstructionLocation, var_decoratedExpression_6652, object->mProperty_mEndOfTestExpression, var_decoratedThenInstructionList_6789, var_decoratedElseInstructionList_6926  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 201)) ;
+  GALGAS_decoratedExpression var_decoratedExpression_9312 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mTestExpression.ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_9312, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 253)) ;
+  GALGAS_decoratedInstructionList var_decoratedThenInstructionList_9449 ;
+  extensionMethod_analyzeInstructionList (object->mProperty_mThenInstructionList, constinArgument_inAnalyzeContext, var_decoratedThenInstructionList_9449, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 258)) ;
+  GALGAS_decoratedInstructionList var_decoratedElseInstructionList_9586 ;
+  extensionMethod_analyzeInstructionList (object->mProperty_mElseInstructionList, constinArgument_inAnalyzeContext, var_decoratedElseInstructionList_9586, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 262)) ;
+  outArgument_outDecoratedInstruction = GALGAS_ifDecoratedInstruction::constructor_new (object->mProperty_mIFinstructionLocation, var_decoratedExpression_9312, object->mProperty_mEndOfTestExpression, var_decoratedThenInstructionList_9449, var_decoratedElseInstructionList_9586  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 266)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12483,9 +13486,9 @@ static void extensionMethod_assertInstruction_analyzeInstruction (const cPtr_ins
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_assertInstruction * object = (const cPtr_assertInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_assertInstruction) ;
-  GALGAS_decoratedExpression var_decoratedExpression_7478 ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mAssertExpression.ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_7478, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 214)) ;
-  outArgument_outDecoratedInstruction = GALGAS_assertDecoratedInstruction::constructor_new (object->mProperty_mAssertInstructionLocation, var_decoratedExpression_7478  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 219)) ;
+  GALGAS_decoratedExpression var_decoratedExpression_10193 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mAssertExpression.ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_10193, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 281)) ;
+  outArgument_outDecoratedInstruction = GALGAS_assertDecoratedInstruction::constructor_new (object->mProperty_mAssertInstructionLocation, var_decoratedExpression_10193  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 286)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12748,17 +13751,17 @@ GALGAS_string function_nameForValue (const GALGAS_uint_36__34_ & constinArgument
                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   result_outResult = GALGAS_string::makeEmptyString () ;
-  GALGAS_uint_36__34_ var_v_4253 = constinArgument_inValue ;
-  cEnumerator_varList enumerator_4284 (constinArgument_inVarList, kENUMERATION_UP) ;
-  while (enumerator_4284.hasCurrentObject ()) {
-    GALGAS_uint_36__34_ var_mask_4310 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_4284.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 177)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 177)) ;
-    GALGAS_lstring var_cstName_4365 = enumerator_4284.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_v_4253.operator_and (var_mask_4310 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 178)).getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 178)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 178)) ;
-    result_outResult.plusAssign_operation(var_cstName_4365.getter_string (HERE), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 179)) ;
-    var_v_4253 = var_v_4253.right_shift_operation (enumerator_4284.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 180)) ;
-    if (enumerator_4284.hasNextObject ()) {
+  GALGAS_uint_36__34_ var_v_4661 = constinArgument_inValue ;
+  cEnumerator_varList enumerator_4692 (constinArgument_inVarList, kENUMERATION_UP) ;
+  while (enumerator_4692.hasCurrentObject ()) {
+    GALGAS_uint_36__34_ var_mask_4718 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_4692.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 177)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 177)) ;
+    GALGAS_lstring var_cstName_4773 = enumerator_4692.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_v_4661.operator_and (var_mask_4718 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 178)).getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 178)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 178)) ;
+    result_outResult.plusAssign_operation(var_cstName_4773.getter_string (HERE), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 179)) ;
+    var_v_4661 = var_v_4661.right_shift_operation (enumerator_4692.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 180)) ;
+    if (enumerator_4692.hasNextObject ()) {
       result_outResult.plusAssign_operation(GALGAS_string ("."), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 182)) ;
     }
-    enumerator_4284.gotoNextObject () ;
+    enumerator_4692.gotoNextObject () ;
   }
 //---
   return result_outResult ;
@@ -12812,10 +13815,10 @@ void routine_displayVarNames (const GALGAS_machineVarListForDisplay constinArgum
                               C_Compiler * inCompiler
                               COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioString.plusAssign_operation(GALGAS_string ("|"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 191)) ;
-  cEnumerator_machineVarListForDisplay enumerator_4722 (constinArgument_inAttributeList, kENUMERATION_UP) ;
-  while (enumerator_4722.hasCurrentObject ()) {
-    ioArgument_ioString.plusAssign_operation(GALGAS_string (" ").add_operation (enumerator_4722.current (HERE).getter_mAttributeName (HERE).getter_stringByRightPadding (enumerator_4722.current (HERE).getter_mColumnLength (HERE), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)).add_operation (GALGAS_string (" |"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)) ;
-    enumerator_4722.gotoNextObject () ;
+  cEnumerator_machineVarListForDisplay enumerator_5181 (constinArgument_inAttributeList, kENUMERATION_UP) ;
+  while (enumerator_5181.hasCurrentObject ()) {
+    ioArgument_ioString.plusAssign_operation(GALGAS_string (" ").add_operation (enumerator_5181.current (HERE).getter_mAttributeName (HERE).getter_stringByRightPadding (enumerator_5181.current (HERE).getter_mColumnLength (HERE), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)).add_operation (GALGAS_string (" |"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 193)) ;
+    enumerator_5181.gotoNextObject () ;
   }
   ioArgument_ioString.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 195)) ;
 }
@@ -12832,10 +13835,10 @@ void routine_displaySeparator (const GALGAS_machineVarListForDisplay constinArgu
                                C_Compiler * inCompiler
                                COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioString.plusAssign_operation(GALGAS_string ("|"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 203)) ;
-  cEnumerator_machineVarListForDisplay enumerator_5054 (constinArgument_inAttributeList, kENUMERATION_UP) ;
-  while (enumerator_5054.hasCurrentObject ()) {
-    ioArgument_ioString.plusAssign_operation(GALGAS_string::constructor_stringWithSequenceOfCharacters (GALGAS_char (TO_UNICODE (45)), enumerator_5054.current (HERE).getter_mColumnLength (HERE).add_operation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205)).add_operation (GALGAS_string ("|"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205)) ;
-    enumerator_5054.gotoNextObject () ;
+  cEnumerator_machineVarListForDisplay enumerator_5564 (constinArgument_inAttributeList, kENUMERATION_UP) ;
+  while (enumerator_5564.hasCurrentObject ()) {
+    ioArgument_ioString.plusAssign_operation(GALGAS_string::constructor_stringWithSequenceOfCharacters (GALGAS_char (TO_UNICODE (45)), enumerator_5564.current (HERE).getter_mColumnLength (HERE).add_operation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205)).add_operation (GALGAS_string ("|"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 205)) ;
+    enumerator_5564.gotoNextObject () ;
   }
   ioArgument_ioString.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 207)) ;
 }
@@ -12853,14 +13856,14 @@ void routine_displayValue (const GALGAS_machineVarListForDisplay constinArgument
                            C_Compiler * inCompiler
                            COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioString.plusAssign_operation(GALGAS_string ("|"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 216)) ;
-  GALGAS_uint_36__34_ var_aValue_5395 = constinArgument_inValue ;
-  cEnumerator_machineVarListForDisplay enumerator_5432 (constinArgument_inAttributeList, kENUMERATION_UP) ;
-  while (enumerator_5432.hasCurrentObject ()) {
-    GALGAS_uint_36__34_ var_mask_5456 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_5432.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 219)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 219)) ;
-    GALGAS_lstring var_cstName_5511 = enumerator_5432.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_aValue_5395.operator_and (var_mask_5456 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 220)).getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 220)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 220)) ;
-    ioArgument_ioString.plusAssign_operation(GALGAS_string (" ").add_operation (var_cstName_5511.getter_string (HERE).getter_stringByRightPadding (enumerator_5432.current (HERE).getter_mColumnLength (HERE), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)).add_operation (GALGAS_string (" |"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)) ;
-    var_aValue_5395 = var_aValue_5395.right_shift_operation (enumerator_5432.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 222)) ;
-    enumerator_5432.gotoNextObject () ;
+  GALGAS_uint_36__34_ var_aValue_5956 = constinArgument_inValue ;
+  cEnumerator_machineVarListForDisplay enumerator_5993 (constinArgument_inAttributeList, kENUMERATION_UP) ;
+  while (enumerator_5993.hasCurrentObject ()) {
+    GALGAS_uint_36__34_ var_mask_6017 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_5993.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 219)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 219)) ;
+    GALGAS_lstring var_cstName_6072 = enumerator_5993.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_aValue_5956.operator_and (var_mask_6017 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 220)).getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 220)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 220)) ;
+    ioArgument_ioString.plusAssign_operation(GALGAS_string (" ").add_operation (var_cstName_6072.getter_string (HERE).getter_stringByRightPadding (enumerator_5993.current (HERE).getter_mColumnLength (HERE), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)).add_operation (GALGAS_string (" |"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 221)) ;
+    var_aValue_5956 = var_aValue_5956.right_shift_operation (enumerator_5993.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 222)) ;
+    enumerator_5993.gotoNextObject () ;
   }
   ioArgument_ioString.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 224)) ;
 }
@@ -12878,31 +13881,31 @@ void routine_performDisplay (const GALGAS_string constinArgument_inTitle,
                              C_Compiler * inCompiler
                              COMMA_UNUSED_LOCATION_ARGS) {
   inCompiler->printMessage (GALGAS_string ("*** ").add_operation (constinArgument_inTitle, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 234)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 234)).getter_stringByRightPadding (GALGAS_uint ((uint32_t) 50U), GALGAS_char (TO_UNICODE (42)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 234)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 234))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 234)) ;
-  GALGAS_uint var_bitCount_6033 = GALGAS_uint ((uint32_t) 0U) ;
-  cEnumerator_machineVarListForDisplay enumerator_6064 (constinArgument_inAttributeList, kENUMERATION_UP) ;
-  while (enumerator_6064.hasCurrentObject ()) {
-    var_bitCount_6033 = var_bitCount_6033.add_operation (enumerator_6064.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 238)) ;
-    enumerator_6064.gotoNextObject () ;
+  GALGAS_uint var_bitCount_6645 = GALGAS_uint ((uint32_t) 0U) ;
+  cEnumerator_machineVarListForDisplay enumerator_6676 (constinArgument_inAttributeList, kENUMERATION_UP) ;
+  while (enumerator_6676.hasCurrentObject ()) {
+    var_bitCount_6645 = var_bitCount_6645.add_operation (enumerator_6676.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 238)) ;
+    enumerator_6676.gotoNextObject () ;
   }
-  GALGAS_string var_s_6146 = GALGAS_string (" ") ;
+  GALGAS_string var_s_6758 = GALGAS_string (" ") ;
   {
-  routine_displayVarNames (constinArgument_inAttributeList, var_s_6146, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 242)) ;
+  routine_displayVarNames (constinArgument_inAttributeList, var_s_6758, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 242)) ;
   }
-  var_s_6146.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 243)) ;
+  var_s_6758.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 243)) ;
   {
-  routine_displaySeparator (constinArgument_inAttributeList, var_s_6146, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 244)) ;
+  routine_displaySeparator (constinArgument_inAttributeList, var_s_6758, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 244)) ;
   }
-  GALGAS_uint_36__34_list var_values_6271 = constinArgument_inValueSet.getter_uint_36__34_ValueList (var_bitCount_6033 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 245)) ;
-  cEnumerator_uint_36__34_list enumerator_6330 (var_values_6271, kENUMERATION_UP) ;
-  while (enumerator_6330.hasCurrentObject ()) {
-    var_s_6146.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 247)) ;
+  GALGAS_uint_36__34_list var_values_6883 = constinArgument_inValueSet.getter_uint_36__34_ValueList (var_bitCount_6645 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 245)) ;
+  cEnumerator_uint_36__34_list enumerator_6942 (var_values_6883, kENUMERATION_UP) ;
+  while (enumerator_6942.hasCurrentObject ()) {
+    var_s_6758.plusAssign_operation(GALGAS_string (" "), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 247)) ;
     {
-    routine_displayValue (constinArgument_inAttributeList, enumerator_6330.current (HERE).getter_mValue (HERE), var_s_6146, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 248)) ;
+    routine_displayValue (constinArgument_inAttributeList, enumerator_6942.current (HERE).getter_mValue (HERE), var_s_6758, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 248)) ;
     }
-    enumerator_6330.gotoNextObject () ;
+    enumerator_6942.gotoNextObject () ;
   }
-  var_s_6146.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 250)) ;
-  inCompiler->printMessage (var_s_6146  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 251)) ;
+  var_s_6758.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 250)) ;
+  inCompiler->printMessage (var_s_6758  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 251)) ;
 }
 
 
@@ -12921,24 +13924,24 @@ void routine_addTransitionsToGraphvizString (const GALGAS_eventDeclarationList_2
                                              GALGAS_string & ioArgument_ioDotFileContents,
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_uint_36__34_list var_valueList_20538 = constinArgument_inEventTransformationSet.getter_uint_36__34_ValueList (constinArgument_inArgVarVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 620)) ;
-  cEnumerator_uint_36__34_list enumerator_20634 (var_valueList_20538, kENUMERATION_UP) ;
-  while (enumerator_20634.hasCurrentObject ()) {
-    GALGAS_string var_eventName_20659 = constinArgument_inEvent.getter_mEventName (HERE).getter_string (HERE) ;
-    GALGAS_uint_36__34_ var_v_20701 = enumerator_20634.current (HERE).getter_mValue (HERE) ;
-    GALGAS_uint_36__34_ var_source_20739 = var_v_20701.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 624)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 624)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 624)) ;
-    var_v_20701 = var_v_20701.right_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 625)) ;
-    GALGAS_uint_36__34_ var_target_20834 = var_v_20701.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 626)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 626)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 626)) ;
-    var_v_20701 = var_v_20701.right_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 627)) ;
-    cEnumerator_varList enumerator_20936 (constinArgument_inArgumentList, kENUMERATION_UP) ;
-    while (enumerator_20936.hasCurrentObject ()) {
-      GALGAS_uint_36__34_ var_argValue_20966 = var_v_20701.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_20936.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) ;
-      var_v_20701 = var_v_20701.right_shift_operation (enumerator_20936.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 630)) ;
-      var_eventName_20659.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_20936.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_argValue_20966.getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 631)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)) ;
-      enumerator_20936.gotoNextObject () ;
+  GALGAS_uint_36__34_list var_valueList_21456 = constinArgument_inEventTransformationSet.getter_uint_36__34_ValueList (constinArgument_inArgVarVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 620)) ;
+  cEnumerator_uint_36__34_list enumerator_21552 (var_valueList_21456, kENUMERATION_UP) ;
+  while (enumerator_21552.hasCurrentObject ()) {
+    GALGAS_string var_eventName_21577 = constinArgument_inEvent.getter_mEventName (HERE).getter_string (HERE) ;
+    GALGAS_uint_36__34_ var_v_21619 = enumerator_21552.current (HERE).getter_mValue (HERE) ;
+    GALGAS_uint_36__34_ var_source_21657 = var_v_21619.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 624)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 624)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 624)) ;
+    var_v_21619 = var_v_21619.right_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 625)) ;
+    GALGAS_uint_36__34_ var_target_21752 = var_v_21619.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 626)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 626)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 626)) ;
+    var_v_21619 = var_v_21619.right_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 627)) ;
+    cEnumerator_varList enumerator_21854 (constinArgument_inArgumentList, kENUMERATION_UP) ;
+    while (enumerator_21854.hasCurrentObject ()) {
+      GALGAS_uint_36__34_ var_argValue_21884 = var_v_21619.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_21854.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) ;
+      var_v_21619 = var_v_21619.right_shift_operation (enumerator_21854.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 630)) ;
+      var_eventName_21577.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_21854.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_argValue_21884.getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 631)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)) ;
+      enumerator_21854.gotoNextObject () ;
     }
-    ioArgument_ioDotFileContents.plusAssign_operation(GALGAS_string ("  \"").add_operation (function_nameForValue (var_source_20739, constinArgument_inVarList, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)).add_operation (GALGAS_string ("\" -> \""), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)).add_operation (function_nameForValue (var_target_20834, constinArgument_inVarList, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)).add_operation (GALGAS_string ("\" [label=\""), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)).add_operation (var_eventName_20659, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 635)).add_operation (GALGAS_string ("\"] ;\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 635)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)) ;
-    enumerator_20634.gotoNextObject () ;
+    ioArgument_ioDotFileContents.plusAssign_operation(GALGAS_string ("  \"").add_operation (function_nameForValue (var_source_21657, constinArgument_inVarList, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)).add_operation (GALGAS_string ("\" -> \""), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)).add_operation (function_nameForValue (var_target_21752, constinArgument_inVarList, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)).add_operation (GALGAS_string ("\" [label=\""), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)).add_operation (var_eventName_21577, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 635)).add_operation (GALGAS_string ("\"] ;\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 635)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 633)) ;
+    enumerator_21552.gotoNextObject () ;
   }
 }
 
@@ -12957,10 +13960,10 @@ void routine_performDynamicAnalysis (const GALGAS_string constinArgument_inSourc
                                      C_Compiler * inCompiler
                                      COMMA_UNUSED_LOCATION_ARGS) {
   inCompiler->printMessage (GALGAS_string ("*** File ").add_operation (constinArgument_inSourceFileName.getter_lastPathComponent (SOURCE_FILE ("dynamicAnalysis.galgas", 647)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 647)).add_operation (GALGAS_string (" ***\n"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 647))  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 647)) ;
-  cEnumerator_machineList enumerator_21670 (constinArgument_inAST.getter_mMachineList (HERE), kENUMERATION_UP) ;
-  while (enumerator_21670.hasCurrentObject ()) {
-    extensionMethod_performMachineDynamicAnalysis (enumerator_21670.current (HERE), constinArgument_inSourceFileName, constinArgument_inUnifiedScalarTypeMap, constinArgument_inAST.getter_mScenarioList (HERE), constinArgument_inFunctionMap, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 649)) ;
-    enumerator_21670.gotoNextObject () ;
+  cEnumerator_machineList enumerator_22639 (constinArgument_inAST.getter_mMachineList (HERE), kENUMERATION_UP) ;
+  while (enumerator_22639.hasCurrentObject ()) {
+    extensionMethod_performMachineDynamicAnalysis (enumerator_22639.current (HERE), constinArgument_inSourceFileName, constinArgument_inUnifiedScalarTypeMap, constinArgument_inAST.getter_mScenarioList (HERE), constinArgument_inFunctionMap, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 649)) ;
+    enumerator_22639.gotoNextObject () ;
   }
 }
 
@@ -12979,11 +13982,11 @@ static void extensionMethod_implicationExpression_computeExpressionBDD (const cP
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_implicationExpression * object = (const cPtr_implicationExpression *) inObject ;
   macroValidSharedObject (object, cPtr_implicationExpression) ;
-  GALGAS_binaryset var_left_22346 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_left_22346, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 671)) ;
-  GALGAS_binaryset var_right_22433 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_right_22433, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 672)) ;
-  outArgument_outExpressionBDD = var_left_22346.getter_implies (var_right_22433 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 673)) ;
+  GALGAS_binaryset var_left_23417 ;
+  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_left_23417, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 672)) ;
+  GALGAS_binaryset var_right_23504 ;
+  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_right_23504, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 673)) ;
+  outArgument_outExpressionBDD = var_left_23417.getter_implies (var_right_23504 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 674)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13011,11 +14014,11 @@ static void extensionMethod_logicalOrExpression_computeExpressionBDD (const cPtr
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_logicalOrExpression * object = (const cPtr_logicalOrExpression *) inObject ;
   macroValidSharedObject (object, cPtr_logicalOrExpression) ;
-  GALGAS_binaryset var_left_22786 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_left_22786, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 682)) ;
-  GALGAS_binaryset var_right_22873 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_right_22873, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 683)) ;
-  outArgument_outExpressionBDD = var_left_22786.operator_or (var_right_22873 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 684)) ;
+  GALGAS_binaryset var_left_23908 ;
+  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_left_23908, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 683)) ;
+  GALGAS_binaryset var_right_23995 ;
+  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_right_23995, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 684)) ;
+  outArgument_outExpressionBDD = var_left_23908.operator_or (var_right_23995 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 685)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13028,970 +14031,4 @@ static void defineExtensionMethod_logicalOrExpression_computeExpressionBDD (void
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_logicalOrExpression_computeExpressionBDD (defineExtensionMethod_logicalOrExpression_computeExpressionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Overriding extension method '@logicalAndExpression computeExpressionBDD'                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_logicalAndExpression_computeExpressionBDD (const cPtr_expression * inObject,
-                                                                       const GALGAS_varMap constinArgument_inVarMap,
-                                                                       const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
-                                                                       GALGAS_binaryset & outArgument_outExpressionBDD,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_logicalAndExpression * object = (const cPtr_logicalAndExpression *) inObject ;
-  macroValidSharedObject (object, cPtr_logicalAndExpression) ;
-  GALGAS_binaryset var_left_23218 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_left_23218, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 693)) ;
-  GALGAS_binaryset var_right_23305 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_right_23305, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 694)) ;
-  outArgument_outExpressionBDD = var_left_23218.operator_and (var_right_23305 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 695)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_logicalAndExpression_computeExpressionBDD (void) {
-  enterExtensionMethod_computeExpressionBDD (kTypeDescriptor_GALGAS_logicalAndExpression.mSlotID,
-                                             extensionMethod_logicalAndExpression_computeExpressionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_logicalAndExpression_computeExpressionBDD (defineExtensionMethod_logicalAndExpression_computeExpressionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                     Overriding extension method '@comparisonInExpression computeExpressionBDD'                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_comparisonInExpression_computeExpressionBDD (const cPtr_expression * inObject,
-                                                                         const GALGAS_varMap constinArgument_inVarMap,
-                                                                         const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
-                                                                         GALGAS_binaryset & outArgument_outExpressionBDD,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_comparisonInExpression * object = (const cPtr_comparisonInExpression *) inObject ;
-  macroValidSharedObject (object, cPtr_comparisonInExpression) ;
-  GALGAS_enumConstantMap var_constantMap_23656 ;
-  GALGAS_uint var_leftVarBDDStartBit_23690 ;
-  GALGAS_uint var_leftVarBDDBitCount_23724 ;
-  GALGAS_lstringlist joker_23617 ; // Joker input parameter
-  constinArgument_inVarMap.method_searchKey (object->mProperty_mAttributeName, joker_23617, var_constantMap_23656, var_leftVarBDDStartBit_23690, var_leftVarBDDBitCount_23724, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 704)) ;
-  callExtensionMethod_computeRightOperandBDD ((const cPtr_comparisonRightOperand *) object->mProperty_mRightOperand.ptr (), constinArgument_inVarMap, var_constantMap_23656, var_leftVarBDDStartBit_23690, var_leftVarBDDBitCount_23724, object->mProperty_mOperator, constinArgument_inVarTotalBDDBitCount, outArgument_outExpressionBDD, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 711)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_comparisonInExpression_computeExpressionBDD (void) {
-  enterExtensionMethod_computeExpressionBDD (kTypeDescriptor_GALGAS_comparisonInExpression.mSlotID,
-                                             extensionMethod_comparisonInExpression_computeExpressionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_comparisonInExpression_computeExpressionBDD (defineExtensionMethod_comparisonInExpression_computeExpressionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Overriding extension method '@attributeAsComparisonRightOperand computeRightOperandBDD'               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD (const cPtr_comparisonRightOperand * inObject,
-                                                                                      const GALGAS_varMap constinArgument_inVarMap,
-                                                                                      const GALGAS_enumConstantMap /* constinArgument_inConstantMap */,
-                                                                                      const GALGAS_uint constinArgument_leftVarBDDStartBit,
-                                                                                      const GALGAS_uint constinArgument_leftVarBDDBitCount,
-                                                                                      const GALGAS_enumComparisonOperator constinArgument_inOperator,
-                                                                                      const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
-                                                                                      GALGAS_binaryset & outArgument_outExpressionBDD,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_attributeAsComparisonRightOperand * object = (const cPtr_attributeAsComparisonRightOperand *) inObject ;
-  macroValidSharedObject (object, cPtr_attributeAsComparisonRightOperand) ;
-  GALGAS_uint var_rightVarBDDStartBit_24761 ;
-  GALGAS_lstringlist joker_24724_2 ; // Joker input parameter
-  GALGAS_enumConstantMap joker_24724_1 ; // Joker input parameter
-  GALGAS_uint joker_24767 ; // Joker input parameter
-  constinArgument_inVarMap.method_searchKey (object->mProperty_mAttributeName, joker_24724_2, joker_24724_1, var_rightVarBDDStartBit_24761, joker_24767, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 743)) ;
-  const enumGalgasBool test_0 = object->mProperty_mHasOldQualifier.boolEnum () ;
-  if (kBoolTrue == test_0) {
-    var_rightVarBDDStartBit_24761 = var_rightVarBDDStartBit_24761.substract_operation (constinArgument_inVarTotalBDDBitCount, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 750)) ;
-  }
-  switch (constinArgument_inOperator.enumValue ()) {
-  case GALGAS_enumComparisonOperator::kNotBuilt:
-    break ;
-  case GALGAS_enumComparisonOperator::kEnum_equal:
-    {
-      outArgument_outExpressionBDD = GALGAS_binaryset::constructor_binarySetWithEqualComparison (constinArgument_leftVarBDDStartBit, constinArgument_leftVarBDDBitCount, var_rightVarBDDStartBit_24761, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 754)) ;
-    }
-    break ;
-  case GALGAS_enumComparisonOperator::kEnum_notEqual:
-    {
-      outArgument_outExpressionBDD = GALGAS_binaryset::constructor_binarySetWithNotEqualComparison (constinArgument_leftVarBDDStartBit, constinArgument_leftVarBDDBitCount, var_rightVarBDDStartBit_24761, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 759)) ;
-    }
-    break ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD (void) {
-  enterExtensionMethod_computeRightOperandBDD (kTypeDescriptor_GALGAS_attributeAsComparisonRightOperand.mSlotID,
-                                               extensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_attributeAsComparisonRightOperand_computeRightOperandBDD (defineExtensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Overriding extension method '@constantAsComparisonRightOperand computeRightOperandBDD'                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD (const cPtr_comparisonRightOperand * inObject,
-                                                                                     const GALGAS_varMap /* constinArgument_inVarMap */,
-                                                                                     const GALGAS_enumConstantMap constinArgument_inConstantMap,
-                                                                                     const GALGAS_uint constinArgument_leftVarBDDStartBit,
-                                                                                     const GALGAS_uint constinArgument_leftVarBDDBitCount,
-                                                                                     const GALGAS_enumComparisonOperator constinArgument_inOperator,
-                                                                                     const GALGAS_uint /* constinArgument_inVarTotalBDDBitCount */,
-                                                                                     GALGAS_binaryset & outArgument_outExpressionBDD,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_constantAsComparisonRightOperand * object = (const cPtr_constantAsComparisonRightOperand *) inObject ;
-  macroValidSharedObject (object, cPtr_constantAsComparisonRightOperand) ;
-  GALGAS_uint var_constantValue_25693 ;
-  constinArgument_inConstantMap.method_searchKey (object->mProperty_mConstantName, var_constantValue_25693, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 776)) ;
-  switch (constinArgument_inOperator.enumValue ()) {
-  case GALGAS_enumComparisonOperator::kNotBuilt:
-    break ;
-  case GALGAS_enumComparisonOperator::kEnum_equal:
-    {
-      outArgument_outExpressionBDD = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (constinArgument_leftVarBDDStartBit, constinArgument_leftVarBDDBitCount, var_constantValue_25693.getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 782)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 779)) ;
-    }
-    break ;
-  case GALGAS_enumComparisonOperator::kEnum_notEqual:
-    {
-      outArgument_outExpressionBDD = GALGAS_binaryset::constructor_binarySetWithNotEqualToConstant (constinArgument_leftVarBDDStartBit, constinArgument_leftVarBDDBitCount, var_constantValue_25693.getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 787)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 784)) ;
-    }
-    break ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD (void) {
-  enterExtensionMethod_computeRightOperandBDD (kTypeDescriptor_GALGAS_constantAsComparisonRightOperand.mSlotID,
-                                               extensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_constantAsComparisonRightOperand_computeRightOperandBDD (defineExtensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                     Overriding extension method '@assignmentInstruction computeInstructionBDD'                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_assignmentInstruction_computeInstructionBDD (const cPtr_instruction * inObject,
-                                                                         const GALGAS_uint /* constinArgument_inVarTotalBDDBitCount */,
-                                                                         const GALGAS_varMap constinArgument_inVarMap,
-                                                                         const GALGAS_functionMap constinArgument_inFunctionMap,
-                                                                         const GALGAS_uint constinArgument_inArgOldVarVarBDDBitCount,
-                                                                         GALGAS_binaryset & ioArgument_ioArgOldVarVarValueSet,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_assignmentInstruction * object = (const cPtr_assignmentInstruction *) inObject ;
-  macroValidSharedObject (object, cPtr_assignmentInstruction) ;
-  GALGAS_enumConstantMap var_constantMap_27336 ;
-  GALGAS_uint var_leftVarBDDStartBit_27370 ;
-  GALGAS_uint var_leftVarBDDBitCount_27404 ;
-  GALGAS_lstringlist joker_27297 ; // Joker input parameter
-  constinArgument_inVarMap.method_searchKey (object->mProperty_mTargetVarName, joker_27297, var_constantMap_27336, var_leftVarBDDStartBit_27370, var_leftVarBDDBitCount_27404, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 829)) ;
-  GALGAS_binaryset var_oldAttributeValueSet_27446 = ioArgument_ioArgOldVarVarValueSet ;
-  callExtensionMethod_computeAssignmentInstructionBDD ((const cPtr_assignmentSourceExpression *) object->mProperty_mSourceExpression.ptr (), constinArgument_inVarMap, constinArgument_inFunctionMap, var_constantMap_27336, var_leftVarBDDStartBit_27370, var_leftVarBDDBitCount_27404, constinArgument_inArgOldVarVarBDDBitCount, ioArgument_ioArgOldVarVarValueSet, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 837)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_oldAttributeValueSet_27446.objectCompare (ioArgument_ioArgOldVarVarValueSet)).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (object->mProperty_mTargetVarName.getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 847)), GALGAS_string ("this assignment has no effect and is useless"), fixItArray1  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 847)) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_assignmentInstruction_computeInstructionBDD (void) {
-  enterExtensionMethod_computeInstructionBDD (kTypeDescriptor_GALGAS_assignmentInstruction.mSlotID,
-                                              extensionMethod_assignmentInstruction_computeInstructionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_assignmentInstruction_computeInstructionBDD (defineExtensionMethod_assignmentInstruction_computeInstructionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Overriding extension method '@assertInstruction computeInstructionBDD'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_assertInstruction_computeInstructionBDD (const cPtr_instruction * inObject,
-                                                                     const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
-                                                                     const GALGAS_varMap constinArgument_inVarMap,
-                                                                     const GALGAS_functionMap /* constinArgument_inFunctionMap */,
-                                                                     const GALGAS_uint /* constinArgument_inArgOldVarVarBDDBitCount */,
-                                                                     GALGAS_binaryset & ioArgument_ioArgOldVarVarValueSet,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_assertInstruction * object = (const cPtr_assertInstruction *) inObject ;
-  macroValidSharedObject (object, cPtr_assertInstruction) ;
-  GALGAS_binaryset var_expressionValueSet_28252 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mAssertExpression.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_expressionValueSet_28252, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 859)) ;
-  const enumGalgasBool test_0 = var_expressionValueSet_28252.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 860)).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (object->mProperty_mAssertInstructionLocation, GALGAS_string ("assert expression is always false"), fixItArray1  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 861)) ;
-  }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = var_expressionValueSet_28252.getter_isFull (SOURCE_FILE ("dynamicAnalysis.galgas", 862)).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (object->mProperty_mAssertInstructionLocation, GALGAS_string ("assert expression is always true"), fixItArray3  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 863)) ;
-    }else if (kBoolFalse == test_2) {
-      GALGAS_binaryset var_v_28510 = ioArgument_ioArgOldVarVarValueSet.operator_and (var_expressionValueSet_28252 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 865)) ;
-      const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, var_v_28510.objectCompare (ioArgument_ioArgOldVarVarValueSet)).boolEnum () ;
-      if (kBoolTrue == test_4) {
-        TC_Array <C_FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (object->mProperty_mAssertInstructionLocation, GALGAS_string ("assert expression violation"), fixItArray5  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 867)) ;
-      }
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_assertInstruction_computeInstructionBDD (void) {
-  enterExtensionMethod_computeInstructionBDD (kTypeDescriptor_GALGAS_assertInstruction.mSlotID,
-                                              extensionMethod_assertInstruction_computeInstructionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_assertInstruction_computeInstructionBDD (defineExtensionMethod_assertInstruction_computeInstructionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Overriding extension method '@ifInstruction computeInstructionBDD'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_ifInstruction_computeInstructionBDD (const cPtr_instruction * inObject,
-                                                                 const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
-                                                                 const GALGAS_varMap constinArgument_inVarMap,
-                                                                 const GALGAS_functionMap constinArgument_inFunctionMap,
-                                                                 const GALGAS_uint constinArgument_inArgOldVarVarBDDBitCount,
-                                                                 GALGAS_binaryset & ioArgument_ioArgOldVarVarValueSet,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_ifInstruction * object = (const cPtr_ifInstruction *) inObject ;
-  macroValidSharedObject (object, cPtr_ifInstruction) ;
-  GALGAS_binaryset var_oldAttributeValueSet_29018 = ioArgument_ioArgOldVarVarValueSet ;
-  GALGAS_binaryset var_expressionValueSet_29172 ;
-  callExtensionMethod_computeExpressionBDD ((const cPtr_expression *) object->mProperty_mTestExpression.ptr (), constinArgument_inVarMap, constinArgument_inVarTotalBDDBitCount, var_expressionValueSet_29172, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 882)) ;
-  GALGAS_binaryset var_resultingThenCondition_29213 = ioArgument_ioArgOldVarVarValueSet.operator_and (var_expressionValueSet_29172 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 883)) ;
-  GALGAS_binaryset var_resultingElseCondition_29299 = ioArgument_ioArgOldVarVarValueSet.operator_and (var_expressionValueSet_29172.operator_tilde (SOURCE_FILE ("dynamicAnalysis.galgas", 884)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 884)) ;
-  const enumGalgasBool test_0 = var_expressionValueSet_29172.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 885)).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("expression is always false"), fixItArray1  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 886)) ;
-  }else if (kBoolFalse == test_0) {
-    const enumGalgasBool test_2 = var_expressionValueSet_29172.getter_isFull (SOURCE_FILE ("dynamicAnalysis.galgas", 887)).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("expression is always true"), fixItArray3  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 888)) ;
-    }else if (kBoolFalse == test_2) {
-      const enumGalgasBool test_4 = var_resultingThenCondition_29213.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 889)).boolEnum () ;
-      if (kBoolTrue == test_4) {
-        TC_Array <C_FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("expression is always false within current context"), fixItArray5  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 890)) ;
-      }else if (kBoolFalse == test_4) {
-        const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, var_resultingThenCondition_29213.objectCompare (ioArgument_ioArgOldVarVarValueSet)).boolEnum () ;
-        if (kBoolTrue == test_6) {
-          TC_Array <C_FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("expression is always true within current context"), fixItArray7  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 892)) ;
-        }else if (kBoolFalse == test_6) {
-          const enumGalgasBool test_8 = var_resultingElseCondition_29299.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 893)).boolEnum () ;
-          if (kBoolTrue == test_8) {
-            TC_Array <C_FixItDescription> fixItArray9 ;
-            inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("expression is always true"), fixItArray9  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 894)) ;
-          }else if (kBoolFalse == test_8) {
-            const enumGalgasBool test_10 = GALGAS_bool (kIsEqual, var_resultingElseCondition_29299.objectCompare (ioArgument_ioArgOldVarVarValueSet)).boolEnum () ;
-            if (kBoolTrue == test_10) {
-              TC_Array <C_FixItDescription> fixItArray11 ;
-              inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("expression is always false within current context"), fixItArray11  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 896)) ;
-            }
-          }
-        }
-      }
-    }
-  }
-  ioArgument_ioArgOldVarVarValueSet = GALGAS_binaryset::constructor_emptyBinarySet (SOURCE_FILE ("dynamicAnalysis.galgas", 898)) ;
-  const enumGalgasBool test_12 = var_resultingThenCondition_29213.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 900)).boolEnum () ;
-  if (kBoolTrue == test_12) {
-    TC_Array <C_FixItDescription> fixItArray13 ;
-    inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("then branch is never executed"), fixItArray13  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 901)) ;
-  }else if (kBoolFalse == test_12) {
-    GALGAS_binaryset var_thenBranchAttributeValueSet_30316 = var_resultingThenCondition_29213 ;
-    extensionMethod_computeInstructionListBDD (object->mProperty_mThenInstructionList, constinArgument_inVarTotalBDDBitCount, constinArgument_inVarMap, constinArgument_inFunctionMap, constinArgument_inArgOldVarVarBDDBitCount, var_thenBranchAttributeValueSet_30316, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 904)) ;
-    ioArgument_ioArgOldVarVarValueSet = var_thenBranchAttributeValueSet_30316 ;
-  }
-  const enumGalgasBool test_14 = var_resultingElseCondition_29299.getter_isEmpty (SOURCE_FILE ("dynamicAnalysis.galgas", 908)).boolEnum () ;
-  if (kBoolTrue == test_14) {
-    TC_Array <C_FixItDescription> fixItArray15 ;
-    inCompiler->emitSemanticError (object->mProperty_mEndOfTestExpression, GALGAS_string ("else branch is never executed"), fixItArray15  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 909)) ;
-  }else if (kBoolFalse == test_14) {
-    GALGAS_binaryset var_elseBranchAttributeValueSet_30737 = var_resultingElseCondition_29299 ;
-    extensionMethod_computeInstructionListBDD (object->mProperty_mElseInstructionList, constinArgument_inVarTotalBDDBitCount, constinArgument_inVarMap, constinArgument_inFunctionMap, constinArgument_inArgOldVarVarBDDBitCount, var_elseBranchAttributeValueSet_30737, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 912)) ;
-    ioArgument_ioArgOldVarVarValueSet = ioArgument_ioArgOldVarVarValueSet.operator_or (var_elseBranchAttributeValueSet_30737 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 913)) ;
-  }
-  const enumGalgasBool test_16 = GALGAS_bool (kIsEqual, var_oldAttributeValueSet_29018.objectCompare (ioArgument_ioArgOldVarVarValueSet)).boolEnum () ;
-  if (kBoolTrue == test_16) {
-    TC_Array <C_FixItDescription> fixItArray17 ;
-    inCompiler->emitSemanticError (object->mProperty_mIFinstructionLocation, GALGAS_string ("this 'if' instruction has no effect and is useless"), fixItArray17  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 917)) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_ifInstruction_computeInstructionBDD (void) {
-  enterExtensionMethod_computeInstructionBDD (kTypeDescriptor_GALGAS_ifInstruction.mSlotID,
-                                              extensionMethod_ifInstruction_computeInstructionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_ifInstruction_computeInstructionBDD (defineExtensionMethod_ifInstruction_computeInstructionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//           Overriding extension method '@varAsAssignmentSourceExpression computeAssignmentInstructionBDD'            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD (const cPtr_assignmentSourceExpression * inObject,
-                                                                                             const GALGAS_varMap constinArgument_inVarMap,
-                                                                                             const GALGAS_functionMap /* constinArgument_inFunctionMap */,
-                                                                                             const GALGAS_enumConstantMap /* constinArgument_inConstantMap */,
-                                                                                             const GALGAS_uint constinArgument_inTargetVarBDDStartBit,
-                                                                                             const GALGAS_uint constinArgument_inTargetVarBDDBitCount,
-                                                                                             const GALGAS_uint constinArgument_inArgOldVarVarBDDBitCount,
-                                                                                             GALGAS_binaryset & ioArgument_ioArgOldVarVarValueSet,
-                                                                                             C_Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_varAsAssignmentSourceExpression * object = (const cPtr_varAsAssignmentSourceExpression *) inObject ;
-  macroValidSharedObject (object, cPtr_varAsAssignmentSourceExpression) ;
-  GALGAS_uint var_sourceVarBDDStartBit_32063 ;
-  GALGAS_uint var_sourceVarBDDBitCount_32099 ;
-  GALGAS_lstringlist joker_32025_2 ; // Joker input parameter
-  GALGAS_enumConstantMap joker_32025_1 ; // Joker input parameter
-  constinArgument_inVarMap.method_searchKey (object->mProperty_mSourceVarName, joker_32025_2, joker_32025_1, var_sourceVarBDDStartBit_32063, var_sourceVarBDDBitCount_32099, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 942)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetVarBDDBitCount.objectCompare (var_sourceVarBDDBitCount_32099)).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (object->mProperty_mSourceVarName.getter_location (SOURCE_FILE ("dynamicAnalysis.galgas", 949)), GALGAS_string ("*** INTERNAL ERROR ").add_operation (constinArgument_inTargetVarBDDBitCount.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 949)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 949)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 949)).add_operation (var_sourceVarBDDBitCount_32099.getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 949)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 949)).add_operation (GALGAS_string (" ***"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 949)), fixItArray1  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 949)) ;
-  }
-  const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetVarBDDStartBit.objectCompare (var_sourceVarBDDStartBit_32063)).boolEnum () ;
-  if (kBoolTrue == test_2) {
-    GALGAS_binaryset var_equality_32573 = GALGAS_binaryset::constructor_binarySetWithEqualComparison (constinArgument_inTargetVarBDDStartBit, constinArgument_inTargetVarBDDBitCount, constinArgument_inArgOldVarVarBDDBitCount, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 954)) ;
-    GALGAS_binaryset var_expressionValueSet_32753 = ioArgument_ioArgOldVarVarValueSet.operator_and (var_equality_32573 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 960)) ;
-    GALGAS_binaryset var_v_32810 = var_expressionValueSet_32753.getter_existsOnBitRange (constinArgument_inTargetVarBDDStartBit, constinArgument_inTargetVarBDDBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 961)) ;
-    GALGAS_binaryset var_constraint_33040 = GALGAS_binaryset::constructor_binarySetWithEqualComparison (constinArgument_inTargetVarBDDStartBit, constinArgument_inTargetVarBDDBitCount, var_sourceVarBDDStartBit_32063, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 967)) ;
-    ioArgument_ioArgOldVarVarValueSet = var_v_32810.operator_and (var_constraint_33040 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 973)).getter_existOnBitIndexAndBeyond (constinArgument_inArgOldVarVarBDDBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 973)) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD (void) {
-  enterExtensionMethod_computeAssignmentInstructionBDD (kTypeDescriptor_GALGAS_varAsAssignmentSourceExpression.mSlotID,
-                                                        extensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD (defineExtensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//         Overriding extension method '@constantAsAssignmentSourceExpression computeAssignmentInstructionBDD'         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD (const cPtr_assignmentSourceExpression * inObject,
-                                                                                                  const GALGAS_varMap /* constinArgument_inVarMap */,
-                                                                                                  const GALGAS_functionMap /* constinArgument_inFunctionMap */,
-                                                                                                  const GALGAS_enumConstantMap constinArgument_constantMap,
-                                                                                                  const GALGAS_uint constinArgument_inTargetVarBDDStartBit,
-                                                                                                  const GALGAS_uint constinArgument_inTargetVarBDDBitCount,
-                                                                                                  const GALGAS_uint /* constinArgument_inArgOldVarVarBDDBitCount */,
-                                                                                                  GALGAS_binaryset & ioArgument_ioArgOldVarVarValueSet,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_constantAsAssignmentSourceExpression * object = (const cPtr_constantAsAssignmentSourceExpression *) inObject ;
-  macroValidSharedObject (object, cPtr_constantAsAssignmentSourceExpression) ;
-  GALGAS_uint var_constantValue_33873 ;
-  constinArgument_constantMap.method_searchKey (object->mProperty_mConstantName, var_constantValue_33873, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 988)) ;
-  GALGAS_binaryset var_expressionValueSet_33899 = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (constinArgument_inTargetVarBDDStartBit, constinArgument_inTargetVarBDDBitCount, var_constantValue_33873.getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 992)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 989)) ;
-  GALGAS_binaryset var_v_34050 = ioArgument_ioArgOldVarVarValueSet.getter_existsOnBitRange (constinArgument_inTargetVarBDDStartBit, constinArgument_inTargetVarBDDBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 994)) ;
-  ioArgument_ioArgOldVarVarValueSet = var_v_34050.operator_and (var_expressionValueSet_33899 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 998)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD (void) {
-  enterExtensionMethod_computeAssignmentInstructionBDD (kTypeDescriptor_GALGAS_constantAsAssignmentSourceExpression.mSlotID,
-                                                        extensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD (defineExtensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//         Overriding extension method '@functionAsAssignmentSourceExpression computeAssignmentInstructionBDD'         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD (const cPtr_assignmentSourceExpression * inObject,
-                                                                                                  const GALGAS_varMap constinArgument_inVarMap,
-                                                                                                  const GALGAS_functionMap constinArgument_inFunctionMap,
-                                                                                                  const GALGAS_enumConstantMap /* constinArgument_constantMap */,
-                                                                                                  const GALGAS_uint constinArgument_leftVarBDDStartBit,
-                                                                                                  const GALGAS_uint constinArgument_leftVarBDDBitCount,
-                                                                                                  const GALGAS_uint constinArgument_inArgOldVarVarBDDBitCount,
-                                                                                                  GALGAS_binaryset & ioArgument_ioArgOldVarVarValueSet,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_functionAsAssignmentSourceExpression * object = (const cPtr_functionAsAssignmentSourceExpression *) inObject ;
-  macroValidSharedObject (object, cPtr_functionAsAssignmentSourceExpression) ;
-  GALGAS_uint var_operandVarBDDStartBit_34987 ;
-  GALGAS_uint var_operandVarBDDBitCount_35024 ;
-  GALGAS_lstringlist joker_34948_2 ; // Joker input parameter
-  GALGAS_enumConstantMap joker_34948_1 ; // Joker input parameter
-  constinArgument_inVarMap.method_searchKey (object->mProperty_mOperandName, joker_34948_2, joker_34948_1, var_operandVarBDDStartBit_34987, var_operandVarBDDBitCount_35024, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1017)) ;
-  GALGAS_binaryset var_functionTable_35049 = GALGAS_binaryset::constructor_emptyBinarySet (SOURCE_FILE ("dynamicAnalysis.galgas", 1024)) ;
-  GALGAS_decoratedFunctionValueList var_decoratedFunctionValueList_35184 ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy joker_35122_2 ; // Joker input parameter
-  GALGAS_unifiedScalarTypeMap_2D_proxy joker_35122_1 ; // Joker input parameter
-  constinArgument_inFunctionMap.method_searchKey (object->mProperty_mFunctionName, joker_35122_2, joker_35122_1, var_decoratedFunctionValueList_35184, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1025)) ;
-  cEnumerator_decoratedFunctionValueList enumerator_35223 (var_decoratedFunctionValueList_35184, kENUMERATION_UP) ;
-  while (enumerator_35223.hasCurrentObject ()) {
-    GALGAS_binaryset var_op_35237 = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (var_operandVarBDDStartBit_34987, var_operandVarBDDBitCount_35024, enumerator_35223.current (HERE).getter_mOperandValue (HERE).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 1030)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1027)) ;
-    GALGAS_binaryset var_result_35392 = GALGAS_binaryset::constructor_binarySetWithEqualToConstant (constinArgument_inArgOldVarVarBDDBitCount, constinArgument_leftVarBDDBitCount, enumerator_35223.current (HERE).getter_mResultValue (HERE).getter_uint_36__34_ (SOURCE_FILE ("dynamicAnalysis.galgas", 1035)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1032)) ;
-    var_functionTable_35049 = var_functionTable_35049.operator_or (var_op_35237.operator_and (var_result_35392 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1037)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1037)) ;
-    enumerator_35223.gotoNextObject () ;
-  }
-  GALGAS_binaryset var_expressionValueSet_35621 = ioArgument_ioArgOldVarVarValueSet.operator_and (var_functionTable_35049 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1040)) ;
-  GALGAS_binaryset var_constraint_35679 = GALGAS_binaryset::constructor_binarySetWithEqualComparison (constinArgument_leftVarBDDStartBit, constinArgument_leftVarBDDBitCount, constinArgument_inArgOldVarVarBDDBitCount, inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1041)) ;
-  GALGAS_binaryset var_v_35825 = var_expressionValueSet_35621.getter_existsOnBitRange (constinArgument_leftVarBDDStartBit, constinArgument_leftVarBDDBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1046)) ;
-  ioArgument_ioArgOldVarVarValueSet = var_v_35825.operator_and (var_constraint_35679 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1051)).getter_existOnBitIndexAndBeyond (constinArgument_inArgOldVarVarBDDBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1051)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD (void) {
-  enterExtensionMethod_computeAssignmentInstructionBDD (kTypeDescriptor_GALGAS_functionAsAssignmentSourceExpression.mSlotID,
-                                                        extensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD (defineExtensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Filewrapper 'CCodeGenerationTemplates'                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_CCodeGenerationTemplates_0 [1] = {
-  NULL
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_CCodeGenerationTemplates_0 [1] = {
-  NULL
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_CCodeGenerationTemplates (
-  "",
-  0,
-  gWrapperAllFiles_CCodeGenerationTemplates_0,
-  0,
-  gWrapperAllDirectories_CCodeGenerationTemplates_0
-) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Filewrapper template 'CCodeGenerationTemplates enumerationDeclaration'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_enumerationDeclaration (C_Compiler * /* inCompiler */,
-                                                                                   const GALGAS_string & in_ENUMERATION_5F_NAME,
-                                                                                   const GALGAS_lstringlist & in_CONSTANT_5F_LIST
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "//  THIS FILE HAS BEEN GENERATED BY OMNIBUS TOOL. DO NOT MODIFY IT!\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#ifndef " ;
-  result << in_ENUMERATION_5F_NAME.stringValue () ;
-  result << "_ENUMERATION_DEFINED\n"
-    "#define " ;
-  result << in_ENUMERATION_5F_NAME.stringValue () ;
-  result << "_ENUMERATION_DEFINED\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "typedef enum {\n" ;
-  GALGAS_uint index_575_ (0) ;
-  if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_575 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_575.hasCurrentObject ()) {
-      result << "  " ;
-      result << in_ENUMERATION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("enum-declaration.h.galgasTemplate", 13)).stringValue () ;
-      result << "_" ;
-      result << enumerator_575.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("enum-declaration.h.galgasTemplate", 13)).stringValue () ;
-      if (enumerator_575.hasNextObject ()) {
-        result << ",\n" ;
-      }
-      index_575_.increment () ;
-      enumerator_575.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "}  enum_" ;
-  result << in_ENUMERATION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("enum-declaration.h.galgasTemplate", 16)).stringValue () ;
-  result << " ;\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#endif\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Filewrapper template 'CCodeGenerationTemplates machineDeclaration'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineDeclaration (C_Compiler * inCompiler,
-                                                                               const GALGAS_string & in_FILE_5F_NAME,
-                                                                               const GALGAS_unifiedScalarTypeMap & in_ENUM_5F_DECLARATION_5F_MAP,
-                                                                               const GALGAS_string & in_MACHINE_5F_NAME,
-                                                                               const GALGAS_machineVarList & in_ATTRIBUTE_5F_LIST,
-                                                                               const GALGAS_eventMap & in_EVENT_5F_MAP
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "//  THIS FILE HAS BEEN GENERATED BY OMNIBUS TOOL. DO NOT MODIFY IT!\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#ifndef " ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << "_MACHINE_DEFINED\n"
-    "#define " ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << "_MACHINE_DEFINED\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n" ;
-  GALGAS_uint index_550_ (0) ;
-  if (in_ENUM_5F_DECLARATION_5F_MAP.isValid ()) {
-    cEnumerator_unifiedScalarTypeMap enumerator_550 (in_ENUM_5F_DECLARATION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_550.hasCurrentObject ()) {
-      result << "#include \"" ;
-      result << in_FILE_5F_NAME.stringValue () ;
-      result << "-enum-" ;
-      result << enumerator_550.current_lkey (HERE).getter_string (HERE).stringValue () ;
-      result << ".h\"\n" ;
-      index_550_.increment () ;
-      enumerator_550.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "class machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << " {\n"
-    "//--- Default constructor\n"
-    "  public : machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << " (void) ;\n"
-    "\n"
-    "//--- No copy\n"
-    "  private : machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << " (const machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << " &) ;\n"
-    "  private : machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << " & operator = (const machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << " &) ;\n"
-    "\n"
-    "//--- Attributes\n" ;
-  GALGAS_uint index_1053_ (0) ;
-  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_machineVarList enumerator_1053 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1053.hasCurrentObject ()) {
-      result << "  private : enum_" ;
-      result << enumerator_1053.current_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("machine-declaration.h.galgasTemplate", 27)).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 27)).stringValue () ;
-      result << " " ;
-      result << enumerator_1053.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 27)).stringValue () ;
-      result << " ;\n"
-        "  private : enum_" ;
-      result << enumerator_1053.current_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("machine-declaration.h.galgasTemplate", 28)).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 28)).stringValue () ;
-      result << " old_" ;
-      result << enumerator_1053.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 28)).stringValue () ;
-      result << " ;\n" ;
-      index_1053_.increment () ;
-      enumerator_1053.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "//--- Accessors\n" ;
-  GALGAS_uint index_1344_ (0) ;
-  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_machineVarList enumerator_1344 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1344.hasCurrentObject ()) {
-      result << "  public : inline enum_" ;
-      result << enumerator_1344.current_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("machine-declaration.h.galgasTemplate", 33)).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 33)).stringValue () ;
-      result << " get_" ;
-      result << enumerator_1344.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 33)).stringValue () ;
-      result << " (void) const {\n"
-        "    return " ;
-      result << enumerator_1344.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 34)).stringValue () ;
-      result << " ;\n"
-        "  }\n"
-        "  public : inline bool " ;
-      result << enumerator_1344.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 36)).stringValue () ;
-      result << "_didChange (void) const {\n"
-        "    return old_" ;
-      result << enumerator_1344.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 37)).stringValue () ;
-      result << " != " ;
-      result << enumerator_1344.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 37)).stringValue () ;
-      result << " ;\n"
-        "  }\n" ;
-      index_1344_.increment () ;
-      enumerator_1344.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "//---\n"
-    "  public : void update (void) ;\n"
-    " \n"
-    "//--- Events\n" ;
-  GALGAS_uint index_1871_ (0) ;
-  if (in_EVENT_5F_MAP.isValid ()) {
-    cEnumerator_eventMap enumerator_1871 (in_EVENT_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1871.hasCurrentObject ()) {
-      result << "  public : void event_" ;
-      result << enumerator_1871.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 46)).stringValue () ;
-      result << " (" ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_1871.current_mDecoratedArgumentList (HERE).getter_length (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 47)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-      if (kBoolTrue == test_0) {
-        result << "void" ;
-      }else if (kBoolFalse == test_0) {
-        GALGAS_uint index_2043_ (0) ;
-        if (enumerator_1871.current_mDecoratedArgumentList (HERE).isValid ()) {
-          cEnumerator_decoratedArgumentList enumerator_2043 (enumerator_1871.current_mDecoratedArgumentList (HERE), kENUMERATION_UP) ;
-          while (enumerator_2043.hasCurrentObject ()) {
-            result << "const enum_" ;
-            result << enumerator_2043.current_mArgumentTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("machine-declaration.h.galgasTemplate", 51)).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 51)).stringValue () ;
-            result << " " ;
-            result << enumerator_2043.current_mArgumentName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-declaration.h.galgasTemplate", 51)).stringValue () ;
-            if (enumerator_2043.hasNextObject ()) {
-              result << ", " ;
-            }
-            index_2043_.increment () ;
-            enumerator_2043.gotoNextObject () ;
-          }
-        }
-      }
-      result << ") ;\n" ;
-      index_1871_.increment () ;
-      enumerator_1871.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "} ;\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#endif\n"
-    "\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        Filewrapper template 'CCodeGenerationTemplates machineImplementation'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineImplementation (C_Compiler * inCompiler,
-                                                                                  const GALGAS_string & in_FILE_5F_NAME,
-                                                                                  const GALGAS_unifiedScalarTypeMap & /* in_ENUM_5F_DECLARATION_5F_MAP */,
-                                                                                  const GALGAS_string & in_MACHINE_5F_NAME,
-                                                                                  const GALGAS_machineVarList & in_ATTRIBUTE_5F_LIST,
-                                                                                  const GALGAS_eventMap & in_EVENT_5F_MAP,
-                                                                                  const GALGAS_functionMap & in_FUNCTION_5F_MAP
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "//  THIS FILE HAS BEEN GENERATED BY OMNIBUS TOOL. DO NOT MODIFY IT!\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#include \"" ;
-  result << in_FILE_5F_NAME.stringValue () ;
-  result << "-machine-" ;
-  result << in_MACHINE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 5)).stringValue () ;
-  result << ".h\"\n" ;
-  GALGAS_uint index_416_ (0) ;
-  if (in_FUNCTION_5F_MAP.isValid ()) {
-    cEnumerator_functionMap enumerator_416 (in_FUNCTION_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_416.hasCurrentObject ()) {
-      result << "#include \"" ;
-      result << in_FILE_5F_NAME.stringValue () ;
-      result << "-function-" ;
-      result << enumerator_416.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 8)).stringValue () ;
-      result << ".h\"\n" ;
-      index_416_.increment () ;
-      enumerator_416.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << "::machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << " (void) :\n" ;
-  GALGAS_uint index_708_ (0) ;
-  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_machineVarList enumerator_708 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_708.hasCurrentObject ()) {
-      result << enumerator_708.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 16)).stringValue () ;
-      result << " (" ;
-      result << enumerator_708.current_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 16)).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 16)).stringValue () ;
-      result << "_" ;
-      result << enumerator_708.current_mInitialValueConstantName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 16)).stringValue () ;
-      result << "),\n"
-        "old_" ;
-      result << enumerator_708.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 17)).stringValue () ;
-      result << " (" ;
-      result << enumerator_708.current_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 17)).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 17)).stringValue () ;
-      result << "_" ;
-      result << enumerator_708.current_mInitialValueConstantName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 17)).stringValue () ;
-      result << ")" ;
-      if (enumerator_708.hasNextObject ()) {
-        result << ",\n" ;
-      }
-      index_708_.increment () ;
-      enumerator_708.gotoNextObject () ;
-    }
-  }
-  result << " {\n"
-    "}\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "void machine_" ;
-  result << in_MACHINE_5F_NAME.stringValue () ;
-  result << "::update (void) {\n" ;
-  GALGAS_uint index_1247_ (0) ;
-  if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_machineVarList enumerator_1247 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1247.hasCurrentObject ()) {
-      result << "  old_" ;
-      result << enumerator_1247.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 28)).stringValue () ;
-      result << " = " ;
-      result << enumerator_1247.current_mVarName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 28)).stringValue () ;
-      result << " ;\n" ;
-      index_1247_.increment () ;
-      enumerator_1247.gotoNextObject () ;
-    }
-  }
-  result << "}\n"
-    "\n" ;
-  GALGAS_uint index_1388_ (0) ;
-  if (in_EVENT_5F_MAP.isValid ()) {
-    cEnumerator_eventMap enumerator_1388 (in_EVENT_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_1388.hasCurrentObject ()) {
-      result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-        "\n"
-        "\n"
-        "void machine_" ;
-      result << in_MACHINE_5F_NAME.stringValue () ;
-      result << "::event_" ;
-      result << enumerator_1388.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 36)).stringValue () ;
-      result << " (" ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_1388.current_mDecoratedArgumentList (HERE).getter_length (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 37)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-      if (kBoolTrue == test_0) {
-        result << "void" ;
-      }else if (kBoolFalse == test_0) {
-        GALGAS_uint index_1705_ (0) ;
-        if (enumerator_1388.current_mDecoratedArgumentList (HERE).isValid ()) {
-          cEnumerator_decoratedArgumentList enumerator_1705 (enumerator_1388.current_mDecoratedArgumentList (HERE), kENUMERATION_UP) ;
-          while (enumerator_1705.hasCurrentObject ()) {
-            result << "const enum_" ;
-            result << enumerator_1705.current_mArgumentTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 41)).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 41)).stringValue () ;
-            result << " " ;
-            result << enumerator_1705.current_mArgumentName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 41)).stringValue () ;
-            if (enumerator_1705.hasNextObject ()) {
-              result << ", " ;
-            }
-            index_1705_.increment () ;
-            enumerator_1705.gotoNextObject () ;
-          }
-        }
-      }
-      result << ") {\n" ;
-      result << extensionGetter_generateCCode (enumerator_1388.current_mDecoratedEventInstructionList (HERE), GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("machine-implementation.cpp.galgasTemplate", 46)).stringValue () ;
-      result << "}\n"
-        "\n" ;
-      index_1388_.increment () ;
-      enumerator_1388.gotoNextObject () ;
-    }
-  }
-  result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Filewrapper template 'CCodeGenerationTemplates functionDeclaration'                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionDeclaration (C_Compiler * /* inCompiler */,
-                                                                                const GALGAS_string & in_FILE_5F_NAME,
-                                                                                const GALGAS_string & in_FUNCTION_5F_NAME,
-                                                                                const GALGAS_string & in_RESULT_5F_TYPE_5F_NAME,
-                                                                                const GALGAS_uint & in_OPERAND_5F_VALUE_5F_COUNT
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "//  THIS FILE HAS BEEN GENERATED BY OMNIBUS TOOL. DO NOT MODIFY IT!\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#ifndef " ;
-  result << in_FUNCTION_5F_NAME.stringValue () ;
-  result << "_FUNCTION_DEFINED\n"
-    "#define " ;
-  result << in_FUNCTION_5F_NAME.stringValue () ;
-  result << "_FUNCTION_DEFINED\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#include \"" ;
-  result << in_FILE_5F_NAME.stringValue () ;
-  result << "-enum-" ;
-  result << in_RESULT_5F_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-declaration.h.galgasTemplate", 10)).stringValue () ;
-  result << ".h\"\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "extern const enum_" ;
-  result << in_RESULT_5F_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-declaration.h.galgasTemplate", 14)).stringValue () ;
-  result << " function_" ;
-  result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-declaration.h.galgasTemplate", 14)).stringValue () ;
-  result << " [" ;
-  result << in_OPERAND_5F_VALUE_5F_COUNT.getter_string (SOURCE_FILE ("function-declaration.h.galgasTemplate", 14)).stringValue () ;
-  result << "] ;\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#endif\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Filewrapper template 'CCodeGenerationTemplates functionImplementation'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionImplementation (C_Compiler * /* inCompiler */,
-                                                                                   const GALGAS_string & in_FILE_5F_NAME,
-                                                                                   const GALGAS_string & in_FUNCTION_5F_NAME,
-                                                                                   const GALGAS_string & in_RESULT_5F_TYPE_5F_NAME,
-                                                                                   const GALGAS_decoratedFunctionValueList & in_VALUE_5F_LIST
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "//  THIS FILE HAS BEEN GENERATED BY OMNIBUS TOOL. DO NOT MODIFY IT!\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "#include \"" ;
-  result << in_FILE_5F_NAME.stringValue () ;
-  result << "-function-" ;
-  result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 5)).stringValue () ;
-  result << ".h\"\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n"
-    "\n"
-    "const enum_" ;
-  result << in_RESULT_5F_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 9)).stringValue () ;
-  result << " function_" ;
-  result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 9)).stringValue () ;
-  result << " [" ;
-  result << in_VALUE_5F_LIST.getter_length (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 9)).getter_string (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 9)).stringValue () ;
-  result << "] = {" ;
-  GALGAS_uint index_688_ (0) ;
-  if (in_VALUE_5F_LIST.isValid ()) {
-    cEnumerator_decoratedFunctionValueList enumerator_688 (in_VALUE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_688.hasCurrentObject ()) {
-      result << "\n"
-        "  " ;
-      result << in_RESULT_5F_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 12)).stringValue () ;
-      result << "_" ;
-      result << enumerator_688.current_mResultName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 12)).stringValue () ;
-      result << " /* " ;
-      result << enumerator_688.current_mOperandName (HERE).getter_string (HERE).stringValue () ;
-      result << " */" ;
-      if (enumerator_688.hasNextObject ()) {
-        result << "," ;
-      }
-      index_688_.increment () ;
-      enumerator_688.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "} ;\n"
-    "\n"
-    "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\n" ;
-  return GALGAS_string (result) ;
-}
 

@@ -88,7 +88,7 @@ machine @controleAiguille
       positionLogique = .inconnue
     }
   ensures
-    "A" : (positionCapteur == old positionCapteur)
+    "A" : positionCapteur == old positionCapteur
   }
 }
 

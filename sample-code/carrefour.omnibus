@@ -30,6 +30,13 @@ machine @carrefour
       feuA = .vert
       feuB = .rouge
     }
+#    switch etat {
+#    case .hs:
+#      etat = .es
+#      feuA = .vert
+#      feuB = .rouge
+#    case .es:
+#    }
   ensures
     "A" : (etat == .es)
   }

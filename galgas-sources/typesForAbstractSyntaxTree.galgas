@@ -82,7 +82,8 @@ class @attributeAsComparisonRightOperand : @comparisonRightOperand {
 #--------------------------------------------------------------------*
 
 enum @enumComparisonOperator {
-  case equal  case notEqual
+  case equal
+  case notEqual
 }
 
 #--------------------------------------------------------------------*
@@ -149,6 +150,23 @@ class @ifInstruction : @instruction {
   @location mEndOfTestExpression
   @instructionList mThenInstructionList
   @instructionList mElseInstructionList
+}
+
+#----------------------------------------------------------------*
+
+list @switchCaseList {
+  @lstringlist mConstantNameList
+  @location mEndOfConstantList
+  @instructionList mInstructionList
+}
+
+#----------------------------------------------------------------*
+
+class @switchInstruction : @instruction {
+  @location mSWITCHinstructionLocation
+  @lstring mVariableName
+  @switchCaseList mSwitchCaseList
+  @location mEndOfSwitchExpression
 }
 
 #----------------------------------------------------------------*

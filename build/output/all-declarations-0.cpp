@@ -125,6 +125,12 @@ static const char * gSyntaxErrorMessage_lexicalAnalyzer_scenario = "the 'scenari
 //--- Syntax error message for terminal '$system$' :
 static const char * gSyntaxErrorMessage_lexicalAnalyzer_system = "the 'system' keyword" ;
 
+//--- Syntax error message for terminal '$switch$' :
+static const char * gSyntaxErrorMessage_lexicalAnalyzer_switch = "the 'switch' keyword" ;
+
+//--- Syntax error message for terminal '$case$' :
+static const char * gSyntaxErrorMessage_lexicalAnalyzer_case = "the 'case' keyword" ;
+
 //--- Syntax error message for terminal '$var$' :
 static const char * gSyntaxErrorMessage_lexicalAnalyzer_var = "the 'var' keyword" ;
 
@@ -184,7 +190,7 @@ static const char * gSyntaxErrorMessage_lexicalAnalyzer__2E_ = "the '.' delimito
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_lexicalAnalyzer::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const char * syntaxErrorMessageArray [38] = {kEndOfSourceLexicalErrorMessage,
+  static const char * syntaxErrorMessageArray [40] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_lexicalAnalyzer_identifier,
     gSyntaxErrorMessage_lexicalAnalyzer_integer,
     gSyntaxErrorMessage_lexicalAnalyzer_literal_5F_string,
@@ -204,6 +210,8 @@ C_String C_Lexique_lexicalAnalyzer::getMessageForTerminal (const int16_t inTermi
     gSyntaxErrorMessage_lexicalAnalyzer_old,
     gSyntaxErrorMessage_lexicalAnalyzer_scenario,
     gSyntaxErrorMessage_lexicalAnalyzer_system,
+    gSyntaxErrorMessage_lexicalAnalyzer_switch,
+    gSyntaxErrorMessage_lexicalAnalyzer_case,
     gSyntaxErrorMessage_lexicalAnalyzer_var,
     gSyntaxErrorMessage_lexicalAnalyzer__3A_,
     gSyntaxErrorMessage_lexicalAnalyzer__2C_,
@@ -327,6 +335,15 @@ static const utf32 kUnicodeString_lexicalAnalyzer_assert [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$case$'
+static const utf32 kUnicodeString_lexicalAnalyzer_case [] = {
+  TO_UNICODE ('c'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$do$'
 static const utf32 kUnicodeString_lexicalAnalyzer_do [] = {
   TO_UNICODE ('d'),
@@ -441,6 +458,17 @@ static const utf32 kUnicodeString_lexicalAnalyzer_scenario [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$switch$'
+static const utf32 kUnicodeString_lexicalAnalyzer_switch [] = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('c'),
+  TO_UNICODE ('h'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$system$'
 static const utf32 kUnicodeString_lexicalAnalyzer_system [] = {
   TO_UNICODE ('s'),
@@ -512,17 +540,19 @@ int16_t C_Lexique_lexicalAnalyzer::search_into_delimitorsList (const C_String & 
 //             Key words table 'keyWordList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_lexicalAnalyzer_keyWordList = 14 ;
+static const int32_t ktable_size_lexicalAnalyzer_keyWordList = 16 ;
 
 static const C_unicode_lexique_table_entry ktable_for_lexicalAnalyzer_keyWordList [ktable_size_lexicalAnalyzer_keyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_do, 2, C_Lexique_lexicalAnalyzer::kToken_do),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_if, 2, C_Lexique_lexicalAnalyzer::kToken_if),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_old, 3, C_Lexique_lexicalAnalyzer::kToken_old),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_var, 3, C_Lexique_lexicalAnalyzer::kToken_var),
+  C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_case, 4, C_Lexique_lexicalAnalyzer::kToken_case),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_else, 4, C_Lexique_lexicalAnalyzer::kToken_else),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_enum, 4, C_Lexique_lexicalAnalyzer::kToken_enum),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_event, 5, C_Lexique_lexicalAnalyzer::kToken_event),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_assert, 6, C_Lexique_lexicalAnalyzer::kToken_assert),
+  C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_switch, 6, C_Lexique_lexicalAnalyzer::kToken_switch),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_system, 6, C_Lexique_lexicalAnalyzer::kToken_system),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_ensures, 7, C_Lexique_lexicalAnalyzer::kToken_ensures),
   C_unicode_lexique_table_entry (kUnicodeString_lexicalAnalyzer_machine, 7, C_Lexique_lexicalAnalyzer::kToken_machine),
@@ -653,6 +683,16 @@ C_String C_Lexique_lexicalAnalyzer::getCurrentTokenString (const cToken * inToke
     case kToken_system:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("system") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_switch:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("switch") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_case:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("case") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_var:
@@ -1021,6 +1061,8 @@ GALGAS_stringlist C_Lexique_lexicalAnalyzer::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("old") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("scenario") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("system") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("switch") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("case") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (":") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string (",") COMMA_THERE) ;
@@ -1081,10 +1123,12 @@ static void getKeywordsForIdentifier_lexicalAnalyzer (const C_String & inIdentif
     ioList.appendObject ("if") ;
     ioList.appendObject ("old") ;
     ioList.appendObject ("var") ;
+    ioList.appendObject ("case") ;
     ioList.appendObject ("else") ;
     ioList.appendObject ("enum") ;
     ioList.appendObject ("event") ;
     ioList.appendObject ("assert") ;
+    ioList.appendObject ("switch") ;
     ioList.appendObject ("system") ;
     ioList.appendObject ("ensures") ;
     ioList.appendObject ("machine") ;
@@ -1106,7 +1150,7 @@ __attribute__ ((unused)) (getKeywordLists_lexicalAnalyzer, getKeywordsForIdentif
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_lexicalAnalyzer::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [38] = {0,
+  static const uint32_t kTerminalSymbolStyles [40] = {0,
     0 /* lexicalAnalyzer_1_identifier */,
     3 /* lexicalAnalyzer_1_integer */,
     4 /* lexicalAnalyzer_1_literal_5F_string */,
@@ -1126,6 +1170,8 @@ uint32_t C_Lexique_lexicalAnalyzer::styleIndexForTerminal (const int32_t inTermi
     1 /* lexicalAnalyzer_1_old */,
     1 /* lexicalAnalyzer_1_scenario */,
     1 /* lexicalAnalyzer_1_system */,
+    1 /* lexicalAnalyzer_1_switch */,
+    1 /* lexicalAnalyzer_1_case */,
     1 /* lexicalAnalyzer_1_var */,
     2 /* lexicalAnalyzer_1__3A_ */,
     2 /* lexicalAnalyzer_1__2C_ */,
@@ -5688,6 +5734,464 @@ GALGAS_ifInstruction GALGAS_ifInstruction::extractObject (const GALGAS_object & 
       result = *p ;
     }else{
       inCompiler->castError ("ifInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Class for element of '@switchCaseList' list                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_switchCaseList : public cCollectionElement {
+  public : GALGAS_switchCaseList_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_switchCaseList (const GALGAS_lstringlist & in_mConstantNameList,
+                                              const GALGAS_location & in_mEndOfConstantList,
+                                              const GALGAS_instructionList & in_mInstructionList
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_switchCaseList::cCollectionElement_switchCaseList (const GALGAS_lstringlist & in_mConstantNameList,
+                                                                      const GALGAS_location & in_mEndOfConstantList,
+                                                                      const GALGAS_instructionList & in_mInstructionList
+                                                                      COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mConstantNameList, in_mEndOfConstantList, in_mInstructionList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_switchCaseList::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_switchCaseList::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_switchCaseList (mObject.mProperty_mConstantNameList, mObject.mProperty_mEndOfConstantList, mObject.mProperty_mInstructionList COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_switchCaseList::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mConstantNameList" ":" ;
+  mObject.mProperty_mConstantNameList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEndOfConstantList" ":" ;
+  mObject.mProperty_mEndOfConstantList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstructionList" ":" ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_switchCaseList::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_switchCaseList * operand = (cCollectionElement_switchCaseList *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_switchCaseList) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList::GALGAS_switchCaseList (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList::GALGAS_switchCaseList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchCaseList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_switchCaseList  (capCollectionElementArray ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchCaseList::constructor_listWithValue (const GALGAS_lstringlist & inOperand0,
+                                                                        const GALGAS_location & inOperand1,
+                                                                        const GALGAS_instructionList & inOperand2
+                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_switchCaseList result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_switchCaseList (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GALGAS_switchCaseList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                       const GALGAS_lstringlist & in_mConstantNameList,
+                                                       const GALGAS_location & in_mEndOfConstantList,
+                                                       const GALGAS_instructionList & in_mInstructionList
+                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement_switchCaseList * p = NULL ;
+  macroMyNew (p, cCollectionElement_switchCaseList (in_mConstantNameList,
+                                                    in_mEndOfConstantList,
+                                                    in_mInstructionList COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::addAssign_operation (const GALGAS_lstringlist & inOperand0,
+                                                 const GALGAS_location & inOperand1,
+                                                 const GALGAS_instructionList & inOperand2
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchCaseList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::setter_insertAtIndex (const GALGAS_lstringlist inOperand0,
+                                                  const GALGAS_location inOperand1,
+                                                  const GALGAS_instructionList inOperand2,
+                                                  const GALGAS_uint inInsertionIndex,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchCaseList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::setter_removeAtIndex (GALGAS_lstringlist & outOperand0,
+                                                  GALGAS_location & outOperand1,
+                                                  GALGAS_instructionList & outOperand2,
+                                                  const GALGAS_uint inRemoveIndex,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+      outOperand0 = p->mObject.mProperty_mConstantNameList ;
+      outOperand1 = p->mObject.mProperty_mEndOfConstantList ;
+      outOperand2 = p->mObject.mProperty_mInstructionList ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::setter_popFirst (GALGAS_lstringlist & outOperand0,
+                                             GALGAS_location & outOperand1,
+                                             GALGAS_instructionList & outOperand2,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mEndOfConstantList ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::setter_popLast (GALGAS_lstringlist & outOperand0,
+                                            GALGAS_location & outOperand1,
+                                            GALGAS_instructionList & outOperand2,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mEndOfConstantList ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::method_first (GALGAS_lstringlist & outOperand0,
+                                          GALGAS_location & outOperand1,
+                                          GALGAS_instructionList & outOperand2,
+                                          C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mEndOfConstantList ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::method_last (GALGAS_lstringlist & outOperand0,
+                                         GALGAS_location & outOperand1,
+                                         GALGAS_instructionList & outOperand2,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mEndOfConstantList ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchCaseList::add_operation (const GALGAS_switchCaseList & inOperand,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_switchCaseList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchCaseList::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_switchCaseList result = GALGAS_switchCaseList::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchCaseList::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_switchCaseList result = GALGAS_switchCaseList::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchCaseList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_switchCaseList result = GALGAS_switchCaseList::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchCaseList::plusAssign_operation (const GALGAS_switchCaseList inOperand,
+                                                  C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_switchCaseList::getter_mConstantNameListAtIndex (const GALGAS_uint & inIndex,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+  GALGAS_lstringlist result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+    result = p->mObject.mProperty_mConstantNameList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_switchCaseList::getter_mEndOfConstantListAtIndex (const GALGAS_uint & inIndex,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+  GALGAS_location result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+    result = p->mObject.mProperty_mEndOfConstantList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_instructionList GALGAS_switchCaseList::getter_mInstructionListAtIndex (const GALGAS_uint & inIndex,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchCaseList * p = (cCollectionElement_switchCaseList *) attributes.ptr () ;
+  GALGAS_instructionList result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+    result = p->mObject.mProperty_mInstructionList ;
+  }
+  return result ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_switchCaseList::cEnumerator_switchCaseList (const GALGAS_switchCaseList & inEnumeratedObject,
+                                                        const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList_2D_element cEnumerator_switchCaseList::current (LOCATION_ARGS) const {
+  const cCollectionElement_switchCaseList * p = (const cCollectionElement_switchCaseList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cEnumerator_switchCaseList::current_mConstantNameList (LOCATION_ARGS) const {
+  const cCollectionElement_switchCaseList * p = (const cCollectionElement_switchCaseList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+  return p->mObject.mProperty_mConstantNameList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cEnumerator_switchCaseList::current_mEndOfConstantList (LOCATION_ARGS) const {
+  const cCollectionElement_switchCaseList * p = (const cCollectionElement_switchCaseList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+  return p->mObject.mProperty_mEndOfConstantList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_instructionList cEnumerator_switchCaseList::current_mInstructionList (LOCATION_ARGS) const {
+  const cCollectionElement_switchCaseList * p = (const cCollectionElement_switchCaseList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchCaseList) ;
+  return p->mObject.mProperty_mInstructionList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                @switchCaseList type                                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_switchCaseList ("switchCaseList",
+                                       NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_switchCaseList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchCaseList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_switchCaseList::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_switchCaseList (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchCaseList GALGAS_switchCaseList::extractObject (const GALGAS_object & inObject,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_switchCaseList result ;
+  const GALGAS_switchCaseList * p = (const GALGAS_switchCaseList *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_switchCaseList *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchCaseList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13950,6 +14454,415 @@ GALGAS_ifDecoratedInstruction GALGAS_ifDecoratedInstruction::extractObject (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Class for element of '@switchDecoratedCaseList' list                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_switchDecoratedCaseList : public cCollectionElement {
+  public : GALGAS_switchDecoratedCaseList_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_switchDecoratedCaseList (const GALGAS_lstringlist & in_mConstantNameList,
+                                                       const GALGAS_decoratedInstructionList & in_mInstructionList
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_switchDecoratedCaseList::cCollectionElement_switchDecoratedCaseList (const GALGAS_lstringlist & in_mConstantNameList,
+                                                                                        const GALGAS_decoratedInstructionList & in_mInstructionList
+                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mConstantNameList, in_mInstructionList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_switchDecoratedCaseList::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_switchDecoratedCaseList::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_switchDecoratedCaseList (mObject.mProperty_mConstantNameList, mObject.mProperty_mInstructionList COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_switchDecoratedCaseList::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mConstantNameList" ":" ;
+  mObject.mProperty_mConstantNameList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstructionList" ":" ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_switchDecoratedCaseList::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_switchDecoratedCaseList * operand = (cCollectionElement_switchDecoratedCaseList *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_switchDecoratedCaseList) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList::GALGAS_switchDecoratedCaseList (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList::GALGAS_switchDecoratedCaseList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedCaseList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_switchDecoratedCaseList  (capCollectionElementArray ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedCaseList::constructor_listWithValue (const GALGAS_lstringlist & inOperand0,
+                                                                                          const GALGAS_decoratedInstructionList & inOperand1
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_switchDecoratedCaseList result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_switchDecoratedCaseList (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GALGAS_switchDecoratedCaseList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                const GALGAS_lstringlist & in_mConstantNameList,
+                                                                const GALGAS_decoratedInstructionList & in_mInstructionList
+                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_switchDecoratedCaseList * p = NULL ;
+  macroMyNew (p, cCollectionElement_switchDecoratedCaseList (in_mConstantNameList,
+                                                             in_mInstructionList COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::addAssign_operation (const GALGAS_lstringlist & inOperand0,
+                                                          const GALGAS_decoratedInstructionList & inOperand1
+                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::setter_insertAtIndex (const GALGAS_lstringlist inOperand0,
+                                                           const GALGAS_decoratedInstructionList inOperand1,
+                                                           const GALGAS_uint inInsertionIndex,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::setter_removeAtIndex (GALGAS_lstringlist & outOperand0,
+                                                           GALGAS_decoratedInstructionList & outOperand1,
+                                                           const GALGAS_uint inRemoveIndex,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+      outOperand0 = p->mObject.mProperty_mConstantNameList ;
+      outOperand1 = p->mObject.mProperty_mInstructionList ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::setter_popFirst (GALGAS_lstringlist & outOperand0,
+                                                      GALGAS_decoratedInstructionList & outOperand1,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::setter_popLast (GALGAS_lstringlist & outOperand0,
+                                                     GALGAS_decoratedInstructionList & outOperand1,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::method_first (GALGAS_lstringlist & outOperand0,
+                                                   GALGAS_decoratedInstructionList & outOperand1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::method_last (GALGAS_lstringlist & outOperand0,
+                                                  GALGAS_decoratedInstructionList & outOperand1,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+    outOperand0 = p->mObject.mProperty_mConstantNameList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedCaseList::add_operation (const GALGAS_switchDecoratedCaseList & inOperand,
+                                                                              C_Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_switchDecoratedCaseList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedCaseList::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_switchDecoratedCaseList result = GALGAS_switchDecoratedCaseList::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedCaseList::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_switchDecoratedCaseList result = GALGAS_switchDecoratedCaseList::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedCaseList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_switchDecoratedCaseList result = GALGAS_switchDecoratedCaseList::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_switchDecoratedCaseList::plusAssign_operation (const GALGAS_switchDecoratedCaseList inOperand,
+                                                           C_Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_switchDecoratedCaseList::getter_mConstantNameListAtIndex (const GALGAS_uint & inIndex,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+  GALGAS_lstringlist result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+    result = p->mObject.mProperty_mConstantNameList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_decoratedInstructionList GALGAS_switchDecoratedCaseList::getter_mInstructionListAtIndex (const GALGAS_uint & inIndex,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+  GALGAS_decoratedInstructionList result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+    result = p->mObject.mProperty_mInstructionList ;
+  }
+  return result ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_switchDecoratedCaseList::cEnumerator_switchDecoratedCaseList (const GALGAS_switchDecoratedCaseList & inEnumeratedObject,
+                                                                          const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList_2D_element cEnumerator_switchDecoratedCaseList::current (LOCATION_ARGS) const {
+  const cCollectionElement_switchDecoratedCaseList * p = (const cCollectionElement_switchDecoratedCaseList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cEnumerator_switchDecoratedCaseList::current_mConstantNameList (LOCATION_ARGS) const {
+  const cCollectionElement_switchDecoratedCaseList * p = (const cCollectionElement_switchDecoratedCaseList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+  return p->mObject.mProperty_mConstantNameList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_decoratedInstructionList cEnumerator_switchDecoratedCaseList::current_mInstructionList (LOCATION_ARGS) const {
+  const cCollectionElement_switchDecoratedCaseList * p = (const cCollectionElement_switchDecoratedCaseList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+  return p->mObject.mProperty_mInstructionList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @switchDecoratedCaseList type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_switchDecoratedCaseList ("switchDecoratedCaseList",
+                                                NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_switchDecoratedCaseList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchDecoratedCaseList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_switchDecoratedCaseList::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_switchDecoratedCaseList (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchDecoratedCaseList GALGAS_switchDecoratedCaseList::extractObject (const GALGAS_object & inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_switchDecoratedCaseList result ;
+  const GALGAS_switchDecoratedCaseList * p = (const GALGAS_switchDecoratedCaseList *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_switchDecoratedCaseList *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchDecoratedCaseList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14137,14 +15050,14 @@ void extensionMethod_analyzeInstructionList (const GALGAS_instructionList inObje
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outDecoratedInstructionList.drop () ; // Release 'out' argument
-  outArgument_outDecoratedInstructionList = GALGAS_decoratedInstructionList::constructor_emptyList (SOURCE_FILE ("instructionStaticAnalysis.galgas", 33)) ;
+  outArgument_outDecoratedInstructionList = GALGAS_decoratedInstructionList::constructor_emptyList (SOURCE_FILE ("instructionStaticAnalysis.galgas", 46)) ;
   const GALGAS_instructionList temp_0 = inObject ;
-  cEnumerator_instructionList enumerator_1104 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_1104.hasCurrentObject ()) {
-    GALGAS_decoratedInstruction var_decoratedInstruction_1224 ;
-    callExtensionMethod_analyzeInstruction ((const cPtr_instruction *) enumerator_1104.current (HERE).getter_mInstruction (HERE).ptr (), constinArgument_inAnalyzeContext, var_decoratedInstruction_1224, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 35)) ;
-    outArgument_outDecoratedInstructionList.addAssign_operation (var_decoratedInstruction_1224  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 39)) ;
-    enumerator_1104.gotoNextObject () ;
+  cEnumerator_instructionList enumerator_1679 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_1679.hasCurrentObject ()) {
+    GALGAS_decoratedInstruction var_decoratedInstruction_1799 ;
+    callExtensionMethod_analyzeInstruction ((const cPtr_instruction *) enumerator_1679.current (HERE).getter_mInstruction (HERE).ptr (), constinArgument_inAnalyzeContext, var_decoratedInstruction_1799, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 48)) ;
+    outArgument_outDecoratedInstructionList.addAssign_operation (var_decoratedInstruction_1799  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 52)) ;
+    enumerator_1679.gotoNextObject () ;
   }
 }
 
@@ -14835,24 +15748,24 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_expression_34__i8_parse (
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_expression_34__i9_ (GALGAS_expression & outArgument_outExpression,
                                                                            C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GALGAS_lstring var_attributeName_4994 = inCompiler->synthetizedAttribute_tokenString () ;
+  GALGAS_lstring var_propertyName_4993 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 203)) ;
-  GALGAS_enumComparisonOperator var_comparisonOperator_5039 ;
+  GALGAS_enumComparisonOperator var_comparisonOperator_5038 ;
   switch (select_omnibus_5F_syntax_12 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__3D__3D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 206)) ;
-    var_comparisonOperator_5039 = GALGAS_enumComparisonOperator::constructor_equal (SOURCE_FILE ("omnibus_syntax.galgas", 207)) ;
+    var_comparisonOperator_5038 = GALGAS_enumComparisonOperator::constructor_equal (SOURCE_FILE ("omnibus_syntax.galgas", 207)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__21__3D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 209)) ;
-    var_comparisonOperator_5039 = GALGAS_enumComparisonOperator::constructor_notEqual (SOURCE_FILE ("omnibus_syntax.galgas", 210)) ;
+    var_comparisonOperator_5038 = GALGAS_enumComparisonOperator::constructor_notEqual (SOURCE_FILE ("omnibus_syntax.galgas", 210)) ;
   } break ;
   default:
     break ;
   }
-  GALGAS_comparisonRightOperand var_comparisonRightOperand_5271 ;
-  nt_comparison_5F_right_5F_operand_ (var_comparisonRightOperand_5271, inCompiler) ;
-  outArgument_outExpression = GALGAS_comparisonInExpression::constructor_new (var_attributeName_4994, var_comparisonOperator_5039, var_comparisonRightOperand_5271  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 213)) ;
+  GALGAS_comparisonRightOperand var_comparisonRightOperand_5270 ;
+  nt_comparison_5F_right_5F_operand_ (var_comparisonRightOperand_5270, inCompiler) ;
+  outArgument_outExpression = GALGAS_comparisonInExpression::constructor_new (var_propertyName_4993, var_comparisonOperator_5038, var_comparisonRightOperand_5270  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 213)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14878,17 +15791,17 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_expression_34__i9_parse (
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i10_ (GALGAS_comparisonRightOperand & outArgument_outComparisonRightOperand,
                                                                                             C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outComparisonRightOperand.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 222)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 223)) ;
   GALGAS_lstring var_constantName_5601 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 223)) ;
-  outArgument_outComparisonRightOperand = GALGAS_constantAsComparisonRightOperand::constructor_new (var_constantName_5601  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 224)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 224)) ;
+  outArgument_outComparisonRightOperand = GALGAS_constantAsComparisonRightOperand::constructor_new (var_constantName_5601  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 225)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i10_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 222)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 223)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 223)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 224)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -14903,15 +15816,15 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_comparison_5F_right_5F_op
     var_hasOldQualifier_5875 = GALGAS_bool (false) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_old) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 235)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_old) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 236)) ;
     var_hasOldQualifier_5875 = GALGAS_bool (true) ;
   } break ;
   default:
     break ;
   }
-  GALGAS_lstring var_attributeName_6004 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 238)) ;
-  outArgument_outComparisonRightOperand = GALGAS_attributeAsComparisonRightOperand::constructor_new (var_attributeName_6004, var_hasOldQualifier_5875  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 239)) ;
+  GALGAS_lstring var_propertyName_6003 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 239)) ;
+  outArgument_outComparisonRightOperand = GALGAS_attributeAsComparisonRightOperand::constructor_new (var_propertyName_6003, var_hasOldQualifier_5875  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 240)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14921,12 +15834,12 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_comparison_5F_right_5F_op
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_old) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 235)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_old) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 236)) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 238)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 239)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -14938,9 +15851,9 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_5F_list_i12_ 
   while (repeatFlag_0) {
     switch (select_omnibus_5F_syntax_14 (inCompiler)) {
     case 2: {
-      GALGAS_instruction var_instruction_6320 ;
-      nt_instruction_ (var_instruction_6320, inCompiler) ;
-      ioArgument_ioInstructionList.addAssign_operation (var_instruction_6320  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 250)) ;
+      GALGAS_instruction var_instruction_6318 ;
+      nt_instruction_ (var_instruction_6318, inCompiler) ;
+      ioArgument_ioInstructionList.addAssign_operation (var_instruction_6318  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 251)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -14971,17 +15884,17 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_5F_list_i12_p
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i13_ (GALGAS_instruction & outArgument_outInstruction,
                                                                          C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_assert) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 257)) ;
-  GALGAS_location var_instructionLocation_6536 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 258)) ;
-  GALGAS_expression var_assertExpression_6602 ;
-  nt_expression_ (var_assertExpression_6602, inCompiler) ;
-  outArgument_outInstruction = GALGAS_assertInstruction::constructor_new (var_instructionLocation_6536, var_assertExpression_6602  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 260)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_assert) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 258)) ;
+  GALGAS_location var_instructionLocation_6534 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 259)) ;
+  GALGAS_expression var_assertExpression_6600 ;
+  nt_expression_ (var_assertExpression_6600, inCompiler) ;
+  outArgument_outInstruction = GALGAS_assertInstruction::constructor_new (var_instructionLocation_6534, var_assertExpression_6600  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 261)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i13_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_assert) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 257)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_assert) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 258)) ;
   nt_expression_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
@@ -14991,19 +15904,19 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i13_parse (C_
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i14_ (GALGAS_instruction & outArgument_outInstruction,
                                                                          C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  GALGAS_lstring var_variableName_6855 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 266)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__3D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 267)) ;
-  GALGAS_assignmentSourceExpression var_expression_6938 ;
-  nt_assignment_5F_source_5F_expression_ (var_expression_6938, inCompiler) ;
-  outArgument_outInstruction = GALGAS_assignmentInstruction::constructor_new (var_variableName_6855, var_expression_6938  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 269)) ;
+  GALGAS_lstring var_variableName_6853 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 267)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__3D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 268)) ;
+  GALGAS_assignmentSourceExpression var_expression_6936 ;
+  nt_assignment_5F_source_5F_expression_ (var_expression_6936, inCompiler) ;
+  outArgument_outInstruction = GALGAS_assignmentInstruction::constructor_new (var_variableName_6853, var_expression_6936  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 270)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i14_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 266)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__3D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 267)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 267)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__3D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 268)) ;
   nt_assignment_5F_source_5F_expression_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
@@ -15013,15 +15926,15 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i14_parse (C_
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i15_ (GALGAS_assignmentSourceExpression & outArgument_outExp,
                                                                                                 C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outExp.drop () ; // Release 'out' argument
-  GALGAS_lstring var_attributeName_7207 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 275)) ;
-  outArgument_outExp = GALGAS_varAsAssignmentSourceExpression::constructor_new (var_attributeName_7207  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 276)) ;
+  GALGAS_lstring var_propertyName_7203 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 276)) ;
+  outArgument_outExp = GALGAS_varAsAssignmentSourceExpression::constructor_new (var_propertyName_7203  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 277)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i15_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 275)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 276)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -15030,17 +15943,17 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_e
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i16_ (GALGAS_assignmentSourceExpression & outArgument_outExp,
                                                                                                 C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outExp.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 282)) ;
-  GALGAS_lstring var_constantName_7472 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 283)) ;
-  outArgument_outExp = GALGAS_constantAsAssignmentSourceExpression::constructor_new (var_constantName_7472  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 284)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 283)) ;
+  GALGAS_lstring var_constantName_7467 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 284)) ;
+  outArgument_outExp = GALGAS_constantAsAssignmentSourceExpression::constructor_new (var_constantName_7467  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 285)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i16_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 282)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 283)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 283)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 284)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -15049,22 +15962,22 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_e
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i17_ (GALGAS_assignmentSourceExpression & outArgument_outExp,
                                                                                                 C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outExp.drop () ; // Release 'out' argument
-  GALGAS_lstring var_functionName_7735 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 290)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__28_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 291)) ;
-  GALGAS_lstring var_attributeName_7785 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 292)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__29_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 293)) ;
-  outArgument_outExp = GALGAS_functionAsAssignmentSourceExpression::constructor_new (var_functionName_7735, var_attributeName_7785  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 294)) ;
+  GALGAS_lstring var_functionName_7730 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 291)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__28_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 292)) ;
+  GALGAS_lstring var_propertyName_7779 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 293)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__29_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 294)) ;
+  outArgument_outExp = GALGAS_functionAsAssignmentSourceExpression::constructor_new (var_functionName_7730, var_propertyName_7779  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 295)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i17_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 290)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__28_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 291)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 292)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__29_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 293)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 291)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__28_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 292)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 293)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__29_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 294)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -15073,65 +15986,125 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_assignment_5F_source_5F_e
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i18_ (GALGAS_instruction & outArgument_outInstruction,
                                                                          C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 300)) ;
-  GALGAS_location var_IFinstructionLocation_8047 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 301)) ;
-  GALGAS_expression var_testExpression_8111 ;
-  nt_expression_ (var_testExpression_8111, inCompiler) ;
-  GALGAS_location var_endOfTestExpression_8147 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 303)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 304)) ;
-  GALGAS_instructionList var_thenInstructionList_8209 = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 305)) ;
-  nt_instruction_5F_list_ (var_thenInstructionList_8209, inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 307)) ;
-  GALGAS_instructionList var_elseInstructionList_8319 ;
-  nt_else_5F_part_ (var_elseInstructionList_8319, inCompiler) ;
-  outArgument_outInstruction = GALGAS_ifInstruction::constructor_new (var_IFinstructionLocation_8047, var_testExpression_8111, var_endOfTestExpression_8147, var_thenInstructionList_8209, var_elseInstructionList_8319  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 309)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_switch) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 301)) ;
+  GALGAS_lstring var_variableName_8048 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 302)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 303)) ;
+  GALGAS_switchCaseList var_switchCaseList_8087 = GALGAS_switchCaseList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 304)) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_case) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 306)) ;
+    GALGAS_lstringlist var_constantNameList_8147 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 307)) ;
+    bool repeatFlag_1 = true ;
+    while (repeatFlag_1) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 309)) ;
+      GALGAS_lstring var_constantName_8219 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 310)) ;
+      var_constantNameList_8147.addAssign_operation (var_constantName_8219  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 311)) ;
+      switch (select_omnibus_5F_syntax_16 (inCompiler)) {
+      case 2: {
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2C_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 313)) ;
+      } break ;
+      default:
+        repeatFlag_1 = false ;
+        break ;
+      }
+    }
+    GALGAS_location var_endOfConstantList_8313 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 315)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__3A_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 316)) ;
+    GALGAS_instructionList var_caseInstructionList_8379 = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 317)) ;
+    nt_instruction_5F_list_ (var_caseInstructionList_8379, inCompiler) ;
+    var_switchCaseList_8087.addAssign_operation (var_constantNameList_8147, var_endOfConstantList_8313, var_caseInstructionList_8379  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 319)) ;
+    switch (select_omnibus_5F_syntax_15 (inCompiler)) {
+    case 2: {
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  outArgument_outInstruction = GALGAS_switchInstruction::constructor_new (var_variableName_8048.getter_location (HERE), var_variableName_8048, var_switchCaseList_8087, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 326))  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 322)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 328)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i18_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 300)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_switch) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 301)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 302)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 303)) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_case) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 306)) ;
+    bool repeatFlag_1 = true ;
+    while (repeatFlag_1) {
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2E_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 309)) ;
+      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_identifier) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 310)) ;
+      switch (select_omnibus_5F_syntax_16 (inCompiler)) {
+      case 2: {
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__2C_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 313)) ;
+      } break ;
+      default:
+        repeatFlag_1 = false ;
+        break ;
+      }
+    }
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__3A_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 316)) ;
+    nt_instruction_5F_list_parse (inCompiler) ;
+    switch (select_omnibus_5F_syntax_15 (inCompiler)) {
+    case 2: {
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 328)) ;
+  inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i19_ (GALGAS_instruction & outArgument_outInstruction,
+                                                                         C_Lexique_lexicalAnalyzer * inCompiler) {
+  outArgument_outInstruction.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 334)) ;
+  GALGAS_location var_IFinstructionLocation_8823 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 335)) ;
+  GALGAS_expression var_testExpression_8887 ;
+  nt_expression_ (var_testExpression_8887, inCompiler) ;
+  GALGAS_location var_endOfTestExpression_8923 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 337)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 338)) ;
+  GALGAS_instructionList var_thenInstructionList_8985 = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 339)) ;
+  nt_instruction_5F_list_ (var_thenInstructionList_8985, inCompiler) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 341)) ;
+  GALGAS_instructionList var_elseInstructionList_9095 ;
+  nt_else_5F_part_ (var_elseInstructionList_9095, inCompiler) ;
+  outArgument_outInstruction = GALGAS_ifInstruction::constructor_new (var_IFinstructionLocation_8823, var_testExpression_8887, var_endOfTestExpression_8923, var_thenInstructionList_8985, var_elseInstructionList_9095  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 343)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_instruction_i19_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 334)) ;
   nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 304)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 338)) ;
   nt_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 307)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 341)) ;
   nt_else_5F_part_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i19_ (GALGAS_instructionList & outArgument_outInstructionList,
+void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i20_ (GALGAS_instructionList & outArgument_outInstructionList,
                                                                           C_Lexique_lexicalAnalyzer * /* inCompiler */) {
   outArgument_outInstructionList.drop () ; // Release 'out' argument
-  outArgument_outInstructionList = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 320)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i19_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i20_ (GALGAS_instructionList & outArgument_outInstructionList,
-                                                                          C_Lexique_lexicalAnalyzer * inCompiler) {
-  outArgument_outInstructionList.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 326)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 327)) ;
-  outArgument_outInstructionList = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 328)) ;
-  nt_instruction_5F_list_ (outArgument_outInstructionList, inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 330)) ;
+  outArgument_outInstructionList = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 355)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i20_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 326)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 327)) ;
-  nt_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 330)) ;
   inCompiler->resetTemplateString () ;
 }
 
@@ -15140,31 +16113,53 @@ void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i20_parse (C
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i21_ (GALGAS_instructionList & outArgument_outInstructionList,
                                                                           C_Lexique_lexicalAnalyzer * inCompiler) {
   outArgument_outInstructionList.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 336)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 337)) ;
-  GALGAS_location var_IFinstructionLocation_9045 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 338)) ;
-  GALGAS_expression var_testExpression_9109 ;
-  nt_expression_ (var_testExpression_9109, inCompiler) ;
-  GALGAS_location var_endOfTestExpression_9145 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 340)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 341)) ;
-  GALGAS_instructionList var_thenInstructionList_9207 = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 342)) ;
-  nt_instruction_5F_list_ (var_thenInstructionList_9207, inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 344)) ;
-  GALGAS_instructionList var_elseInstructionList_9317 ;
-  nt_else_5F_part_ (var_elseInstructionList_9317, inCompiler) ;
-  outArgument_outInstructionList = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 346)) ;
-  outArgument_outInstructionList.addAssign_operation (GALGAS_ifInstruction::constructor_new (var_IFinstructionLocation_9045, var_testExpression_9109, var_endOfTestExpression_9145, var_thenInstructionList_9207, var_elseInstructionList_9317  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 347))  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 347)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 361)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 362)) ;
+  outArgument_outInstructionList = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 363)) ;
+  nt_instruction_5F_list_ (outArgument_outInstructionList, inCompiler) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 365)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i21_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 336)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 337)) ;
-  nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 341)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 361)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 362)) ;
   nt_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 344)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 365)) ;
+  inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i22_ (GALGAS_instructionList & outArgument_outInstructionList,
+                                                                          C_Lexique_lexicalAnalyzer * inCompiler) {
+  outArgument_outInstructionList.drop () ; // Release 'out' argument
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 371)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 372)) ;
+  GALGAS_location var_IFinstructionLocation_9823 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 373)) ;
+  GALGAS_expression var_testExpression_9887 ;
+  nt_expression_ (var_testExpression_9887, inCompiler) ;
+  GALGAS_location var_endOfTestExpression_9923 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 375)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 376)) ;
+  GALGAS_instructionList var_thenInstructionList_9985 = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 377)) ;
+  nt_instruction_5F_list_ (var_thenInstructionList_9985, inCompiler) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 379)) ;
+  GALGAS_instructionList var_elseInstructionList_10095 ;
+  nt_else_5F_part_ (var_elseInstructionList_10095, inCompiler) ;
+  outArgument_outInstructionList = GALGAS_instructionList::constructor_emptyList (SOURCE_FILE ("omnibus_syntax.galgas", 381)) ;
+  outArgument_outInstructionList.addAssign_operation (GALGAS_ifInstruction::constructor_new (var_IFinstructionLocation_9823, var_testExpression_9887, var_endOfTestExpression_9923, var_thenInstructionList_9985, var_elseInstructionList_10095  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 382))  COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 382)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_omnibus_5F_syntax::rule_omnibus_5F_syntax_else_5F_part_i22_parse (C_Lexique_lexicalAnalyzer * inCompiler) {
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_else) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 371)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken_if) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 372)) ;
+  nt_expression_parse (inCompiler) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7B_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 376)) ;
+  nt_instruction_5F_list_parse (inCompiler) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_lexicalAnalyzer::kToken__7D_) COMMA_SOURCE_FILE ("omnibus_syntax.galgas", 379)) ;
   nt_else_5F_part_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }

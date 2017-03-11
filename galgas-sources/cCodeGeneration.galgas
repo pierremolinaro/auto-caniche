@@ -146,6 +146,22 @@ override getter @ifDecoratedInstruction generateCCode
 }
 
 #-------------------------------------------------------------------*
+
+override getter @switchDecoratedInstruction generateCCode ?let @string inIndentationString ->@string outResult {
+  outResult = inIndentationString + "switch " + mVarName + " {\n"
+  for (constantList instructionList) in mSwitchDecoratedCaseList do
+    outResult += inIndentationString + " "
+    for (constantName) in constantList do
+      outResult += " case " + constantName + ":"
+    end
+    outResult += "\n" 
+    outResult += [instructionList generateCCode !inIndentationString + "  "]
+    outResult += inIndentationString + "break ;\n" 
+  end
+  outResult += inIndentationString + "}\n"
+}
+
+#-------------------------------------------------------------------*
 #! @decoratedExpression generateExpressionCCode
 #-------------------------------------------------------------------*
 

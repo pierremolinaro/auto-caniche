@@ -1874,6 +1874,96 @@ class cPtr_assignmentDecoratedInstruction : public cPtr_decoratedInstruction {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                          @switchDecoratedInstruction class                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_switchDecoratedInstruction : public GALGAS_decoratedInstruction {
+//--- Constructor
+  public : GALGAS_switchDecoratedInstruction (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_switchDecoratedInstruction constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_switchDecoratedInstruction * ptr (void) const { return (const cPtr_switchDecoratedInstruction *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_switchDecoratedInstruction (const cPtr_switchDecoratedInstruction * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_switchDecoratedInstruction extractObject (const GALGAS_object & inObject,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_switchDecoratedInstruction constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                           const class GALGAS_switchDecoratedCaseList & inOperand1
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_switchDecoratedInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_switchDecoratedCaseList getter_mSwitchDecoratedCaseList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_switchDecoratedInstruction class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchDecoratedInstruction ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Pointer class for @switchDecoratedInstruction class                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_switchDecoratedInstruction : public cPtr_decoratedInstruction {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mVarName ;
+  public : GALGAS_switchDecoratedCaseList mProperty_mSwitchDecoratedCaseList ;
+
+//--- Constructor
+  public : cPtr_switchDecoratedInstruction (const GALGAS_lstring & in_mVarName,
+                                            const GALGAS_switchDecoratedCaseList & in_mSwitchDecoratedCaseList
+                                            COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mVarName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_switchDecoratedCaseList getter_mSwitchDecoratedCaseList (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                @attributeInDecoratedAssignmentSourceExpression class                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2318,6 +2408,10 @@ class cGrammar_omnibus_5F_grammar : public cParser_omnibus_5F_syntax {
   public : virtual int32_t select_omnibus_5F_syntax_13 (C_Lexique_lexicalAnalyzer *) ;
 
   public : virtual int32_t select_omnibus_5F_syntax_14 (C_Lexique_lexicalAnalyzer *) ;
+
+  public : virtual int32_t select_omnibus_5F_syntax_15 (C_Lexique_lexicalAnalyzer *) ;
+
+  public : virtual int32_t select_omnibus_5F_syntax_16 (C_Lexique_lexicalAnalyzer *) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2512,88 +2606,5 @@ void routine_performDynamicAnalysis (const class GALGAS_string constinArgument0,
                                      const class GALGAS_machineMap constinArgument4,
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Filewrapper 'CCodeGenerationTemplates'                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const cDirectoryWrapper gWrapperDirectory_0_CCodeGenerationTemplates ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Filewrapper template 'CCodeGenerationTemplates enumerationDeclaration'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_enumerationDeclaration (class C_Compiler * inCompiler,
-                                                                                   const class GALGAS_string & in_ENUMERATION_5F_NAME,
-                                                                                   const class GALGAS_lstringlist & in_CONSTANT_5F_LIST
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Filewrapper template 'CCodeGenerationTemplates machineDeclaration'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineDeclaration (class C_Compiler * inCompiler,
-                                                                               const class GALGAS_string & in_FILE_5F_NAME,
-                                                                               const class GALGAS_unifiedScalarTypeMap & in_ENUM_5F_DECLARATION_5F_MAP,
-                                                                               const class GALGAS_string & in_MACHINE_5F_NAME,
-                                                                               const class GALGAS_machineVarList & in_ATTRIBUTE_5F_LIST,
-                                                                               const class GALGAS_eventMap & in_EVENT_5F_MAP
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        Filewrapper template 'CCodeGenerationTemplates machineImplementation'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineImplementation (class C_Compiler * inCompiler,
-                                                                                  const class GALGAS_string & in_FILE_5F_NAME,
-                                                                                  const class GALGAS_unifiedScalarTypeMap & in_ENUM_5F_DECLARATION_5F_MAP,
-                                                                                  const class GALGAS_string & in_MACHINE_5F_NAME,
-                                                                                  const class GALGAS_machineVarList & in_ATTRIBUTE_5F_LIST,
-                                                                                  const class GALGAS_eventMap & in_EVENT_5F_MAP,
-                                                                                  const class GALGAS_functionMap & in_FUNCTION_5F_MAP
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Filewrapper template 'CCodeGenerationTemplates functionDeclaration'                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionDeclaration (class C_Compiler * inCompiler,
-                                                                                const class GALGAS_string & in_FILE_5F_NAME,
-                                                                                const class GALGAS_string & in_FUNCTION_5F_NAME,
-                                                                                const class GALGAS_string & in_RESULT_5F_TYPE_5F_NAME,
-                                                                                const class GALGAS_uint & in_OPERAND_5F_VALUE_5F_COUNT
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Filewrapper template 'CCodeGenerationTemplates functionImplementation'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionImplementation (class C_Compiler * inCompiler,
-                                                                                   const class GALGAS_string & in_FILE_5F_NAME,
-                                                                                   const class GALGAS_string & in_FUNCTION_5F_NAME,
-                                                                                   const class GALGAS_string & in_RESULT_5F_TYPE_5F_NAME,
-                                                                                   const class GALGAS_decoratedFunctionValueList & in_VALUE_5F_LIST
-                                                                                   COMMA_LOCATION_ARGS) ;
 
 #endif

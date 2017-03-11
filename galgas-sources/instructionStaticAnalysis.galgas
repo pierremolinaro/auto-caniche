@@ -1,14 +1,11 @@
 
-
-#-------------------------------------------------------------------*
-
 class @assignmentDecoratedInstruction : @decoratedInstruction {
   @unifiedScalarTypeMap-proxy mTargetTypeProxy
   @lstring mTargetVarName
   @decoratedAssignmentSourceExpression mSourceExpression
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @ifDecoratedInstruction : @decoratedInstruction {
   @location mIFinstructionLocation
@@ -18,14 +15,30 @@ class @ifDecoratedInstruction : @decoratedInstruction {
   @decoratedInstructionList mElseInstructionList
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @switchDecoratedCaseList {
+  @lstringlist mConstantNameList
+  @decoratedInstructionList mInstructionList
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @switchDecoratedInstruction : @decoratedInstruction {
+  @lstring mVarName
+  @switchDecoratedCaseList mSwitchDecoratedCaseList
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 class @assertDecoratedInstruction : @decoratedInstruction {
   @location mInstructionLocation
   @decoratedExpression mExpression
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 method @instructionList analyzeInstructionList
   ?let @analyzeContext inAnalyzeContext
@@ -40,12 +53,14 @@ method @instructionList analyzeInstructionList
   end
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 abstract class @decoratedAssignmentSourceExpression {
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
   @lstring mVarName
@@ -53,7 +68,8 @@ class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSour
 #  @uint mBDDBitCount ;
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 class @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
   @lstring mEnumCstName
@@ -61,7 +77,8 @@ class @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpr
   @uint mBDDBitCount
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 class @functionInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
   @lstring mFunctionName
@@ -69,20 +86,23 @@ class @functionInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourc
   @decoratedFunctionValueList mDecoratedFunctionValueList
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 abstract method @instruction analyzeInstruction
   ?let @analyzeContext inAnalyzeContext
   !@decoratedInstruction outDecoratedInstruction
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 abstract method @assignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext inAnalyzeContext
   ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
   !@decoratedAssignmentSourceExpression outDecoratedExpression
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 override method @varAsAssignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext inAnalyzeContext
@@ -104,7 +124,8 @@ override method @varAsAssignmentSourceExpression analyzeAssignmentSourceExpressi
     !mSourceVarName}
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 override method @constantAsAssignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext unused inAnalyzeContext
@@ -117,7 +138,8 @@ override method @constantAsAssignmentSourceExpression analyzeAssignmentSourceExp
     ![[[inTargetTypeProxy mConstantMap] count] - 1 significantBitCount]}
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 override method @functionAsAssignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext inAnalyzeContext
@@ -159,7 +181,8 @@ override method @functionAsAssignmentSourceExpression analyzeAssignmentSourceExp
     !decoratedFunctionValueList}
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 override method @assignmentInstruction analyzeInstruction
   ?let @analyzeContext inAnalyzeContext
@@ -180,11 +203,53 @@ override method @assignmentInstruction analyzeInstruction
     !decoratedExpression}
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @switchInstruction analyzeInstruction
+  ?let @analyzeContext inAnalyzeContext
+  !@decoratedInstruction outDecoratedInstruction
+{
+#--- Analyze variable
+  [inAnalyzeContext.mMachineVarMap searchKey
+    !mVariableName
+    ?let @unifiedScalarTypeMap-proxy variableTypeProxy
+    ?*
+  ]
+#--- Analyze case list
+  @switchDecoratedCaseList switchDecoratedCaseList = {}
+  @stringset usedConstantNameSet = {}
+  for (constantList * instructionList) in mSwitchCaseList do
+    for (constantName) in constantList do
+      [[variableTypeProxy mConstantMap] searchKey !constantName ?*]
+      if [usedConstantNameSet hasKey !constantName] then
+        error constantName : "duplicated constant"
+      end
+      usedConstantNameSet += !constantName
+    end
+    [instructionList analyzeInstructionList
+      !inAnalyzeContext
+      ?let @decoratedInstructionList decoratedInstructionList
+    ]
+    switchDecoratedCaseList += !constantList !decoratedInstructionList
+  end
+#--- Check all constant have been named
+  let missingConstantSet = [[variableTypeProxy mConstantMap] keySet] - usedConstantNameSet
+  for (constantName) in missingConstantSet do
+    error mEndOfSwitchExpression : "missing constant '" + constantName + "' in switch instruction"
+  end
+#--- Generate instruction
+  outDecoratedInstruction = @switchDecoratedInstruction.new {
+    !mVariableName
+    !switchDecoratedCaseList
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @ifInstruction analyzeInstruction
   ?let @analyzeContext inAnalyzeContext
-  !@decoratedInstruction outDecoratedInstruction {
+  !@decoratedInstruction outDecoratedInstruction
+{
   [mTestExpression analyzeExpression
     !inAnalyzeContext
     !false
@@ -203,10 +268,12 @@ override method @ifInstruction analyzeInstruction
     !decoratedExpression
     !mEndOfTestExpression
     !decoratedThenInstructionList
-    !decoratedElseInstructionList}
+    !decoratedElseInstructionList
+  }
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
 override method @assertInstruction analyzeInstruction
   ?let @analyzeContext inAnalyzeContext
@@ -221,5 +288,6 @@ override method @assertInstruction analyzeInstruction
     !decoratedExpression}
 }
 
-#-------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 
