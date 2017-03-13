@@ -32,14 +32,7 @@ map @enumConstantMap {
 
 #-------------------------------------------------------------------*
 
-enum @scalarTypeKind {
-  case enumeration
-}
-
-#-------------------------------------------------------------------*
-
 shared map @unifiedScalarTypeMap {
-  @scalarTypeKind mKind
   @enumConstantMap mConstantMap
   @lstringlist mEnumConstantList
   @bool mGenerate

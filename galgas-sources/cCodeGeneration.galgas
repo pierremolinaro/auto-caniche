@@ -182,9 +182,9 @@ override getter @attributeInDecoratedAssignmentSourceExpression generateSourceEx
 #-------------------------------------------------------------------*
 
 override getter @cstInDecoratedAssignmentSourceExpression generateSourceExpressionCCode
-  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-proxy unused inTargetTypeProxy
   ->@string outResult {
-  outResult = [[inTargetTypeProxy key] identifierRepresentation] + "_" + [mEnumCstName identifierRepresentation]
+  outResult = [mEnumCstName identifierRepresentation]
 }
 
 #-------------------------------------------------------------------*
@@ -252,7 +252,7 @@ override getter @decoratedAttributeAsComparisonRightOperand generateExpressionCC
 
 override getter @decoratedConstantAsComparisonRightOperand generateExpressionCCode
   ->@string outResult {
-  outResult = [[mConstantTypeProxy key] identifierRepresentation] + "_" + [mConstantName identifierRepresentation]
+  outResult = [mConstantName identifierRepresentation]
 }
 
 #-------------------------------------------------------------------*

@@ -15,24 +15,24 @@ end
 %
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class machine_%!MACHINE_NAME% {
+class %!MACHINE_NAME% {
 //--- Default constructor
-  public : machine_%!MACHINE_NAME% (void) ;
+  public : %!MACHINE_NAME% (void) ;
 
 //--- No copy
-  private : machine_%!MACHINE_NAME% (const machine_%!MACHINE_NAME% &) ;
-  private : machine_%!MACHINE_NAME% & operator = (const machine_%!MACHINE_NAME% &) ;
+  private : %!MACHINE_NAME% (const %!MACHINE_NAME% &) ;
+  private : %!MACHINE_NAME% & operator = (const %!MACHINE_NAME% &) ;
 
 //--- Attributes
 %
 for () in ATTRIBUTE_LIST do
-  %  private : ::%![[mTypeProxy key] identifierRepresentation]% %![mVarName.string identifierRepresentation]% ;\n%
-  %  private : ::%![[mTypeProxy key] identifierRepresentation]% old_%![mVarName.string identifierRepresentation]% ;\n%
+  %  private : %![[mTypeProxy key] identifierRepresentation]% %![mVarName.string identifierRepresentation]% ;\n%
+  %  private : %![[mTypeProxy key] identifierRepresentation]% old_%![mVarName.string identifierRepresentation]% ;\n%
 end%
 //--- Accessors
 %
 for () in ATTRIBUTE_LIST do
-  %  public : inline ::%![[mTypeProxy key] identifierRepresentation]% get_%![mVarName.string identifierRepresentation]% (void) const {\n%
+  %  public : inline %![[mTypeProxy key] identifierRepresentation]% get_%![mVarName.string identifierRepresentation]% (void) const {\n%
   %    return %![mVarName.string identifierRepresentation]% ;\n%
   %  }\n%
   %  public : inline bool %![mVarName.string identifierRepresentation]%_didChange (void) const {\n%

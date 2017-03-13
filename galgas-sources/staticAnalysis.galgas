@@ -6,20 +6,25 @@ proc performStaticAnalysis
   ?let @ast inAST
   !@unifiedScalarTypeMap outUnifiedScalarTypeMap
   !@functionMap outFunctionMap
-  !@machineMap outClassTypeMap {
+  !@machineMap outClassTypeMap
+{
 #-------------------------------------------- Enter enumeration types
+  @stringset allEnumerationConstants = {}
   outUnifiedScalarTypeMap = @unifiedScalarTypeMap.default
   for e in inAST.mEnumTypeList do
     if [e.mEnumConstantList length] < 2 then
       error e.mEnumListName :"an enumeration should define 2 constants or more"
     end
-    var enumConstantMap =@enumConstantMap.default
+    @enumConstantMap enumConstantMap = {}
     for c in e.mEnumConstantList do( idx)
       [!?enumConstantMap insertKey !c.mValue !idx]
+      if [allEnumerationConstants hasKey !c.mValue] then
+        error c.mValue : "this enumeration constant is already defined"
+      end
+      allEnumerationConstants += !c.mValue 
     end
     [!?outUnifiedScalarTypeMap insertKey
       !e.mEnumListName
-      !@scalarTypeKind. enumeration
       !enumConstantMap
       !e.mEnumConstantList
       !e.mGenerateCode
@@ -29,9 +34,9 @@ proc performStaticAnalysis
   outFunctionMap = @functionMap.default
   for f in inAST.mFunctionDefinitionList do
   #--- Operand type
-    [outUnifiedScalarTypeMap searchKey !f.mOperandEnumTypeName ?* ?let @enumConstantMap operandEnumMap ?2*]
+    [outUnifiedScalarTypeMap searchKey !f.mOperandEnumTypeName ?let @enumConstantMap operandEnumMap ?2*]
   #--- Result type
-    [outUnifiedScalarTypeMap searchKey !f.mResultEnumTypeName ?* ?let @enumConstantMap resultEnumMap ?2*]
+    [outUnifiedScalarTypeMap searchKey !f.mResultEnumTypeName ?let @enumConstantMap resultEnumMap ?2*]
   #--- Check function values
     var handledOperandSet =@stringset.default
     var decoratedFunctionValueList =@decoratedFunctionValueList.default
@@ -71,7 +76,6 @@ proc performStaticAnalysis
     for e in c.mEnumVarDeclarationList do
       [outUnifiedScalarTypeMap searchKey
         !e.mEnumTypeName
-        ?*
         ?let @enumConstantMap enumCstMap
         ?var @lstringlist constantList
         ?*
@@ -109,7 +113,7 @@ proc performStaticAnalysis
       @analyzeContext analyzeContextForEvent = analyzeContext
       var decoratedArgumentList =@decoratedArgumentList.default
       for arg in event.mEventArgumentList do
-        [outUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?2* ?let   @lstringlist enumConstantList ?*]
+        [outUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let   @lstringlist enumConstantList ?*]
         [!?analyzeContextForEvent.mMachineVarMap insertKey
           !arg.mArgumentVarName
           !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}

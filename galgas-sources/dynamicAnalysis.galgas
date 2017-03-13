@@ -315,7 +315,7 @@ method @machineList-element performMachineDynamicAnalysis
   @varList varList = {}
   @binaryset varContraintSet = .fullBinarySet{}
   for variable in self.mEnumVarDeclarationList do
-    [inUnifiedScalarTypeMap searchKey !variable.mEnumTypeName ?* ?let constantMap ?let constantList ?*]
+    [inUnifiedScalarTypeMap searchKey !variable.mEnumTypeName ?let constantMap ?let constantList ?*]
     [constantMap searchKey !variable.mConstantName ?let @uint initialValueIndex]
     let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
     [!?varMap insertKey
@@ -415,7 +415,7 @@ method @machineList-element performMachineDynamicAnalysis
     @uint bddArgOldVarVarTotalBitCount = varTotalBitCount + varTotalBitCount
     @binaryset eventTransformationSet = invariantValueSet & oldVar_Var_EqualitySet
     for arg in event.mEventArgumentList do
-      [inUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let constantMap ?let constantList ?*]
+      [inUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?let constantMap ?let constantList ?*]
       let @uint bddBitCount = [[constantList length] - 1 significantBitCount]
       [!?argVarMap insertKey
         !arg.mArgumentVarName
@@ -581,7 +581,7 @@ method @machineList-element performMachineDynamicAnalysis
         for formal in argumentList, actual in event.mArgumentNameList
         do
           eventString += "?" + actual.mValue.string
-          [inUnifiedScalarTypeMap searchKey !formal.mArgumentTypeName ?* ?let @enumConstantMap constantMap ?2*]
+          [inUnifiedScalarTypeMap searchKey !formal.mArgumentTypeName ?let @enumConstantMap constantMap ?2*]
           [constantMap searchKey !actual.mValue ?let @uint constantIndex]
           let @uint bitCount = [[constantMap count] - 1 significantBitCount]
           transitionSet = transitionSet & @binaryset. binarySetWithEqualToConstant {

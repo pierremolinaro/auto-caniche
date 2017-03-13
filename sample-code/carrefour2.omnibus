@@ -11,16 +11,16 @@ function succ $couleur -> $couleur
 
 #--------------------------------------------------------*
 
-enum $souhait {
+enum $Souhait {
   hs, # Hors service
   es  # En service
 }
 
 #--------------------------------------------------------*
 
-enum $etat {
-  hs, # Hors service
-  es, # En service
+enum $Etat {
+  etat_hs, # Hors service
+  etat_es, # En service
   versES, # Demande en service enregistrée
   versHS # Demande hors service enregistrée
 }
@@ -29,14 +29,14 @@ enum $etat {
 
 machine Carrefour
 
-  var souhait $souhait = .hs
-  var etat $etat = .hs
+  var souhait $Souhait = .hs
+  var etat $Etat = .etat_hs
   var feuA $couleur = .orange
   var feuB $couleur = .orange
 
- invariant "1" : (etat == .hs) -> ((feuA == .orange) & (feuB == .orange))
+ invariant "1" : (etat == .etat_hs) -> ((feuA == .orange) & (feuB == .orange))
  invariant "2" : (etat == .versES) -> ((feuA == .rouge) & (feuB == .rouge))
- invariant "3" : (etat == .es) -> (((feuA == .rouge) | (feuB == .rouge)) & (feuA != feuB))
+ invariant "3" : (etat == .etat_es) -> (((feuA == .rouge) | (feuB == .rouge)) & (feuA != feuB))
  invariant "4" : (etat == .versHS) -> ((feuA == .rouge) & (feuB == .rouge))
 
   event miseEnService () {
@@ -58,29 +58,29 @@ machine Carrefour
   }
 
   event tick () {
-    if (etat == .es) & (souhait == .hs) {
+    if (etat == .etat_es) & (souhait == .hs) {
       etat = .versHS
       feuA = .rouge
       feuB = .rouge
     }else if (etat == .versHS) & (souhait == .hs) {
-      etat = .hs
+      etat = .etat_hs
       feuA = .orange
       feuB = .orange
     }else if (etat == .versES) & (souhait == .hs) {
-      etat = .hs
+      etat = .etat_hs
       feuA = .orange
       feuB = .orange
     }else if (etat == .versES) & (souhait == .es) {
-      etat = .es
+      etat = .etat_es
       feuA = .vert
     }else if (etat == .versHS) & (souhait == .es) {
-      etat = .es
+      etat = .etat_es
       feuA = .vert
-    }else if (etat == .hs) & (souhait == .es) {
+    }else if (etat == .etat_hs) & (souhait == .es) {
       etat = .versES
       feuA = .rouge
       feuB = .rouge
-    }else if (etat == .es) & (souhait == .es) {
+    }else if (etat == .etat_es) & (souhait == .es) {
       if (feuA == .vert) {
         feuA = .orange
       }else if (feuA == .orange) {

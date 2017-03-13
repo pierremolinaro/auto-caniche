@@ -10,11 +10,11 @@ end
 %
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-machine_%!MACHINE_NAME%::machine_%!MACHINE_NAME% (void) :
+%!MACHINE_NAME%::%!MACHINE_NAME% (void) :
 %for () in ATTRIBUTE_LIST
 do
-  ![mVarName.string identifierRepresentation]% (%![[mTypeProxy key] identifierRepresentation]%_%![mInitialValueConstantName identifierRepresentation]%),\n%
-  %old_%![mVarName.string identifierRepresentation]% (%![[mTypeProxy key] identifierRepresentation]%_%![mInitialValueConstantName identifierRepresentation]%)%
+  ![mVarName.string identifierRepresentation]% (%![mInitialValueConstantName identifierRepresentation]%),\n%
+  %old_%![mVarName.string identifierRepresentation]% (%![mInitialValueConstantName identifierRepresentation]%)%
 between
   %,\n%
 end% {
@@ -22,7 +22,7 @@ end% {
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-void machine_%!MACHINE_NAME%::update (void) {
+void %!MACHINE_NAME%::update (void) {
 %for () in ATTRIBUTE_LIST
 do
   %  old_%![mVarName.string identifierRepresentation]% = %![mVarName.string identifierRepresentation]% ;\n%
@@ -33,7 +33,7 @@ end
 for () in EVENT_MAP do
   %//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 \n\n%
-  %void machine_%!MACHINE_NAME%::event_%![lkey identifierRepresentation]% (%
+  %void %!MACHINE_NAME%::event_%![lkey identifierRepresentation]% (%
   if [mDecoratedArgumentList length] == 0 then
     %void%
   else

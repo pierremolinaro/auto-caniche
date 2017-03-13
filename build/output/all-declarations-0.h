@@ -4447,68 +4447,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantMap_2D_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                @scalarTypeKind enum                                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_scalarTypeKind : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public : GALGAS_scalarTypeKind (void) ;
-
-//--------------------------------- Enumeration
-  public : typedef enum {
-    kNotBuilt,
-    kEnum_enumeration
-  } enumeration ;
-  
-//--------------------------------- Private data member
-  private : enumeration mEnum ;
-
-//--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
-  public : VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
-  public : inline enumeration enumValue (void) const { return mEnum ; }
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_scalarTypeKind extractObject (const GALGAS_object & inObject,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_scalarTypeKind constructor_enumeration (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_scalarTypeKind & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isEnumeration (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_scalarTypeKind class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_scalarTypeKind ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                          @unifiedScalarTypeMap unique map                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4545,10 +4483,9 @@ class GALGAS_unifiedScalarTypeMap : public AC_GALGAS_uniqueMap {
 
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_scalarTypeKind constinArgument1,
-                                                   class GALGAS_enumConstantMap constinArgument2,
-                                                   class GALGAS_lstringlist constinArgument3,
-                                                   class GALGAS_bool constinArgument4,
+                                                   class GALGAS_enumConstantMap constinArgument1,
+                                                   class GALGAS_lstringlist constinArgument2,
+                                                   class GALGAS_bool constinArgument3,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -4567,18 +4504,12 @@ class GALGAS_unifiedScalarTypeMap : public AC_GALGAS_uniqueMap {
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void setter_setMKindForKey (class GALGAS_scalarTypeKind constinArgument0,
-                                                        class GALGAS_string constinArgument1,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_scalarTypeKind & outArgument1,
-                                                   class GALGAS_enumConstantMap & outArgument2,
-                                                   class GALGAS_lstringlist & outArgument3,
-                                                   class GALGAS_bool & outArgument4,
+                                                   class GALGAS_enumConstantMap & outArgument1,
+                                                   class GALGAS_lstringlist & outArgument2,
+                                                   class GALGAS_bool & outArgument3,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const ;
 
@@ -4596,10 +4527,6 @@ class GALGAS_unifiedScalarTypeMap : public AC_GALGAS_uniqueMap {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mGenerateForKey (const class GALGAS_string & constinOperand0,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_scalarTypeKind getter_mKindForKey (const class GALGAS_string & constinOperand0,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -4624,7 +4551,6 @@ class cEnumerator_unifiedScalarTypeMap : public cGenericAbstractEnumerator {
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public : class GALGAS_scalarTypeKind current_mKind (LOCATION_ARGS) const ;
   public : class GALGAS_enumConstantMap current_mConstantMap (LOCATION_ARGS) const ;
   public : class GALGAS_lstringlist current_mEnumConstantList (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mGenerate (LOCATION_ARGS) const ;
@@ -4642,14 +4568,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedScalarTypeMa
 
 class cMapElement_unifiedScalarTypeMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_scalarTypeKind mProperty_mKind ;
   public : GALGAS_enumConstantMap mProperty_mConstantMap ;
   public : GALGAS_lstringlist mProperty_mEnumConstantList ;
   public : GALGAS_bool mProperty_mGenerate ;
 
 //--- Constructor
   public : cMapElement_unifiedScalarTypeMap (const GALGAS_lstring & inKey,
-                                             const GALGAS_scalarTypeKind & in_mKind,
                                              const GALGAS_enumConstantMap & in_mConstantMap,
                                              const GALGAS_lstringlist & in_mEnumConstantList,
                                              const GALGAS_bool & in_mGenerate
@@ -4726,9 +4650,6 @@ class GALGAS_unifiedScalarTypeMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mGenerate (C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_scalarTypeKind getter_mKind (C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

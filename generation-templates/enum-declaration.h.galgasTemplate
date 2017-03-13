@@ -10,10 +10,10 @@
 typedef enum {
 %
 for () in CONSTANT_LIST
-do %  %![ENUMERATION_NAME identifierRepresentation]%_%![mValue.string identifierRepresentation]
+do %  %![mValue.string identifierRepresentation]
 between %,\n%
 end%
-}  %![ENUMERATION_NAME identifierRepresentation]% ;
+} %![ENUMERATION_NAME identifierRepresentation]% ;
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

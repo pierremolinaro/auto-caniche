@@ -6,10 +6,10 @@
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-const ::%![RESULT_TYPE_NAME identifierRepresentation]% function_%![FUNCTION_NAME identifierRepresentation]% [%![[VALUE_LIST length] string]%] = {%
+const %![RESULT_TYPE_NAME identifierRepresentation]% function_%![FUNCTION_NAME identifierRepresentation]% [%![[VALUE_LIST length] string]%] = {%
 for () in VALUE_LIST
 do
-  %\n  %![RESULT_TYPE_NAME identifierRepresentation]%_%![mResultName identifierRepresentation]% /* %!mOperandName.string% */%
+  %\n  %![mResultName identifierRepresentation]% /* %!mOperandName.string% */%
 between
   %,%
 end

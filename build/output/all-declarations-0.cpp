@@ -9326,108 +9326,12 @@ GALGAS_enumConstantMap GALGAS_enumConstantMap::extractObject (const GALGAS_objec
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_scalarTypeKind::GALGAS_scalarTypeKind (void) :
-mEnum (kNotBuilt) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_scalarTypeKind GALGAS_scalarTypeKind::constructor_enumeration (UNUSED_LOCATION_ARGS) {
-  GALGAS_scalarTypeKind result ;
-  result.mEnum = kEnum_enumeration ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static const char * gEnumNameArrayFor_scalarTypeKind [2] = {
-  "(not built)",
-  "enumeration"
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_scalarTypeKind::getter_isEnumeration (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_enumeration == mEnum) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_scalarTypeKind::description (C_String & ioString,
-                                         const int32_t /* inIndentation */) const {
-  ioString << "<enum @scalarTypeKind: " << gEnumNameArrayFor_scalarTypeKind [mEnum] ;
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_scalarTypeKind::objectCompare (const GALGAS_scalarTypeKind & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = kOperandEqual ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                                @scalarTypeKind type                                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_scalarTypeKind ("scalarTypeKind",
-                                       NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_scalarTypeKind::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_scalarTypeKind ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_scalarTypeKind::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_scalarTypeKind (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_scalarTypeKind GALGAS_scalarTypeKind::extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_scalarTypeKind result ;
-  const GALGAS_scalarTypeKind * p = (const GALGAS_scalarTypeKind *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_scalarTypeKind *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("scalarTypeKind", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 cMapElement_unifiedScalarTypeMap::cMapElement_unifiedScalarTypeMap (const GALGAS_lstring & inKey,
-                                                                    const GALGAS_scalarTypeKind & in_mKind,
                                                                     const GALGAS_enumConstantMap & in_mConstantMap,
                                                                     const GALGAS_lstringlist & in_mEnumConstantList,
                                                                     const GALGAS_bool & in_mGenerate
                                                                     COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mProperty_mKind (in_mKind),
 mProperty_mConstantMap (in_mConstantMap),
 mProperty_mEnumConstantList (in_mEnumConstantList),
 mProperty_mGenerate (in_mGenerate) {
@@ -9436,24 +9340,20 @@ mProperty_mGenerate (in_mGenerate) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_unifiedScalarTypeMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mConstantMap.isValid () && mProperty_mEnumConstantList.isValid () && mProperty_mGenerate.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mConstantMap.isValid () && mProperty_mEnumConstantList.isValid () && mProperty_mGenerate.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_unifiedScalarTypeMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_unifiedScalarTypeMap (mProperty_lkey, mProperty_mKind, mProperty_mConstantMap, mProperty_mEnumConstantList, mProperty_mGenerate COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_unifiedScalarTypeMap (mProperty_lkey, mProperty_mConstantMap, mProperty_mEnumConstantList, mProperty_mGenerate COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cMapElement_unifiedScalarTypeMap::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mKind" ":" ;
-  mProperty_mKind.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstantMap" ":" ;
@@ -9473,9 +9373,6 @@ void cMapElement_unifiedScalarTypeMap::description (C_String & ioString, const i
 typeComparisonResult cMapElement_unifiedScalarTypeMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_unifiedScalarTypeMap * operand = (cMapElement_unifiedScalarTypeMap *) inOperand ;
   typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mKind.objectCompare (operand->mProperty_mKind) ;
-  }
   if (kOperandEqual == result) {
     result = mProperty_mConstantMap.objectCompare (operand->mProperty_mConstantMap) ;
   }
@@ -9543,14 +9440,13 @@ GALGAS_unifiedScalarTypeMap GALGAS_unifiedScalarTypeMap::constructor_emptyMap (L
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_unifiedScalarTypeMap::setter_insertKey (GALGAS_lstring inKey,
-                                                    GALGAS_scalarTypeKind inArgument0,
-                                                    GALGAS_enumConstantMap inArgument1,
-                                                    GALGAS_lstringlist inArgument2,
-                                                    GALGAS_bool inArgument3,
+                                                    GALGAS_enumConstantMap inArgument0,
+                                                    GALGAS_lstringlist inArgument1,
+                                                    GALGAS_bool inArgument2,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   cMapElement_unifiedScalarTypeMap * p = NULL ;
-  macroMyNew (p, cMapElement_unifiedScalarTypeMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
+  macroMyNew (p, cMapElement_unifiedScalarTypeMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -9570,10 +9466,9 @@ const char * kSearchErrorMessage_unifiedScalarTypeMap_searchKey = "there is no '
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_unifiedScalarTypeMap::method_searchKey (GALGAS_lstring inKey,
-                                                    GALGAS_scalarTypeKind & outArgument0,
-                                                    GALGAS_enumConstantMap & outArgument1,
-                                                    GALGAS_lstringlist & outArgument2,
-                                                    GALGAS_bool & outArgument3,
+                                                    GALGAS_enumConstantMap & outArgument0,
+                                                    GALGAS_lstringlist & outArgument1,
+                                                    GALGAS_bool & outArgument2,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   const cMapElement_unifiedScalarTypeMap * p = (const cMapElement_unifiedScalarTypeMap *) performSearch (inKey,
@@ -9584,29 +9479,12 @@ void GALGAS_unifiedScalarTypeMap::method_searchKey (GALGAS_lstring inKey,
     outArgument0.drop () ;
     outArgument1.drop () ;
     outArgument2.drop () ;
-    outArgument3.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_unifiedScalarTypeMap) ;
-    outArgument0 = p->mProperty_mKind ;
-    outArgument1 = p->mProperty_mConstantMap ;
-    outArgument2 = p->mProperty_mEnumConstantList ;
-    outArgument3 = p->mProperty_mGenerate ;
+    outArgument0 = p->mProperty_mConstantMap ;
+    outArgument1 = p->mProperty_mEnumConstantList ;
+    outArgument2 = p->mProperty_mGenerate ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_scalarTypeKind GALGAS_unifiedScalarTypeMap::getter_mKindForKey (const GALGAS_string & inKey,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_unifiedScalarTypeMap * p = (const cMapElement_unifiedScalarTypeMap *) attributes ;
-  GALGAS_scalarTypeKind result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_unifiedScalarTypeMap) ;
-    result = p->mProperty_mKind ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9652,20 +9530,6 @@ GALGAS_bool GALGAS_unifiedScalarTypeMap::getter_mGenerateForKey (const GALGAS_st
     result = p->mProperty_mGenerate ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_unifiedScalarTypeMap::setter_setMKindForKey (GALGAS_scalarTypeKind inAttributeValue,
-                                                         GALGAS_string inKey,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_unifiedScalarTypeMap * p = (cMapElement_unifiedScalarTypeMap *) attributes ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_unifiedScalarTypeMap) ;
-    p->mProperty_mKind = inAttributeValue ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9734,14 +9598,6 @@ GALGAS_lstring cEnumerator_unifiedScalarTypeMap::current_lkey (LOCATION_ARGS) co
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_scalarTypeKind cEnumerator_unifiedScalarTypeMap::current_mKind (LOCATION_ARGS) const {
-  const cMapElement_unifiedScalarTypeMap * p = (const cMapElement_unifiedScalarTypeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_unifiedScalarTypeMap) ;
-  return p->mProperty_mKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9852,19 +9708,6 @@ void GALGAS_unifiedScalarTypeMap_2D_proxy::class_method_makeProxyFromString (GAL
                                                                              GALGAS_unifiedScalarTypeMap_2D_proxy & outProxy
                                                                              COMMA_LOCATION_ARGS) {
   outProxy.internalMakeProxyFromString (ioMap, inKey COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_scalarTypeKind GALGAS_unifiedScalarTypeMap_2D_proxy::getter_mKind (C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GALGAS_scalarTypeKind result ;
-  const cMapElement_unifiedScalarTypeMap * p = (const cMapElement_unifiedScalarTypeMap *) getAttributeListPointer (inCompiler, "mKind" COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_unifiedScalarTypeMap) ;
-    result = p->mProperty_mKind;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
