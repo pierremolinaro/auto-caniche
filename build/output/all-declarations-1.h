@@ -10,6 +10,911 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
+//                             Extension method '@instructionList analyzeInstructionList'                              *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void extensionMethod_analyzeInstructionList (const class GALGAS_instructionList inObject,
+                                             const class GALGAS_analyzeContext constin_inAnalyzeContext,
+                                             class GALGAS_decoratedInstructionList & out_outDecoratedInstructionList,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                             Abstract extension method '@instruction analyzeInstruction'                             *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typedef void (*extensionMethodSignature_instruction_analyzeInstruction) (const class cPtr_instruction * inObject,
+                                                                         const class GALGAS_analyzeContext constinArgument0,
+                                                                         class GALGAS_decoratedInstruction & outArgument1,
+                                                                         class C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void enterExtensionMethod_analyzeInstruction (const int32_t inClassIndex,
+                                              extensionMethodSignature_instruction_analyzeInstruction inMethod) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void callExtensionMethod_analyzeInstruction (const class cPtr_instruction * inObject,
+                                             const GALGAS_analyzeContext constin_inAnalyzeContext,
+                                             GALGAS_decoratedInstruction & out_outDecoratedInstruction,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//              Abstract extension method '@assignmentSourceExpression analyzeAssignmentSourceExpression'              *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typedef void (*extensionMethodSignature_assignmentSourceExpression_analyzeAssignmentSourceExpression) (const class cPtr_assignmentSourceExpression * inObject,
+                                                                                                       const class GALGAS_analyzeContext constinArgument0,
+                                                                                                       const class GALGAS_unifiedScalarTypeMap_2D_proxy constinArgument1,
+                                                                                                       class GALGAS_decoratedAssignmentSourceExpression & outArgument2,
+                                                                                                       class C_Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void enterExtensionMethod_analyzeAssignmentSourceExpression (const int32_t inClassIndex,
+                                                             extensionMethodSignature_assignmentSourceExpression_analyzeAssignmentSourceExpression inMethod) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void callExtensionMethod_analyzeAssignmentSourceExpression (const class cPtr_assignmentSourceExpression * inObject,
+                                                            const GALGAS_analyzeContext constin_inAnalyzeContext,
+                                                            const GALGAS_unifiedScalarTypeMap_2D_proxy constin_inTargetTypeProxy,
+                                                            GALGAS_decoratedAssignmentSourceExpression & out_outDecoratedExpression,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                      Parser class 'omnibus_syntax' declaration                                      *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cParser_omnibus_5F_syntax {
+//--- Virtual destructor
+  public : virtual ~ cParser_omnibus_5F_syntax (void) {}
+
+//--- Non terminal declarations
+  protected : virtual void nt_assignment_5F_source_5F_expression_ (class GALGAS_assignmentSourceExpression & outArgument0,
+                                                                   class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_assignment_5F_source_5F_expression_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_comparison_5F_right_5F_operand_ (class GALGAS_comparisonRightOperand & outArgument0,
+                                                               class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_comparison_5F_right_5F_operand_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_else_5F_part_ (class GALGAS_instructionList & outArgument0,
+                                             class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_else_5F_part_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_enum_5F_declaration_ (class GALGAS_ast & ioArgument0,
+                                                    class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_enum_5F_declaration_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_enum_5F_function_ (class GALGAS_ast & ioArgument0,
+                                                 class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_enum_5F_function_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_ (class GALGAS_expression & outArgument0,
+                                           class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_31__ (class GALGAS_expression & outArgument0,
+                                               class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_31__parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_32__ (class GALGAS_expression & outArgument0,
+                                               class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_32__parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_34__ (class GALGAS_expression & outArgument0,
+                                               class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_expression_34__parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_instruction_ (class GALGAS_instruction & outArgument0,
+                                            class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_instruction_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_instruction_5F_list_ (class GALGAS_instructionList & ioArgument0,
+                                                    class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_instruction_5F_list_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_machine_ (class GALGAS_ast & ioArgument0,
+                                        class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_machine_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_scenario_ (class GALGAS_ast & ioArgument0,
+                                         class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_scenario_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_start_5F_symbol_ (class GALGAS_ast & outArgument0,
+                                                class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+  protected : virtual void nt_start_5F_symbol_parse (class C_Lexique_lexicalAnalyzer * inLexique) = 0 ;
+
+
+//--- Rule declarations
+  protected : void rule_omnibus_5F_syntax_start_5F_symbol_i0_ (GALGAS_ast & outArgument0,
+                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_start_5F_symbol_i0_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_scenario_i1_ (GALGAS_ast & ioArgument0,
+                                                        C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_scenario_i1_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_enum_5F_declaration_i2_ (GALGAS_ast & ioArgument0,
+                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_enum_5F_declaration_i2_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_enum_5F_function_i3_ (GALGAS_ast & ioArgument0,
+                                                                C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_enum_5F_function_i3_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_machine_i4_ (GALGAS_ast & ioArgument0,
+                                                       C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_machine_i4_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_i5_ (GALGAS_expression & outArgument0,
+                                                          C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_i5_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_31__i6_ (GALGAS_expression & outArgument0,
+                                                              C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_31__i6_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_32__i7_ (GALGAS_expression & outArgument0,
+                                                              C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_32__i7_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_34__i8_ (GALGAS_expression & outArgument0,
+                                                              C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_34__i8_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_34__i9_ (GALGAS_expression & outArgument0,
+                                                              C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_expression_34__i9_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i10_ (GALGAS_comparisonRightOperand & outArgument0,
+                                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i10_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i11_ (GALGAS_comparisonRightOperand & outArgument0,
+                                                                               C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_comparison_5F_right_5F_operand_i11_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_5F_list_i12_ (GALGAS_instructionList & ioArgument0,
+                                                                    C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_5F_list_i12_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_i13_ (GALGAS_instruction & outArgument0,
+                                                            C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_i13_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_i14_ (GALGAS_instruction & outArgument0,
+                                                            C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_i14_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i15_ (GALGAS_assignmentSourceExpression & outArgument0,
+                                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i15_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i16_ (GALGAS_assignmentSourceExpression & outArgument0,
+                                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i16_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i17_ (GALGAS_assignmentSourceExpression & outArgument0,
+                                                                                   C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_assignment_5F_source_5F_expression_i17_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_i18_ (GALGAS_instruction & outArgument0,
+                                                            C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_instruction_i18_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i19_ (GALGAS_instructionList & outArgument0,
+                                                             C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i19_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i20_ (GALGAS_instructionList & outArgument0,
+                                                             C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i20_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i21_ (GALGAS_instructionList & outArgument0,
+                                                             C_Lexique_lexicalAnalyzer * inLexique) ;
+
+  protected : void rule_omnibus_5F_syntax_else_5F_part_i21_parse (C_Lexique_lexicalAnalyzer * inLexique) ;
+
+
+
+//--- Select methods
+  protected : virtual int32_t select_omnibus_5F_syntax_0 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_1 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_2 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_3 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_4 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_5 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_6 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_7 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_8 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_9 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_10 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_11 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_12 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_13 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+  protected : virtual int32_t select_omnibus_5F_syntax_14 (C_Lexique_lexicalAnalyzer *) = 0 ;
+
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                            @assignmentInstruction class                                             *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_assignmentInstruction : public GALGAS_instruction {
+//--- Constructor
+  public : GALGAS_assignmentInstruction (void) ;
+
+//---
+  public : inline const class cPtr_assignmentInstruction * ptr (void) const { return (const cPtr_assignmentInstruction *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_assignmentInstruction (const cPtr_assignmentInstruction * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_assignmentInstruction extractObject (const GALGAS_object & inObject,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_assignmentInstruction constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                      const class GALGAS_assignmentSourceExpression & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_assignmentInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_assignmentSourceExpression getter_mSourceExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTargetVarName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_assignmentInstruction class
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstruction ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                   Pointer class for @assignmentInstruction class                                    *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cPtr_assignmentInstruction : public cPtr_instruction {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mTargetVarName ;
+  public : GALGAS_assignmentSourceExpression mProperty_mSourceExpression ;
+
+//--- Constructor
+  public : cPtr_assignmentInstruction (const GALGAS_lstring & in_mTargetVarName,
+                                       const GALGAS_assignmentSourceExpression & in_mSourceExpression
+                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mTargetVarName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_assignmentSourceExpression getter_mSourceExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                      @attributeAsComparisonRightOperand class                                       *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_attributeAsComparisonRightOperand : public GALGAS_comparisonRightOperand {
+//--- Constructor
+  public : GALGAS_attributeAsComparisonRightOperand (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_attributeAsComparisonRightOperand constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_attributeAsComparisonRightOperand * ptr (void) const { return (const cPtr_attributeAsComparisonRightOperand *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_attributeAsComparisonRightOperand (const cPtr_attributeAsComparisonRightOperand * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_attributeAsComparisonRightOperand extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_attributeAsComparisonRightOperand constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                  const class GALGAS_bool & inOperand1
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_attributeAsComparisonRightOperand & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mAttributeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasOldQualifier (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_attributeAsComparisonRightOperand class
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeAsComparisonRightOperand ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                             Pointer class for @attributeAsComparisonRightOperand class                              *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cPtr_attributeAsComparisonRightOperand : public cPtr_comparisonRightOperand {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mAttributeName ;
+  public : GALGAS_bool mProperty_mHasOldQualifier ;
+
+//--- Constructor
+  public : cPtr_attributeAsComparisonRightOperand (const GALGAS_lstring & in_mAttributeName,
+                                                   const GALGAS_bool & in_mHasOldQualifier
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mAttributeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mHasOldQualifier (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                            @comparisonInExpression class                                            *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_comparisonInExpression : public GALGAS_expression {
+//--- Constructor
+  public : GALGAS_comparisonInExpression (void) ;
+
+//---
+  public : inline const class cPtr_comparisonInExpression * ptr (void) const { return (const cPtr_comparisonInExpression *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_comparisonInExpression (const cPtr_comparisonInExpression * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_comparisonInExpression extractObject (const GALGAS_object & inObject,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_comparisonInExpression constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                       const class GALGAS_enumComparisonOperator & inOperand1,
+                                                                       const class GALGAS_comparisonRightOperand & inOperand2
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_comparisonInExpression & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mAttributeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_enumComparisonOperator getter_mOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_comparisonRightOperand getter_mRightOperand (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_comparisonInExpression class
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonInExpression ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                   Pointer class for @comparisonInExpression class                                   *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cPtr_comparisonInExpression : public cPtr_expression {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mAttributeName ;
+  public : GALGAS_enumComparisonOperator mProperty_mOperator ;
+  public : GALGAS_comparisonRightOperand mProperty_mRightOperand ;
+
+//--- Constructor
+  public : cPtr_comparisonInExpression (const GALGAS_lstring & in_mAttributeName,
+                                        const GALGAS_enumComparisonOperator & in_mOperator,
+                                        const GALGAS_comparisonRightOperand & in_mRightOperand
+                                        COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mAttributeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_enumComparisonOperator getter_mOperator (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_comparisonRightOperand getter_mRightOperand (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                     @constantAsAssignmentSourceExpression class                                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_constantAsAssignmentSourceExpression : public GALGAS_assignmentSourceExpression {
+//--- Constructor
+  public : GALGAS_constantAsAssignmentSourceExpression (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_constantAsAssignmentSourceExpression constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_constantAsAssignmentSourceExpression * ptr (void) const { return (const cPtr_constantAsAssignmentSourceExpression *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_constantAsAssignmentSourceExpression (const cPtr_constantAsAssignmentSourceExpression * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_constantAsAssignmentSourceExpression extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_constantAsAssignmentSourceExpression constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_constantAsAssignmentSourceExpression & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mConstantName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_constantAsAssignmentSourceExpression class
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantAsAssignmentSourceExpression ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                            Pointer class for @constantAsAssignmentSourceExpression class                            *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cPtr_constantAsAssignmentSourceExpression : public cPtr_assignmentSourceExpression {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mConstantName ;
+
+//--- Constructor
+  public : cPtr_constantAsAssignmentSourceExpression (const GALGAS_lstring & in_mConstantName
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mConstantName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                       @constantAsComparisonRightOperand class                                       *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_constantAsComparisonRightOperand : public GALGAS_comparisonRightOperand {
+//--- Constructor
+  public : GALGAS_constantAsComparisonRightOperand (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_constantAsComparisonRightOperand constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_constantAsComparisonRightOperand * ptr (void) const { return (const cPtr_constantAsComparisonRightOperand *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_constantAsComparisonRightOperand (const cPtr_constantAsComparisonRightOperand * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_constantAsComparisonRightOperand extractObject (const GALGAS_object & inObject,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_constantAsComparisonRightOperand constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_constantAsComparisonRightOperand & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mConstantName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_constantAsComparisonRightOperand class
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantAsComparisonRightOperand ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                              Pointer class for @constantAsComparisonRightOperand class                              *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cPtr_constantAsComparisonRightOperand : public cPtr_comparisonRightOperand {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mConstantName ;
+
+//--- Constructor
+  public : cPtr_constantAsComparisonRightOperand (const GALGAS_lstring & in_mConstantName
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mConstantName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                     @functionAsAssignmentSourceExpression class                                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_functionAsAssignmentSourceExpression : public GALGAS_assignmentSourceExpression {
+//--- Constructor
+  public : GALGAS_functionAsAssignmentSourceExpression (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_functionAsAssignmentSourceExpression constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_functionAsAssignmentSourceExpression * ptr (void) const { return (const cPtr_functionAsAssignmentSourceExpression *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_functionAsAssignmentSourceExpression (const cPtr_functionAsAssignmentSourceExpression * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_functionAsAssignmentSourceExpression extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_functionAsAssignmentSourceExpression constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_functionAsAssignmentSourceExpression & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFunctionName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOperandName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_functionAsAssignmentSourceExpression class
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionAsAssignmentSourceExpression ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                            Pointer class for @functionAsAssignmentSourceExpression class                            *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cPtr_functionAsAssignmentSourceExpression : public cPtr_assignmentSourceExpression {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mFunctionName ;
+  public : GALGAS_lstring mProperty_mOperandName ;
+
+//--- Constructor
+  public : cPtr_functionAsAssignmentSourceExpression (const GALGAS_lstring & in_mFunctionName,
+                                                      const GALGAS_lstring & in_mOperandName
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mFunctionName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mOperandName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                       @varAsAssignmentSourceExpression class                                        *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_varAsAssignmentSourceExpression : public GALGAS_assignmentSourceExpression {
+//--- Constructor
+  public : GALGAS_varAsAssignmentSourceExpression (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_varAsAssignmentSourceExpression constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_varAsAssignmentSourceExpression * ptr (void) const { return (const cPtr_varAsAssignmentSourceExpression *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_varAsAssignmentSourceExpression (const cPtr_varAsAssignmentSourceExpression * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_varAsAssignmentSourceExpression extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_varAsAssignmentSourceExpression constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_varAsAssignmentSourceExpression & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSourceVarName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_varAsAssignmentSourceExpression class
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varAsAssignmentSourceExpression ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                              Pointer class for @varAsAssignmentSourceExpression class                               *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cPtr_varAsAssignmentSourceExpression : public cPtr_assignmentSourceExpression {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mSourceVarName ;
+
+//--- Constructor
+  public : cPtr_varAsAssignmentSourceExpression (const GALGAS_lstring & in_mSourceVarName
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mSourceVarName (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
 //                                           @machineVarListForDisplay list                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -69,6 +974,10 @@ class GALGAS_machineVarListForDisplay : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_machineVarListForDisplay_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_string constinArgument0,
                                                        class GALGAS_uint constinArgument1,
                                                        class GALGAS_uint constinArgument2,
@@ -216,7 +1125,7 @@ class GALGAS_machineVarListForDisplay_2D_element : public AC_GALGAS_root {
   public : GALGAS_machineVarListForDisplay_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_machineVarListForDisplay_2D_element (void) ;
+  public : virtual ~ GALGAS_machineVarListForDisplay_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_machineVarListForDisplay_2D_element (const GALGAS_string & in_mAttributeName,
@@ -337,6 +1246,10 @@ class GALGAS_varList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_varList_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                        class GALGAS_lstringlist constinArgument1,
                                                        class GALGAS_uint constinArgument2,
@@ -484,7 +1397,7 @@ class GALGAS_varList_2D_element : public AC_GALGAS_root {
   public : GALGAS_varList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_varList_2D_element (void) ;
+  public : virtual ~ GALGAS_varList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_varList_2D_element (const GALGAS_lstring & in_mVarName,
@@ -737,7 +1650,7 @@ class GALGAS_transitionEventMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_transitionEventMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_transitionEventMap_2D_element (void) ;
+  public : virtual ~ GALGAS_transitionEventMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_transitionEventMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -841,6 +1754,10 @@ class GALGAS_binarysetList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_binarysetList_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                        class GALGAS_binaryset constinArgument1,
                                                        class GALGAS_uint constinArgument2,
@@ -949,7 +1866,7 @@ class GALGAS_binarysetList_2D_element : public AC_GALGAS_root {
   public : GALGAS_binarysetList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_binarysetList_2D_element (void) ;
+  public : virtual ~ GALGAS_binarysetList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_binarysetList_2D_element (const GALGAS_lstring & in_mLabel,
@@ -1203,7 +2120,7 @@ class GALGAS_varMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_varMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_varMap_2D_element (void) ;
+  public : virtual ~ GALGAS_varMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_varMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -2666,45 +3583,4 @@ extern C_BoolCommandLineOption gOption_omnibus_5F_options_generateCCode ;
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Routine 'performStaticAnalysis'                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void routine_performStaticAnalysis (const class GALGAS_ast constinArgument0,
-                                    class GALGAS_unifiedScalarTypeMap & outArgument1,
-                                    class GALGAS_functionMap & outArgument2,
-                                    class GALGAS_machineMap & outArgument3,
-                                    class C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              Routine 'performDisplay'                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void routine_performDisplay (const class GALGAS_string constinArgument0,
-                             const class GALGAS_binaryset constinArgument1,
-                             const class GALGAS_machineVarListForDisplay constinArgument2,
-                             class GALGAS_string & ioArgument3,
-                             class C_Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Routine 'performDynamicAnalysis'                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void routine_performDynamicAnalysis (const class GALGAS_string constinArgument0,
-                                     const class GALGAS_ast constinArgument1,
-                                     const class GALGAS_unifiedScalarTypeMap constinArgument2,
-                                     const class GALGAS_functionMap constinArgument3,
-                                     const class GALGAS_machineMap constinArgument4,
-                                     class GALGAS_string & outArgument5,
-                                     class C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
 

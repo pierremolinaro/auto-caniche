@@ -10,6 +10,47 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
+//                                           Routine 'performStaticAnalysis'                                           *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void routine_performStaticAnalysis (const class GALGAS_ast constinArgument0,
+                                    class GALGAS_unifiedScalarTypeMap & outArgument1,
+                                    class GALGAS_functionMap & outArgument2,
+                                    class GALGAS_machineMap & outArgument3,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                              Routine 'performDisplay'                                               *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void routine_performDisplay (const class GALGAS_string constinArgument0,
+                             const class GALGAS_binaryset constinArgument1,
+                             const class GALGAS_machineVarListForDisplay constinArgument2,
+                             class GALGAS_string & ioArgument3,
+                             class C_Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                          Routine 'performDynamicAnalysis'                                           *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void routine_performDynamicAnalysis (const class GALGAS_string constinArgument0,
+                                     const class GALGAS_ast constinArgument1,
+                                     const class GALGAS_unifiedScalarTypeMap constinArgument2,
+                                     const class GALGAS_functionMap constinArgument3,
+                                     const class GALGAS_machineMap constinArgument4,
+                                     class GALGAS_string & outArgument5,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
 //                                       Filewrapper 'CCodeGenerationTemplates'                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
