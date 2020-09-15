@@ -3,15 +3,408 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations-2.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Overriding extension method '@switchInstruction analyzeInstruction'                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+C_BoolCommandLineOption gOption_omnibus_5F_options_generateCCode ("omnibus_options",
+                                         "generateCCode",
+                                         99,
+                                         "generate-c-code",
+                                         "Generate C code") ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                              String List options                                              
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@implicationExpression analyzeExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_implicationExpression_analyzeExpression (const cPtr_expression * inObject,
+                                                                     const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                     const GALGAS_bool constinArgument_inEnsureClause,
+                                                                     GALGAS_decoratedExpression & outArgument_outDecoratedExpression,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_implicationExpression * object = (const cPtr_implicationExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_implicationExpression) ;
+  GALGAS_decoratedExpression var_leftDecoratedExpr_1831 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_1831, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 54)) ;
+  GALGAS_decoratedExpression var_rightDecoratedExpr_1954 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_1954, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 59)) ;
+  outArgument_outDecoratedExpression = GALGAS_implicationDecoratedExpression::constructor_new (var_leftDecoratedExpr_1831, var_rightDecoratedExpr_1954  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 64)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_implicationExpression_analyzeExpression (void) {
+  enterExtensionMethod_analyzeExpression (kTypeDescriptor_GALGAS_implicationExpression.mSlotID,
+                                          extensionMethod_implicationExpression_analyzeExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_implicationExpression_analyzeExpression (defineExtensionMethod_implicationExpression_analyzeExpression, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@logicalOrExpression analyzeExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_logicalOrExpression_analyzeExpression (const cPtr_expression * inObject,
+                                                                   const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                   const GALGAS_bool constinArgument_inEnsureClause,
+                                                                   GALGAS_decoratedExpression & outArgument_outDecoratedExpression,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_logicalOrExpression * object = (const cPtr_logicalOrExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_logicalOrExpression) ;
+  GALGAS_decoratedExpression var_leftDecoratedExpr_2435 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_2435, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 75)) ;
+  GALGAS_decoratedExpression var_rightDecoratedExpr_2558 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_2558, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 80)) ;
+  outArgument_outDecoratedExpression = GALGAS_logicalOrDecoratedExpression::constructor_new (var_leftDecoratedExpr_2435, var_rightDecoratedExpr_2558  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 85)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_logicalOrExpression_analyzeExpression (void) {
+  enterExtensionMethod_analyzeExpression (kTypeDescriptor_GALGAS_logicalOrExpression.mSlotID,
+                                          extensionMethod_logicalOrExpression_analyzeExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_logicalOrExpression_analyzeExpression (defineExtensionMethod_logicalOrExpression_analyzeExpression, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@logicalAndExpression analyzeExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_logicalAndExpression_analyzeExpression (const cPtr_expression * inObject,
+                                                                    const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                    const GALGAS_bool constinArgument_inEnsureClause,
+                                                                    GALGAS_decoratedExpression & outArgument_outDecoratedExpression,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_logicalAndExpression * object = (const cPtr_logicalAndExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_logicalAndExpression) ;
+  GALGAS_decoratedExpression var_leftDecoratedExpr_3038 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mLeft.ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_3038, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 96)) ;
+  GALGAS_decoratedExpression var_rightDecoratedExpr_3161 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) object->mProperty_mRight.ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_3161, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 101)) ;
+  outArgument_outDecoratedExpression = GALGAS_logicalAndDecoratedExpression::constructor_new (var_leftDecoratedExpr_3038, var_rightDecoratedExpr_3161  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 106)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_logicalAndExpression_analyzeExpression (void) {
+  enterExtensionMethod_analyzeExpression (kTypeDescriptor_GALGAS_logicalAndExpression.mSlotID,
+                                          extensionMethod_logicalAndExpression_analyzeExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_logicalAndExpression_analyzeExpression (defineExtensionMethod_logicalAndExpression_analyzeExpression, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@comparisonInExpression analyzeExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_comparisonInExpression_analyzeExpression (const cPtr_expression * inObject,
+                                                                      const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                      const GALGAS_bool constinArgument_inEnsureClause,
+                                                                      GALGAS_decoratedExpression & outArgument_outDecoratedExpression,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_comparisonInExpression * object = (const cPtr_comparisonInExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_comparisonInExpression) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_3663 ;
+  GALGAS_uint joker_3669 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mAttributeName, var_attributeTypeProxy_3663, joker_3669, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 118)) ;
+  GALGAS_decoratedComparisonRightOperand var_decoratedOperandExpression_3846 ;
+  callExtensionMethod_analyzeComparisonRightOperand ((const cPtr_comparisonRightOperand *) object->mProperty_mRightOperand.ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_decoratedOperandExpression_3846, var_attributeTypeProxy_3663, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 124)) ;
+  outArgument_outDecoratedExpression = GALGAS_decoratedComparisonInExpression::constructor_new (object->mProperty_mAttributeName, object->mProperty_mOperator, var_decoratedOperandExpression_3846  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 130)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_comparisonInExpression_analyzeExpression (void) {
+  enterExtensionMethod_analyzeExpression (kTypeDescriptor_GALGAS_comparisonInExpression.mSlotID,
+                                          extensionMethod_comparisonInExpression_analyzeExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_comparisonInExpression_analyzeExpression (defineExtensionMethod_comparisonInExpression_analyzeExpression, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@constantAsComparisonRightOperand analyzeComparisonRightOperand'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_constantAsComparisonRightOperand_analyzeComparisonRightOperand (const cPtr_comparisonRightOperand * inObject,
+                                                                                            const GALGAS_analyzeContext /* constinArgument_inAnalyzeContext */,
+                                                                                            const GALGAS_bool /* constinArgument_inEnsureClause */,
+                                                                                            GALGAS_decoratedComparisonRightOperand & outArgument_outDecoratedExpression,
+                                                                                            const GALGAS_unifiedScalarTypeMap_2D_proxy constinArgument_inVarTypeProxy,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_constantAsComparisonRightOperand * object = (const cPtr_constantAsComparisonRightOperand *) inObject ;
+  macroValidSharedObject (object, cPtr_constantAsComparisonRightOperand) ;
+  GALGAS_uint var_constantValue_5364 ;
+  constinArgument_inVarTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)).method_searchKey (object->mProperty_mConstantName, var_constantValue_5364, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)) ;
+  outArgument_outDecoratedExpression = GALGAS_decoratedConstantAsComparisonRightOperand::constructor_new (constinArgument_inVarTypeProxy, object->mProperty_mConstantName, var_constantValue_5364  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 173)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_constantAsComparisonRightOperand_analyzeComparisonRightOperand (void) {
+  enterExtensionMethod_analyzeComparisonRightOperand (kTypeDescriptor_GALGAS_constantAsComparisonRightOperand.mSlotID,
+                                                      extensionMethod_constantAsComparisonRightOperand_analyzeComparisonRightOperand) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_constantAsComparisonRightOperand_analyzeComparisonRightOperand (defineExtensionMethod_constantAsComparisonRightOperand_analyzeComparisonRightOperand, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@attributeAsComparisonRightOperand analyzeComparisonRightOperand'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_attributeAsComparisonRightOperand_analyzeComparisonRightOperand (const cPtr_comparisonRightOperand * inObject,
+                                                                                             const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                                             const GALGAS_bool constinArgument_inEnsureClause,
+                                                                                             GALGAS_decoratedComparisonRightOperand & outArgument_outDecoratedExpression,
+                                                                                             const GALGAS_unifiedScalarTypeMap_2D_proxy constinArgument_inVarTypeProxy,
+                                                                                             C_Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_attributeAsComparisonRightOperand * object = (const cPtr_attributeAsComparisonRightOperand *) inObject ;
+  macroValidSharedObject (object, cPtr_attributeAsComparisonRightOperand) ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = object->mProperty_mHasOldQualifier.operator_and (constinArgument_inEnsureClause.operator_not (SOURCE_FILE ("expressionStaticAnalysis.galgas", 183)) COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 183)).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      TC_Array <C_FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (object->mProperty_mAttributeName.getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 184)), GALGAS_string ("'old' qualifier is allowed only in post condition"), fixItArray1  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 184)) ;
+    }
+  }
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_6075 ;
+  GALGAS_uint joker_6081 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mAttributeName, var_operandTypeProxy_6075, joker_6081, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 186)) ;
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (kIsNotEqual, constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)).objectCompare (var_operandTypeProxy_6075.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)))).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <C_FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (object->mProperty_mAttributeName.getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)), GALGAS_string ("var type is '%").add_operation (constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (GALGAS_string ("', and is different from right expression type '%"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (var_operandTypeProxy_6075.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 195)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), fixItArray3  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)) ;
+    }
+  }
+  outArgument_outDecoratedExpression = GALGAS_decoratedAttributeAsComparisonRightOperand::constructor_new (object->mProperty_mAttributeName  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 198)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_attributeAsComparisonRightOperand_analyzeComparisonRightOperand (void) {
+  enterExtensionMethod_analyzeComparisonRightOperand (kTypeDescriptor_GALGAS_attributeAsComparisonRightOperand.mSlotID,
+                                                      extensionMethod_attributeAsComparisonRightOperand_analyzeComparisonRightOperand) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_attributeAsComparisonRightOperand_analyzeComparisonRightOperand (defineExtensionMethod_attributeAsComparisonRightOperand_analyzeComparisonRightOperand, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@varAsAssignmentSourceExpression analyzeAssignmentSourceExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_varAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (const cPtr_assignmentSourceExpression * inObject,
+                                                                                               const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                                               const GALGAS_unifiedScalarTypeMap_2D_proxy constinArgument_inTargetTypeProxy,
+                                                                                               GALGAS_decoratedAssignmentSourceExpression & outArgument_outDecoratedExpression,
+                                                                                               C_Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_varAsAssignmentSourceExpression * object = (const cPtr_varAsAssignmentSourceExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_varAsAssignmentSourceExpression) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_sourceTypeProxy_4045 ;
+  GALGAS_uint joker_4051 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mSourceVarName, var_sourceTypeProxy_4045, joker_4051, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 111)) ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)).objectCompare (var_sourceTypeProxy_4045.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)))).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      TC_Array <C_FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (object->mProperty_mSourceVarName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (GALGAS_string ("', and is different from right expression type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (var_sourceTypeProxy_4045.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 120)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), fixItArray1  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)) ;
+    }
+  }
+  outArgument_outDecoratedExpression = GALGAS_attributeInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mSourceVarName  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 123)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_varAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (void) {
+  enterExtensionMethod_analyzeAssignmentSourceExpression (kTypeDescriptor_GALGAS_varAsAssignmentSourceExpression.mSlotID,
+                                                          extensionMethod_varAsAssignmentSourceExpression_analyzeAssignmentSourceExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_varAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (defineExtensionMethod_varAsAssignmentSourceExpression_analyzeAssignmentSourceExpression, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@constantAsAssignmentSourceExpression analyzeAssignmentSourceExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_constantAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (const cPtr_assignmentSourceExpression * inObject,
+                                                                                                    const GALGAS_analyzeContext /* constinArgument_inAnalyzeContext */,
+                                                                                                    const GALGAS_unifiedScalarTypeMap_2D_proxy constinArgument_inTargetTypeProxy,
+                                                                                                    GALGAS_decoratedAssignmentSourceExpression & outArgument_outDecoratedExpression,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_constantAsAssignmentSourceExpression * object = (const cPtr_constantAsAssignmentSourceExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_constantAsAssignmentSourceExpression) ;
+  GALGAS_uint var_cstValue_4869 ;
+  constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)).method_searchKey (object->mProperty_mConstantName, var_cstValue_4869, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)) ;
+  outArgument_outDecoratedExpression = GALGAS_cstInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mConstantName, var_cstValue_4869, constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_count (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_significantBitCount (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 135)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_constantAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (void) {
+  enterExtensionMethod_analyzeAssignmentSourceExpression (kTypeDescriptor_GALGAS_constantAsAssignmentSourceExpression.mSlotID,
+                                                          extensionMethod_constantAsAssignmentSourceExpression_analyzeAssignmentSourceExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_constantAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (defineExtensionMethod_constantAsAssignmentSourceExpression_analyzeAssignmentSourceExpression, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@functionAsAssignmentSourceExpression analyzeAssignmentSourceExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_functionAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (const cPtr_assignmentSourceExpression * inObject,
+                                                                                                    const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                                                    const GALGAS_unifiedScalarTypeMap_2D_proxy constinArgument_inTargetTypeProxy,
+                                                                                                    GALGAS_decoratedAssignmentSourceExpression & outArgument_outDecoratedExpression,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_functionAsAssignmentSourceExpression * object = (const cPtr_functionAsAssignmentSourceExpression *) inObject ;
+  macroValidSharedObject (object, cPtr_functionAsAssignmentSourceExpression) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_5582 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_resultTypeProxy_5635 ;
+  GALGAS_decoratedFunctionValueList var_decoratedFunctionValueList_5699 ;
+  constinArgument_inAnalyzeContext.getter_mFunctionMap (HERE).method_searchKey (object->mProperty_mFunctionName, var_operandTypeProxy_5582, var_resultTypeProxy_5635, var_decoratedFunctionValueList_5699, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 149)) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_5861 ;
+  GALGAS_uint joker_5937 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mOperandName, var_attributeTypeProxy_5861, joker_5937, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 156)) ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = GALGAS_bool (kIsNotEqual, var_operandTypeProxy_5582.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)).objectCompare (var_attributeTypeProxy_5861.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)))).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      TC_Array <C_FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (object->mProperty_mOperandName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), GALGAS_string ("the '").add_operation (object->mProperty_mOperandName.getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (GALGAS_string ("' belongs to the '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (var_attributeTypeProxy_5861.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (GALGAS_string ("', but '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (object->mProperty_mFunctionName.getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' function requires an '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (var_operandTypeProxy_5582.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), fixItArray1  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)) ;
+    }
+  }
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)).objectCompare (var_resultTypeProxy_5635.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)))).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <C_FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (object->mProperty_mOperandName.getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (GALGAS_string ("', and is different from function result type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (var_resultTypeProxy_5635.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 174)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), fixItArray3  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)) ;
+    }
+  }
+  outArgument_outDecoratedExpression = GALGAS_functionInDecoratedAssignmentSourceExpression::constructor_new (object->mProperty_mFunctionName, object->mProperty_mOperandName, var_decoratedFunctionValueList_5699  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 178)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_functionAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (void) {
+  enterExtensionMethod_analyzeAssignmentSourceExpression (kTypeDescriptor_GALGAS_functionAsAssignmentSourceExpression.mSlotID,
+                                                          extensionMethod_functionAsAssignmentSourceExpression_analyzeAssignmentSourceExpression) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_functionAsAssignmentSourceExpression_analyzeAssignmentSourceExpression (defineExtensionMethod_functionAsAssignmentSourceExpression_analyzeAssignmentSourceExpression, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@assignmentInstruction analyzeInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+static void extensionMethod_assignmentInstruction_analyzeInstruction (const cPtr_instruction * inObject,
+                                                                      const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
+                                                                      GALGAS_decoratedInstruction & outArgument_outDecoratedInstruction,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_assignmentInstruction * object = (const cPtr_assignmentInstruction *) inObject ;
+  macroValidSharedObject (object, cPtr_assignmentInstruction) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_targetTypeProxy_7098 ;
+  GALGAS_uint joker_7104 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (object->mProperty_mTargetVarName, var_targetTypeProxy_7098, joker_7104, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 190)) ;
+  GALGAS_decoratedAssignmentSourceExpression var_decoratedExpression_7274 ;
+  callExtensionMethod_analyzeAssignmentSourceExpression ((const cPtr_assignmentSourceExpression *) object->mProperty_mSourceExpression.ptr (), constinArgument_inAnalyzeContext, var_targetTypeProxy_7098, var_decoratedExpression_7274, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 195)) ;
+  outArgument_outDecoratedInstruction = GALGAS_assignmentDecoratedInstruction::constructor_new (var_targetTypeProxy_7098, object->mProperty_mTargetVarName, var_decoratedExpression_7274  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 200)) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+static void defineExtensionMethod_assignmentInstruction_analyzeInstruction (void) {
+  enterExtensionMethod_analyzeInstruction (kTypeDescriptor_GALGAS_assignmentInstruction.mSlotID,
+                                           extensionMethod_assignmentInstruction_analyzeInstruction) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_assignmentInstruction_analyzeInstruction (defineExtensionMethod_assignmentInstruction_analyzeInstruction, NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@switchInstruction analyzeInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_switchInstruction_analyzeInstruction (const cPtr_instruction * inObject,
                                                                   const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
@@ -57,22 +450,22 @@ static void extensionMethod_switchInstruction_analyzeInstruction (const cPtr_ins
   outArgument_outDecoratedInstruction = GALGAS_switchDecoratedInstruction::constructor_new (object->mProperty_mVariableName, var_switchDecoratedCaseList_7908  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 241)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_switchInstruction_analyzeInstruction (void) {
   enterExtensionMethod_analyzeInstruction (kTypeDescriptor_GALGAS_switchInstruction.mSlotID,
                                            extensionMethod_switchInstruction_analyzeInstruction) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_switchInstruction_analyzeInstruction (defineExtensionMethod_switchInstruction_analyzeInstruction, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Overriding extension method '@ifInstruction analyzeInstruction'                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@ifInstruction analyzeInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_ifInstruction_analyzeInstruction (const cPtr_instruction * inObject,
                                                               const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
@@ -90,22 +483,22 @@ static void extensionMethod_ifInstruction_analyzeInstruction (const cPtr_instruc
   outArgument_outDecoratedInstruction = GALGAS_ifDecoratedInstruction::constructor_new (object->mProperty_mIFinstructionLocation, var_decoratedExpression_9312, object->mProperty_mEndOfTestExpression, var_decoratedThenInstructionList_9449, var_decoratedElseInstructionList_9586  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 266)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_ifInstruction_analyzeInstruction (void) {
   enterExtensionMethod_analyzeInstruction (kTypeDescriptor_GALGAS_ifInstruction.mSlotID,
                                            extensionMethod_ifInstruction_analyzeInstruction) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_ifInstruction_analyzeInstruction (defineExtensionMethod_ifInstruction_analyzeInstruction, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Overriding extension method '@assertInstruction analyzeInstruction'                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@assertInstruction analyzeInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_assertInstruction_analyzeInstruction (const cPtr_instruction * inObject,
                                                                   const GALGAS_analyzeContext constinArgument_inAnalyzeContext,
@@ -119,22 +512,22 @@ static void extensionMethod_assertInstruction_analyzeInstruction (const cPtr_ins
   outArgument_outDecoratedInstruction = GALGAS_assertDecoratedInstruction::constructor_new (object->mProperty_mAssertInstructionLocation, var_decoratedExpression_10193  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 286)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_assertInstruction_analyzeInstruction (void) {
   enterExtensionMethod_analyzeInstruction (kTypeDescriptor_GALGAS_assertInstruction.mSlotID,
                                            extensionMethod_assertInstruction_analyzeInstruction) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_assertInstruction_analyzeInstruction (defineExtensionMethod_assertInstruction_analyzeInstruction, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Routine 'performStaticAnalysis'                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'performStaticAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_performStaticAnalysis (const GALGAS_ast constinArgument_inAST,
                                     GALGAS_unifiedScalarTypeMap & outArgument_outUnifiedScalarTypeMap,
@@ -340,11 +733,11 @@ void routine_performStaticAnalysis (const GALGAS_ast constinArgument_inAST,
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            Routine 'displayVarValueSet'                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayVarValueSet'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_displayVarValueSet (const GALGAS_string constinArgument_inTitle,
                                  const GALGAS_binaryset constinArgument_inValueSet,
@@ -358,11 +751,11 @@ void routine_displayVarValueSet (const GALGAS_string constinArgument_inTitle,
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         Routine 'displayArgVarVarValueSet'                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayArgVarVarValueSet'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_displayArgVarVarValueSet (const GALGAS_string constinArgument_inTitle,
                                        const GALGAS_binaryset constinArgument_inValueSet,
@@ -377,11 +770,11 @@ void routine_displayArgVarVarValueSet (const GALGAS_string constinArgument_inTit
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Routine 'displayVarVarValueSet'                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayVarVarValueSet'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_displayVarVarValueSet (const GALGAS_string constinArgument_inTitle,
                                     const GALGAS_binaryset constinArgument_inValueSet,
@@ -395,11 +788,11 @@ void routine_displayVarVarValueSet (const GALGAS_string constinArgument_inTitle,
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               Function 'nameForValue'                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'nameForValue'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string function_nameForValue (const GALGAS_uint_36__34_ & constinArgument_inValue,
                                      const GALGAS_varList & constinArgument_inVarList,
@@ -410,10 +803,10 @@ GALGAS_string function_nameForValue (const GALGAS_uint_36__34_ & constinArgument
   GALGAS_uint_36__34_ var_v_4829 = constinArgument_inValue ;
   cEnumerator_varList enumerator_4860 (constinArgument_inVarList, kENUMERATION_UP) ;
   while (enumerator_4860.hasCurrentObject ()) {
-    GALGAS_uint_36__34_ var_mask_4886 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_4860.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 187)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 187)) ;
+    GALGAS_uint_36__34_ var_mask_4886 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_4860.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 187)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 187)) ;
     GALGAS_lstring var_cstName_4941 = enumerator_4860.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_v_4829.operator_and (var_mask_4886 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 188)).getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 188)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 188)) ;
     result_outResult.plusAssign_operation(var_cstName_4941.getter_string (HERE), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 189)) ;
-    var_v_4829 = var_v_4829.right_shift_operation (enumerator_4860.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 190)) ;
+    var_v_4829 = var_v_4829.right_shift_operation (enumerator_4860.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 190)) ;
     if (enumerator_4860.hasNextObject ()) {
       result_outResult.plusAssign_operation(GALGAS_string ("."), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 192)) ;
     }
@@ -424,9 +817,9 @@ GALGAS_string function_nameForValue (const GALGAS_uint_36__34_ & constinArgument
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//  Function introspection                                                                                             *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//  Function introspection                                                                       
+//----------------------------------------------------------------------------------------------------------------------
 
 static const C_galgas_type_descriptor * functionArgs_nameForValue [3] = {
   & kTypeDescriptor_GALGAS_uint_36__34_,
@@ -434,7 +827,7 @@ static const C_galgas_type_descriptor * functionArgs_nameForValue [3] = {
   NULL
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_object functionWithGenericHeader_nameForValue (C_Compiler * inCompiler,
                                                              const cObjectArray & inEffectiveParameterArray,
@@ -452,7 +845,7 @@ static GALGAS_object functionWithGenericHeader_nameForValue (C_Compiler * inComp
                                 COMMA_THERE).getter_object (THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_galgas_function_descriptor functionDescriptor_nameForValue ("nameForValue",
                                                               functionWithGenericHeader_nameForValue,
@@ -460,11 +853,11 @@ C_galgas_function_descriptor functionDescriptor_nameForValue ("nameForValue",
                                                               2,
                                                               functionArgs_nameForValue) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              Routine 'displayVarNames'                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayVarNames'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_displayVarNames (const GALGAS_machineVarListForDisplay constinArgument_inAttributeList,
                               GALGAS_string & ioArgument_ioString,
@@ -480,11 +873,11 @@ void routine_displayVarNames (const GALGAS_machineVarListForDisplay constinArgum
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             Routine 'displaySeparator'                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displaySeparator'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_displaySeparator (const GALGAS_machineVarListForDisplay constinArgument_inAttributeList,
                                GALGAS_string & ioArgument_ioString,
@@ -500,11 +893,11 @@ void routine_displaySeparator (const GALGAS_machineVarListForDisplay constinArgu
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               Routine 'displayValue'                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayValue'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_displayValue (const GALGAS_machineVarListForDisplay constinArgument_inAttributeList,
                            const GALGAS_uint_36__34_ constinArgument_inValue,
@@ -515,21 +908,21 @@ void routine_displayValue (const GALGAS_machineVarListForDisplay constinArgument
   GALGAS_uint_36__34_ var_aValue_6123 = constinArgument_inValue ;
   cEnumerator_machineVarListForDisplay enumerator_6160 (constinArgument_inAttributeList, kENUMERATION_UP) ;
   while (enumerator_6160.hasCurrentObject ()) {
-    GALGAS_uint_36__34_ var_mask_6184 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_6160.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 231)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 231)) ;
+    GALGAS_uint_36__34_ var_mask_6184 = GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_6160.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 231)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 231)) ;
     GALGAS_lstring var_cstName_6239 = enumerator_6160.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_aValue_6123.operator_and (var_mask_6184 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 232)).getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 232)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 232)) ;
     ioArgument_ioString.plusAssign_operation(GALGAS_string (" ").add_operation (var_cstName_6239.getter_string (HERE).getter_stringByRightPadding (enumerator_6160.current (HERE).getter_mColumnLength (HERE), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 233)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 233)).add_operation (GALGAS_string (" |"), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 233)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 233)) ;
-    var_aValue_6123 = var_aValue_6123.right_shift_operation (enumerator_6160.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 234)) ;
+    var_aValue_6123 = var_aValue_6123.right_shift_operation (enumerator_6160.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 234)) ;
     enumerator_6160.gotoNextObject () ;
   }
   ioArgument_ioString.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 236)) ;
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              Routine 'performDisplay'                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'performDisplay'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_performDisplay (const GALGAS_string constinArgument_inTitle,
                              const GALGAS_binaryset constinArgument_inValueSet,
@@ -562,11 +955,11 @@ void routine_performDisplay (const GALGAS_string constinArgument_inTitle,
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Routine 'addTransitionsToGraphvizString'                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'addTransitionsToGraphvizString'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_addTransitionsToGraphvizString (const GALGAS_eventDeclarationList_2D_element constinArgument_inEvent,
                                              const GALGAS_uint constinArgument_inArgVarVarTotalBitCount,
@@ -582,14 +975,14 @@ void routine_addTransitionsToGraphvizString (const GALGAS_eventDeclarationList_2
   while (enumerator_22028.hasCurrentObject ()) {
     GALGAS_string var_eventName_22053 = constinArgument_inEvent.getter_mEventName (HERE).getter_string (HERE) ;
     GALGAS_uint_36__34_ var_v_22095 = enumerator_22028.current (HERE).getter_mValue (HERE) ;
-    GALGAS_uint_36__34_ var_source_22133 = var_v_22095.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) ;
-    var_v_22095 = var_v_22095.right_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 630)) ;
-    GALGAS_uint_36__34_ var_target_22228 = var_v_22095.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)) ;
-    var_v_22095 = var_v_22095.right_shift_operation (constinArgument_inVarTotalBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 632)) ;
+    GALGAS_uint_36__34_ var_source_22133 = var_v_22095.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 629)) ;
+    var_v_22095 = var_v_22095.right_shift_operation (constinArgument_inVarTotalBitCount, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 630)) ;
+    GALGAS_uint_36__34_ var_target_22228 = var_v_22095.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (constinArgument_inVarTotalBitCount, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 631)) ;
+    var_v_22095 = var_v_22095.right_shift_operation (constinArgument_inVarTotalBitCount, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 632)) ;
     cEnumerator_varList enumerator_22330 (constinArgument_inArgumentList, kENUMERATION_UP) ;
     while (enumerator_22330.hasCurrentObject ()) {
-      GALGAS_uint_36__34_ var_argValue_22360 = var_v_22095.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_22330.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)) ;
-      var_v_22095 = var_v_22095.right_shift_operation (enumerator_22330.current (HERE).getter_mBDDBitCount (HERE) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 635)) ;
+      GALGAS_uint_36__34_ var_argValue_22360 = var_v_22095.operator_and (GALGAS_uint_36__34_ ((uint64_t) 1ULL).left_shift_operation (enumerator_22330.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)).substract_operation (GALGAS_uint_36__34_ ((uint64_t) 1ULL), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)) COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 634)) ;
+      var_v_22095 = var_v_22095.right_shift_operation (enumerator_22330.current (HERE).getter_mBDDBitCount (HERE), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 635)) ;
       var_eventName_22053.plusAssign_operation(GALGAS_string ("\?").add_operation (enumerator_22330.current (HERE).getter_mValueList (HERE).getter_mValueAtIndex (var_argValue_22360.getter_uint (inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 636)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 636)).getter_string (SOURCE_FILE ("dynamicAnalysis.galgas", 636)), inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 636)), inCompiler  COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 636)) ;
       enumerator_22330.gotoNextObject () ;
     }
@@ -599,11 +992,11 @@ void routine_addTransitionsToGraphvizString (const GALGAS_eventDeclarationList_2
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Routine 'performDynamicAnalysis'                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'performDynamicAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_performDynamicAnalysis (const GALGAS_string constinArgument_inSourceFileName,
                                      const GALGAS_ast constinArgument_inAST,
@@ -624,11 +1017,11 @@ void routine_performDynamicAnalysis (const GALGAS_string constinArgument_inSourc
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Overriding extension method '@implicationExpression computeExpressionBDD'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@implicationExpression computeExpressionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_implicationExpression_computeExpressionBDD (const cPtr_expression * inObject,
                                                                         const GALGAS_varMap constinArgument_inVarMap,
@@ -645,22 +1038,22 @@ static void extensionMethod_implicationExpression_computeExpressionBDD (const cP
   outArgument_outExpressionBDD = var_left_24038.getter_implies (var_right_24125 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 683)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_implicationExpression_computeExpressionBDD (void) {
   enterExtensionMethod_computeExpressionBDD (kTypeDescriptor_GALGAS_implicationExpression.mSlotID,
                                              extensionMethod_implicationExpression_computeExpressionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_implicationExpression_computeExpressionBDD (defineExtensionMethod_implicationExpression_computeExpressionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Overriding extension method '@logicalOrExpression computeExpressionBDD'                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@logicalOrExpression computeExpressionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_logicalOrExpression_computeExpressionBDD (const cPtr_expression * inObject,
                                                                       const GALGAS_varMap constinArgument_inVarMap,
@@ -677,22 +1070,22 @@ static void extensionMethod_logicalOrExpression_computeExpressionBDD (const cPtr
   outArgument_outExpressionBDD = var_left_24529.operator_or (var_right_24616 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 694)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_logicalOrExpression_computeExpressionBDD (void) {
   enterExtensionMethod_computeExpressionBDD (kTypeDescriptor_GALGAS_logicalOrExpression.mSlotID,
                                              extensionMethod_logicalOrExpression_computeExpressionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_logicalOrExpression_computeExpressionBDD (defineExtensionMethod_logicalOrExpression_computeExpressionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Overriding extension method '@logicalAndExpression computeExpressionBDD'                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@logicalAndExpression computeExpressionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_logicalAndExpression_computeExpressionBDD (const cPtr_expression * inObject,
                                                                        const GALGAS_varMap constinArgument_inVarMap,
@@ -709,22 +1102,22 @@ static void extensionMethod_logicalAndExpression_computeExpressionBDD (const cPt
   outArgument_outExpressionBDD = var_left_25012.operator_and (var_right_25099 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 705)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_logicalAndExpression_computeExpressionBDD (void) {
   enterExtensionMethod_computeExpressionBDD (kTypeDescriptor_GALGAS_logicalAndExpression.mSlotID,
                                              extensionMethod_logicalAndExpression_computeExpressionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_logicalAndExpression_computeExpressionBDD (defineExtensionMethod_logicalAndExpression_computeExpressionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Overriding extension method '@comparisonInExpression computeExpressionBDD'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@comparisonInExpression computeExpressionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_comparisonInExpression_computeExpressionBDD (const cPtr_expression * inObject,
                                                                          const GALGAS_varMap constinArgument_inVarMap,
@@ -742,22 +1135,22 @@ static void extensionMethod_comparisonInExpression_computeExpressionBDD (const c
   callExtensionMethod_computeRightOperandBDD ((const cPtr_comparisonRightOperand *) object->mProperty_mRightOperand.ptr (), constinArgument_inVarMap, var_constantMap_25450, var_leftVarBDDStartBit_25484, var_leftVarBDDBitCount_25518, object->mProperty_mOperator, constinArgument_inVarTotalBDDBitCount, outArgument_outExpressionBDD, inCompiler COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 722)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_comparisonInExpression_computeExpressionBDD (void) {
   enterExtensionMethod_computeExpressionBDD (kTypeDescriptor_GALGAS_comparisonInExpression.mSlotID,
                                              extensionMethod_comparisonInExpression_computeExpressionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_comparisonInExpression_computeExpressionBDD (defineExtensionMethod_comparisonInExpression_computeExpressionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//               Overriding extension method '@attributeAsComparisonRightOperand computeRightOperandBDD'               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@attributeAsComparisonRightOperand computeRightOperandBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD (const cPtr_comparisonRightOperand * inObject,
                                                                                       const GALGAS_varMap constinArgument_inVarMap,
@@ -799,22 +1192,22 @@ static void extensionMethod_attributeAsComparisonRightOperand_computeRightOperan
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD (void) {
   enterExtensionMethod_computeRightOperandBDD (kTypeDescriptor_GALGAS_attributeAsComparisonRightOperand.mSlotID,
                                                extensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_attributeAsComparisonRightOperand_computeRightOperandBDD (defineExtensionMethod_attributeAsComparisonRightOperand_computeRightOperandBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//               Overriding extension method '@constantAsComparisonRightOperand computeRightOperandBDD'                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@constantAsComparisonRightOperand computeRightOperandBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD (const cPtr_comparisonRightOperand * inObject,
                                                                                      const GALGAS_varMap /* constinArgument_inVarMap */,
@@ -846,22 +1239,22 @@ static void extensionMethod_constantAsComparisonRightOperand_computeRightOperand
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD (void) {
   enterExtensionMethod_computeRightOperandBDD (kTypeDescriptor_GALGAS_constantAsComparisonRightOperand.mSlotID,
                                                extensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_constantAsComparisonRightOperand_computeRightOperandBDD (defineExtensionMethod_constantAsComparisonRightOperand_computeRightOperandBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Overriding extension method '@assignmentInstruction computeInstructionBDD'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@assignmentInstruction computeInstructionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_assignmentInstruction_computeInstructionBDD (const cPtr_instruction * inObject,
                                                                          const GALGAS_uint /* constinArgument_inVarTotalBDDBitCount */,
@@ -890,22 +1283,22 @@ static void extensionMethod_assignmentInstruction_computeInstructionBDD (const c
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_assignmentInstruction_computeInstructionBDD (void) {
   enterExtensionMethod_computeInstructionBDD (kTypeDescriptor_GALGAS_assignmentInstruction.mSlotID,
                                               extensionMethod_assignmentInstruction_computeInstructionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_assignmentInstruction_computeInstructionBDD (defineExtensionMethod_assignmentInstruction_computeInstructionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Overriding extension method '@assertInstruction computeInstructionBDD'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@assertInstruction computeInstructionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_assertInstruction_computeInstructionBDD (const cPtr_instruction * inObject,
                                                                      const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
@@ -950,22 +1343,22 @@ static void extensionMethod_assertInstruction_computeInstructionBDD (const cPtr_
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_assertInstruction_computeInstructionBDD (void) {
   enterExtensionMethod_computeInstructionBDD (kTypeDescriptor_GALGAS_assertInstruction.mSlotID,
                                               extensionMethod_assertInstruction_computeInstructionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_assertInstruction_computeInstructionBDD (defineExtensionMethod_assertInstruction_computeInstructionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Overriding extension method '@switchInstruction computeInstructionBDD'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@switchInstruction computeInstructionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_switchInstruction_computeInstructionBDD (const cPtr_instruction * inObject,
                                                                      const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
@@ -1060,22 +1453,22 @@ static void extensionMethod_switchInstruction_computeInstructionBDD (const cPtr_
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_switchInstruction_computeInstructionBDD (void) {
   enterExtensionMethod_computeInstructionBDD (kTypeDescriptor_GALGAS_switchInstruction.mSlotID,
                                               extensionMethod_switchInstruction_computeInstructionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_switchInstruction_computeInstructionBDD (defineExtensionMethod_switchInstruction_computeInstructionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Overriding extension method '@ifInstruction computeInstructionBDD'                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@ifInstruction computeInstructionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_ifInstruction_computeInstructionBDD (const cPtr_instruction * inObject,
                                                                  const GALGAS_uint constinArgument_inVarTotalBDDBitCount,
@@ -1187,22 +1580,22 @@ static void extensionMethod_ifInstruction_computeInstructionBDD (const cPtr_inst
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_ifInstruction_computeInstructionBDD (void) {
   enterExtensionMethod_computeInstructionBDD (kTypeDescriptor_GALGAS_ifInstruction.mSlotID,
                                               extensionMethod_ifInstruction_computeInstructionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_ifInstruction_computeInstructionBDD (defineExtensionMethod_ifInstruction_computeInstructionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//           Overriding extension method '@varAsAssignmentSourceExpression computeAssignmentInstructionBDD'            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@varAsAssignmentSourceExpression computeAssignmentInstructionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD (const cPtr_assignmentSourceExpression * inObject,
                                                                                              const GALGAS_varMap constinArgument_inVarMap,
@@ -1242,22 +1635,22 @@ static void extensionMethod_varAsAssignmentSourceExpression_computeAssignmentIns
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD (void) {
   enterExtensionMethod_computeAssignmentInstructionBDD (kTypeDescriptor_GALGAS_varAsAssignmentSourceExpression.mSlotID,
                                                         extensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD (defineExtensionMethod_varAsAssignmentSourceExpression_computeAssignmentInstructionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//         Overriding extension method '@constantAsAssignmentSourceExpression computeAssignmentInstructionBDD'         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@constantAsAssignmentSourceExpression computeAssignmentInstructionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD (const cPtr_assignmentSourceExpression * inObject,
                                                                                                   const GALGAS_varMap /* constinArgument_inVarMap */,
@@ -1278,22 +1671,22 @@ static void extensionMethod_constantAsAssignmentSourceExpression_computeAssignme
   ioArgument_ioArgOldVarVarValueSet = var_v_39144.operator_and (var_expressionValueSet_38993 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1086)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD (void) {
   enterExtensionMethod_computeAssignmentInstructionBDD (kTypeDescriptor_GALGAS_constantAsAssignmentSourceExpression.mSlotID,
                                                         extensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD (defineExtensionMethod_constantAsAssignmentSourceExpression_computeAssignmentInstructionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//         Overriding extension method '@functionAsAssignmentSourceExpression computeAssignmentInstructionBDD'         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@functionAsAssignmentSourceExpression computeAssignmentInstructionBDD'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD (const cPtr_assignmentSourceExpression * inObject,
                                                                                                   const GALGAS_varMap constinArgument_inVarMap,
@@ -1330,22 +1723,22 @@ static void extensionMethod_functionAsAssignmentSourceExpression_computeAssignme
   ioArgument_ioArgOldVarVarValueSet = var_v_40970.operator_and (var_constraint_40824 COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1139)).getter_existOnBitIndexAndBeyond (constinArgument_inArgOldVarVarBDDBitCount COMMA_SOURCE_FILE ("dynamicAnalysis.galgas", 1139)) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD (void) {
   enterExtensionMethod_computeAssignmentInstructionBDD (kTypeDescriptor_GALGAS_functionAsAssignmentSourceExpression.mSlotID,
                                                         extensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD (defineExtensionMethod_functionAsAssignmentSourceExpression_computeAssignmentInstructionBDD, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Filewrapper 'CCodeGenerationTemplates'                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'CCodeGenerationTemplates'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
 
@@ -1370,11 +1763,11 @@ const cDirectoryWrapper gWrapperDirectory_0_CCodeGenerationTemplates (
 ) ;
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Filewrapper template 'CCodeGenerationTemplates enumerationDeclaration'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'CCodeGenerationTemplates enumerationDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_enumerationDeclaration (C_Compiler * /* inCompiler */,
                                                                                    const GALGAS_string & in_ENUMERATION_5F_NAME,
@@ -1412,11 +1805,11 @@ GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_enumerationDeclaratio
   return GALGAS_string (result) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Filewrapper template 'CCodeGenerationTemplates machineDeclaration'                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'CCodeGenerationTemplates machineDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineDeclaration (C_Compiler * inCompiler,
                                                                                const GALGAS_string & /* in_FILE_5F_NAME */,
@@ -1563,11 +1956,11 @@ GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineDeclaration (C
   return GALGAS_string (result) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Filewrapper template 'CCodeGenerationTemplates machineImplementation'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'CCodeGenerationTemplates machineImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineImplementation (C_Compiler * inCompiler,
                                                                                   const GALGAS_string & /* in_FILE_5F_NAME */,
@@ -1691,11 +2084,11 @@ GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_machineImplementation
   return GALGAS_string (result) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Filewrapper template 'CCodeGenerationTemplates functionDeclaration'                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'CCodeGenerationTemplates functionDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionDeclaration (C_Compiler * /* inCompiler */,
                                                                                 const GALGAS_string & /* in_FILE_5F_NAME */,
@@ -1730,11 +2123,11 @@ GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionDeclaration (
   return GALGAS_string (result) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Filewrapper template 'CCodeGenerationTemplates functionImplementation'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'CCodeGenerationTemplates functionImplementation'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionImplementation (C_Compiler * /* inCompiler */,
                                                                                    const GALGAS_string & /* in_FILE_5F_NAME */,
@@ -1784,11 +2177,11 @@ GALGAS_string filewrapperTemplate_CCodeGenerationTemplates_functionImplementatio
   return GALGAS_string (result) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Routine 'performCCodeGeneration'                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'performCCodeGeneration'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_performCCodeGeneration (const GALGAS_string constinArgument_inSourceFileName,
                                      const GALGAS_unifiedScalarTypeMap constinArgument_inUnifiedScalarTypeMap,
@@ -1837,11 +2230,11 @@ void routine_performCCodeGeneration (const GALGAS_string constinArgument_inSourc
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Overriding extension getter '@assignmentDecoratedInstruction generateCCode'                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@assignmentDecoratedInstruction generateCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_assignmentDecoratedInstruction_generateCCode (const cPtr_decoratedInstruction * inObject,
                                                                                    const GALGAS_string constinArgument_inIndentationString,
@@ -1858,22 +2251,22 @@ static GALGAS_string extensionGetter_assignmentDecoratedInstruction_generateCCod
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_assignmentDecoratedInstruction_generateCCode (void) {
   enterExtensionGetter_generateCCode (kTypeDescriptor_GALGAS_assignmentDecoratedInstruction.mSlotID,
                                       extensionGetter_assignmentDecoratedInstruction_generateCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_assignmentDecoratedInstruction_generateCCode (defineExtensionGetter_assignmentDecoratedInstruction_generateCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Overriding extension getter '@assertDecoratedInstruction generateCCode'                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@assertDecoratedInstruction generateCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_assertDecoratedInstruction_generateCCode (const cPtr_decoratedInstruction * /* inObject */,
                                                                                const GALGAS_string /* constinArgument_inIndentationString */,
@@ -1886,22 +2279,22 @@ static GALGAS_string extensionGetter_assertDecoratedInstruction_generateCCode (c
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_assertDecoratedInstruction_generateCCode (void) {
   enterExtensionGetter_generateCCode (kTypeDescriptor_GALGAS_assertDecoratedInstruction.mSlotID,
                                       extensionGetter_assertDecoratedInstruction_generateCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_assertDecoratedInstruction_generateCCode (defineExtensionGetter_assertDecoratedInstruction_generateCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Overriding extension getter '@ifDecoratedInstruction generateCCode'                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@ifDecoratedInstruction generateCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_ifDecoratedInstruction_generateCCode (const cPtr_decoratedInstruction * inObject,
                                                                            const GALGAS_string constinArgument_inIndentationString,
@@ -1926,22 +2319,22 @@ static GALGAS_string extensionGetter_ifDecoratedInstruction_generateCCode (const
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_ifDecoratedInstruction_generateCCode (void) {
   enterExtensionGetter_generateCCode (kTypeDescriptor_GALGAS_ifDecoratedInstruction.mSlotID,
                                       extensionGetter_ifDecoratedInstruction_generateCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_ifDecoratedInstruction_generateCCode (defineExtensionGetter_ifDecoratedInstruction_generateCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Overriding extension getter '@switchDecoratedInstruction generateCCode'                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@switchDecoratedInstruction generateCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_switchDecoratedInstruction_generateCCode (const cPtr_decoratedInstruction * inObject,
                                                                                const GALGAS_string constinArgument_inIndentationString,
@@ -1970,22 +2363,22 @@ static GALGAS_string extensionGetter_switchDecoratedInstruction_generateCCode (c
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_switchDecoratedInstruction_generateCCode (void) {
   enterExtensionGetter_generateCCode (kTypeDescriptor_GALGAS_switchDecoratedInstruction.mSlotID,
                                       extensionGetter_switchDecoratedInstruction_generateCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_switchDecoratedInstruction_generateCCode (defineExtensionGetter_switchDecoratedInstruction_generateCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//     Overriding extension getter '@attributeInDecoratedAssignmentSourceExpression generateSourceExpressionCCode'     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@attributeInDecoratedAssignmentSourceExpression generateSourceExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_attributeInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (const cPtr_decoratedAssignmentSourceExpression * inObject,
                                                                                                                    const GALGAS_unifiedScalarTypeMap_2D_proxy /* constinArgument_inTargetTypeProxy */,
@@ -2000,22 +2393,22 @@ static GALGAS_string extensionGetter_attributeInDecoratedAssignmentSourceExpress
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_attributeInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (void) {
   enterExtensionGetter_generateSourceExpressionCCode (kTypeDescriptor_GALGAS_attributeInDecoratedAssignmentSourceExpression.mSlotID,
                                                       extensionGetter_attributeInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_attributeInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (defineExtensionGetter_attributeInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//        Overriding extension getter '@cstInDecoratedAssignmentSourceExpression generateSourceExpressionCCode'        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@cstInDecoratedAssignmentSourceExpression generateSourceExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_cstInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (const cPtr_decoratedAssignmentSourceExpression * inObject,
                                                                                                              const GALGAS_unifiedScalarTypeMap_2D_proxy /* constinArgument_inTargetTypeProxy */,
@@ -2030,22 +2423,22 @@ static GALGAS_string extensionGetter_cstInDecoratedAssignmentSourceExpression_ge
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_cstInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (void) {
   enterExtensionGetter_generateSourceExpressionCCode (kTypeDescriptor_GALGAS_cstInDecoratedAssignmentSourceExpression.mSlotID,
                                                       extensionGetter_cstInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_cstInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (defineExtensionGetter_cstInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//     Overriding extension getter '@functionInDecoratedAssignmentSourceExpression generateSourceExpressionCCode'      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@functionInDecoratedAssignmentSourceExpression generateSourceExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_functionInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (const cPtr_decoratedAssignmentSourceExpression * inObject,
                                                                                                                   const GALGAS_unifiedScalarTypeMap_2D_proxy /* constinArgument_inTargetTypeProxy */,
@@ -2060,22 +2453,22 @@ static GALGAS_string extensionGetter_functionInDecoratedAssignmentSourceExpressi
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_functionInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (void) {
   enterExtensionGetter_generateSourceExpressionCCode (kTypeDescriptor_GALGAS_functionInDecoratedAssignmentSourceExpression.mSlotID,
                                                       extensionGetter_functionInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_functionInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode (defineExtensionGetter_functionInDecoratedAssignmentSourceExpression_generateSourceExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension getter '@logicalAndDecoratedExpression generateExpressionCCode'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@logicalAndDecoratedExpression generateExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_logicalAndDecoratedExpression_generateExpressionCCode (const cPtr_decoratedExpression * inObject,
                                                                                             C_Compiler * inCompiler
@@ -2089,22 +2482,22 @@ static GALGAS_string extensionGetter_logicalAndDecoratedExpression_generateExpre
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_logicalAndDecoratedExpression_generateExpressionCCode (void) {
   enterExtensionGetter_generateExpressionCCode (kTypeDescriptor_GALGAS_logicalAndDecoratedExpression.mSlotID,
                                                 extensionGetter_logicalAndDecoratedExpression_generateExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_logicalAndDecoratedExpression_generateExpressionCCode (defineExtensionGetter_logicalAndDecoratedExpression_generateExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                 Overriding extension getter '@logicalOrDecoratedExpression generateExpressionCCode'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@logicalOrDecoratedExpression generateExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_logicalOrDecoratedExpression_generateExpressionCCode (const cPtr_decoratedExpression * inObject,
                                                                                            C_Compiler * inCompiler
@@ -2118,22 +2511,22 @@ static GALGAS_string extensionGetter_logicalOrDecoratedExpression_generateExpres
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_logicalOrDecoratedExpression_generateExpressionCCode (void) {
   enterExtensionGetter_generateExpressionCCode (kTypeDescriptor_GALGAS_logicalOrDecoratedExpression.mSlotID,
                                                 extensionGetter_logicalOrDecoratedExpression_generateExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_logicalOrDecoratedExpression_generateExpressionCCode (defineExtensionGetter_logicalOrDecoratedExpression_generateExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension getter '@implicationDecoratedExpression generateExpressionCCode'                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@implicationDecoratedExpression generateExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_implicationDecoratedExpression_generateExpressionCCode (const cPtr_decoratedExpression * inObject,
                                                                                              C_Compiler * inCompiler
@@ -2147,22 +2540,22 @@ static GALGAS_string extensionGetter_implicationDecoratedExpression_generateExpr
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_implicationDecoratedExpression_generateExpressionCCode (void) {
   enterExtensionGetter_generateExpressionCCode (kTypeDescriptor_GALGAS_implicationDecoratedExpression.mSlotID,
                                                 extensionGetter_implicationDecoratedExpression_generateExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_implicationDecoratedExpression_generateExpressionCCode (defineExtensionGetter_implicationDecoratedExpression_generateExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//               Overriding extension getter '@decoratedComparisonInExpression generateExpressionCCode'                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@decoratedComparisonInExpression generateExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_decoratedComparisonInExpression_generateExpressionCCode (const cPtr_decoratedExpression * inObject,
                                                                                               C_Compiler * inCompiler
@@ -2191,22 +2584,22 @@ static GALGAS_string extensionGetter_decoratedComparisonInExpression_generateExp
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_decoratedComparisonInExpression_generateExpressionCCode (void) {
   enterExtensionGetter_generateExpressionCCode (kTypeDescriptor_GALGAS_decoratedComparisonInExpression.mSlotID,
                                                 extensionGetter_decoratedComparisonInExpression_generateExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_decoratedComparisonInExpression_generateExpressionCCode (defineExtensionGetter_decoratedComparisonInExpression_generateExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//          Overriding extension getter '@decoratedAttributeAsComparisonRightOperand generateExpressionCCode'          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@decoratedAttributeAsComparisonRightOperand generateExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_decoratedAttributeAsComparisonRightOperand_generateExpressionCCode (const cPtr_decoratedComparisonRightOperand * inObject,
                                                                                                          C_Compiler * /* inCompiler */
@@ -2220,22 +2613,22 @@ static GALGAS_string extensionGetter_decoratedAttributeAsComparisonRightOperand_
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_decoratedAttributeAsComparisonRightOperand_generateExpressionCCode (void) {
   enterExtensionGetter_generateExpressionCCode (kTypeDescriptor_GALGAS_decoratedAttributeAsComparisonRightOperand.mSlotID,
                                                 extensionGetter_decoratedAttributeAsComparisonRightOperand_generateExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_decoratedAttributeAsComparisonRightOperand_generateExpressionCCode (defineExtensionGetter_decoratedAttributeAsComparisonRightOperand_generateExpressionCCode, NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//          Overriding extension getter '@decoratedConstantAsComparisonRightOperand generateExpressionCCode'           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Overriding extension getter '@decoratedConstantAsComparisonRightOperand generateExpressionCCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_string extensionGetter_decoratedConstantAsComparisonRightOperand_generateExpressionCCode (const cPtr_decoratedComparisonRightOperand * inObject,
                                                                                                         C_Compiler * /* inCompiler */
@@ -2249,14 +2642,14 @@ static GALGAS_string extensionGetter_decoratedConstantAsComparisonRightOperand_g
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionGetter_decoratedConstantAsComparisonRightOperand_generateExpressionCCode (void) {
   enterExtensionGetter_generateExpressionCCode (kTypeDescriptor_GALGAS_decoratedConstantAsComparisonRightOperand.mSlotID,
                                                 extensionGetter_decoratedConstantAsComparisonRightOperand_generateExpressionCCode) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_decoratedConstantAsComparisonRightOperand_generateExpressionCCode (defineExtensionGetter_decoratedConstantAsComparisonRightOperand_generateExpressionCCode, NULL) ;
 
@@ -2269,63 +2662,63 @@ C_PrologueEpilogue gGetter_decoratedConstantAsComparisonRightOperand_generateExp
 #include "galgas2/cLexiqueIntrospection.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      print_tool_help_message                                                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                      print_tool_help_message                                                  
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void print_tool_help_message (void) {
   co << "Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n" ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static const char * kSourceFileExtensions [] = {
   "omnibus",
   NULL
 } ;    
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static const char * kSourceFileHelpMessages [] = {
   "a source text file with the .plm extension",
   NULL
 } ;    
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * projectVersionString (void) {
   return "1.0.0" ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  Routine 'before'                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'before'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void routine_before (C_Compiler * /* inCompiler */
                             COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   Routine 'after'                                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'after'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void routine_after (C_Compiler * /* inCompiler */
                            COMMA_UNUSED_LOCATION_ARGS) {
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               Routine 'programRule_0'                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'programRule_0'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
@@ -2363,11 +2756,11 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      M A I N    F O R    L I B P M                                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                      M A I N    F O R    L I B P M                                            
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 int mainForLIBPM (int inArgc, const char * inArgv []) {
 //--- Analyze Command Line Options
