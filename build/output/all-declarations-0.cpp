@@ -5582,6 +5582,20 @@ GALGAS_enumComparisonOperator GALGAS_enumComparisonOperator::constructor_notEqua
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_enumComparisonOperator::optional_equal () const {
+  const bool ok = mEnum == kEnum_equal ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_enumComparisonOperator::optional_notEqual () const {
+  const bool ok = mEnum == kEnum_notEqual ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_enumComparisonOperator [3] = {
   "(not built)",
   "equal",
