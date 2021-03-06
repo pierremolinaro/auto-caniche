@@ -10,6 +10,133 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @ifDecoratedInstruction class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_ifDecoratedInstruction : public GALGAS_decoratedInstruction {
+//--- Constructor
+  public : GALGAS_ifDecoratedInstruction (void) ;
+
+//---
+  public : inline const class cPtr_ifDecoratedInstruction * ptr (void) const { return (const cPtr_ifDecoratedInstruction *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_ifDecoratedInstruction (const cPtr_ifDecoratedInstruction * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_ifDecoratedInstruction extractObject (const GALGAS_object & inObject,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_ifDecoratedInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_decoratedExpression & inOperand1,
+                                                                       const class GALGAS_location & inOperand2,
+                                                                       const class GALGAS_decoratedInstructionList & inOperand3,
+                                                                       const class GALGAS_decoratedInstructionList & inOperand4
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_ifDecoratedInstruction & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMElseInstructionList (class GALGAS_decoratedInstructionList inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMEndOfTestExpression (class GALGAS_location inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMIFinstructionLocation (class GALGAS_location inArgument0
+                                                                   COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMTestExpression (class GALGAS_decoratedExpression inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMThenInstructionList (class GALGAS_decoratedInstructionList inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_decoratedInstructionList getter_mElseInstructionList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfTestExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mIFinstructionLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_decoratedExpression getter_mTestExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_decoratedInstructionList getter_mThenInstructionList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_ifDecoratedInstruction class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifDecoratedInstruction ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @ifDecoratedInstruction class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_ifDecoratedInstruction : public cPtr_decoratedInstruction {
+//--- Attributes
+  public : GALGAS_location mProperty_mIFinstructionLocation ;
+  public : GALGAS_decoratedExpression mProperty_mTestExpression ;
+  public : GALGAS_location mProperty_mEndOfTestExpression ;
+  public : GALGAS_decoratedInstructionList mProperty_mThenInstructionList ;
+  public : GALGAS_decoratedInstructionList mProperty_mElseInstructionList ;
+
+//--- Constructor
+  public : cPtr_ifDecoratedInstruction (const GALGAS_location & in_mIFinstructionLocation,
+                                        const GALGAS_decoratedExpression & in_mTestExpression,
+                                        const GALGAS_location & in_mEndOfTestExpression,
+                                        const GALGAS_decoratedInstructionList & in_mThenInstructionList,
+                                        const GALGAS_decoratedInstructionList & in_mElseInstructionList
+                                        COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mIFinstructionLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMIFinstructionLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_decoratedExpression getter_mTestExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMTestExpression (GALGAS_decoratedExpression inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfTestExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMEndOfTestExpression (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_decoratedInstructionList getter_mThenInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMThenInstructionList (GALGAS_decoratedInstructionList inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_decoratedInstructionList getter_mElseInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMElseInstructionList (GALGAS_decoratedInstructionList inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @switchDecoratedCaseList list
 //
 //----------------------------------------------------------------------------------------------------------------------

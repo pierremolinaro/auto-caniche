@@ -8,6 +8,355 @@
 #include "all-declarations-1.h"
 
 //----------------------------------------------------------------------------------------------------------------------
+//   Object comparison                                                                           
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cPtr_ifDecoratedInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_ifDecoratedInstruction * p = (const cPtr_ifDecoratedInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mIFinstructionLocation.objectCompare (p->mProperty_mIFinstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTestExpression.objectCompare (p->mProperty_mTestExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mEndOfTestExpression.objectCompare (p->mProperty_mEndOfTestExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mThenInstructionList.objectCompare (p->mProperty_mThenInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mElseInstructionList.objectCompare (p->mProperty_mElseInstructionList) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+typeComparisonResult GALGAS_ifDecoratedInstruction::objectCompare (const GALGAS_ifDecoratedInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ifDecoratedInstruction::GALGAS_ifDecoratedInstruction (void) :
+GALGAS_decoratedInstruction () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ifDecoratedInstruction::GALGAS_ifDecoratedInstruction (const cPtr_ifDecoratedInstruction * inSourcePtr) :
+GALGAS_decoratedInstruction (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_ifDecoratedInstruction) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ifDecoratedInstruction GALGAS_ifDecoratedInstruction::constructor_new (const GALGAS_location & inAttribute_mIFinstructionLocation,
+                                                                              const GALGAS_decoratedExpression & inAttribute_mTestExpression,
+                                                                              const GALGAS_location & inAttribute_mEndOfTestExpression,
+                                                                              const GALGAS_decoratedInstructionList & inAttribute_mThenInstructionList,
+                                                                              const GALGAS_decoratedInstructionList & inAttribute_mElseInstructionList
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_ifDecoratedInstruction result ;
+  if (inAttribute_mIFinstructionLocation.isValid () && inAttribute_mTestExpression.isValid () && inAttribute_mEndOfTestExpression.isValid () && inAttribute_mThenInstructionList.isValid () && inAttribute_mElseInstructionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_ifDecoratedInstruction (inAttribute_mIFinstructionLocation, inAttribute_mTestExpression, inAttribute_mEndOfTestExpression, inAttribute_mThenInstructionList, inAttribute_mElseInstructionList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_ifDecoratedInstruction::getter_mIFinstructionLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_ifDecoratedInstruction * p = (const cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    result = p->mProperty_mIFinstructionLocation ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location cPtr_ifDecoratedInstruction::getter_mIFinstructionLocation (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mIFinstructionLocation ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_decoratedExpression GALGAS_ifDecoratedInstruction::getter_mTestExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_decoratedExpression result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_ifDecoratedInstruction * p = (const cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    result = p->mProperty_mTestExpression ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_decoratedExpression cPtr_ifDecoratedInstruction::getter_mTestExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mTestExpression ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_ifDecoratedInstruction::getter_mEndOfTestExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_ifDecoratedInstruction * p = (const cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    result = p->mProperty_mEndOfTestExpression ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location cPtr_ifDecoratedInstruction::getter_mEndOfTestExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mEndOfTestExpression ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_decoratedInstructionList GALGAS_ifDecoratedInstruction::getter_mThenInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_decoratedInstructionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_ifDecoratedInstruction * p = (const cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    result = p->mProperty_mThenInstructionList ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_decoratedInstructionList cPtr_ifDecoratedInstruction::getter_mThenInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mThenInstructionList ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_decoratedInstructionList GALGAS_ifDecoratedInstruction::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_decoratedInstructionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_ifDecoratedInstruction * p = (const cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    result = p->mProperty_mElseInstructionList ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_decoratedInstructionList cPtr_ifDecoratedInstruction::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mElseInstructionList ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_ifDecoratedInstruction::setter_setMIFinstructionLocation (GALGAS_location inValue
+                                                                      COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_ifDecoratedInstruction * p = (cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    p->mProperty_mIFinstructionLocation = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_ifDecoratedInstruction::setter_setMIFinstructionLocation (GALGAS_location inValue
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mIFinstructionLocation = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_ifDecoratedInstruction::setter_setMTestExpression (GALGAS_decoratedExpression inValue
+                                                               COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_ifDecoratedInstruction * p = (cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    p->mProperty_mTestExpression = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_ifDecoratedInstruction::setter_setMTestExpression (GALGAS_decoratedExpression inValue
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mTestExpression = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_ifDecoratedInstruction::setter_setMEndOfTestExpression (GALGAS_location inValue
+                                                                    COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_ifDecoratedInstruction * p = (cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    p->mProperty_mEndOfTestExpression = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_ifDecoratedInstruction::setter_setMEndOfTestExpression (GALGAS_location inValue
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mEndOfTestExpression = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_ifDecoratedInstruction::setter_setMThenInstructionList (GALGAS_decoratedInstructionList inValue
+                                                                    COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_ifDecoratedInstruction * p = (cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    p->mProperty_mThenInstructionList = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_ifDecoratedInstruction::setter_setMThenInstructionList (GALGAS_decoratedInstructionList inValue
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mThenInstructionList = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_ifDecoratedInstruction::setter_setMElseInstructionList (GALGAS_decoratedInstructionList inValue
+                                                                    COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_ifDecoratedInstruction * p = (cPtr_ifDecoratedInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_ifDecoratedInstruction) ;
+    p->mProperty_mElseInstructionList = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_ifDecoratedInstruction::setter_setMElseInstructionList (GALGAS_decoratedInstructionList inValue
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mElseInstructionList = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @ifDecoratedInstruction class
+//----------------------------------------------------------------------------------------------------------------------
+
+cPtr_ifDecoratedInstruction::cPtr_ifDecoratedInstruction (const GALGAS_location & in_mIFinstructionLocation,
+                                                          const GALGAS_decoratedExpression & in_mTestExpression,
+                                                          const GALGAS_location & in_mEndOfTestExpression,
+                                                          const GALGAS_decoratedInstructionList & in_mThenInstructionList,
+                                                          const GALGAS_decoratedInstructionList & in_mElseInstructionList
+                                                          COMMA_LOCATION_ARGS) :
+cPtr_decoratedInstruction (THERE),
+mProperty_mIFinstructionLocation (in_mIFinstructionLocation),
+mProperty_mTestExpression (in_mTestExpression),
+mProperty_mEndOfTestExpression (in_mEndOfTestExpression),
+mProperty_mThenInstructionList (in_mThenInstructionList),
+mProperty_mElseInstructionList (in_mElseInstructionList) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * cPtr_ifDecoratedInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifDecoratedInstruction ;
+}
+
+void cPtr_ifDecoratedInstruction::description (C_String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString << "[@ifDecoratedInstruction:" ;
+  mProperty_mIFinstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mTestExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mEndOfTestExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mThenInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+acPtr_class * cPtr_ifDecoratedInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_ifDecoratedInstruction (mProperty_mIFinstructionLocation, mProperty_mTestExpression, mProperty_mEndOfTestExpression, mProperty_mThenInstructionList, mProperty_mElseInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@ifDecoratedInstruction type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_ifDecoratedInstruction ("ifDecoratedInstruction",
+                                               & kTypeDescriptor_GALGAS_decoratedInstruction) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_ifDecoratedInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ifDecoratedInstruction ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_ifDecoratedInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_ifDecoratedInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_ifDecoratedInstruction GALGAS_ifDecoratedInstruction::extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_ifDecoratedInstruction result ;
+  const GALGAS_ifDecoratedInstruction * p = (const GALGAS_ifDecoratedInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_ifDecoratedInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("ifDecoratedInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //
 //Class for element of '@switchDecoratedCaseList' list
 //
@@ -137,13 +486,17 @@ void GALGAS_switchDecoratedCaseList::makeAttributesFromObjects (capCollectionEle
 void GALGAS_switchDecoratedCaseList::addAssign_operation (const GALGAS_lstringlist & inOperand0,
                                                           const GALGAS_decoratedInstructionList & inOperand1
                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inOperand0, inOperand1 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{ // Destroy receiver
+      drop () ;
+    }
   }
 }
 
@@ -152,13 +505,17 @@ void GALGAS_switchDecoratedCaseList::addAssign_operation (const GALGAS_lstringli
 void GALGAS_switchDecoratedCaseList::setter_append (GALGAS_switchDecoratedCaseList_2D_element inElement,
                                                     C_Compiler * /* inCompiler */
                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inElement COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inElement.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inElement COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -169,13 +526,17 @@ void GALGAS_switchDecoratedCaseList::setter_insertAtIndex (const GALGAS_lstringl
                                                            const GALGAS_uint inInsertionIndex,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  if (isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_switchDecoratedCaseList (inOperand0, inOperand1 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -186,18 +547,28 @@ void GALGAS_switchDecoratedCaseList::setter_removeAtIndex (GALGAS_lstringlist & 
                                                            const GALGAS_uint inRemoveIndex,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
-    if (NULL == p) {
+  if (isValid ()) {
+    if (inRemoveIndex.isValid ()) {
+      capCollectionElement attributes ;
+      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+      cCollectionElement_switchDecoratedCaseList * p = (cCollectionElement_switchDecoratedCaseList *) attributes.ptr () ;
+      if (NULL == p) {
+        outOperand0.drop () ;
+        outOperand1.drop () ;
+        drop () ;
+      }else{
+        macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
+        outOperand0 = p->mObject.mProperty_mConstantNameList ;
+        outOperand1 = p->mObject.mProperty_mInstructionList ;
+      }
+    }else{
       outOperand0.drop () ;
       outOperand1.drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_switchDecoratedCaseList) ;
-      outOperand0 = p->mObject.mProperty_mConstantNameList ;
-      outOperand1 = p->mObject.mProperty_mInstructionList ;
+      drop () ;    
     }
+  }else{
+    outOperand0.drop () ;
+    outOperand1.drop () ;
   }
 }
 
@@ -1889,13 +2260,17 @@ void GALGAS_machineVarListForDisplay::addAssign_operation (const GALGAS_string &
                                                            const GALGAS_lstringlist & inOperand3,
                                                            const GALGAS_uint & inOperand4
                                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_machineVarListForDisplay (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_machineVarListForDisplay (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{ // Destroy receiver
+      drop () ;
+    }
   }
 }
 
@@ -1904,13 +2279,17 @@ void GALGAS_machineVarListForDisplay::addAssign_operation (const GALGAS_string &
 void GALGAS_machineVarListForDisplay::setter_append (GALGAS_machineVarListForDisplay_2D_element inElement,
                                                      C_Compiler * /* inCompiler */
                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_machineVarListForDisplay (inElement COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inElement.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_machineVarListForDisplay (inElement COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -1924,13 +2303,17 @@ void GALGAS_machineVarListForDisplay::setter_insertAtIndex (const GALGAS_string 
                                                             const GALGAS_uint inInsertionIndex,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_machineVarListForDisplay (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  if (isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_machineVarListForDisplay (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -1944,24 +2327,40 @@ void GALGAS_machineVarListForDisplay::setter_removeAtIndex (GALGAS_string & outO
                                                             const GALGAS_uint inRemoveIndex,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_machineVarListForDisplay * p = (cCollectionElement_machineVarListForDisplay *) attributes.ptr () ;
-    if (NULL == p) {
+  if (isValid ()) {
+    if (inRemoveIndex.isValid ()) {
+      capCollectionElement attributes ;
+      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+      cCollectionElement_machineVarListForDisplay * p = (cCollectionElement_machineVarListForDisplay *) attributes.ptr () ;
+      if (NULL == p) {
+        outOperand0.drop () ;
+        outOperand1.drop () ;
+        outOperand2.drop () ;
+        outOperand3.drop () ;
+        outOperand4.drop () ;
+        drop () ;
+      }else{
+        macroValidSharedObject (p, cCollectionElement_machineVarListForDisplay) ;
+        outOperand0 = p->mObject.mProperty_mAttributeName ;
+        outOperand1 = p->mObject.mProperty_mBDDStartIndex ;
+        outOperand2 = p->mObject.mProperty_mBDDBitCount ;
+        outOperand3 = p->mObject.mProperty_mValueList ;
+        outOperand4 = p->mObject.mProperty_mColumnLength ;
+      }
+    }else{
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
       outOperand3.drop () ;
       outOperand4.drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_machineVarListForDisplay) ;
-      outOperand0 = p->mObject.mProperty_mAttributeName ;
-      outOperand1 = p->mObject.mProperty_mBDDStartIndex ;
-      outOperand2 = p->mObject.mProperty_mBDDBitCount ;
-      outOperand3 = p->mObject.mProperty_mValueList ;
-      outOperand4 = p->mObject.mProperty_mColumnLength ;
+      drop () ;    
     }
+  }else{
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
   }
 }
 
@@ -2538,13 +2937,17 @@ void GALGAS_varList::addAssign_operation (const GALGAS_lstring & inOperand0,
                                           const GALGAS_uint & inOperand3,
                                           const GALGAS_uint & inOperand4
                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{ // Destroy receiver
+      drop () ;
+    }
   }
 }
 
@@ -2553,13 +2956,17 @@ void GALGAS_varList::addAssign_operation (const GALGAS_lstring & inOperand0,
 void GALGAS_varList::setter_append (GALGAS_varList_2D_element inElement,
                                     C_Compiler * /* inCompiler */
                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_varList (inElement COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inElement.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_varList (inElement COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -2573,13 +2980,17 @@ void GALGAS_varList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                            const GALGAS_uint inInsertionIndex,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  if (isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_varList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -2593,24 +3004,40 @@ void GALGAS_varList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                            const GALGAS_uint inRemoveIndex,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_varList * p = (cCollectionElement_varList *) attributes.ptr () ;
-    if (NULL == p) {
+  if (isValid ()) {
+    if (inRemoveIndex.isValid ()) {
+      capCollectionElement attributes ;
+      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+      cCollectionElement_varList * p = (cCollectionElement_varList *) attributes.ptr () ;
+      if (NULL == p) {
+        outOperand0.drop () ;
+        outOperand1.drop () ;
+        outOperand2.drop () ;
+        outOperand3.drop () ;
+        outOperand4.drop () ;
+        drop () ;
+      }else{
+        macroValidSharedObject (p, cCollectionElement_varList) ;
+        outOperand0 = p->mObject.mProperty_mVarName ;
+        outOperand1 = p->mObject.mProperty_mValueList ;
+        outOperand2 = p->mObject.mProperty_mBDDStartBitIndex ;
+        outOperand3 = p->mObject.mProperty_mBDDBitCount ;
+        outOperand4 = p->mObject.mProperty_mInitialValueIndex ;
+      }
+    }else{
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
       outOperand3.drop () ;
       outOperand4.drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_varList) ;
-      outOperand0 = p->mObject.mProperty_mVarName ;
-      outOperand1 = p->mObject.mProperty_mValueList ;
-      outOperand2 = p->mObject.mProperty_mBDDStartBitIndex ;
-      outOperand3 = p->mObject.mProperty_mBDDBitCount ;
-      outOperand4 = p->mObject.mProperty_mInitialValueIndex ;
+      drop () ;    
     }
+  }else{
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
   }
 }
 
@@ -3615,13 +4042,17 @@ void GALGAS_binarysetList::makeAttributesFromObjects (capCollectionElement & out
 void GALGAS_binarysetList::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                 const GALGAS_binaryset & inOperand1
                                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_binarysetList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inOperand0.isValid () && inOperand1.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_binarysetList (inOperand0, inOperand1 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{ // Destroy receiver
+      drop () ;
+    }
   }
 }
 
@@ -3630,13 +4061,17 @@ void GALGAS_binarysetList::addAssign_operation (const GALGAS_lstring & inOperand
 void GALGAS_binarysetList::setter_append (GALGAS_binarysetList_2D_element inElement,
                                           C_Compiler * /* inCompiler */
                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_binarysetList (inElement COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
+  if (isValid ()) {
+    if (inElement.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_binarysetList (inElement COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      appendObject (attributes) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -3647,13 +4082,17 @@ void GALGAS_binarysetList::setter_insertAtIndex (const GALGAS_lstring inOperand0
                                                  const GALGAS_uint inInsertionIndex,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_binarysetList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  if (isValid ()) {
+    if (inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+      cCollectionElement * p = NULL ;
+      macroMyNew (p, cCollectionElement_binarysetList (inOperand0, inOperand1 COMMA_THERE)) ;
+      capCollectionElement attributes ;
+      attributes.setPointer (p) ;
+      macroDetachSharedObject (p) ;
+      insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    }else{
+      drop () ;
+    }
   }
 }
 
@@ -3664,18 +4103,28 @@ void GALGAS_binarysetList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                  const GALGAS_uint inRemoveIndex,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_binarysetList * p = (cCollectionElement_binarysetList *) attributes.ptr () ;
-    if (NULL == p) {
+  if (isValid ()) {
+    if (inRemoveIndex.isValid ()) {
+      capCollectionElement attributes ;
+      removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+      cCollectionElement_binarysetList * p = (cCollectionElement_binarysetList *) attributes.ptr () ;
+      if (NULL == p) {
+        outOperand0.drop () ;
+        outOperand1.drop () ;
+        drop () ;
+      }else{
+        macroValidSharedObject (p, cCollectionElement_binarysetList) ;
+        outOperand0 = p->mObject.mProperty_mLabel ;
+        outOperand1 = p->mObject.mProperty_mSet ;
+      }
+    }else{
       outOperand0.drop () ;
       outOperand1.drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_binarysetList) ;
-      outOperand0 = p->mObject.mProperty_mLabel ;
-      outOperand1 = p->mObject.mProperty_mSet ;
+      drop () ;    
     }
+  }else{
+    outOperand0.drop () ;
+    outOperand1.drop () ;
   }
 }
 
