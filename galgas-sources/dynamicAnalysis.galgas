@@ -408,7 +408,7 @@ method @machineList-element performMachineDynamicAnalysis
   end
   @binaryset allTransitions = .emptyBinarySet
   @transitionEventMap transitionEventMap = {}
-  for event in mEventList do
+  for event in self.mEventList do
   #--- Handle arguments
     @varList argumentList = {}
     @varMap argVarMap = varMapForEventInstructionComputing
@@ -678,8 +678,8 @@ override method @implicationExpression computeExpressionBDD
   ?let @uint inVarTotalBDDBitCount
   !@binaryset outExpressionBDD
 {
-  [mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
-  [mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
+  [self.mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
+  [self.mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
   outExpressionBDD = [left implies !right]
 }
 
@@ -689,8 +689,8 @@ override method @logicalOrExpression computeExpressionBDD
   ?let @varMap inVarMap
   ?let @uint inVarTotalBDDBitCount
   !@binaryset outExpressionBDD {
-  [mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
-  [mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
+  [self.mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
+  [self.mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
   outExpressionBDD = left | right
 }
 
@@ -700,8 +700,8 @@ override method @logicalAndExpression computeExpressionBDD
   ?let @varMap inVarMap
   ?let @uint inVarTotalBDDBitCount
   !@binaryset outExpressionBDD {
-  [mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
-  [mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
+  [self.mLeft  computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset left]
+  [self.mRight computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset right]
   outExpressionBDD = left & right
 }
 
@@ -713,18 +713,18 @@ override method @comparisonInExpression computeExpressionBDD
   !@binaryset outExpressionBDD
 {
   [inVarMap searchKey
-    !mAttributeName 
+    !self.mAttributeName 
     ?*
     ?let @enumConstantMap constantMap
     ?let @uint leftVarBDDStartBit
     ?let @uint leftVarBDDBitCount
   ]
-  [mRightOperand computeRightOperandBDD
+  [self.mRightOperand computeRightOperandBDD
     !inVarMap
     !constantMap
     !leftVarBDDStartBit
     !leftVarBDDBitCount
-    !mOperator
+    !self.mOperator
     !inVarTotalBDDBitCount
     ?outExpressionBDD
   ]
@@ -752,12 +752,12 @@ override method @attributeAsComparisonRightOperand computeRightOperandBDD
   ?let @uint inVarTotalBDDBitCount
   !@binaryset outExpressionBDD {
   [inVarMap searchKey
-    !mAttributeName 
+    !self.mAttributeName 
     ?2*
     ?var @uint rightVarBDDStartBit
     ?*
   ]
-  if mHasOldQualifier then
+  if self.mHasOldQualifier then
     rightVarBDDStartBit = rightVarBDDStartBit - inVarTotalBDDBitCount
   end
   switch inOperator
@@ -784,7 +784,7 @@ override method @constantAsComparisonRightOperand computeRightOperandBDD
   ?let @enumComparisonOperator inOperator
   ?let @uint unused inVarTotalBDDBitCount
   !@binaryset outExpressionBDD {
-  [inConstantMap searchKey !mConstantName ?let @uint constantValue]
+  [inConstantMap searchKey !self.mConstantName ?let @uint constantValue]
   switch inOperator
   case equal :
     outExpressionBDD = @binaryset. binarySetWithEqualToConstant {
@@ -838,14 +838,14 @@ override method @assignmentInstruction computeInstructionBDD
   ?let @uint inArgOldVarVarBDDBitCount
   ?!@binaryset ioArgOldVarVarValueSet {
   [inVarMap searchKey
-    !mTargetVarName 
+    !self.mTargetVarName 
     ?*
     ?let @enumConstantMap constantMap
     ?let @uint leftVarBDDStartBit
     ?let @uint leftVarBDDBitCount
   ]
   let @binaryset oldAttributeValueSet = ioArgOldVarVarValueSet
-  [mSourceExpression computeAssignmentInstructionBDD
+  [self.mSourceExpression computeAssignmentInstructionBDD
     !inVarMap
     !inFunctionMap
     !constantMap
@@ -855,7 +855,7 @@ override method @assignmentInstruction computeInstructionBDD
     !?ioArgOldVarVarValueSet
   ]  
   if oldAttributeValueSet == ioArgOldVarVarValueSet then
-    error mTargetVarName : "this assignment has no effect and is useless"
+    error self.mTargetVarName : "this assignment has no effect and is useless"
   end
 }
 
@@ -867,15 +867,15 @@ override method @assertInstruction computeInstructionBDD
   ?let @functionMap unused inFunctionMap
   ?let @uint unused inArgOldVarVarBDDBitCount
   ?!@binaryset ioArgOldVarVarValueSet {
-  [mAssertExpression computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset expressionValueSet]
+  [self.mAssertExpression computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset expressionValueSet]
   if [expressionValueSet isEmpty] then
-    error mAssertInstructionLocation : "assert expression is always false"
+    error self.mAssertInstructionLocation : "assert expression is always false"
   elsif [expressionValueSet isFull] then
-    error mAssertInstructionLocation : "assert expression is always true"
+    error self.mAssertInstructionLocation : "assert expression is always true"
   else
     let @binaryset v = ioArgOldVarVarValueSet & expressionValueSet
     if v != ioArgOldVarVarValueSet then
-      error mAssertInstructionLocation : "assert expression violation"
+      error self.mAssertInstructionLocation : "assert expression violation"
     end
   end
 }
@@ -892,7 +892,7 @@ override method @switchInstruction computeInstructionBDD
   let @binaryset oldAttributeValueSet = ioArgOldVarVarValueSet
 #--- Search variable in variable map
   [inVarMap searchKey
-    !mVariableName 
+    !self.mVariableName 
     ?*
     ?let @enumConstantMap constantMap
     ?let @uint leftVarBDDStartBit
@@ -900,7 +900,7 @@ override method @switchInstruction computeInstructionBDD
   ]
 #--- Check case list
   ioArgOldVarVarValueSet = .emptyBinarySet
-  for (constantlist endOfConstantList instructionList) in mSwitchCaseList do
+  for (constantlist endOfConstantList instructionList) in self.mSwitchCaseList do
     @binaryset testExpression = .emptyBinarySet
     for (constantName) in constantlist do
       [constantMap searchKey !constantName ?let constantValue]
@@ -941,7 +941,7 @@ override method @switchInstruction computeInstructionBDD
    end
 #--- Has effect ?
   if oldAttributeValueSet == ioArgOldVarVarValueSet then
-    error mSWITCHinstructionLocation : "this 'switch' instruction has no effect and is useless"
+    error self.mSWITCHinstructionLocation : "this 'switch' instruction has no effect and is useless"
   end
 }
 
@@ -956,29 +956,29 @@ override method @ifInstruction computeInstructionBDD
 {
   let @binaryset oldAttributeValueSet = ioArgOldVarVarValueSet
 #--- Test expression
-  [mTestExpression computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset expressionValueSet]
+  [self.mTestExpression computeExpressionBDD !inVarMap !inVarTotalBDDBitCount ?let @binaryset expressionValueSet]
   let @binaryset resultingThenCondition = ioArgOldVarVarValueSet & expressionValueSet
   let @binaryset resultingElseCondition = ioArgOldVarVarValueSet & ~ expressionValueSet
   if [expressionValueSet isEmpty] then
-    error mEndOfTestExpression : "expression is always false"
+    error self.mEndOfTestExpression : "expression is always false"
   elsif [expressionValueSet isFull] then
-    error mEndOfTestExpression : "expression is always true"
+    error self.mEndOfTestExpression : "expression is always true"
   elsif [resultingThenCondition isEmpty] then
-    error mEndOfTestExpression : "expression is always false within current context"
+    error self.mEndOfTestExpression : "expression is always false within current context"
   elsif resultingThenCondition == ioArgOldVarVarValueSet then
-    error mEndOfTestExpression : "expression is always true within current context"
+    error self.mEndOfTestExpression : "expression is always true within current context"
   elsif [resultingElseCondition isEmpty] then
-    error mEndOfTestExpression : "expression is always true"
+    error self.mEndOfTestExpression : "expression is always true"
   elsif resultingElseCondition == ioArgOldVarVarValueSet then
-    error mEndOfTestExpression : "expression is always false within current context"
+    error self.mEndOfTestExpression : "expression is always false within current context"
   end
   drop ioArgOldVarVarValueSet
 #--- Then branch
   if [resultingThenCondition isEmpty] then
-    error mEndOfTestExpression : "then branch is never executed" : ioArgOldVarVarValueSet
+    error self.mEndOfTestExpression : "then branch is never executed" : ioArgOldVarVarValueSet
   else
     @binaryset thenBranchAttributeValueSet = resultingThenCondition
-    [mThenInstructionList computeInstructionListBDD
+    [self.mThenInstructionList computeInstructionListBDD
       !inVarTotalBDDBitCount
       !inVarMap !inFunctionMap
       !inArgOldVarVarBDDBitCount
@@ -988,10 +988,10 @@ override method @ifInstruction computeInstructionBDD
   end
 #--- Else branch
   if [resultingElseCondition isEmpty] then
-    error mEndOfTestExpression : "else branch is never executed"
+    error self.mEndOfTestExpression : "else branch is never executed"
   else
     @binaryset elseBranchAttributeValueSet = resultingElseCondition
-    [mElseInstructionList computeInstructionListBDD
+    [self.mElseInstructionList computeInstructionListBDD
       !inVarTotalBDDBitCount
       !inVarMap
       !inFunctionMap
@@ -1002,7 +1002,7 @@ override method @ifInstruction computeInstructionBDD
   end
 #--- Has effect ?
   if oldAttributeValueSet == ioArgOldVarVarValueSet then
-    error mIFinstructionLocation : "this 'if' instruction has no effect and is useless"
+    error self.mIFinstructionLocation : "this 'if' instruction has no effect and is useless"
   end
 }
 
@@ -1028,13 +1028,13 @@ override method @varAsAssignmentSourceExpression computeAssignmentInstructionBDD
   ?let @uint inArgOldVarVarBDDBitCount
   ?!@binaryset ioArgOldVarVarValueSet {
   [inVarMap searchKey
-    !mSourceVarName 
+    !self.mSourceVarName 
     ?2*
     ?let @uint sourceVarBDDStartBit
     ?let @uint sourceVarBDDBitCount
   ]
   if inTargetVarBDDBitCount != sourceVarBDDBitCount then
-    error mSourceVarName : "*** INTERNAL ERROR " + inTargetVarBDDBitCount + ", " + sourceVarBDDBitCount + " ***"
+    error self.mSourceVarName : "*** INTERNAL ERROR " + inTargetVarBDDBitCount + ", " + sourceVarBDDBitCount + " ***"
   end
 #  log "ioArgOldVarVarValueSet" : [ioArgOldVarVarValueSet valueCount !inArgOldVarVarBDDBitCount] ;
 #  log mSourceVarName, inTargetVarBDDStartBit, inTargetVarBDDBitCount, sourceVarBDDStartBit, inArgOldVarVarBDDBitCount ;
@@ -1073,7 +1073,7 @@ override method @constantAsAssignmentSourceExpression computeAssignmentInstructi
   ?let @uint inTargetVarBDDBitCount
   ?let @uint unused inArgOldVarVarBDDBitCount
   ?!@binaryset ioArgOldVarVarValueSet {
-  [constantMap searchKey !mConstantName ?let @uint constantValue]
+  [constantMap searchKey !self.mConstantName ?let @uint constantValue]
   let expressionValueSet = @binaryset.binarySetWithEqualToConstant {
     !inTargetVarBDDStartBit
     !inTargetVarBDDBitCount
@@ -1103,14 +1103,14 @@ override method @functionAsAssignmentSourceExpression computeAssignmentInstructi
 #        - opérande : à partir de mAttributeBDDStartIndex
 #        - résultat : à partir de inFirstFreeBDDIndex
   [inVarMap searchKey
-    !mOperandName 
+    !self.mOperandName 
     ?2*
     ?let @uint operandVarBDDStartBit
     ?let @uint operandVarBDDBitCount
   ]
 
   var functionTable =@binaryset.emptyBinarySet{}
-  [inFunctionMap searchKey !mFunctionName ?2* ?let @decoratedFunctionValueList decoratedFunctionValueList]
+  [inFunctionMap searchKey !self.mFunctionName ?2* ?let @decoratedFunctionValueList decoratedFunctionValueList]
   for v in decoratedFunctionValueList do
     let op = @binaryset.binarySetWithEqualToConstant {
       !operandVarBDDStartBit

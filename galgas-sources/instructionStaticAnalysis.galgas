@@ -109,19 +109,19 @@ override method @varAsAssignmentSourceExpression analyzeAssignmentSourceExpressi
   ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
   !@decoratedAssignmentSourceExpression outDecoratedExpression {
   [inAnalyzeContext.mMachineVarMap searchKey
-    !mSourceVarName
+    !self.mSourceVarName
     ?let @unifiedScalarTypeMap-proxy sourceTypeProxy
     ?*
   ]
 #--- Check type
   if [inTargetTypeProxy key] != [sourceTypeProxy key] then
-    error mSourceVarName:
+    error self.mSourceVarName:
       "var type is '" + [inTargetTypeProxy key] +
       "', and is different from right expression type '" +
       [sourceTypeProxy key] + "'"
   end
   outDecoratedExpression = @attributeInDecoratedAssignmentSourceExpression. new {
-    !mSourceVarName}
+    !self.mSourceVarName}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -131,9 +131,9 @@ override method @constantAsAssignmentSourceExpression analyzeAssignmentSourceExp
   ?let @analyzeContext unused inAnalyzeContext
   ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
   !@decoratedAssignmentSourceExpression outDecoratedExpression {
-  [[inTargetTypeProxy mConstantMap] searchKey !mConstantName ?let @uint cstValue]
+  [[inTargetTypeProxy mConstantMap] searchKey !self.mConstantName ?let @uint cstValue]
   outDecoratedExpression = @cstInDecoratedAssignmentSourceExpression. new {
-    !mConstantName
+    !self.mConstantName
     !cstValue
     ![[[inTargetTypeProxy mConstantMap] count] - 1 significantBitCount]}
 }
@@ -147,14 +147,14 @@ override method @functionAsAssignmentSourceExpression analyzeAssignmentSourceExp
   !@decoratedAssignmentSourceExpression outDecoratedExpression {
 #--- Search function name in function map
   [inAnalyzeContext.mFunctionMap searchKey
-    !mFunctionName
+    !self.mFunctionName
     ?let @unifiedScalarTypeMap-proxy operandTypeProxy
     ?let @unifiedScalarTypeMap-proxy resultTypeProxy
     ?let @decoratedFunctionValueList decoratedFunctionValueList
   ]
 #--- Search attribute in attribute map
   [inAnalyzeContext.mMachineVarMap searchKey
-    !mOperandName
+    !self.mOperandName
     ?let @unifiedScalarTypeMap-proxy attributeTypeProxy
 #    ??@uint attributeBDDStartIndex
 #    ??@uint attributeBDDBitCount
@@ -162,22 +162,22 @@ override method @functionAsAssignmentSourceExpression analyzeAssignmentSourceExp
   ]
 #--- Check attribute type versus function operand type
   if [operandTypeProxy key] != [attributeTypeProxy key] then
-    error mOperandName : "the '" + mOperandName
+    error self.mOperandName : "the '" + self.mOperandName
       + "' belongs to the '%" + [attributeTypeProxy key]
-      + "', but '" + mFunctionName + "' function requires an '%"
+      + "', but '" + self.mFunctionName + "' function requires an '%"
       + [operandTypeProxy key] + "' type"
   end
 #--- Check type
   if [inTargetTypeProxy key] != [resultTypeProxy key] then
-    error mOperandName:
+    error self.mOperandName:
       "var type is '" + [inTargetTypeProxy key] +
       "', and is different from function result type '" +
       [resultTypeProxy key] + "'"
   end
 #---
   outDecoratedExpression = @functionInDecoratedAssignmentSourceExpression. new {
-    !mFunctionName
-    !mOperandName
+    !self.mFunctionName
+    !self.mOperandName
     !decoratedFunctionValueList}
 }
 
@@ -188,18 +188,18 @@ override method @assignmentInstruction analyzeInstruction
   ?let @analyzeContext inAnalyzeContext
   !@decoratedInstruction outDecoratedInstruction {
   [inAnalyzeContext.mMachineVarMap searchKey
-    !mTargetVarName
+    !self.mTargetVarName
     ?let @unifiedScalarTypeMap-proxy targetTypeProxy
     ?*
    ]
-  [mSourceExpression analyzeAssignmentSourceExpression
+  [self.mSourceExpression analyzeAssignmentSourceExpression
     !inAnalyzeContext
     !targetTypeProxy
     ?let @decoratedAssignmentSourceExpression decoratedExpression
   ]
   outDecoratedInstruction = @assignmentDecoratedInstruction. new {
     !targetTypeProxy
-    !mTargetVarName
+    !self.mTargetVarName
     !decoratedExpression}
 }
 
@@ -211,14 +211,14 @@ override method @switchInstruction analyzeInstruction
 {
 #--- Analyze variable
   [inAnalyzeContext.mMachineVarMap searchKey
-    !mVariableName
+    !self.mVariableName
     ?let @unifiedScalarTypeMap-proxy variableTypeProxy
     ?*
   ]
 #--- Analyze case list
   @switchDecoratedCaseList switchDecoratedCaseList = {}
   @stringset usedConstantNameSet = {}
-  for (constantList * instructionList) in mSwitchCaseList do
+  for (constantList * instructionList) in self.mSwitchCaseList do
     for (constantName) in constantList do
       [[variableTypeProxy mConstantMap] searchKey !constantName ?*]
       if [usedConstantNameSet hasKey !constantName] then
@@ -235,11 +235,11 @@ override method @switchInstruction analyzeInstruction
 #--- Check all constant have been named
   let missingConstantSet = [[variableTypeProxy mConstantMap] keySet] - usedConstantNameSet
   for (constantName) in missingConstantSet do
-    error mEndOfSwitchExpression : "missing constant '" + constantName + "' in switch instruction"
+    error self.mEndOfSwitchExpression : "missing constant '" + constantName + "' in switch instruction"
   end
 #--- Generate instruction
   outDecoratedInstruction = @switchDecoratedInstruction.new {
-    !mVariableName
+    !self.mVariableName
     !switchDecoratedCaseList
   }
 }
@@ -250,23 +250,23 @@ override method @ifInstruction analyzeInstruction
   ?let @analyzeContext inAnalyzeContext
   !@decoratedInstruction outDecoratedInstruction
 {
-  [mTestExpression analyzeExpression
+  [self.mTestExpression analyzeExpression
     !inAnalyzeContext
     !false
     ?let @decoratedExpression decoratedExpression
   ]
-  [mThenInstructionList analyzeInstructionList
+  [self.mThenInstructionList analyzeInstructionList
     !inAnalyzeContext
     ?let @decoratedInstructionList decoratedThenInstructionList
   ]
-  [mElseInstructionList analyzeInstructionList
+  [self.mElseInstructionList analyzeInstructionList
     !inAnalyzeContext
     ?let @decoratedInstructionList decoratedElseInstructionList
   ]
   outDecoratedInstruction = @ifDecoratedInstruction. new {
-    !mIFinstructionLocation
+    !self.mIFinstructionLocation
     !decoratedExpression
-    !mEndOfTestExpression
+    !self.mEndOfTestExpression
     !decoratedThenInstructionList
     !decoratedElseInstructionList
   }
@@ -278,13 +278,13 @@ override method @ifInstruction analyzeInstruction
 override method @assertInstruction analyzeInstruction
   ?let @analyzeContext inAnalyzeContext
   !@decoratedInstruction outDecoratedInstruction {
-  [mAssertExpression analyzeExpression
+  [self.mAssertExpression analyzeExpression
     !inAnalyzeContext
     !false
     ?let @decoratedExpression decoratedExpression
   ]
   outDecoratedInstruction = @assertDecoratedInstruction. new {
-    !mAssertInstructionLocation
+    !self.mAssertInstructionLocation
     !decoratedExpression}
 }
 

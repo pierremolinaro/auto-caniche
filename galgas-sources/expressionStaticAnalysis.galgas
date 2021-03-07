@@ -51,12 +51,12 @@ override method @implicationExpression analyzeExpression
   ?let @analyzeContext inAnalyzeContext
   ?let @bool inEnsureClause
   !@decoratedExpression outDecoratedExpression {
-  [mLeft analyzeExpression
+  [self.mLeft analyzeExpression
     !inAnalyzeContext
     !inEnsureClause
     ?let @decoratedExpression leftDecoratedExpr
   ]
-  [mRight analyzeExpression
+  [self.mRight analyzeExpression
     !inAnalyzeContext
     !inEnsureClause
     ?let @decoratedExpression rightDecoratedExpr
@@ -72,12 +72,12 @@ override method @logicalOrExpression analyzeExpression
   ?let @analyzeContext inAnalyzeContext
   ?let @bool inEnsureClause
   !@decoratedExpression outDecoratedExpression {
-  [mLeft analyzeExpression
+  [self.mLeft analyzeExpression
     !inAnalyzeContext
     !inEnsureClause
     ?let @decoratedExpression leftDecoratedExpr
   ]
-  [mRight analyzeExpression
+  [self.mRight analyzeExpression
     !inAnalyzeContext
     !inEnsureClause
     ?let @decoratedExpression rightDecoratedExpr
@@ -93,12 +93,12 @@ override method @logicalAndExpression analyzeExpression
   ?let @analyzeContext inAnalyzeContext
   ?let @bool inEnsureClause
   !@decoratedExpression outDecoratedExpression {
-  [mLeft analyzeExpression
+  [self.mLeft analyzeExpression
     !inAnalyzeContext
     !inEnsureClause
     ?let @decoratedExpression leftDecoratedExpr
   ]
-  [mRight analyzeExpression
+  [self.mRight analyzeExpression
     !inAnalyzeContext
     !inEnsureClause
     ?let @decoratedExpression rightDecoratedExpr
@@ -116,20 +116,20 @@ override method @comparisonInExpression analyzeExpression
   !@decoratedExpression outDecoratedExpression {
 #--- Attribute
   [inAnalyzeContext.mMachineVarMap searchKey
-    !mAttributeName
+    !self.mAttributeName
     ?let @unifiedScalarTypeMap-proxy attributeTypeProxy
     ?*
   ]
 #--- Constant
-  [mRightOperand analyzeComparisonRightOperand
+  [self.mRightOperand analyzeComparisonRightOperand
     !inAnalyzeContext
     !inEnsureClause
     ?let @decoratedComparisonRightOperand decoratedOperandExpression
     !attributeTypeProxy
   ]
   outDecoratedExpression = @decoratedComparisonInExpression. new {
-    !mAttributeName
-    !mOperator
+    !self.mAttributeName
+    !self.mOperator
     !decoratedOperandExpression}
 }
 
@@ -169,8 +169,8 @@ override method @constantAsComparisonRightOperand analyzeComparisonRightOperand
   !@decoratedComparisonRightOperand outDecoratedExpression
   ?let @unifiedScalarTypeMap-proxy inVarTypeProxy
 {
-  [[inVarTypeProxy mConstantMap] searchKey !mConstantName ?let @uint constantValue]
-  outDecoratedExpression = @decoratedConstantAsComparisonRightOperand. new { !inVarTypeProxy !mConstantName !constantValue}
+  [[inVarTypeProxy mConstantMap] searchKey !self.mConstantName ?let @uint constantValue]
+  outDecoratedExpression = @decoratedConstantAsComparisonRightOperand. new { !inVarTypeProxy !self.mConstantName !constantValue}
 }
 
 #-------------------------------------------------------------------*
@@ -180,22 +180,22 @@ override method @attributeAsComparisonRightOperand analyzeComparisonRightOperand
   ?let @bool inEnsureClause
   !@decoratedComparisonRightOperand outDecoratedExpression
   ?let @unifiedScalarTypeMap-proxy inVarTypeProxy {
-  if mHasOldQualifier & not inEnsureClause then
-    error mAttributeName : "'old' qualifier is allowed only in post condition"
+  if self.mHasOldQualifier & not inEnsureClause then
+    error self.mAttributeName : "'old' qualifier is allowed only in post condition"
   end
   [inAnalyzeContext.mMachineVarMap searchKey
-    !mAttributeName
+    !self.mAttributeName
     ?let @unifiedScalarTypeMap-proxy operandTypeProxy
     ?*
   ]
 #--- Check type
   if [inVarTypeProxy key] != [operandTypeProxy key] then
-    error mAttributeName:
+    error self.mAttributeName:
       "var type is '%" + [inVarTypeProxy key] +
       "', and is different from right expression type '%" +
       [operandTypeProxy key] + "'"
   end
-  outDecoratedExpression = @decoratedAttributeAsComparisonRightOperand. new { !mAttributeName}
+  outDecoratedExpression = @decoratedAttributeAsComparisonRightOperand. new { !self.mAttributeName}
 }
 
 #-------------------------------------------------------------------*
