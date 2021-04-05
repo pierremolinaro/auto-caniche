@@ -6312,6 +6312,7 @@
     A0B923820DCC509A6F75849B /* Default */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
+        CLANG_CXX_LANGUAGE_STANDARD = "c++14";
       ALWAYS_SEARCH_USER_PATHS = NO ;
       ARCHS = "$(ARCHS_STANDARD_64_BIT)" ;
       GCC_GENERATE_DEBUGGING_SYMBOLS = NO ;
@@ -6343,11 +6344,11 @@
       GCC_WARN_UNUSED_LABEL = YES ;
       GCC_WARN_UNUSED_VALUE = YES ;
       GCC_WARN_UNUSED_VARIABLE = YES ;
-      HEADER_SEARCH_PATHS = ("../build/output", "../build/libpm", "../build/user-headers", "../hand_coded_sources/**") ;
+      HEADER_SEARCH_PATHS = ("../build/output", "../build/libpm", "../build/user-headers") ;
       SDKROOT = macosx10.12 ;
       COPY_PHASE_STRIP = NO ;
       CLANG_ENABLE_OBJC_ARC = YES ;
-      MACOSX_DEPLOYMENT_TARGET = "10.11" ;
+      MACOSX_DEPLOYMENT_TARGET = "10.10" ;
     };
     name = Default;
   };
