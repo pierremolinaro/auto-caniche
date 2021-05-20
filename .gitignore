@@ -8,3 +8,4 @@ makefile-x86linux32-on-macosx/omnibus-debug
 makefile-x86linux64-on-macosx/omnibus
 makefile-x86linux64-on-macosx/omnibus-debug
 xcode-project/build/**
+*.pyc
