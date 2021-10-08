@@ -54,13 +54,13 @@ static void extensionMethod_implicationExpression_analyzeExpression (const cPtr_
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_implicationExpression * object = (const cPtr_implicationExpression *) inObject ;
   macroValidSharedObject (object, cPtr_implicationExpression) ;
-  GALGAS_decoratedExpression var_leftDecoratedExpr_1836 ;
+  GALGAS_decoratedExpression var_leftDecoratedExpr_1850 ;
   const GALGAS_implicationExpression temp_0 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mLeft (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_1836, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 54)) ;
-  GALGAS_decoratedExpression var_rightDecoratedExpr_1964 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mLeft (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_1850, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 54)) ;
+  GALGAS_decoratedExpression var_rightDecoratedExpr_1978 ;
   const GALGAS_implicationExpression temp_1 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_1.getter_mRight (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_1964, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 59)) ;
-  outArgument_outDecoratedExpression = GALGAS_implicationDecoratedExpression::constructor_new (var_leftDecoratedExpr_1836, var_rightDecoratedExpr_1964  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 64)) ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_1.getter_mRight (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_1978, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 59)) ;
+  outArgument_outDecoratedExpression = GALGAS_implicationDecoratedExpression::constructor_new (var_leftDecoratedExpr_1850, var_rightDecoratedExpr_1978  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 64)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -88,13 +88,13 @@ static void extensionMethod_logicalOrExpression_analyzeExpression (const cPtr_ex
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_logicalOrExpression * object = (const cPtr_logicalOrExpression *) inObject ;
   macroValidSharedObject (object, cPtr_logicalOrExpression) ;
-  GALGAS_decoratedExpression var_leftDecoratedExpr_2450 ;
+  GALGAS_decoratedExpression var_leftDecoratedExpr_2464 ;
   const GALGAS_logicalOrExpression temp_0 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mLeft (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_2450, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 75)) ;
-  GALGAS_decoratedExpression var_rightDecoratedExpr_2578 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mLeft (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_2464, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 75)) ;
+  GALGAS_decoratedExpression var_rightDecoratedExpr_2592 ;
   const GALGAS_logicalOrExpression temp_1 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_1.getter_mRight (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_2578, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 80)) ;
-  outArgument_outDecoratedExpression = GALGAS_logicalOrDecoratedExpression::constructor_new (var_leftDecoratedExpr_2450, var_rightDecoratedExpr_2578  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 85)) ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_1.getter_mRight (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_2592, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 80)) ;
+  outArgument_outDecoratedExpression = GALGAS_logicalOrDecoratedExpression::constructor_new (var_leftDecoratedExpr_2464, var_rightDecoratedExpr_2592  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 85)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -122,13 +122,13 @@ static void extensionMethod_logicalAndExpression_analyzeExpression (const cPtr_e
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_logicalAndExpression * object = (const cPtr_logicalAndExpression *) inObject ;
   macroValidSharedObject (object, cPtr_logicalAndExpression) ;
-  GALGAS_decoratedExpression var_leftDecoratedExpr_3063 ;
+  GALGAS_decoratedExpression var_leftDecoratedExpr_3077 ;
   const GALGAS_logicalAndExpression temp_0 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mLeft (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_3063, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 96)) ;
-  GALGAS_decoratedExpression var_rightDecoratedExpr_3191 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mLeft (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_leftDecoratedExpr_3077, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 96)) ;
+  GALGAS_decoratedExpression var_rightDecoratedExpr_3205 ;
   const GALGAS_logicalAndExpression temp_1 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_1.getter_mRight (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_3191, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 101)) ;
-  outArgument_outDecoratedExpression = GALGAS_logicalAndDecoratedExpression::constructor_new (var_leftDecoratedExpr_3063, var_rightDecoratedExpr_3191  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 106)) ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_1.getter_mRight (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_rightDecoratedExpr_3205, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 101)) ;
+  outArgument_outDecoratedExpression = GALGAS_logicalAndDecoratedExpression::constructor_new (var_leftDecoratedExpr_3077, var_rightDecoratedExpr_3205  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 106)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -156,16 +156,16 @@ static void extensionMethod_comparisonInExpression_analyzeExpression (const cPtr
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_comparisonInExpression * object = (const cPtr_comparisonInExpression *) inObject ;
   macroValidSharedObject (object, cPtr_comparisonInExpression) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_3698 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_3712 ;
   const GALGAS_comparisonInExpression temp_0 = object ;
-  GALGAS_uint joker_3704 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mAttributeName (HERE), var_attributeTypeProxy_3698, joker_3704, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 118)) ;
-  GALGAS_decoratedComparisonRightOperand var_decoratedOperandExpression_3886 ;
+  GALGAS_uint joker_3718 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mAttributeName (HERE), var_attributeTypeProxy_3712, joker_3718, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 118)) ;
+  GALGAS_decoratedComparisonRightOperand var_decoratedOperandExpression_3900 ;
   const GALGAS_comparisonInExpression temp_1 = object ;
-  callExtensionMethod_analyzeComparisonRightOperand ((const cPtr_comparisonRightOperand *) temp_1.getter_mRightOperand (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_decoratedOperandExpression_3886, var_attributeTypeProxy_3698, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 124)) ;
+  callExtensionMethod_analyzeComparisonRightOperand ((const cPtr_comparisonRightOperand *) temp_1.getter_mRightOperand (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_decoratedOperandExpression_3900, var_attributeTypeProxy_3712, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 124)) ;
   const GALGAS_comparisonInExpression temp_2 = object ;
   const GALGAS_comparisonInExpression temp_3 = object ;
-  outArgument_outDecoratedExpression = GALGAS_decoratedComparisonInExpression::constructor_new (temp_2.getter_mAttributeName (HERE), temp_3.getter_mOperator (HERE), var_decoratedOperandExpression_3886  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 130)) ;
+  outArgument_outDecoratedExpression = GALGAS_decoratedComparisonInExpression::constructor_new (temp_2.getter_mAttributeName (HERE), temp_3.getter_mOperator (HERE), var_decoratedOperandExpression_3900  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 130)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -194,11 +194,11 @@ static void extensionMethod_constantAsComparisonRightOperand_analyzeComparisonRi
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_constantAsComparisonRightOperand * object = (const cPtr_constantAsComparisonRightOperand *) inObject ;
   macroValidSharedObject (object, cPtr_constantAsComparisonRightOperand) ;
-  GALGAS_uint var_constantValue_5419 ;
+  GALGAS_uint var_constantValue_5454 ;
   const GALGAS_constantAsComparisonRightOperand temp_0 = object ;
-  constinArgument_inVarTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)).method_searchKey (temp_0.getter_mConstantName (HERE), var_constantValue_5419, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)) ;
+  constinArgument_inVarTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)).method_searchKey (temp_0.getter_mConstantName (HERE), var_constantValue_5454, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 172)) ;
   const GALGAS_constantAsComparisonRightOperand temp_1 = object ;
-  outArgument_outDecoratedExpression = GALGAS_decoratedConstantAsComparisonRightOperand::constructor_new (constinArgument_inVarTypeProxy, temp_1.getter_mConstantName (HERE), var_constantValue_5419  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 173)) ;
+  outArgument_outDecoratedExpression = GALGAS_decoratedConstantAsComparisonRightOperand::constructor_new (constinArgument_inVarTypeProxy, temp_1.getter_mConstantName (HERE), var_constantValue_5454  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 173)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -237,17 +237,17 @@ static void extensionMethod_attributeAsComparisonRightOperand_analyzeComparisonR
       inCompiler->emitSemanticError (temp_2.getter_mAttributeName (HERE).getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 184)), GALGAS_string ("'old' qualifier is allowed only in post condition"), fixItArray3  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 184)) ;
     }
   }
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_6150 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_6185 ;
   const GALGAS_attributeAsComparisonRightOperand temp_4 = object ;
-  GALGAS_uint joker_6156 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_4.getter_mAttributeName (HERE), var_operandTypeProxy_6150, joker_6156, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 186)) ;
+  GALGAS_uint joker_6191 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_4.getter_mAttributeName (HERE), var_operandTypeProxy_6185, joker_6191, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 186)) ;
   enumGalgasBool test_5 = kBoolTrue ;
   if (kBoolTrue == test_5) {
-    test_5 = GALGAS_bool (kIsNotEqual, constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)).objectCompare (var_operandTypeProxy_6150.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)))).boolEnum () ;
+    test_5 = GALGAS_bool (kIsNotEqual, constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)).objectCompare (var_operandTypeProxy_6185.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 192)))).boolEnum () ;
     if (kBoolTrue == test_5) {
       const GALGAS_attributeAsComparisonRightOperand temp_6 = object ;
       TC_Array <C_FixItDescription> fixItArray7 ;
-      inCompiler->emitSemanticError (temp_6.getter_mAttributeName (HERE).getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)), GALGAS_string ("var type is '%").add_operation (constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (GALGAS_string ("', and is different from right expression type '%"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (var_operandTypeProxy_6150.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 195)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), fixItArray7  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)) ;
+      inCompiler->emitSemanticError (temp_6.getter_mAttributeName (HERE).getter_location (SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)), GALGAS_string ("var type is '%").add_operation (constinArgument_inVarTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (GALGAS_string ("', and is different from right expression type '%"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 194)).add_operation (var_operandTypeProxy_6185.getter_key (inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 195)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 196)), fixItArray7  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 193)) ;
     }
   }
   const GALGAS_attributeAsComparisonRightOperand temp_8 = object ;
@@ -279,17 +279,17 @@ static void extensionMethod_varAsAssignmentSourceExpression_analyzeAssignmentSou
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_varAsAssignmentSourceExpression * object = (const cPtr_varAsAssignmentSourceExpression *) inObject ;
   macroValidSharedObject (object, cPtr_varAsAssignmentSourceExpression) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_sourceTypeProxy_4050 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_sourceTypeProxy_4106 ;
   const GALGAS_varAsAssignmentSourceExpression temp_0 = object ;
-  GALGAS_uint joker_4056 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mSourceVarName (HERE), var_sourceTypeProxy_4050, joker_4056, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 111)) ;
+  GALGAS_uint joker_4112 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mSourceVarName (HERE), var_sourceTypeProxy_4106, joker_4112, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 111)) ;
   enumGalgasBool test_1 = kBoolTrue ;
   if (kBoolTrue == test_1) {
-    test_1 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)).objectCompare (var_sourceTypeProxy_4050.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)))).boolEnum () ;
+    test_1 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)).objectCompare (var_sourceTypeProxy_4106.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 117)))).boolEnum () ;
     if (kBoolTrue == test_1) {
       const GALGAS_varAsAssignmentSourceExpression temp_2 = object ;
       TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.getter_mSourceVarName (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (GALGAS_string ("', and is different from right expression type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (var_sourceTypeProxy_4050.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 120)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), fixItArray3  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)) ;
+      inCompiler->emitSemanticError (temp_2.getter_mSourceVarName (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (GALGAS_string ("', and is different from right expression type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 119)).add_operation (var_sourceTypeProxy_4106.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 120)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 121)), fixItArray3  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 118)) ;
     }
   }
   const GALGAS_varAsAssignmentSourceExpression temp_4 = object ;
@@ -321,11 +321,11 @@ static void extensionMethod_constantAsAssignmentSourceExpression_analyzeAssignme
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_constantAsAssignmentSourceExpression * object = (const cPtr_constantAsAssignmentSourceExpression *) inObject ;
   macroValidSharedObject (object, cPtr_constantAsAssignmentSourceExpression) ;
-  GALGAS_uint var_cstValue_4889 ;
+  GALGAS_uint var_cstValue_4945 ;
   const GALGAS_constantAsAssignmentSourceExpression temp_0 = object ;
-  constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)).method_searchKey (temp_0.getter_mConstantName (HERE), var_cstValue_4889, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)) ;
+  constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)).method_searchKey (temp_0.getter_mConstantName (HERE), var_cstValue_4945, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 134)) ;
   const GALGAS_constantAsAssignmentSourceExpression temp_1 = object ;
-  outArgument_outDecoratedExpression = GALGAS_cstInDecoratedAssignmentSourceExpression::constructor_new (temp_1.getter_mConstantName (HERE), var_cstValue_4889, constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_count (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_significantBitCount (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 135)) ;
+  outArgument_outDecoratedExpression = GALGAS_cstInDecoratedAssignmentSourceExpression::constructor_new (temp_1.getter_mConstantName (HERE), var_cstValue_4945, constinArgument_inTargetTypeProxy.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_count (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).substract_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 138)).getter_significantBitCount (SOURCE_FILE ("instructionStaticAnalysis.galgas", 138))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 135)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -353,38 +353,38 @@ static void extensionMethod_functionAsAssignmentSourceExpression_analyzeAssignme
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_functionAsAssignmentSourceExpression * object = (const cPtr_functionAsAssignmentSourceExpression *) inObject ;
   macroValidSharedObject (object, cPtr_functionAsAssignmentSourceExpression) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_5612 ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_resultTypeProxy_5665 ;
-  GALGAS_decoratedFunctionValueList var_decoratedFunctionValueList_5729 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_operandTypeProxy_5668 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_resultTypeProxy_5721 ;
+  GALGAS_decoratedFunctionValueList var_decoratedFunctionValueList_5785 ;
   const GALGAS_functionAsAssignmentSourceExpression temp_0 = object ;
-  constinArgument_inAnalyzeContext.getter_mFunctionMap (HERE).method_searchKey (temp_0.getter_mFunctionName (HERE), var_operandTypeProxy_5612, var_resultTypeProxy_5665, var_decoratedFunctionValueList_5729, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 149)) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_5896 ;
+  constinArgument_inAnalyzeContext.getter_mFunctionMap (HERE).method_searchKey (temp_0.getter_mFunctionName (HERE), var_operandTypeProxy_5668, var_resultTypeProxy_5721, var_decoratedFunctionValueList_5785, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 149)) ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_attributeTypeProxy_5952 ;
   const GALGAS_functionAsAssignmentSourceExpression temp_1 = object ;
-  GALGAS_uint joker_5972 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_1.getter_mOperandName (HERE), var_attributeTypeProxy_5896, joker_5972, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 156)) ;
+  GALGAS_uint joker_6028 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_1.getter_mOperandName (HERE), var_attributeTypeProxy_5952, joker_6028, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 156)) ;
   enumGalgasBool test_2 = kBoolTrue ;
   if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (kIsNotEqual, var_operandTypeProxy_5612.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)).objectCompare (var_attributeTypeProxy_5896.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)))).boolEnum () ;
+    test_2 = GALGAS_bool (kIsNotEqual, var_operandTypeProxy_5668.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)).objectCompare (var_attributeTypeProxy_5952.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 164)))).boolEnum () ;
     if (kBoolTrue == test_2) {
       const GALGAS_functionAsAssignmentSourceExpression temp_3 = object ;
       const GALGAS_functionAsAssignmentSourceExpression temp_4 = object ;
       const GALGAS_functionAsAssignmentSourceExpression temp_5 = object ;
       TC_Array <C_FixItDescription> fixItArray6 ;
-      inCompiler->emitSemanticError (temp_3.getter_mOperandName (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), GALGAS_string ("the '").add_operation (temp_4.getter_mOperandName (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (GALGAS_string ("' belongs to the '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (var_attributeTypeProxy_5896.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (GALGAS_string ("', but '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (temp_5.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' function requires an '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (var_operandTypeProxy_5612.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), fixItArray6  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)) ;
+      inCompiler->emitSemanticError (temp_3.getter_mOperandName (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), GALGAS_string ("the '").add_operation (temp_4.getter_mOperandName (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (GALGAS_string ("' belongs to the '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)).add_operation (var_attributeTypeProxy_5952.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (GALGAS_string ("', but '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 166)).add_operation (temp_5.getter_mFunctionName (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' function requires an '%"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (var_operandTypeProxy_5668.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 167)).add_operation (GALGAS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 168)), fixItArray6  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 165)) ;
     }
   }
   enumGalgasBool test_7 = kBoolTrue ;
   if (kBoolTrue == test_7) {
-    test_7 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)).objectCompare (var_resultTypeProxy_5665.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)))).boolEnum () ;
+    test_7 = GALGAS_bool (kIsNotEqual, constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)).objectCompare (var_resultTypeProxy_5721.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 171)))).boolEnum () ;
     if (kBoolTrue == test_7) {
       const GALGAS_functionAsAssignmentSourceExpression temp_8 = object ;
       TC_Array <C_FixItDescription> fixItArray9 ;
-      inCompiler->emitSemanticError (temp_8.getter_mOperandName (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (GALGAS_string ("', and is different from function result type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (var_resultTypeProxy_5665.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 174)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), fixItArray9  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)) ;
+      inCompiler->emitSemanticError (temp_8.getter_mOperandName (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)), GALGAS_string ("var type is '").add_operation (constinArgument_inTargetTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (GALGAS_string ("', and is different from function result type '"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 173)).add_operation (var_resultTypeProxy_5721.getter_key (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 174)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 175)), fixItArray9  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 172)) ;
     }
   }
   const GALGAS_functionAsAssignmentSourceExpression temp_10 = object ;
   const GALGAS_functionAsAssignmentSourceExpression temp_11 = object ;
-  outArgument_outDecoratedExpression = GALGAS_functionInDecoratedAssignmentSourceExpression::constructor_new (temp_10.getter_mFunctionName (HERE), temp_11.getter_mOperandName (HERE), var_decoratedFunctionValueList_5729  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 178)) ;
+  outArgument_outDecoratedExpression = GALGAS_functionInDecoratedAssignmentSourceExpression::constructor_new (temp_10.getter_mFunctionName (HERE), temp_11.getter_mOperandName (HERE), var_decoratedFunctionValueList_5785  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 178)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -411,15 +411,15 @@ static void extensionMethod_assignmentInstruction_analyzeInstruction (const cPtr
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_assignmentInstruction * object = (const cPtr_assignmentInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_assignmentInstruction) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_targetTypeProxy_7168 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_targetTypeProxy_7224 ;
   const GALGAS_assignmentInstruction temp_0 = object ;
-  GALGAS_uint joker_7174 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mTargetVarName (HERE), var_targetTypeProxy_7168, joker_7174, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 190)) ;
-  GALGAS_decoratedAssignmentSourceExpression var_decoratedExpression_7349 ;
+  GALGAS_uint joker_7230 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mTargetVarName (HERE), var_targetTypeProxy_7224, joker_7230, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 190)) ;
+  GALGAS_decoratedAssignmentSourceExpression var_decoratedExpression_7405 ;
   const GALGAS_assignmentInstruction temp_1 = object ;
-  callExtensionMethod_analyzeAssignmentSourceExpression ((const cPtr_assignmentSourceExpression *) temp_1.getter_mSourceExpression (HERE).ptr (), constinArgument_inAnalyzeContext, var_targetTypeProxy_7168, var_decoratedExpression_7349, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 195)) ;
+  callExtensionMethod_analyzeAssignmentSourceExpression ((const cPtr_assignmentSourceExpression *) temp_1.getter_mSourceExpression (HERE).ptr (), constinArgument_inAnalyzeContext, var_targetTypeProxy_7224, var_decoratedExpression_7405, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 195)) ;
   const GALGAS_assignmentInstruction temp_2 = object ;
-  outArgument_outDecoratedInstruction = GALGAS_assignmentDecoratedInstruction::constructor_new (var_targetTypeProxy_7168, temp_2.getter_mTargetVarName (HERE), var_decoratedExpression_7349  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 200)) ;
+  outArgument_outDecoratedInstruction = GALGAS_assignmentDecoratedInstruction::constructor_new (var_targetTypeProxy_7224, temp_2.getter_mTargetVarName (HERE), var_decoratedExpression_7405  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 200)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -446,45 +446,45 @@ static void extensionMethod_switchInstruction_analyzeInstruction (const cPtr_ins
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_switchInstruction * object = (const cPtr_switchInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_switchInstruction) ;
-  GALGAS_unifiedScalarTypeMap_2D_proxy var_variableTypeProxy_7908 ;
+  GALGAS_unifiedScalarTypeMap_2D_proxy var_variableTypeProxy_7964 ;
   const GALGAS_switchInstruction temp_0 = object ;
-  GALGAS_uint joker_7914 ; // Joker input parameter
-  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mVariableName (HERE), var_variableTypeProxy_7908, joker_7914, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 213)) ;
-  GALGAS_switchDecoratedCaseList var_switchDecoratedCaseList_7993 = GALGAS_switchDecoratedCaseList::constructor_emptyList (SOURCE_FILE ("instructionStaticAnalysis.galgas", 219)) ;
-  GALGAS_stringset var_usedConstantNameSet_8031 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("instructionStaticAnalysis.galgas", 220)) ;
+  GALGAS_uint joker_7970 ; // Joker input parameter
+  constinArgument_inAnalyzeContext.getter_mMachineVarMap (HERE).method_searchKey (temp_0.getter_mVariableName (HERE), var_variableTypeProxy_7964, joker_7970, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 213)) ;
+  GALGAS_switchDecoratedCaseList var_switchDecoratedCaseList_8049 = GALGAS_switchDecoratedCaseList::constructor_emptyList (SOURCE_FILE ("instructionStaticAnalysis.galgas", 219)) ;
+  GALGAS_stringset var_usedConstantNameSet_8087 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("instructionStaticAnalysis.galgas", 220)) ;
   const GALGAS_switchInstruction temp_1 = object ;
-  cEnumerator_switchCaseList enumerator_8099 (temp_1.getter_mSwitchCaseList (HERE), kENUMERATION_UP) ;
-  while (enumerator_8099.hasCurrentObject ()) {
-    cEnumerator_lstringlist enumerator_8141 (enumerator_8099.current_mConstantNameList (HERE), kENUMERATION_UP) ;
-    while (enumerator_8141.hasCurrentObject ()) {
-      GALGAS_uint joker_8210 ; // Joker input parameter
-      var_variableTypeProxy_7908.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 223)).method_searchKey (enumerator_8141.current_mValue (HERE), joker_8210, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 223)) ;
+  cEnumerator_switchCaseList enumerator_8155 (temp_1.getter_mSwitchCaseList (HERE), kENUMERATION_UP) ;
+  while (enumerator_8155.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_8197 (enumerator_8155.current_mConstantNameList (HERE), kENUMERATION_UP) ;
+    while (enumerator_8197.hasCurrentObject ()) {
+      GALGAS_uint joker_8266 ; // Joker input parameter
+      var_variableTypeProxy_7964.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 223)).method_searchKey (enumerator_8197.current_mValue (HERE), joker_8266, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 223)) ;
       enumGalgasBool test_2 = kBoolTrue ;
       if (kBoolTrue == test_2) {
-        test_2 = var_usedConstantNameSet_8031.getter_hasKey (enumerator_8141.current_mValue (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 224)) COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 224)).boolEnum () ;
+        test_2 = var_usedConstantNameSet_8087.getter_hasKey (enumerator_8197.current_mValue (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 224)) COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 224)).boolEnum () ;
         if (kBoolTrue == test_2) {
           TC_Array <C_FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (enumerator_8141.current_mValue (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 225)), GALGAS_string ("duplicated constant"), fixItArray3  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 225)) ;
+          inCompiler->emitSemanticError (enumerator_8197.current_mValue (HERE).getter_location (SOURCE_FILE ("instructionStaticAnalysis.galgas", 225)), GALGAS_string ("duplicated constant"), fixItArray3  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 225)) ;
         }
       }
-      var_usedConstantNameSet_8031.addAssign_operation (enumerator_8141.current_mValue (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 227))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 227)) ;
-      enumerator_8141.gotoNextObject () ;
+      var_usedConstantNameSet_8087.addAssign_operation (enumerator_8197.current_mValue (HERE).getter_string (SOURCE_FILE ("instructionStaticAnalysis.galgas", 227))  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 227)) ;
+      enumerator_8197.gotoNextObject () ;
     }
-    GALGAS_decoratedInstructionList var_decoratedInstructionList_8511 ;
-    extensionMethod_analyzeInstructionList (enumerator_8099.current_mInstructionList (HERE), constinArgument_inAnalyzeContext, var_decoratedInstructionList_8511, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 229)) ;
-    var_switchDecoratedCaseList_7993.addAssign_operation (enumerator_8099.current_mConstantNameList (HERE), var_decoratedInstructionList_8511  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 233)) ;
-    enumerator_8099.gotoNextObject () ;
+    GALGAS_decoratedInstructionList var_decoratedInstructionList_8567 ;
+    extensionMethod_analyzeInstructionList (enumerator_8155.current_mInstructionList (HERE), constinArgument_inAnalyzeContext, var_decoratedInstructionList_8567, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 229)) ;
+    var_switchDecoratedCaseList_8049.addAssign_operation (enumerator_8155.current_mConstantNameList (HERE), var_decoratedInstructionList_8567  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 233)) ;
+    enumerator_8155.gotoNextObject () ;
   }
-  GALGAS_stringset var_missingConstantSet_8659 = var_variableTypeProxy_7908.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)).getter_keySet (SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)).substract_operation (var_usedConstantNameSet_8031, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)) ;
-  cEnumerator_stringset enumerator_8768 (var_missingConstantSet_8659, kENUMERATION_UP) ;
-  while (enumerator_8768.hasCurrentObject ()) {
+  GALGAS_stringset var_missingConstantSet_8715 = var_variableTypeProxy_7964.getter_mConstantMap (inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)).getter_keySet (SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)).substract_operation (var_usedConstantNameSet_8087, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 236)) ;
+  cEnumerator_stringset enumerator_8824 (var_missingConstantSet_8715, kENUMERATION_UP) ;
+  while (enumerator_8824.hasCurrentObject ()) {
     const GALGAS_switchInstruction temp_4 = object ;
     TC_Array <C_FixItDescription> fixItArray5 ;
-    inCompiler->emitSemanticError (temp_4.getter_mEndOfSwitchExpression (HERE), GALGAS_string ("missing constant '").add_operation (enumerator_8768.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)).add_operation (GALGAS_string ("' in switch instruction"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)), fixItArray5  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)) ;
-    enumerator_8768.gotoNextObject () ;
+    inCompiler->emitSemanticError (temp_4.getter_mEndOfSwitchExpression (HERE), GALGAS_string ("missing constant '").add_operation (enumerator_8824.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)).add_operation (GALGAS_string ("' in switch instruction"), inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)), fixItArray5  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 238)) ;
+    enumerator_8824.gotoNextObject () ;
   }
   const GALGAS_switchInstruction temp_6 = object ;
-  outArgument_outDecoratedInstruction = GALGAS_switchDecoratedInstruction::constructor_new (temp_6.getter_mVariableName (HERE), var_switchDecoratedCaseList_7993  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 241)) ;
+  outArgument_outDecoratedInstruction = GALGAS_switchDecoratedInstruction::constructor_new (temp_6.getter_mVariableName (HERE), var_switchDecoratedCaseList_8049  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 241)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -511,18 +511,18 @@ static void extensionMethod_ifInstruction_analyzeInstruction (const cPtr_instruc
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_ifInstruction * object = (const cPtr_ifInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_ifInstruction) ;
-  GALGAS_decoratedExpression var_decoratedExpression_9417 ;
+  GALGAS_decoratedExpression var_decoratedExpression_9473 ;
   const GALGAS_ifInstruction temp_0 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mTestExpression (HERE).ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_9417, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 253)) ;
-  GALGAS_decoratedInstructionList var_decoratedThenInstructionList_9559 ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mTestExpression (HERE).ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_9473, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 253)) ;
+  GALGAS_decoratedInstructionList var_decoratedThenInstructionList_9615 ;
   const GALGAS_ifInstruction temp_1 = object ;
-  extensionMethod_analyzeInstructionList (temp_1.getter_mThenInstructionList (HERE), constinArgument_inAnalyzeContext, var_decoratedThenInstructionList_9559, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 258)) ;
-  GALGAS_decoratedInstructionList var_decoratedElseInstructionList_9701 ;
+  extensionMethod_analyzeInstructionList (temp_1.getter_mThenInstructionList (HERE), constinArgument_inAnalyzeContext, var_decoratedThenInstructionList_9615, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 258)) ;
+  GALGAS_decoratedInstructionList var_decoratedElseInstructionList_9757 ;
   const GALGAS_ifInstruction temp_2 = object ;
-  extensionMethod_analyzeInstructionList (temp_2.getter_mElseInstructionList (HERE), constinArgument_inAnalyzeContext, var_decoratedElseInstructionList_9701, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 262)) ;
+  extensionMethod_analyzeInstructionList (temp_2.getter_mElseInstructionList (HERE), constinArgument_inAnalyzeContext, var_decoratedElseInstructionList_9757, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 262)) ;
   const GALGAS_ifInstruction temp_3 = object ;
   const GALGAS_ifInstruction temp_4 = object ;
-  outArgument_outDecoratedInstruction = GALGAS_ifDecoratedInstruction::constructor_new (temp_3.getter_mIFinstructionLocation (HERE), var_decoratedExpression_9417, temp_4.getter_mEndOfTestExpression (HERE), var_decoratedThenInstructionList_9559, var_decoratedElseInstructionList_9701  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 266)) ;
+  outArgument_outDecoratedInstruction = GALGAS_ifDecoratedInstruction::constructor_new (temp_3.getter_mIFinstructionLocation (HERE), var_decoratedExpression_9473, temp_4.getter_mEndOfTestExpression (HERE), var_decoratedThenInstructionList_9615, var_decoratedElseInstructionList_9757  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 266)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -549,11 +549,11 @@ static void extensionMethod_assertInstruction_analyzeInstruction (const cPtr_ins
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_assertInstruction * object = (const cPtr_assertInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_assertInstruction) ;
-  GALGAS_decoratedExpression var_decoratedExpression_10323 ;
+  GALGAS_decoratedExpression var_decoratedExpression_10379 ;
   const GALGAS_assertInstruction temp_0 = object ;
-  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mAssertExpression (HERE).ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_10323, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 281)) ;
+  callExtensionMethod_analyzeExpression ((const cPtr_expression *) temp_0.getter_mAssertExpression (HERE).ptr (), constinArgument_inAnalyzeContext, GALGAS_bool (false), var_decoratedExpression_10379, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 281)) ;
   const GALGAS_assertInstruction temp_1 = object ;
-  outArgument_outDecoratedInstruction = GALGAS_assertDecoratedInstruction::constructor_new (temp_1.getter_mAssertInstructionLocation (HERE), var_decoratedExpression_10323  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 286)) ;
+  outArgument_outDecoratedInstruction = GALGAS_assertDecoratedInstruction::constructor_new (temp_1.getter_mAssertInstructionLocation (HERE), var_decoratedExpression_10379  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 286)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

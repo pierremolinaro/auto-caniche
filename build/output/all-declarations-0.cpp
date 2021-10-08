@@ -4933,13 +4933,13 @@ typeComparisonResult GALGAS_expression::objectCompare (const GALGAS_expression &
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_expression::GALGAS_expression (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_expression::GALGAS_expression (const cPtr_expression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_expression) ;
 }
 
@@ -5662,13 +5662,13 @@ typeComparisonResult GALGAS_comparisonRightOperand::objectCompare (const GALGAS_
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_comparisonRightOperand::GALGAS_comparisonRightOperand (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_comparisonRightOperand::GALGAS_comparisonRightOperand (const cPtr_comparisonRightOperand * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_comparisonRightOperand) ;
 }
 
@@ -5872,13 +5872,13 @@ typeComparisonResult GALGAS_instruction::objectCompare (const GALGAS_instruction
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_instruction::GALGAS_instruction (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_instruction::GALGAS_instruction (const cPtr_instruction * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_instruction) ;
 }
 
@@ -5959,13 +5959,13 @@ typeComparisonResult GALGAS_assignmentSourceExpression::objectCompare (const GAL
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_assignmentSourceExpression::GALGAS_assignmentSourceExpression (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_assignmentSourceExpression::GALGAS_assignmentSourceExpression (const cPtr_assignmentSourceExpression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_assignmentSourceExpression) ;
 }
 
@@ -9450,13 +9450,13 @@ typeComparisonResult GALGAS_decoratedInstruction::objectCompare (const GALGAS_de
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedInstruction::GALGAS_decoratedInstruction (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedInstruction::GALGAS_decoratedInstruction (const cPtr_decoratedInstruction * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_decoratedInstruction) ;
 }
 
@@ -9954,13 +9954,13 @@ typeComparisonResult GALGAS_decoratedExpression::objectCompare (const GALGAS_dec
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedExpression::GALGAS_decoratedExpression (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedExpression::GALGAS_decoratedExpression (const cPtr_decoratedExpression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_decoratedExpression) ;
 }
 
@@ -15684,13 +15684,13 @@ typeComparisonResult GALGAS_decoratedComparisonRightOperand::objectCompare (cons
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedComparisonRightOperand::GALGAS_decoratedComparisonRightOperand (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedComparisonRightOperand::GALGAS_decoratedComparisonRightOperand (const cPtr_decoratedComparisonRightOperand * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_decoratedComparisonRightOperand) ;
 }
 
@@ -15824,12 +15824,12 @@ void extensionMethod_analyzeExpressionList (const GALGAS_expressionList inObject
   outArgument_outDecoratedExpressionList.drop () ; // Release 'out' argument
   outArgument_outDecoratedExpressionList = GALGAS_decoratedExpressionList::constructor_emptyList (SOURCE_FILE ("expressionStaticAnalysis.galgas", 37)) ;
   const GALGAS_expressionList temp_0 = inObject ;
-  cEnumerator_expressionList enumerator_1247 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_1247.hasCurrentObject ()) {
-    GALGAS_decoratedExpression var_decoratedExpression_1387 ;
-    callExtensionMethod_analyzeExpression ((const cPtr_expression *) enumerator_1247.current (HERE).getter_mExpression (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_decoratedExpression_1387, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 39)) ;
-    outArgument_outDecoratedExpressionList.addAssign_operation (enumerator_1247.current (HERE).getter_mLabel (HERE), var_decoratedExpression_1387  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 44)) ;
-    enumerator_1247.gotoNextObject () ;
+  cEnumerator_expressionList enumerator_1261 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_1261.hasCurrentObject ()) {
+    GALGAS_decoratedExpression var_decoratedExpression_1401 ;
+    callExtensionMethod_analyzeExpression ((const cPtr_expression *) enumerator_1261.current (HERE).getter_mExpression (HERE).ptr (), constinArgument_inAnalyzeContext, constinArgument_inEnsureClause, var_decoratedExpression_1401, inCompiler COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 39)) ;
+    outArgument_outDecoratedExpressionList.addAssign_operation (enumerator_1261.current (HERE).getter_mLabel (HERE), var_decoratedExpression_1401  COMMA_SOURCE_FILE ("expressionStaticAnalysis.galgas", 44)) ;
+    enumerator_1261.gotoNextObject () ;
   }
 }
 
@@ -15923,13 +15923,13 @@ typeComparisonResult GALGAS_decoratedAssignmentSourceExpression::objectCompare (
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedAssignmentSourceExpression::GALGAS_decoratedAssignmentSourceExpression (void) :
-AC_GALGAS_class (false) {
+AC_GALGAS_class (true) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_decoratedAssignmentSourceExpression::GALGAS_decoratedAssignmentSourceExpression (const cPtr_decoratedAssignmentSourceExpression * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr, false) {
+AC_GALGAS_class (inSourcePtr, true) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_decoratedAssignmentSourceExpression) ;
 }
 

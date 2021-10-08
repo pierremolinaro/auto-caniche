@@ -1,5 +1,5 @@
 
-class @assignmentDecoratedInstruction : @decoratedInstruction {
+shared class @assignmentDecoratedInstruction : @decoratedInstruction {
   @unifiedScalarTypeMap-proxy mTargetTypeProxy
   @lstring mTargetVarName
   @decoratedAssignmentSourceExpression mSourceExpression
@@ -7,7 +7,7 @@ class @assignmentDecoratedInstruction : @decoratedInstruction {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @ifDecoratedInstruction : @decoratedInstruction {
+shared class @ifDecoratedInstruction : @decoratedInstruction {
   @location mIFinstructionLocation
   @decoratedExpression mTestExpression
   @location mEndOfTestExpression
@@ -24,7 +24,7 @@ list @switchDecoratedCaseList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @switchDecoratedInstruction : @decoratedInstruction {
+shared class @switchDecoratedInstruction : @decoratedInstruction {
   @lstring mVarName
   @switchDecoratedCaseList mSwitchDecoratedCaseList
 }
@@ -32,7 +32,7 @@ class @switchDecoratedInstruction : @decoratedInstruction {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-class @assertDecoratedInstruction : @decoratedInstruction {
+shared class @assertDecoratedInstruction : @decoratedInstruction {
   @location mInstructionLocation
   @decoratedExpression mExpression
 }
@@ -56,13 +56,13 @@ method @instructionList analyzeInstructionList
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-abstract class @decoratedAssignmentSourceExpression {
+abstract shared class @decoratedAssignmentSourceExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+shared class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
   @lstring mVarName
 #  @uint mBDDStartIndex ;
 #  @uint mBDDBitCount ;
@@ -71,7 +71,7 @@ class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSour
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-class @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+shared class @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
   @lstring mEnumCstName
   @uint mValue
   @uint mBDDBitCount
@@ -80,7 +80,7 @@ class @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpr
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-class @functionInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+shared class @functionInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
   @lstring mFunctionName
   @lstring mOperandName
   @decoratedFunctionValueList mDecoratedFunctionValueList

@@ -1066,12 +1066,12 @@ void extensionMethod_analyzeInstructionList (const GALGAS_instructionList inObje
   outArgument_outDecoratedInstructionList.drop () ; // Release 'out' argument
   outArgument_outDecoratedInstructionList = GALGAS_decoratedInstructionList::constructor_emptyList (SOURCE_FILE ("instructionStaticAnalysis.galgas", 46)) ;
   const GALGAS_instructionList temp_0 = inObject ;
-  cEnumerator_instructionList enumerator_1679 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_1679.hasCurrentObject ()) {
-    GALGAS_decoratedInstruction var_decoratedInstruction_1799 ;
-    callExtensionMethod_analyzeInstruction ((const cPtr_instruction *) enumerator_1679.current (HERE).getter_mInstruction (HERE).ptr (), constinArgument_inAnalyzeContext, var_decoratedInstruction_1799, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 48)) ;
-    outArgument_outDecoratedInstructionList.addAssign_operation (var_decoratedInstruction_1799  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 52)) ;
-    enumerator_1679.gotoNextObject () ;
+  cEnumerator_instructionList enumerator_1707 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_1707.hasCurrentObject ()) {
+    GALGAS_decoratedInstruction var_decoratedInstruction_1827 ;
+    callExtensionMethod_analyzeInstruction ((const cPtr_instruction *) enumerator_1707.current (HERE).getter_mInstruction (HERE).ptr (), constinArgument_inAnalyzeContext, var_decoratedInstruction_1827, inCompiler COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 48)) ;
+    outArgument_outDecoratedInstructionList.addAssign_operation (var_decoratedInstruction_1827  COMMA_SOURCE_FILE ("instructionStaticAnalysis.galgas", 52)) ;
+    enumerator_1707.gotoNextObject () ;
   }
 }
 

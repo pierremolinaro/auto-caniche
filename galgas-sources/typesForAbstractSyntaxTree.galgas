@@ -44,7 +44,7 @@ list @machineList {
 
 #--------------------------------------------------------------------*
 
-abstract class @expression {}
+abstract shared class @expression {}
 
 #--------------------------------------------------------------------*
 
@@ -55,7 +55,7 @@ list @expressionList {
 
 #--------------------------------------------------------------------*
 
-class @implicationExpression,
+shared class @implicationExpression,
       @logicalOrExpression,
       @logicalAndExpression : @expression {
   @expression mLeft
@@ -64,18 +64,18 @@ class @implicationExpression,
 
 #----------------------------------------------------------------*
 
-abstract class @comparisonRightOperand {
+abstract shared class @comparisonRightOperand {
 }
 
 #--------------------------------------------------------------------*
 
-class @constantAsComparisonRightOperand : @comparisonRightOperand {
+shared class @constantAsComparisonRightOperand : @comparisonRightOperand {
   @lstring mConstantName
 }
 
 #--------------------------------------------------------------------*
 
-class @attributeAsComparisonRightOperand : @comparisonRightOperand {
+shared class @attributeAsComparisonRightOperand : @comparisonRightOperand {
   @lstring mAttributeName
   @bool mHasOldQualifier
 }
@@ -89,7 +89,7 @@ enum @enumComparisonOperator {
 
 #--------------------------------------------------------------------*
 
-class @comparisonInExpression : @expression {
+shared class @comparisonInExpression : @expression {
   @lstring mAttributeName
   @enumComparisonOperator mOperator
   @comparisonRightOperand mRightOperand
@@ -97,7 +97,7 @@ class @comparisonInExpression : @expression {
 
 #----------------------------------------------------------------*
 
-abstract class @instruction {}
+abstract shared class @instruction {}
 
 #--------------------------------------------------------------------*
 
@@ -107,45 +107,45 @@ list @instructionList {
 
 #----------------------------------------------------------------*
 
-abstract class @assignmentSourceExpression {
+abstract shared class @assignmentSourceExpression {
 }
 
 #--------------------------------------------------------------------*
 
-class @varAsAssignmentSourceExpression : @assignmentSourceExpression {
+shared class @varAsAssignmentSourceExpression : @assignmentSourceExpression {
   @lstring mSourceVarName
 }
 
 #--------------------------------------------------------------------*
 
-class @constantAsAssignmentSourceExpression : @assignmentSourceExpression {
+shared class @constantAsAssignmentSourceExpression : @assignmentSourceExpression {
   @lstring mConstantName
 }
 
 #--------------------------------------------------------------------*
 
-class @functionAsAssignmentSourceExpression : @assignmentSourceExpression {
+shared class @functionAsAssignmentSourceExpression : @assignmentSourceExpression {
   @lstring mFunctionName
   @lstring mOperandName
 }
 
 #--------------------------------------------------------------------*
 
-class @assertInstruction : @instruction {
+shared class @assertInstruction : @instruction {
   @location mAssertInstructionLocation
   @expression mAssertExpression
 }
 
 #--------------------------------------------------------------------*
 
-class @assignmentInstruction : @instruction {
+shared class @assignmentInstruction : @instruction {
   @lstring mTargetVarName
   @assignmentSourceExpression mSourceExpression
 }
 
 #----------------------------------------------------------------*
 
-class @ifInstruction : @instruction {
+shared class @ifInstruction : @instruction {
   @location mIFinstructionLocation
   @expression mTestExpression
   @location mEndOfTestExpression
@@ -163,7 +163,7 @@ list @switchCaseList {
 
 #----------------------------------------------------------------*
 
-class @switchInstruction : @instruction {
+shared class @switchInstruction : @instruction {
   @location mSWITCHinstructionLocation
   @lstring mVariableName
   @switchCaseList mSwitchCaseList

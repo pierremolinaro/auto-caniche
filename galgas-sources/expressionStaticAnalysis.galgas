@@ -2,7 +2,7 @@
 
 #-------------------------------------------------------------------*
 
-class @implicationDecoratedExpression,
+shared class @implicationDecoratedExpression,
       @logicalOrDecoratedExpression,
       @logicalAndDecoratedExpression : @decoratedExpression {
   @decoratedExpression mLeft
@@ -11,7 +11,7 @@ class @implicationDecoratedExpression,
 
 #-------------------------------------------------------------------*
 
-class @decoratedComparisonInExpression : @decoratedExpression {
+shared class @decoratedComparisonInExpression : @decoratedExpression {
   @lstring mAttributeName
 #  @uint mAttributeBDDStartIndex ;
 #  @uint mAttributeBDDBitCount ;
@@ -135,12 +135,12 @@ override method @comparisonInExpression analyzeExpression
 
 #-------------------------------------------------------------------*
 
-abstract class @decoratedComparisonRightOperand {
+abstract shared class @decoratedComparisonRightOperand {
 }
 
 #-------------------------------------------------------------------*
 
-class @decoratedConstantAsComparisonRightOperand : @decoratedComparisonRightOperand {
+shared class @decoratedConstantAsComparisonRightOperand : @decoratedComparisonRightOperand {
   @unifiedScalarTypeMap-proxy mConstantTypeProxy
   @lstring mConstantName
   @uint mConstantValue
@@ -148,7 +148,7 @@ class @decoratedConstantAsComparisonRightOperand : @decoratedComparisonRightOper
 
 #-------------------------------------------------------------------*
 
-class @decoratedAttributeAsComparisonRightOperand : @decoratedComparisonRightOperand {
+shared class @decoratedAttributeAsComparisonRightOperand : @decoratedComparisonRightOperand {
   @lstring mAttributeName
 #  @uint mAttributeBDDStartBitIndex ;
 }
