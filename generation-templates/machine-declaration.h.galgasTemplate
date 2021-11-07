@@ -6,7 +6,7 @@
 
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-%for () in ENUM_DECLARATION_MAP do
+%for (lkey mConstantMap mEnumConstantList mGenerate) in ENUM_DECLARATION_MAP do
   if mGenerate then
     %#include "%!lkey.string%.h"\n%
   end
@@ -24,13 +24,13 @@ class %!MACHINE_NAME% {
 
 //--- Attributes
 %
-for () in ATTRIBUTE_LIST do
+for (mTypeProxy mVarName mValueList mInitialValueConstantName mInitialValueConstantIndex) in ATTRIBUTE_LIST do
   %  private : %![[mTypeProxy key] identifierRepresentation]% %![mVarName.string identifierRepresentation]% ;\n%
   %  private : %![[mTypeProxy key] identifierRepresentation]% old_%![mVarName.string identifierRepresentation]% ;\n%
 end%
 //--- Accessors
 %
-for () in ATTRIBUTE_LIST do
+for (mTypeProxy mVarName mValueList mInitialValueConstantName mInitialValueConstantIndex) in ATTRIBUTE_LIST do
   %  public : inline %![[mTypeProxy key] identifierRepresentation]% get_%![mVarName.string identifierRepresentation]% (void) const {\n%
   %    return %![mVarName.string identifierRepresentation]% ;\n%
   %  }\n%
@@ -43,12 +43,12 @@ end%
  
 //--- Events
 %
-for () in EVENT_MAP do
+for (lkey mDecoratedArgumentList mDecoratedEventInstructionList mEnsureDecoratedExpressionList mEndOfEnsureExpressionList) in EVENT_MAP do
   %  public : void event_%![lkey identifierRepresentation]% (%
   if [mDecoratedArgumentList length] == 0 then
     %void%
   else
-    for () in mDecoratedArgumentList
+    for (mArgumentTypeProxy mArgumentName) in mDecoratedArgumentList
     do %const %![[mArgumentTypeProxy key] identifierRepresentation]% %![mArgumentName identifierRepresentation]
     between %, %
     end

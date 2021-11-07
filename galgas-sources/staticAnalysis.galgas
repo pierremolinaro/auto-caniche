@@ -9,13 +9,13 @@ proc performStaticAnalysis
   !@machineMap outClassTypeMap
 {
 #-------------------------------------------- Enter enumeration types
-  @stringset allEnumerationConstants = {}
+  var @stringset allEnumerationConstants = {}
   outUnifiedScalarTypeMap = @unifiedScalarTypeMap.default
   for e in inAST.mEnumTypeList do
     if [e.mEnumConstantList length] < 2 then
       error e.mEnumListName :"an enumeration should define 2 constants or more"
     end
-    @enumConstantMap enumConstantMap = {}
+    var @enumConstantMap enumConstantMap = {}
     for c in e.mEnumConstantList do( idx)
       [!?enumConstantMap insertKey !c.mValue !idx]
       if [allEnumerationConstants hasKey !c.mValue] then
@@ -62,8 +62,8 @@ proc performStaticAnalysis
   #---
     [!?outFunctionMap insertKey
       !f.mFunctionName
-      !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !f.mOperandEnumTypeName}
-      !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !f.mResultEnumTypeName}
+      !@unifiedScalarTypeMap-entry. searchKey { !outUnifiedScalarTypeMap !f.mOperandEnumTypeName}
+      !@unifiedScalarTypeMap-entry. searchKey { !outUnifiedScalarTypeMap !f.mResultEnumTypeName}
       !decoratedFunctionValueList
     ]
   end
@@ -81,7 +81,7 @@ proc performStaticAnalysis
         ?*
       ]
       [enumCstMap searchKey !e.mConstantName ?let @uint constantIndex]
-      let t = @unifiedScalarTypeMap-proxy.searchKey { !outUnifiedScalarTypeMap !e.mEnumTypeName}
+      let t = @unifiedScalarTypeMap-entry.searchKey { !outUnifiedScalarTypeMap !e.mEnumTypeName}
       [!?machineVarMap insertKey
         !e.mEnumVarName
         !t
@@ -110,17 +110,17 @@ proc performStaticAnalysis
     var eventMap =@eventMap.default
     for event in c.mEventList do
     #--- Arguments
-      @analyzeContext analyzeContextForEvent = analyzeContext
+      var @analyzeContext analyzeContextForEvent = analyzeContext
       var decoratedArgumentList =@decoratedArgumentList.default
       for arg in event.mEventArgumentList do
         [outUnifiedScalarTypeMap searchKey !arg.mArgumentTypeName ?* ?let   @lstringlist enumConstantList ?*]
         [!?analyzeContextForEvent.mMachineVarMap insertKey
           !arg.mArgumentVarName
-          !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}
+          !@unifiedScalarTypeMap-entry. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}
           ![enumConstantList length] - 1
         ]
         decoratedArgumentList +=
-          !@unifiedScalarTypeMap-proxy. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}
+          !@unifiedScalarTypeMap-entry. searchKey { !outUnifiedScalarTypeMap !arg.mArgumentTypeName}
           !arg.mArgumentVarName
       end
     #--- Instructions

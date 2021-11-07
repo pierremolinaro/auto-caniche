@@ -8,7 +8,7 @@
 
 typedef enum {
 %
-for () in CONSTANT_LIST
+for (mValue) in CONSTANT_LIST
 do %  %![mValue.string identifierRepresentation]
 between %,\n%
 end%

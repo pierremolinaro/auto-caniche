@@ -68,24 +68,24 @@ GALGAS_lstringlist GALGAS_lstringlist::extractObject (const GALGAS_object & inOb
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lstringlist : public cCollectionElement {
-  public : GALGAS_lstringlist_2D_element mObject ;
+  public: GALGAS_lstringlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_lstringlist (const GALGAS_lstring & in_mValue
-                                           COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_lstringlist (const GALGAS_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lstringlist (const GALGAS_lstring & in_mValue
+                                          COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lstringlist (const GALGAS_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1302,24 +1302,24 @@ GALGAS_functionlist GALGAS_functionlist::extractObject (const GALGAS_object & in
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_functionlist : public cCollectionElement {
-  public : GALGAS_functionlist_2D_element mObject ;
+  public: GALGAS_functionlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_functionlist (const GALGAS_function & in_mValue
-                                            COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_functionlist (const GALGAS_functionlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_functionlist (const GALGAS_function & in_mValue
+                                           COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_functionlist (const GALGAS_functionlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1719,24 +1719,24 @@ GALGAS_luintlist GALGAS_luintlist::extractObject (const GALGAS_object & inObject
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_luintlist : public cCollectionElement {
-  public : GALGAS_luintlist_2D_element mObject ;
+  public: GALGAS_luintlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_luintlist (const GALGAS_luint & in_mValue
-                                         COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_luintlist (const GALGAS_luintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_luintlist (const GALGAS_luint & in_mValue
+                                        COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_luintlist (const GALGAS_luintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2210,20 +2210,6 @@ void GALGAS_luint::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_luint::getter_uint (UNUSED_LOCATION_ARGS) const {
-  return mProperty_uint ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_luint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@objectlist type
 //
@@ -2273,24 +2259,24 @@ GALGAS_objectlist GALGAS_objectlist::extractObject (const GALGAS_object & inObje
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_objectlist : public cCollectionElement {
-  public : GALGAS_objectlist_2D_element mObject ;
+  public: GALGAS_objectlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_objectlist (const GALGAS_object & in_mValue
-                                          COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_objectlist (const GALGAS_objectlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_objectlist (const GALGAS_object & in_mValue
+                                         COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_objectlist (const GALGAS_objectlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2690,24 +2676,24 @@ GALGAS_stringlist GALGAS_stringlist::extractObject (const GALGAS_object & inObje
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_stringlist : public cCollectionElement {
-  public : GALGAS_stringlist_2D_element mObject ;
+  public: GALGAS_stringlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_stringlist (const GALGAS_string & in_mValue
-                                          COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_stringlist (const GALGAS_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_stringlist (const GALGAS_string & in_mValue
+                                         COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_stringlist (const GALGAS_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3107,24 +3093,24 @@ GALGAS_typelist GALGAS_typelist::extractObject (const GALGAS_object & inObject,
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_typelist : public cCollectionElement {
-  public : GALGAS_typelist_2D_element mObject ;
+  public: GALGAS_typelist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_typelist (const GALGAS_type & in_mValue
-                                        COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_typelist (const GALGAS_typelist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typelist (const GALGAS_type & in_mValue
+                                       COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_typelist (const GALGAS_typelist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3524,24 +3510,24 @@ GALGAS_uintlist GALGAS_uintlist::extractObject (const GALGAS_object & inObject,
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_uintlist : public cCollectionElement {
-  public : GALGAS_uintlist_2D_element mObject ;
+  public: GALGAS_uintlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_uintlist (const GALGAS_uint & in_mValue
-                                        COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_uintlist (const GALGAS_uintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_uintlist (const GALGAS_uint & in_mValue
+                                       COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_uintlist (const GALGAS_uintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -3941,24 +3927,24 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::extractObject (const GALGAS_obj
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_uint_36__34_list : public cCollectionElement {
-  public : GALGAS_uint_36__34_list_2D_element mObject ;
+  public: GALGAS_uint_36__34_list_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_ & in_mValue
-                                                COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_list_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_ & in_mValue
+                                               COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_list_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4358,24 +4344,24 @@ GALGAS_bigintlist GALGAS_bigintlist::extractObject (const GALGAS_object & inObje
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_bigintlist : public cCollectionElement {
-  public : GALGAS_bigintlist_2D_element mObject ;
+  public: GALGAS_bigintlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_bigintlist (const GALGAS_bigint & in_mValue
-                                          COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_bigintlist (const GALGAS_bigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_bigintlist (const GALGAS_bigint & in_mValue
+                                         COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_bigintlist (const GALGAS_bigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4775,24 +4761,24 @@ GALGAS_lbigintlist GALGAS_lbigintlist::extractObject (const GALGAS_object & inOb
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lbigintlist : public cCollectionElement {
-  public : GALGAS_lbigintlist_2D_element mObject ;
+  public: GALGAS_lbigintlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_lbigintlist (const GALGAS_lbigint & in_mValue
-                                           COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_lbigintlist (const GALGAS_lbigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lbigintlist (const GALGAS_lbigint & in_mValue
+                                          COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_lbigintlist (const GALGAS_lbigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5266,20 +5252,6 @@ void GALGAS_lbigint::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bigint GALGAS_lbigint::getter_bigint (UNUSED_LOCATION_ARGS) const {
-  return mProperty_bigint ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lbigint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lbool type
 //
@@ -5401,20 +5373,6 @@ void GALGAS_lbool::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bool GALGAS_lbool::getter_bool (UNUSED_LOCATION_ARGS) const {
-  return mProperty_bool ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lbool::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -5540,20 +5498,6 @@ void GALGAS_lchar::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_char GALGAS_lchar::getter_char (UNUSED_LOCATION_ARGS) const {
-  return mProperty_char ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lchar::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@ldouble type
 //
@@ -5675,20 +5619,6 @@ void GALGAS_ldouble::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_double GALGAS_ldouble::getter_double (UNUSED_LOCATION_ARGS) const {
-  return mProperty_double ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_ldouble::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -5814,20 +5744,6 @@ void GALGAS_lsint::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_sint GALGAS_lsint::getter_sint (UNUSED_LOCATION_ARGS) const {
-  return mProperty_sint ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lsint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lsint64 type
 //
@@ -5949,20 +5865,6 @@ void GALGAS_lsint_36__34_::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_sint_36__34_ GALGAS_lsint_36__34_::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_sint_36__34_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lsint_36__34_::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -6088,20 +5990,6 @@ void GALGAS_luint_36__34_::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint_36__34_ GALGAS_luint_36__34_::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_uint_36__34_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_luint_36__34_::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@2stringlist type
 //
@@ -6151,25 +6039,25 @@ GALGAS__32_stringlist GALGAS__32_stringlist::extractObject (const GALGAS_object 
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement__32_stringlist : public cCollectionElement {
-  public : GALGAS__32_stringlist_2D_element mObject ;
+  public: GALGAS__32_stringlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement__32_stringlist (const GALGAS_string & in_mValue_30_,
-                                              const GALGAS_string & in_mValue_31_
-                                              COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement__32_stringlist (const GALGAS__32_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement__32_stringlist (const GALGAS_string & in_mValue_30_,
+                                             const GALGAS_string & in_mValue_31_
+                                             COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement__32_stringlist (const GALGAS__32_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6633,25 +6521,25 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::extractObject (const GALGAS_objec
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement__32_lstringlist : public cCollectionElement {
-  public : GALGAS__32_lstringlist_2D_element mObject ;
+  public: GALGAS__32_lstringlist_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement__32_lstringlist (const GALGAS_lstring & in_mValue_30_,
-                                               const GALGAS_lstring & in_mValue_31_
-                                               COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement__32_lstringlist (const GALGAS__32_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement__32_lstringlist (const GALGAS_lstring & in_mValue_30_,
+                                              const GALGAS_lstring & in_mValue_31_
+                                              COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement__32_lstringlist (const GALGAS__32_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7189,20 +7077,6 @@ void GALGAS_range::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_range::getter_start (UNUSED_LOCATION_ARGS) const {
-  return mProperty_start ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_range::getter_length (UNUSED_LOCATION_ARGS) const {
-  return mProperty_length ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@functionlist-element type
 //
@@ -7307,14 +7181,6 @@ void GALGAS_functionlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_function GALGAS_functionlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7429,14 +7295,6 @@ void GALGAS_luintlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_luint GALGAS_luintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@objectlist-element type
 //
@@ -7541,14 +7399,6 @@ void GALGAS_objectlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_object GALGAS_objectlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7663,14 +7513,6 @@ void GALGAS_stringlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_stringlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@typelist-element type
 //
@@ -7775,14 +7617,6 @@ void GALGAS_typelist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_type GALGAS_typelist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -7897,14 +7731,6 @@ void GALGAS_uintlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint GALGAS_uintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@uint64list-element type
 //
@@ -8015,14 +7841,6 @@ void GALGAS_uint_36__34_list_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_uint_36__34_ GALGAS_uint_36__34_list_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8137,14 +7955,6 @@ void GALGAS_bigintlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_bigint GALGAS_bigintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lbigintlist-element type
 //
@@ -8255,14 +8065,6 @@ void GALGAS_lbigintlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lbigint GALGAS_lbigintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8388,20 +8190,6 @@ void GALGAS__32_stringlist_2D_element::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS__32_stringlist_2D_element::getter_mValue_30_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_30_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS__32_stringlist_2D_element::getter_mValue_31_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_31_ ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lstring type
 //
@@ -8525,20 +8313,6 @@ void GALGAS_lstring::description (C_String & ioString,
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_string GALGAS_lstring::getter_string (UNUSED_LOCATION_ARGS) const {
-  return mProperty_string ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_location GALGAS_lstring::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mProperty_location ;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------
 //
 //@lstringlist-element type
 //
@@ -8649,14 +8423,6 @@ void GALGAS_lstringlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS_lstringlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -8780,20 +8546,6 @@ void GALGAS__32_lstringlist_2D_element::description (C_String & ioString,
   }
   ioString << ">" ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS__32_lstringlist_2D_element::getter_mValue_30_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_30_ ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-GALGAS_lstring GALGAS__32_lstringlist_2D_element::getter_mValue_31_ (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue_31_ ;
-}
-
-
 
 //--- START OF USER ZONE 2
 

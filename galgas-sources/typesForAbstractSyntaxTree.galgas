@@ -3,81 +3,93 @@
 #--------------------------------------------------------------------*
 
 list @enumTypeList {
-  @lstring mEnumListName
-  @lstringlist mEnumConstantList
-  @bool mGenerateCode
+  public var @lstring mEnumListName
+  public var @lstringlist mEnumConstantList
+  public var @bool mGenerateCode
 }
 
 #--------------------------------------------------------------------*
 
 list @enumVarDeclarationList {
-  @lstring mEnumTypeName
-  @lstring mEnumVarName
-  @lstring mConstantName
+  public var @lstring mEnumTypeName
+  public var @lstring mEnumVarName
+  public var @lstring mConstantName
 }
 
 #--------------------------------------------------------------------*
 
 list @eventDeclarationList {
-  @lstring mEventName
-  @eventArgumentList mEventArgumentList
-  @instructionList mEventInstructionList
-  @expressionList mEnsureExpressionList
-  @location mEndOfEnsureExpressionList
+  public var @lstring mEventName
+  public var @eventArgumentList mEventArgumentList
+  public var @instructionList mEventInstructionList
+  public var @expressionList mEnsureExpressionList
+  public var @location mEndOfEnsureExpressionList
 }
 
 #--------------------------------------------------------------------*
 
 list @eventArgumentList {
-  @lstring mArgumentTypeName
-  @lstring mArgumentVarName
+  public var @lstring mArgumentTypeName
+  public var @lstring mArgumentVarName
 }
 
 #--------------------------------------------------------------------*
 
 list @machineList {
-  @lstring mMachineName
-  @enumVarDeclarationList mEnumVarDeclarationList
-  @expressionList mInvariantExpressionList
-  @eventDeclarationList mEventList
+  public var @lstring mMachineName
+  public var @enumVarDeclarationList mEnumVarDeclarationList
+  public var @expressionList mInvariantExpressionList
+  public var @eventDeclarationList mEventList
 }
 
 #--------------------------------------------------------------------*
 
-abstract shared class @expression {}
+abstract refclass @expression {}
 
 #--------------------------------------------------------------------*
 
 list @expressionList {
-  @lstring mLabel
-  @expression mExpression
+  public var @lstring mLabel
+  public var @expression mExpression
 }
 
 #--------------------------------------------------------------------*
 
-shared class @implicationExpression,
-      @logicalOrExpression,
-      @logicalAndExpression : @expression {
-  @expression mLeft
-  @expression mRight
+refclass @implicationExpression : @expression {
+  public var @expression mLeft
+  public var @expression mRight
+}
+
+#--------------------------------------------------------------------*
+
+refclass @logicalOrExpression : @expression {
+  public var @expression mLeft
+  public var @expression mRight
+}
+
+#--------------------------------------------------------------------*
+
+refclass @logicalAndExpression : @expression {
+  public var @expression mLeft
+  public var @expression mRight
 }
 
 #----------------------------------------------------------------*
 
-abstract shared class @comparisonRightOperand {
+abstract refclass @comparisonRightOperand {
 }
 
 #--------------------------------------------------------------------*
 
-shared class @constantAsComparisonRightOperand : @comparisonRightOperand {
-  @lstring mConstantName
+refclass @constantAsComparisonRightOperand : @comparisonRightOperand {
+  public var @lstring mConstantName
 }
 
 #--------------------------------------------------------------------*
 
-shared class @attributeAsComparisonRightOperand : @comparisonRightOperand {
-  @lstring mAttributeName
-  @bool mHasOldQualifier
+refclass @attributeAsComparisonRightOperand : @comparisonRightOperand {
+  public var @lstring mAttributeName
+  public var @bool mHasOldQualifier
 }
 
 #--------------------------------------------------------------------*
@@ -89,125 +101,125 @@ enum @enumComparisonOperator {
 
 #--------------------------------------------------------------------*
 
-shared class @comparisonInExpression : @expression {
-  @lstring mAttributeName
-  @enumComparisonOperator mOperator
-  @comparisonRightOperand mRightOperand
+refclass @comparisonInExpression : @expression {
+  public var @lstring mAttributeName
+  public var @enumComparisonOperator mOperator
+  public var @comparisonRightOperand mRightOperand
 }
 
 #----------------------------------------------------------------*
 
-abstract shared class @instruction {}
+abstract refclass @instruction {}
 
 #--------------------------------------------------------------------*
 
 list @instructionList {
-  @instruction mInstruction
+  public var @instruction mInstruction
 }
 
 #----------------------------------------------------------------*
 
-abstract shared class @assignmentSourceExpression {
+abstract refclass @assignmentSourceExpression {
 }
 
 #--------------------------------------------------------------------*
 
-shared class @varAsAssignmentSourceExpression : @assignmentSourceExpression {
-  @lstring mSourceVarName
+refclass @varAsAssignmentSourceExpression : @assignmentSourceExpression {
+  public var @lstring mSourceVarName
 }
 
 #--------------------------------------------------------------------*
 
-shared class @constantAsAssignmentSourceExpression : @assignmentSourceExpression {
-  @lstring mConstantName
+refclass @constantAsAssignmentSourceExpression : @assignmentSourceExpression {
+  public var @lstring mConstantName
 }
 
 #--------------------------------------------------------------------*
 
-shared class @functionAsAssignmentSourceExpression : @assignmentSourceExpression {
-  @lstring mFunctionName
-  @lstring mOperandName
+refclass @functionAsAssignmentSourceExpression : @assignmentSourceExpression {
+  public var @lstring mFunctionName
+  public var @lstring mOperandName
 }
 
 #--------------------------------------------------------------------*
 
-shared class @assertInstruction : @instruction {
-  @location mAssertInstructionLocation
-  @expression mAssertExpression
+refclass @assertInstruction : @instruction {
+  public var @location mAssertInstructionLocation
+  public var @expression mAssertExpression
 }
 
 #--------------------------------------------------------------------*
 
-shared class @assignmentInstruction : @instruction {
-  @lstring mTargetVarName
-  @assignmentSourceExpression mSourceExpression
+refclass @assignmentInstruction : @instruction {
+  public var @lstring mTargetVarName
+  public var @assignmentSourceExpression mSourceExpression
 }
 
 #----------------------------------------------------------------*
 
-shared class @ifInstruction : @instruction {
-  @location mIFinstructionLocation
-  @expression mTestExpression
-  @location mEndOfTestExpression
-  @instructionList mThenInstructionList
-  @instructionList mElseInstructionList
+refclass @ifInstruction : @instruction {
+  public var @location mIFinstructionLocation
+  public var @expression mTestExpression
+  public var @location mEndOfTestExpression
+  public var @instructionList mThenInstructionList
+  public var @instructionList mElseInstructionList
 }
 
 #----------------------------------------------------------------*
 
-list @switchCaseList {
-  @lstringlist mConstantNameList
-  @location mEndOfConstantList
-  @instructionList mInstructionList
-}
+#list @switchCaseList {
+#  @lstringlist mConstantNameList
+#  @location mEndOfConstantList
+#  @instructionList mInstructionList
+#}
 
 #----------------------------------------------------------------*
 
-shared class @switchInstruction : @instruction {
-  @location mSWITCHinstructionLocation
-  @lstring mVariableName
-  @switchCaseList mSwitchCaseList
-  @location mEndOfSwitchExpression
-}
+#shared class @switchInstruction : @instruction {
+#  @location mSWITCHinstructionLocation
+#  @lstring mVariableName
+#  @switchCaseList mSwitchCaseList
+#  @location mEndOfSwitchExpression
+#}
 
 #----------------------------------------------------------------*
 
 list @functionValueList {
-  @lstring mOperandName
-  @lstring mResultName
+  public var @lstring mOperandName
+  public var @lstring mResultName
 }
 
 #----------------------------------------------------------------*
 
 list @functionDefinitionList {
-  @lstring mFunctionName
-  @lstring mOperandEnumTypeName
-  @lstring mResultEnumTypeName
-  @functionValueList mValueList
+  public var @lstring mFunctionName
+  public var @lstring mOperandEnumTypeName
+  public var @lstring mResultEnumTypeName
+  public var @functionValueList mValueList
 }
 
 #--------------------------------------------------------------------*
 
 list @scenarioEventSequence {
-  @lstring mEventName
-  @lstringlist mArgumentNameList
+  public var @lstring mEventName
+  public var @lstringlist mArgumentNameList
 }
 
 #--------------------------------------------------------------------*
 
 list @scenarioList {
-  @lstring mMachineName
-  @lstring mScenarioName
-  @scenarioEventSequence mEventSequence
+  public var @lstring mMachineName
+  public var @lstring mScenarioName
+  public var @scenarioEventSequence mEventSequence
 }
 
 #----------------------------------------------------------------*
 
 struct @ast {
-  @enumTypeList mEnumTypeList
-  @machineList mMachineList
-  @functionDefinitionList mFunctionDefinitionList
-  @scenarioList mScenarioList
+  public var @enumTypeList mEnumTypeList
+  public var @machineList mMachineList
+  public var @functionDefinitionList mFunctionDefinitionList
+  public var @scenarioList mScenarioList
 }
 
 #----------------------------------------------------------------*

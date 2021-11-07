@@ -4,14 +4,14 @@
 
 #include "%![MACHINE_NAME identifierRepresentation]%.h"
 %
-for () in FUNCTION_MAP do
+for (lkey mOperandTypeProxy mResultTypeProxy mDecoratedFunctionValueList) in FUNCTION_MAP do
   %#include "%![lkey identifierRepresentation]%.h"\n%
 end
 %
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 %!MACHINE_NAME%::%!MACHINE_NAME% (void) :
-%for () in ATTRIBUTE_LIST
+%for (mTypeProxy mVarName mValueList mInitialValueConstantName mInitialValueConstantIndex) in ATTRIBUTE_LIST
 do
   ![mVarName.string identifierRepresentation]% (%![mInitialValueConstantName identifierRepresentation]%),\n%
   %old_%![mVarName.string identifierRepresentation]% (%![mInitialValueConstantName identifierRepresentation]%)%
@@ -23,21 +23,21 @@ end% {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 void %!MACHINE_NAME%::update (void) {
-%for () in ATTRIBUTE_LIST
+%for (mTypeProxy mVarName mValueList mInitialValueConstantName mInitialValueConstantIndex) in ATTRIBUTE_LIST
 do
   %  old_%![mVarName.string identifierRepresentation]% = %![mVarName.string identifierRepresentation]% ;\n%
 end
 %}
 
 %
-for () in EVENT_MAP do
+for (lkey mDecoratedArgumentList mDecoratedEventInstructionList mEnsureDecoratedExpressionList mEndOfEnsureExpressionList) in EVENT_MAP do
   %//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 \n\n%
   %void %!MACHINE_NAME%::event_%![lkey identifierRepresentation]% (%
   if [mDecoratedArgumentList length] == 0 then
     %void%
   else
-    for () in mDecoratedArgumentList
+    for (mArgumentTypeProxy mArgumentName) in mDecoratedArgumentList
     do %const %![[mArgumentTypeProxy key] identifierRepresentation]% %![mArgumentName identifierRepresentation]
     between %, %
     end

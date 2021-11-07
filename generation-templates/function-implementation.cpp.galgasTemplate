@@ -7,7 +7,7 @@
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 const %![RESULT_TYPE_NAME identifierRepresentation]% function_%![FUNCTION_NAME identifierRepresentation]% [%![[VALUE_LIST length] string]%] = {%
-for () in VALUE_LIST
+for (mOperandName mOperandValue mResultName mResultValue) in VALUE_LIST
 do
   %\n  %![mResultName identifierRepresentation]% /* %!mOperandName.string% */%
 between

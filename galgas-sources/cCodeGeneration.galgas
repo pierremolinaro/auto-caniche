@@ -45,7 +45,7 @@ proc performCCodeGeneration
   ?let @functionMap inFunctionMap
   ?let @machineMap inClassTypeMap {
 #--- Generate enum declarations
-  for () in  inUnifiedScalarTypeMap do
+  for (lkey * mEnumConstantList mGenerate) in  inUnifiedScalarTypeMap do
     if mGenerate then
       let @string s = [filewrapper CCodeGenerationTemplates.enumerationDeclaration
        !lkey.string
@@ -56,14 +56,14 @@ proc performCCodeGeneration
     end
   end
 #--- Generate function declarations
-  for () in  inFunctionMap do
-   @string s = [filewrapper CCodeGenerationTemplates.functionDeclaration
+  for (lkey * mResultTypeProxy mDecoratedFunctionValueList) in  inFunctionMap do
+   var @string s = [filewrapper CCodeGenerationTemplates.functionDeclaration
      ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
      !lkey.string
      ![mResultTypeProxy key]
      ![mDecoratedFunctionValueList length]
    ]
-   @string fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + lkey + ".h"
+   var @string fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + lkey + ".h"
    [s writeToFileWhenDifferentContents !fileName ?*]
    s = [filewrapper CCodeGenerationTemplates.functionImplementation
      ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
@@ -83,7 +83,7 @@ proc performCCodeGeneration
      !c.mAttributeList
      !c.mEventMap
    ]
-   @string fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + c.lkey + ".h"
+   var @string fileName = [inSourceFileName stringByDeletingLastPathComponent] + "/" + c.lkey + ".h"
    [h writeToFileWhenDifferentContents !fileName ?*]
    let @string cpp = [filewrapper CCodeGenerationTemplates.machineImplementation
      ![[inSourceFileName lastPathComponent] stringByDeletingPathExtension]
@@ -149,32 +149,32 @@ override getter @ifDecoratedInstruction generateCCode
 
 #-------------------------------------------------------------------*
 
-override getter @switchDecoratedInstruction generateCCode ?let @string inIndentationString ->@string outResult {
-  outResult = inIndentationString + "switch " + self.mVarName + " {\n"
-  for (constantList instructionList) in self.mSwitchDecoratedCaseList do
-    outResult += inIndentationString + " "
-    for (constantName) in constantList do
-      outResult += " case " + constantName + ":"
-    end
-    outResult += "\n" 
-    outResult += [instructionList generateCCode !inIndentationString + "  "]
-    outResult += inIndentationString + "break ;\n" 
-  end
-  outResult += inIndentationString + "}\n"
-}
+#override getter @switchDecoratedInstruction generateCCode ?let @string inIndentationString ->@string outResult {
+#  outResult = inIndentationString + "switch " + self.mVarName + " {\n"
+#  for (constantList instructionList) in self.mSwitchDecoratedCaseList do
+#    outResult += inIndentationString + " "
+#    for (constantName) in constantList do
+#      outResult += " case " + constantName + ":"
+#    end
+#    outResult += "\n" 
+#    outResult += [instructionList generateCCode !inIndentationString + "  "]
+#    outResult += inIndentationString + "break ;\n" 
+#  end
+#  outResult += inIndentationString + "}\n"
+#}
 
 #-------------------------------------------------------------------*
 #! @decoratedExpression generateExpressionCCode
 #-------------------------------------------------------------------*
 
 abstract getter @decoratedAssignmentSourceExpression generateSourceExpressionCCode
-  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry inTargetTypeProxy
   ->@string
 
 #-------------------------------------------------------------------*
 
 override getter @attributeInDecoratedAssignmentSourceExpression generateSourceExpressionCCode
-  ?let @unifiedScalarTypeMap-proxy unused inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry unused inTargetTypeProxy
   ->@string outResult {
   outResult = self.mVarName.string
 }
@@ -182,7 +182,7 @@ override getter @attributeInDecoratedAssignmentSourceExpression generateSourceEx
 #-------------------------------------------------------------------*
 
 override getter @cstInDecoratedAssignmentSourceExpression generateSourceExpressionCCode
-  ?let @unifiedScalarTypeMap-proxy unused inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry unused inTargetTypeProxy
   ->@string outResult {
   outResult = [self.mEnumCstName identifierRepresentation]
 }
@@ -190,7 +190,7 @@ override getter @cstInDecoratedAssignmentSourceExpression generateSourceExpressi
 #-------------------------------------------------------------------*
 
 override getter @functionInDecoratedAssignmentSourceExpression generateSourceExpressionCCode
-  ?let @unifiedScalarTypeMap-proxy unused inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry unused inTargetTypeProxy
   ->@string outResult {
   outResult = "function_" + [self.mFunctionName identifierRepresentation] + " [" + [self.mOperandName identifierRepresentation] + "]"
 }

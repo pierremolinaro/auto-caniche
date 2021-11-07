@@ -2,21 +2,33 @@
 
 #-------------------------------------------------------------------*
 
-shared class @implicationDecoratedExpression,
-      @logicalOrDecoratedExpression,
-      @logicalAndDecoratedExpression : @decoratedExpression {
-  @decoratedExpression mLeft
-  @decoratedExpression mRight
+refclass @implicationDecoratedExpression : @decoratedExpression {
+  public var @decoratedExpression mLeft
+  public var @decoratedExpression mRight
 }
 
 #-------------------------------------------------------------------*
 
-shared class @decoratedComparisonInExpression : @decoratedExpression {
-  @lstring mAttributeName
+refclass @logicalAndDecoratedExpression : @decoratedExpression {
+  public var @decoratedExpression mLeft
+  public var @decoratedExpression mRight
+}
+
+#-------------------------------------------------------------------*
+
+refclass @logicalOrDecoratedExpression : @decoratedExpression {
+  public var @decoratedExpression mLeft
+  public var @decoratedExpression mRight
+}
+
+#-------------------------------------------------------------------*
+
+refclass @decoratedComparisonInExpression : @decoratedExpression {
+  public var @lstring mAttributeName
 #  @uint mAttributeBDDStartIndex ;
 #  @uint mAttributeBDDBitCount ;
-  @enumComparisonOperator mOperator
-  @decoratedComparisonRightOperand mRightOperand
+  public var @enumComparisonOperator mOperator
+  public var @decoratedComparisonRightOperand mRightOperand
 }
 
 #-------------------------------------------------------------------*
@@ -117,7 +129,7 @@ override method @comparisonInExpression analyzeExpression
 #--- Attribute
   [inAnalyzeContext.mMachineVarMap searchKey
     !self.mAttributeName
-    ?let @unifiedScalarTypeMap-proxy attributeTypeProxy
+    ?let @unifiedScalarTypeMap-entry attributeTypeProxy
     ?*
   ]
 #--- Constant
@@ -135,21 +147,21 @@ override method @comparisonInExpression analyzeExpression
 
 #-------------------------------------------------------------------*
 
-abstract shared class @decoratedComparisonRightOperand {
+abstract refclass @decoratedComparisonRightOperand {
 }
 
 #-------------------------------------------------------------------*
 
-shared class @decoratedConstantAsComparisonRightOperand : @decoratedComparisonRightOperand {
-  @unifiedScalarTypeMap-proxy mConstantTypeProxy
-  @lstring mConstantName
-  @uint mConstantValue
+refclass @decoratedConstantAsComparisonRightOperand : @decoratedComparisonRightOperand {
+  public var @unifiedScalarTypeMap-entry mConstantTypeProxy
+  public var @lstring mConstantName
+  public var @uint mConstantValue
 }
 
 #-------------------------------------------------------------------*
 
-shared class @decoratedAttributeAsComparisonRightOperand : @decoratedComparisonRightOperand {
-  @lstring mAttributeName
+refclass @decoratedAttributeAsComparisonRightOperand : @decoratedComparisonRightOperand {
+  public var @lstring mAttributeName
 #  @uint mAttributeBDDStartBitIndex ;
 }
 
@@ -159,7 +171,7 @@ abstract method @comparisonRightOperand analyzeComparisonRightOperand
   ?let @analyzeContext inAnalyzeContext
   ?let @bool inEnsureClause
   !@decoratedComparisonRightOperand outDecoratedExpression
-  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy
+  ?let @unifiedScalarTypeMap-entry inVarTypeProxy
 
 #-------------------------------------------------------------------*
 
@@ -167,7 +179,7 @@ override method @constantAsComparisonRightOperand analyzeComparisonRightOperand
   ?let @analyzeContext unused inAnalyzeContext
   ?let @bool unused inEnsureClause
   !@decoratedComparisonRightOperand outDecoratedExpression
-  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy
+  ?let @unifiedScalarTypeMap-entry inVarTypeProxy
 {
   [[inVarTypeProxy mConstantMap] searchKey !self.mConstantName ?let @uint constantValue]
   outDecoratedExpression = @decoratedConstantAsComparisonRightOperand. new { !inVarTypeProxy !self.mConstantName !constantValue}
@@ -179,13 +191,13 @@ override method @attributeAsComparisonRightOperand analyzeComparisonRightOperand
   ?let @analyzeContext inAnalyzeContext
   ?let @bool inEnsureClause
   !@decoratedComparisonRightOperand outDecoratedExpression
-  ?let @unifiedScalarTypeMap-proxy inVarTypeProxy {
+  ?let @unifiedScalarTypeMap-entry inVarTypeProxy {
   if self.mHasOldQualifier & not inEnsureClause then
     error self.mAttributeName : "'old' qualifier is allowed only in post condition"
   end
   [inAnalyzeContext.mMachineVarMap searchKey
     !self.mAttributeName
-    ?let @unifiedScalarTypeMap-proxy operandTypeProxy
+    ?let @unifiedScalarTypeMap-entry operandTypeProxy
     ?*
   ]
 #--- Check type

@@ -8,6 +8,122 @@
 
 #include "all-declarations-1.h"
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@machineList-element performMachineDynamicAnalysis'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void extensionMethod_performMachineDynamicAnalysis (const class GALGAS_machineList_2D_element inObject,
+                                                    const class GALGAS_string constin_inSourceFileName,
+                                                    const class GALGAS_unifiedScalarTypeMap constin_inUnifiedScalarTypeMap,
+                                                    const class GALGAS_scenarioList constin_inScenarioList,
+                                                    const class GALGAS_functionMap constin_inFunctionMap,
+                                                    class GALGAS_string & io_ioGenerationString,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Function 'nameForValue'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_string function_nameForValue (const class GALGAS_uint_36__34_ & constinArgument0,
+                                           const class GALGAS_varList & constinArgument1,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'addTransitionsToGraphvizString'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_addTransitionsToGraphvizString (const class GALGAS_eventDeclarationList_2D_element constinArgument0,
+                                             const class GALGAS_uint constinArgument1,
+                                             const class GALGAS_binaryset constinArgument2,
+                                             const class GALGAS_varList constinArgument3,
+                                             const class GALGAS_uint constinArgument4,
+                                             const class GALGAS_varList constinArgument5,
+                                             class GALGAS_string & ioArgument6,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayArgVarVarValueSet'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_displayArgVarVarValueSet (const class GALGAS_string constinArgument0,
+                                       const class GALGAS_binaryset constinArgument1,
+                                       const class GALGAS_varList constinArgument2,
+                                       const class GALGAS_varList constinArgument3,
+                                       class GALGAS_string & ioArgument4,
+                                       class C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displaySeparator'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_displaySeparator (const class GALGAS_machineVarListForDisplay constinArgument0,
+                               class GALGAS_string & ioArgument1,
+                               class C_Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayValue'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_displayValue (const class GALGAS_machineVarListForDisplay constinArgument0,
+                           const class GALGAS_uint_36__34_ constinArgument1,
+                           class GALGAS_string & ioArgument2,
+                           class C_Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayVarNames'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_displayVarNames (const class GALGAS_machineVarListForDisplay constinArgument0,
+                              class GALGAS_string & ioArgument1,
+                              class C_Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayVarValueSet'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_displayVarValueSet (const class GALGAS_string constinArgument0,
+                                 const class GALGAS_binaryset constinArgument1,
+                                 const class GALGAS_varList constinArgument2,
+                                 class GALGAS_string & ioArgument3,
+                                 class C_Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'displayVarVarValueSet'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_displayVarVarValueSet (const class GALGAS_string constinArgument0,
+                                    const class GALGAS_binaryset constinArgument1,
+                                    const class GALGAS_varList constinArgument2,
+                                    class GALGAS_string & ioArgument3,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //

@@ -52,7 +52,7 @@ rule <enum_declaration> ?!@ast ioAST {
   $enum$
   $enum-type-name$ ?var @lstring enumName
   ${$
-  @lstringlist cstList = {}
+  var @lstringlist cstList = {}
   repeat
     $identifier$ ?let @lstring constantName
     cstList += !constantName
@@ -122,7 +122,7 @@ rule <machine> ?!@ast ioAST {
     end
     $)$   
     ${$
-    @instructionList eventInstructionList = {}
+    var @instructionList eventInstructionList = {}
     <instruction_list> !?eventInstructionList
     var ensureExpressionList =@expressionList.default
     select
@@ -136,7 +136,7 @@ rule <machine> ?!@ast ioAST {
       while
       end
     end
-    @location endOfEnsureExpressionList = @location.here
+    var @location endOfEnsureExpressionList = @location.here
     $}$
     eventList +=
       !eventName
@@ -202,7 +202,7 @@ rule <expression4> !@expression outExpression {
 
 rule <expression4> !@expression outExpression {
   $identifier$ ?let @lstring propertyName
-  @enumComparisonOperator comparisonOperator
+  var @enumComparisonOperator comparisonOperator
   select
     $==$
     comparisonOperator = @enumComparisonOperator.equal
@@ -230,7 +230,7 @@ rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOpera
 #--------------------------------------------------------------------*
 
 rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOperand {
-  @bool hasOldQualifier
+  var @bool hasOldQualifier
   select
     hasOldQualifier = false
   or
@@ -337,7 +337,7 @@ rule <instruction> !@instruction outInstruction {
   <expression> ?let @expression testExpression
   let @location endOfTestExpression = @location.here
   ${$
-  @instructionList thenInstructionList = {}
+  var @instructionList thenInstructionList = {}
   <instruction_list> !?thenInstructionList
   $}$
   <else_part> ?let @instructionList elseInstructionList
@@ -375,7 +375,7 @@ rule <else_part> !@instructionList outInstructionList {
   <expression> ?let @expression testExpression
   let @location endOfTestExpression = @location.here
   ${$
-  @instructionList thenInstructionList = {}
+  var @instructionList thenInstructionList = {}
   <instruction_list> !?thenInstructionList
   $}$
   <else_part> ?let @instructionList elseInstructionList

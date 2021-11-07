@@ -1,40 +1,40 @@
 
-shared class @assignmentDecoratedInstruction : @decoratedInstruction {
-  @unifiedScalarTypeMap-proxy mTargetTypeProxy
-  @lstring mTargetVarName
-  @decoratedAssignmentSourceExpression mSourceExpression
+refclass @assignmentDecoratedInstruction : @decoratedInstruction {
+  public var @unifiedScalarTypeMap-entry mTargetTypeProxy
+  public var @lstring mTargetVarName
+  public var @decoratedAssignmentSourceExpression mSourceExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @ifDecoratedInstruction : @decoratedInstruction {
-  @location mIFinstructionLocation
-  @decoratedExpression mTestExpression
-  @location mEndOfTestExpression
-  @decoratedInstructionList mThenInstructionList
-  @decoratedInstructionList mElseInstructionList
+refclass @ifDecoratedInstruction : @decoratedInstruction {
+  public var @location mIFinstructionLocation
+  public var @decoratedExpression mTestExpression
+  public var @location mEndOfTestExpression
+  public var @decoratedInstructionList mThenInstructionList
+  public var @decoratedInstructionList mElseInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @switchDecoratedCaseList {
-  @lstringlist mConstantNameList
-  @decoratedInstructionList mInstructionList
-}
+#list @switchDecoratedCaseList {
+#  @lstringlist mConstantNameList
+#  @decoratedInstructionList mInstructionList
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-shared class @switchDecoratedInstruction : @decoratedInstruction {
-  @lstring mVarName
-  @switchDecoratedCaseList mSwitchDecoratedCaseList
-}
+#shared class @switchDecoratedInstruction : @decoratedInstruction {
+#  @lstring mVarName
+#  @switchDecoratedCaseList mSwitchDecoratedCaseList
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-shared class @assertDecoratedInstruction : @decoratedInstruction {
-  @location mInstructionLocation
-  @decoratedExpression mExpression
+refclass @assertDecoratedInstruction : @decoratedInstruction {
+  public var @location mInstructionLocation
+  public var @decoratedExpression mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -56,14 +56,14 @@ method @instructionList analyzeInstructionList
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-abstract shared class @decoratedAssignmentSourceExpression {
+abstract refclass @decoratedAssignmentSourceExpression {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-shared class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
-  @lstring mVarName
+refclass @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+  public var @lstring mVarName
 #  @uint mBDDStartIndex ;
 #  @uint mBDDBitCount ;
 }
@@ -71,19 +71,19 @@ shared class @attributeInDecoratedAssignmentSourceExpression : @decoratedAssignm
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-shared class @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
-  @lstring mEnumCstName
-  @uint mValue
-  @uint mBDDBitCount
+refclass @cstInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+  public var @lstring mEnumCstName
+  public var @uint mValue
+  public var @uint mBDDBitCount
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-shared class @functionInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
-  @lstring mFunctionName
-  @lstring mOperandName
-  @decoratedFunctionValueList mDecoratedFunctionValueList
+refclass @functionInDecoratedAssignmentSourceExpression : @decoratedAssignmentSourceExpression {
+  public var @lstring mFunctionName
+  public var @lstring mOperandName
+  public var @decoratedFunctionValueList mDecoratedFunctionValueList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -98,7 +98,7 @@ abstract method @instruction analyzeInstruction
 
 abstract method @assignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext inAnalyzeContext
-  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry inTargetTypeProxy
   !@decoratedAssignmentSourceExpression outDecoratedExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -106,11 +106,11 @@ abstract method @assignmentSourceExpression analyzeAssignmentSourceExpression
 
 override method @varAsAssignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext inAnalyzeContext
-  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry inTargetTypeProxy
   !@decoratedAssignmentSourceExpression outDecoratedExpression {
   [inAnalyzeContext.mMachineVarMap searchKey
     !self.mSourceVarName
-    ?let @unifiedScalarTypeMap-proxy sourceTypeProxy
+    ?let @unifiedScalarTypeMap-entry sourceTypeProxy
     ?*
   ]
 #--- Check type
@@ -129,7 +129,7 @@ override method @varAsAssignmentSourceExpression analyzeAssignmentSourceExpressi
 
 override method @constantAsAssignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext unused inAnalyzeContext
-  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry inTargetTypeProxy
   !@decoratedAssignmentSourceExpression outDecoratedExpression {
   [[inTargetTypeProxy mConstantMap] searchKey !self.mConstantName ?let @uint cstValue]
   outDecoratedExpression = @cstInDecoratedAssignmentSourceExpression. new {
@@ -143,19 +143,19 @@ override method @constantAsAssignmentSourceExpression analyzeAssignmentSourceExp
 
 override method @functionAsAssignmentSourceExpression analyzeAssignmentSourceExpression
   ?let @analyzeContext inAnalyzeContext
-  ?let @unifiedScalarTypeMap-proxy inTargetTypeProxy
+  ?let @unifiedScalarTypeMap-entry inTargetTypeProxy
   !@decoratedAssignmentSourceExpression outDecoratedExpression {
 #--- Search function name in function map
   [inAnalyzeContext.mFunctionMap searchKey
     !self.mFunctionName
-    ?let @unifiedScalarTypeMap-proxy operandTypeProxy
-    ?let @unifiedScalarTypeMap-proxy resultTypeProxy
+    ?let @unifiedScalarTypeMap-entry operandTypeProxy
+    ?let @unifiedScalarTypeMap-entry resultTypeProxy
     ?let @decoratedFunctionValueList decoratedFunctionValueList
   ]
 #--- Search attribute in attribute map
   [inAnalyzeContext.mMachineVarMap searchKey
     !self.mOperandName
-    ?let @unifiedScalarTypeMap-proxy attributeTypeProxy
+    ?let @unifiedScalarTypeMap-entry attributeTypeProxy
 #    ??@uint attributeBDDStartIndex
 #    ??@uint attributeBDDBitCount
     ?* # ??@uint operandMaxValue
@@ -189,7 +189,7 @@ override method @assignmentInstruction analyzeInstruction
   !@decoratedInstruction outDecoratedInstruction {
   [inAnalyzeContext.mMachineVarMap searchKey
     !self.mTargetVarName
-    ?let @unifiedScalarTypeMap-proxy targetTypeProxy
+    ?let @unifiedScalarTypeMap-entry targetTypeProxy
     ?*
    ]
   [self.mSourceExpression analyzeAssignmentSourceExpression
@@ -205,44 +205,44 @@ override method @assignmentInstruction analyzeInstruction
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @switchInstruction analyzeInstruction
-  ?let @analyzeContext inAnalyzeContext
-  !@decoratedInstruction outDecoratedInstruction
-{
-#--- Analyze variable
-  [inAnalyzeContext.mMachineVarMap searchKey
-    !self.mVariableName
-    ?let @unifiedScalarTypeMap-proxy variableTypeProxy
-    ?*
-  ]
-#--- Analyze case list
-  @switchDecoratedCaseList switchDecoratedCaseList = {}
-  @stringset usedConstantNameSet = {}
-  for (constantList * instructionList) in self.mSwitchCaseList do
-    for (constantName) in constantList do
-      [[variableTypeProxy mConstantMap] searchKey !constantName ?*]
-      if [usedConstantNameSet hasKey !constantName] then
-        error constantName : "duplicated constant"
-      end
-      usedConstantNameSet += !constantName
-    end
-    [instructionList analyzeInstructionList
-      !inAnalyzeContext
-      ?let @decoratedInstructionList decoratedInstructionList
-    ]
-    switchDecoratedCaseList += !constantList !decoratedInstructionList
-  end
-#--- Check all constant have been named
-  let missingConstantSet = [[variableTypeProxy mConstantMap] keySet] - usedConstantNameSet
-  for (constantName) in missingConstantSet do
-    error self.mEndOfSwitchExpression : "missing constant '" + constantName + "' in switch instruction"
-  end
-#--- Generate instruction
-  outDecoratedInstruction = @switchDecoratedInstruction.new {
-    !self.mVariableName
-    !switchDecoratedCaseList
-  }
-}
+#override method @switchInstruction analyzeInstruction
+#  ?let @analyzeContext inAnalyzeContext
+#  !@decoratedInstruction outDecoratedInstruction
+#{
+##--- Analyze variable
+#  [inAnalyzeContext.mMachineVarMap searchKey
+#    !self.mVariableName
+#    ?let @unifiedScalarTypeMap-entry variableTypeProxy
+#    ?*
+#  ]
+##--- Analyze case list
+#  @switchDecoratedCaseList switchDecoratedCaseList = {}
+#  @stringset usedConstantNameSet = {}
+#  for (constantList * instructionList) in self.mSwitchCaseList do
+#    for (constantName) in constantList do
+#      [[variableTypeProxy mConstantMap] searchKey !constantName ?*]
+#      if [usedConstantNameSet hasKey !constantName] then
+#        error constantName : "duplicated constant"
+#      end
+#      usedConstantNameSet += !constantName
+#    end
+#    [instructionList analyzeInstructionList
+#      !inAnalyzeContext
+#      ?let @decoratedInstructionList decoratedInstructionList
+#    ]
+#    switchDecoratedCaseList += !constantList !decoratedInstructionList
+#  end
+##--- Check all constant have been named
+#  let missingConstantSet = [[variableTypeProxy mConstantMap] keySet] - usedConstantNameSet
+#  for (constantName) in missingConstantSet do
+#    error self.mEndOfSwitchExpression : "missing constant '" + constantName + "' in switch instruction"
+#  end
+##--- Generate instruction
+#  outDecoratedInstruction = @switchDecoratedInstruction.new {
+#    !self.mVariableName
+#    !switchDecoratedCaseList
+#  }
+#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
