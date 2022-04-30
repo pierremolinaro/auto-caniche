@@ -81,6 +81,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logicalOrDecoratedE
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_logicalOrDecoratedExpression : public cPtr_decoratedExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_decoratedExpression mProperty_mLeft ;
   public: GALGAS_decoratedExpression mProperty_mRight ;
@@ -218,6 +221,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decoratedComparison
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_decoratedComparisonRightOperand : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateExpressionCCode (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -417,6 +424,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decoratedAssignment
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_decoratedAssignmentSourceExpression : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateSourceExpressionCCode (const GALGAS_unifiedScalarTypeMap_2D_entry inTargetTypeProxy,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -524,6 +536,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifDecoratedInstruct
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_ifDecoratedInstruction : public cPtr_decoratedInstruction {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mIFinstructionLocation ;
   public: GALGAS_decoratedExpression mProperty_mTestExpression ;
@@ -682,6 +697,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assertDecoratedInst
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assertDecoratedInstruction : public cPtr_decoratedInstruction {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mInstructionLocation ;
   public: GALGAS_decoratedExpression mProperty_mExpression ;
@@ -1183,6 +1201,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentInstruction : public cPtr_instruction {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mTargetVarName ;
   public: GALGAS_assignmentSourceExpression mProperty_mSourceExpression ;
@@ -1282,6 +1303,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeAsComparis
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_attributeAsComparisonRightOperand : public cPtr_comparisonRightOperand {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
   public: GALGAS_bool mProperty_mHasOldQualifier ;
@@ -1384,6 +1408,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonInExpress
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonInExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
   public: GALGAS_enumComparisonOperator mProperty_mOperator ;
@@ -1479,6 +1506,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantAsAssignmen
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_constantAsAssignmentSourceExpression : public cPtr_assignmentSourceExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mConstantName ;
 
@@ -1570,6 +1600,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantAsCompariso
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_constantAsComparisonRightOperand : public cPtr_comparisonRightOperand {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mConstantName ;
 
@@ -1667,6 +1700,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionAsAssignmen
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionAsAssignmentSourceExpression : public cPtr_assignmentSourceExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_lstring mProperty_mOperandName ;
@@ -1760,6 +1796,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varAsAssignmentSour
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_varAsAssignmentSourceExpression : public cPtr_assignmentSourceExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mSourceVarName ;
 
@@ -3956,6 +3995,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decoratedComparison
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_decoratedComparisonInExpression : public cPtr_decoratedExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
   public: GALGAS_enumComparisonOperator mProperty_mOperator ;
@@ -4119,6 +4161,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decoratedConstantAs
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_decoratedConstantAsComparisonRightOperand : public cPtr_decoratedComparisonRightOperand {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedScalarTypeMap_2D_entry mProperty_mConstantTypeProxy ;
   public: GALGAS_lstring mProperty_mConstantName ;
@@ -4270,6 +4315,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decoratedAttributeA
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_decoratedAttributeAsComparisonRightOperand : public cPtr_decoratedComparisonRightOperand {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mAttributeName ;
 
@@ -4426,6 +4474,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentDecorated
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentDecoratedInstruction : public cPtr_decoratedInstruction {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_unifiedScalarTypeMap_2D_entry mProperty_mTargetTypeProxy ;
   public: GALGAS_lstring mProperty_mTargetVarName ;
@@ -4577,6 +4628,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeInDecorate
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_attributeInDecoratedAssignmentSourceExpression : public cPtr_decoratedAssignmentSourceExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mVarName ;
 
@@ -4736,6 +4790,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_cstInDecoratedAssig
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_cstInDecoratedAssignmentSourceExpression : public cPtr_decoratedAssignmentSourceExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mEnumCstName ;
   public: GALGAS_uint mProperty_mValue ;
@@ -4899,6 +4956,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionInDecorated
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionInDecoratedAssignmentSourceExpression : public cPtr_decoratedAssignmentSourceExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_lstring mProperty_mFunctionName ;
   public: GALGAS_lstring mProperty_mOperandName ;

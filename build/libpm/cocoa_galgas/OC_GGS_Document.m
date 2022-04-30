@@ -18,7 +18,6 @@
 
 #import "OC_GGS_Document.h"
 #import "OC_GGS_ApplicationDelegate.h"
-#import "OC_GGS_RulerViewForTextView.h"
 #import "OC_Lexique.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMIssueDescriptor.h"
@@ -125,6 +124,8 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [super windowControllerDidLoadNib: inWindowController];
+//---
+//  mDisplayDescriptorTableViewHigh.columnAutoresizingStyle = NSTableViewFirstColumnOnlyAutoresizingStyle ;
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Set up windows location
@@ -750,52 +751,6 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#pragma mark Tracking File Document changes
-
-//----------------------------------------------------------------------------------------------------------------------
-
-- (NSDate *) sourceFileModificationDateInFileSystem {
-  NSURL * fileURL = [self fileURL] ;
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSDate * date = [NSDate date] ;
-  if ([fileURL isFileURL]) {
-    NSFileManager * fm = [NSFileManager new] ;
-    NSDictionary * fileAttributes = [fm attributesOfItemAtPath:[fileURL path] error:NULL] ;
-    date = [fileAttributes objectForKey:NSFileModificationDate] ;
-  }
-  return date ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-- (void) updateFromFileSystem: (id) inUnusedArgument {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [NSApp
-    beginSheet:mUpdateFromFileSystemPanel
-    modalForWindow:[self windowForSheet]
-    modalDelegate:nil
-    didEndSelector:NULL
-    contextInfo:NULL
-  ] ;
-//--- Read new content
-  NSString * source = [[NSString alloc]
-    initWithContentsOfURL:[self fileURL]
-    encoding:NSUTF8StringEncoding
-    error:nil
-  ] ;
-  if (source != nil) {
-//    [mDelegateForSyntaxColoring setSourceString:source] ;
-  }
-//---
-  [mUpdateFromFileSystemPanel orderOut:self] ;
-  [NSApp endSheet:mUpdateFromFileSystemPanel] ;   
-}
-//----------------------------------------------------------------------------------------------------------------------
-
 #pragma mark Document Save
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -830,98 +785,6 @@
 //---
   return [mDocumentData performSaveToURL: inAbsoluteURL] ;
 }
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  S A V I N G    H F S    T Y P E    A N D    C R E A T O R    C O D E S                       
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-//- (NSDictionary *) fileAttributesToWriteToURL:(NSURL *) inDocumentURL
-//    ofType:(NSString *)documentTypeName
-//    forSaveOperation:(NSSaveOperationType)saveOperationType
-//    originalContentsURL: (NSURL *) inOriginalURL
-//    error: (NSError * __autoreleasing *) outError {
-//  #ifdef DEBUG_MESSAGES
-//    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-//  #endif
-//
-//  NSDictionary *infoPlist = [[NSBundle mainBundle] infoDictionary];
-//  NSString *creatorCodeString;
-//  NSArray *documentTypes;
-//  NSNumber *typeCode, *creatorCode;
-//  NSMutableDictionary *newAttributes;
-//
-//  typeCode = creatorCode = nil;
-//
-//  // First, set creatorCode to the HFS creator code for the application,
-//  // if it exists.
-//   creatorCodeString = [infoPlist objectForKey:@"CFBundleSignature"];
-//  if(creatorCodeString)
-//  {
-//      creatorCode = [NSNumber
-//          numberWithUnsignedLong:NSHFSTypeCodeFromFileType([NSString
-//          stringWithFormat:@"'%@'",creatorCodeString])];
-//  }
-//
-//  // Then, find the matching Info.plist dictionary entry for this type.
-//  // Use the first associated HFS type code, if any exist.
-//  documentTypes = [infoPlist objectForKey:@"CFBundleDocumentTypes"];
-//  if(documentTypes)
-//  {
-//      const NSUInteger count = [documentTypes count];
-//
-//      for(NSUInteger i = 0; i < count; i++)
-//      {
-//          NSString *type = [[documentTypes objectAtIndex:i]
-//              objectForKey:@"CFBundleTypeName"];
-//          if(type && [type isEqualToString:documentTypeName])
-//          {
-//              NSArray *typeCodeStrings = [[documentTypes objectAtIndex:i]
-//                  objectForKey:@"CFBundleTypeOSTypes"];
-//              if(typeCodeStrings)
-//              {
-//                 NSString *firstTypeCodeString = [typeCodeStrings
-//                      objectAtIndex:0];
-//                  if (firstTypeCodeString)
-//                  {
-//                      typeCode = [NSNumber                            numberWithUnsignedLong:
-//                         NSHFSTypeCodeFromFileType([NSString
-//                         stringWithFormat:@"'%@'",firstTypeCodeString])];
-//                  }
-//              }
-//              break;
-//          }
-//      }
-//  }
-//   // If neither type nor creator code exist, use the default implementation.
-//  if(!(typeCode || creatorCode))
-//  {
-//      return [super
-//        fileAttributesToWriteToURL:inDocumentURL
-//        ofType:documentTypeName
-//        forSaveOperation:saveOperationType
-//        originalContentsURL:inOriginalURL
-//        error:outError
-//      ];
-//  }
-//
-//  // Otherwise, add the type and/or creator to the dictionary.
-//  newAttributes = [NSMutableDictionary
-//    dictionaryWithDictionary:[super
-//      fileAttributesToWriteToURL:inDocumentURL
-//      ofType:documentTypeName
-//      forSaveOperation:saveOperationType
-//      originalContentsURL:inOriginalURL
-//      error:outError
-//    ]
-//  ];
-//  if(typeCode)
-//      [newAttributes setObject:typeCode forKey:NSFileHFSTypeCode];
-//  if(creatorCode)
-//      [newAttributes setObject:creatorCode forKey:NSFileHFSCreatorCode];
-//  return newAttributes;
-//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1829,7 +1692,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     [self
       recursiveSearchInDirectory:directoryPath
       recursive:YES
-      extensionList:self.allTypesOfCurrentApplication
+      extensionList: self.allTypesOfCurrentApplication
     ] ;
   }
 }
@@ -1891,19 +1754,21 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSFileManager * fm = [NSFileManager new] ;
-  NSArray * contents = [fm contentsOfDirectoryAtPath:inDirectoryFullPath error:nil] ;
+  NSArray * contents = [fm contentsOfDirectoryAtPath: inDirectoryFullPath error:nil] ;
+  // NSLog (@"inExtensionList %@", inExtensionList) ;
   if (nil == contents) {
   
   }else{
     for (NSString * subPath in contents) {
-      if ('.' != [subPath characterAtIndex:0]) {
+      // NSLog (@" subpath %@", subPath) ;
+      if ('.' != [subPath characterAtIndex: 0]) {
         NSString * fullPath = [NSString stringWithFormat:@"%@/%@", inDirectoryFullPath, subPath] ;
         BOOL isDirectory ;
-        if ([fm fileExistsAtPath:fullPath isDirectory: & isDirectory]) {
+        if ([fm fileExistsAtPath: fullPath isDirectory: & isDirectory]) {
           if (isDirectory && inRecursive) {
             [self recursiveSearchInDirectory:fullPath recursive:YES extensionList:inExtensionList] ;
           }else if ((! isDirectory) && [inExtensionList containsObject:[fullPath pathExtension]]) {
-            [self findInFile:fullPath] ;
+            [self findInFile: fullPath] ;
           }
         }
       }
@@ -1917,14 +1782,26 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMutableArray * allTypes = [NSMutableArray new] ;
+//  NSMutableArray * allTypes = [NSMutableArray new] ;
   NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  for (NSDictionary * type in allDocumentTypes) {
-    NSArray * a = [type objectForKey:@"CFBundleTypeExtensions"] ;
-    [allTypes addObjectsFromArray:a] ;  
+//  NSLog (@"infoDictionary %@", infoDictionary) ;
+//  NSArray * allDocumentTypes = [infoDictionary objectForKey: @"CFBundleDocumentTypes"] ;
+  NSArray * exportedTypeDeclarations = [infoDictionary objectForKey: @"UTExportedTypeDeclarations"] ;
+//  NSLog (@"exportedTypeDeclarations %@", exportedTypeDeclarations) ;
+  NSMutableSet * extensionSet = [NSMutableSet new] ;
+  for (NSDictionary * exportedType in exportedTypeDeclarations) {
+    NSDictionary * tagSpecifDictionary = [exportedType objectForKey: @"UTTypeTagSpecification"] ;
+    NSArray * fileExtensions = [tagSpecifDictionary objectForKey: @"public.filename-extension"] ;
+    if (fileExtensions.count > 0) {
+      [extensionSet addObjectsFromArray: fileExtensions] ;
+    }
+//    for (NSString * extension in fileExtensions) {
+//      NSLog (@"  extension %@", extension) ;
+//    }
+//    [allTypes addObjectsFromArray:a] ;
   }
-  return allTypes ;
+  return [extensionSet allObjects] ;
+//  return allTypes ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1946,6 +1823,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+  // NSLog (@"  Find in File %@", inFilePath) ;
   NSMutableArray * foundEntries = [NSMutableArray new] ;
   NSString * sourceString = [NSString stringWithContentsOfFile:inFilePath encoding:NSUTF8StringEncoding error:nil] ;
   NSRange searchRange = {0, sourceString.length} ;
@@ -2214,7 +2092,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSDragOperation) tableView:(NSTableView*)tv
+- (NSDragOperation) tableView: (NSTableView*)tv
                     validateDrop:(id <NSDraggingInfo>)info
                     proposedRow:(NSInteger)row
                     proposedDropOperation:(NSTableViewDropOperation)op {
@@ -2251,6 +2129,60 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   }
   return YES ;
 }
+
+//----------------------------------------------------------------------------------------------------------------------
+
+// #pragma mark Tracking File Document changes
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//  - (void) presentedItemDidChange {
+//  // [caution] This method can be called from any thread.
+//  // [caution] DO NOT invoke `super.presentedItemDidChange()` that reverts document automatically if autosavesInPlace is enable.
+//  //        super.presentedItemDidChange()
+//    NSBeep () ;
+////    DispatchQueue.main.async { self.presentedItemDidChange_onMainThread () }
+//  }
+
+//----------------------------------------------------------------------------------------------------------------------
+//  private func presentedItemDidChange_onMainThread () {
+//    if let currentFileURL = self.fileURL {
+//      var optionalNewText : String? = nil
+//      var optionalFileModificationDate : Date? = nil
+//      var coordinatorError : NSError? = nil
+//      let coordinator = NSFileCoordinator (filePresenter: self)
+//      coordinator.coordinate (readingItemAt: currentFileURL, options: .withoutChanges, error: &coordinatorError) { (newURL) in
+//        do {
+//        //--- ignore if file's modificationDate is the same as document's modificationDate
+//          optionalFileModificationDate = try FileManager.default.attributesOfItem (atPath: newURL.path)[.modificationDate] as? Date
+//          if optionalFileModificationDate != self.fileModificationDate {
+//         //--- check if file contents was changed from the stored file data
+//            let data = try Data (contentsOf: newURL, options: [.mappedIfSafe])
+//            let text = String (data: data, encoding: .utf8)!
+//            if text != self.mText {
+//              optionalNewText = text
+//            }
+//          }
+//        }catch{
+//          return assertionFailure (error.localizedDescription)
+//        }
+//      }
+//      if let error = coordinatorError {
+//        assertionFailure (error.localizedDescription)
+//      }
+//      if let newText = optionalNewText {
+//        DispatchQueue.main.async {
+//          if let lastModificationDate = self.fileModificationDate,
+//             let fileModificationDate = optionalFileModificationDate,
+//             lastModificationDate < fileModificationDate {
+//            self.fileModificationDate = fileModificationDate
+//            self.mText = newText
+//            self.mTextView?.string = self.mText
+//          }
+//        }
+//      }
+//    }
+//  }
 
 //----------------------------------------------------------------------------------------------------------------------
 

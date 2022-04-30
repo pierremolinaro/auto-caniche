@@ -1587,6 +1587,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instruction ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_instruction : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -1731,6 +1734,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expression ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expression : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2254,6 +2260,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_implicationExpressi
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_implicationExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeft ;
   public: GALGAS_expression mProperty_mRight ;
@@ -2406,6 +2415,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logicalOrExpression
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_logicalOrExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeft ;
   public: GALGAS_expression mProperty_mRight ;
@@ -2558,6 +2570,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logicalAndExpressio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_logicalAndExpression : public cPtr_expression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_expression mProperty_mLeft ;
   public: GALGAS_expression mProperty_mRight ;
@@ -2695,6 +2710,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_comparisonRightOper
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_comparisonRightOperand : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -2954,6 +2972,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentSourceExp
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentSourceExpression : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
 
 //--- Constructor
@@ -3099,6 +3120,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assertInstruction ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assertInstruction : public cPtr_instruction {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mAssertInstructionLocation ;
   public: GALGAS_expression mProperty_mAssertExpression ;
@@ -3269,6 +3293,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstruction ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_ifInstruction : public cPtr_instruction {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_location mProperty_mIFinstructionLocation ;
   public: GALGAS_expression mProperty_mTestExpression ;
@@ -4556,6 +4583,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decoratedInstructio
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_decoratedInstruction : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateCCode (const GALGAS_string inIndentationString,
+           C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -4890,6 +4922,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_decoratedExpression
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_decoratedExpression : public acStrongPtr_class {
+
+//----------------------------------------------------------------------------------------------------------------------
+
+/* § public: virtual GALGAS_string getter_generateExpressionCCode (C_Compiler * COMMA_LOCATION_ARGS) const ; */
 //--- Properties
 
 //--- Constructor
@@ -7974,6 +8010,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_implicationDecorate
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_implicationDecoratedExpression : public cPtr_decoratedExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_decoratedExpression mProperty_mLeft ;
   public: GALGAS_decoratedExpression mProperty_mRight ;
@@ -8126,6 +8165,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logicalAndDecorated
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_logicalAndDecoratedExpression : public cPtr_decoratedExpression {
+
+//----------------------------------------------------------------------------------------------------------------------
+
 //--- Properties
   public: GALGAS_decoratedExpression mProperty_mLeft ;
   public: GALGAS_decoratedExpression mProperty_mRight ;
