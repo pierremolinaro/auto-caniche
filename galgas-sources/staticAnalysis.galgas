@@ -77,7 +77,7 @@ proc performStaticAnalysis
       [outUnifiedScalarTypeMap searchKey
         !e.mEnumTypeName
         ?let @enumConstantMap enumCstMap
-        ?var @lstringlist constantList
+        ?let @lstringlist constantList
         ?*
       ]
       [enumCstMap searchKey !e.mConstantName ?let @uint constantIndex]
@@ -95,7 +95,7 @@ proc performStaticAnalysis
         !constantIndex
     end
   #--- analyze context
-    var analyzeContext =@analyzeContext.new{
+    let analyzeContext =@analyzeContext.new{
       !outUnifiedScalarTypeMap
       !machineVarMap
       !outFunctionMap

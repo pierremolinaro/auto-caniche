@@ -50,7 +50,7 @@ rule <scenario>
 
 rule <enum_declaration> ?!@ast ioAST {
   $enum$
-  $enum-type-name$ ?var @lstring enumName
+  $enum-type-name$ ?let @lstring enumName
   ${$
   var @lstringlist cstList = {}
   repeat
@@ -69,9 +69,9 @@ rule <enum_function>
   ?!@ast ioAST {
   $function$
   $identifier$ ?let @lstring functionName
-  $enum-type-name$ ?var @lstring operandEnumName
+  $enum-type-name$ ?let @lstring operandEnumName
   $->$
-  $enum-type-name$ ?var @lstring resultEnumName
+  $enum-type-name$ ?let @lstring resultEnumName
   var functionValueList = @functionValueList.default
   repeat
     $identifier$ ?let @lstring operandConstantName
@@ -97,14 +97,14 @@ rule <machine> ?!@ast ioAST {
   while
     $var$
     $identifier$ ?let @lstring variableName
-    $enum-type-name$ ?var @lstring enumTypeName
+    $enum-type-name$ ?let @lstring enumTypeName
     $=$
     $.$
     $identifier$ ?let @lstring constantName
     enumVarDeclarationList += !enumTypeName !variableName !constantName
    while
     $invariant$
-    $literal_string$ ?var @lstring lbl
+    $literal_string$ ?let @lstring lbl
     $:$
     <expression> ?let @expression expression
     invariantExpressionList += !lbl !expression
@@ -117,7 +117,7 @@ rule <machine> ?!@ast ioAST {
     while
       $?$
       $identifier$ ?let @lstring argumentName
-      $enum-type-name$ ?var @lstring enumTypeName
+      $enum-type-name$ ?let @lstring enumTypeName
       eventArgumentList += !enumTypeName !argumentName
     end
     $)$   
@@ -129,14 +129,14 @@ rule <machine> ?!@ast ioAST {
     or
       $ensures$
       repeat
-        $literal_string$ ?var @lstring lbl
+        $literal_string$ ?let @lstring lbl
         $:$
         <expression> ?let @expression expression
         ensureExpressionList += !lbl !expression
       while
       end
     end
-    var @location endOfEnsureExpressionList = @location.here
+    let @location endOfEnsureExpressionList = @location.here
     $}$
     eventList +=
       !eventName
@@ -202,7 +202,7 @@ rule <expression4> !@expression outExpression {
 
 rule <expression4> !@expression outExpression {
   $identifier$ ?let @lstring propertyName
-  var @enumComparisonOperator comparisonOperator
+  let @enumComparisonOperator comparisonOperator
   select
     $==$
     comparisonOperator = @enumComparisonOperator.equal
@@ -230,7 +230,7 @@ rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOpera
 #--------------------------------------------------------------------*
 
 rule <comparison_right_operand> !@comparisonRightOperand outComparisonRightOperand {
-  var @bool hasOldQualifier
+  let @bool hasOldQualifier
   select
     hasOldQualifier = false
   or

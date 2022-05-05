@@ -1045,7 +1045,7 @@ override method @varAsAssignmentSourceExpression computeAssignmentInstructionBDD
       !inArgOldVarVarBDDBitCount
     }
   
-    var @binaryset expressionValueSet = ioArgOldVarVarValueSet & equality
+    let @binaryset expressionValueSet = ioArgOldVarVarValueSet & equality
     let @binaryset v = [expressionValueSet existsOnBitRange
       !inTargetVarBDDStartBit
       !inTargetVarBDDBitCount
@@ -1125,7 +1125,7 @@ override method @functionAsAssignmentSourceExpression computeAssignmentInstructi
     functionTable = functionTable | (op & result)
   end
 
-  var @binaryset expressionValueSet = ioArgOldVarVarValueSet & functionTable
+  let @binaryset expressionValueSet = ioArgOldVarVarValueSet & functionTable
   let constraint = @binaryset.binarySetWithEqualComparison {
     !leftVarBDDStartBit
     !leftVarBDDBitCount

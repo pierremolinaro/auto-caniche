@@ -5,7 +5,7 @@ message "a source text file with the .plm extension"
 grammar omnibus_grammar
 ?sourceFilePath:@lstring inSourceFile {
 #--- Syntax analysis
-  grammar omnibus_grammar in inSourceFile ?let @ast ast
+  grammar omnibus_grammar (?let @ast ast) in inSourceFile
 #--- Build decorated types
   performStaticAnalysis (
     !ast
